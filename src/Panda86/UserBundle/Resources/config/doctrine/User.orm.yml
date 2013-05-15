@@ -1,4 +1,4 @@
-Panda86\AdminBundle\Entity\User:
+Panda86\UserBundle\Entity\User:
     type: entity
     table: hr_user
     id:

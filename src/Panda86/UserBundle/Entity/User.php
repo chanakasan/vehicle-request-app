@@ -1,6 +1,6 @@
 <?php
 
-namespace Panda86\AdminBundle\Entity;
+namespace Panda86\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 

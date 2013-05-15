@@ -1,9 +1,9 @@
 <?php
 
-namespace Panda86\AdminBundle\Controller;
+namespace Panda86\UserBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Panda86\AdminBundle\Entity\User;
+use Panda86\UserBundle\Entity\User;
 use Symfony\Component\HttpFoundation\Response;
 
 class UserController extends Controller
@@ -11,7 +11,7 @@ class UserController extends Controller
     public function indexAction()
     {
         $users = $this->getDoctrine()
-            ->getRepository('Panda86AdminBundle:User')
+            ->getRepository('Panda86UserBundle:User')
             ->findAll();
 
         if (!$users) {            
@@ -23,13 +23,13 @@ class UserController extends Controller
         print_r($users);
         echo "</pre>";
 
-        return $this->render('Panda86AdminBundle:User:index.html.twig');
+        return $this->render('Panda86UserBundle:User:index.html.twig');
     }
 
     public function showAction($id)
     {
         $user = $this->getDoctrine()
-            ->getRepository('Panda86AdminBundle:User')
+            ->getRepository('Panda86UserBundle:User')
             ->find($id);
 
         if (!$user) {
@@ -41,7 +41,7 @@ class UserController extends Controller
         print_r($user);
         echo "</pre>";
 
-        return $this->render('Panda86AdminBundle:User:show.html.twig');
+        return $this->render('Panda86UserBundle:User:show.html.twig');
     }
 
     public function createAction()
@@ -66,7 +66,7 @@ class UserController extends Controller
     public function removeAction($id)
     {
         $user = $this->getDoctrine()
-            ->getRepository('Panda86AdminBundle:User')
+            ->getRepository('Panda86UserBundle:User')
             ->find($id);
 
         if (!$user) {
