@@ -11,25 +11,17 @@ Panda86\UserBundle\Entity\User:
         first_name:
             type: string
             length: '64'
+            nullable: true
         last_name:
             type: string
             length: '64'
-        username:
-            type: string
-            length: '16'
-        password:
-            type: string
-            length: '10'
-        salt:
-            type: string
-            length: '16'
+            nullable: true
         is_admin:
             type: boolean
             length: null
+            nullable: true
         is_manager:
             type: boolean
             length: null
-        email:
-            type: string
-            length: '32'
+            nullable: true
     lifecycleCallbacks: {  }

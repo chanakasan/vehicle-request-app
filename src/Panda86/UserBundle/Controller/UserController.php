@@ -51,7 +51,7 @@ class UserController extends Controller
         $user->setLastName("Perera");
         $user->setUsername("panda86");
         $user->setPassword("pass123");
-        $user->setSalt("ubuntu");
+        //$user->setSalt("ubuntu");
         $user->setEmail("");
         $user->setIsAdmin(true);
         $user->setIsManager(false);

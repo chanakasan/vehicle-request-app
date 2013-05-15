@@ -2,63 +2,44 @@
 
 namespace Panda86\UserBundle\Entity;
 
+use FOS\UserBundle\Entity\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * User
  */
-class User
+class User extends BaseUser
 {
     /**
      * @var integer
      */
-    private $id;
+    protected  $id;
 
     /**
      * @var string
      */
-    private $first_name;
+    protected $first_name;
 
     /**
      * @var string
      */
-    private $last_name;
-
-    /**
-     * @var string
-     */
-    private $username;
-
-    /**
-     * @var string
-     */
-    private $password;
-
-    /**
-     * @var string
-     */
-    private $salt;
+    protected $last_name;
 
     /**
      * @var boolean
      */
-    private $is_admin;
+    protected $is_admin;
 
     /**
      * @var boolean
      */
-    private $is_manager;
-
-    /**
-     * @var string
-     */
-    private $email;
+    protected $is_manager;
 
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -81,7 +62,7 @@ class User
     /**
      * Get first_name
      *
-     * @return string 
+     * @return string
      */
     public function getFirstName()
     {
@@ -104,80 +85,11 @@ class User
     /**
      * Get last_name
      *
-     * @return string 
+     * @return string
      */
     public function getLastName()
     {
         return $this->last_name;
-    }
-
-    /**
-     * Set username
-     *
-     * @param string $username
-     * @return User
-     */
-    public function setUsername($username)
-    {
-        $this->username = $username;
-
-        return $this;
-    }
-
-    /**
-     * Get username
-     *
-     * @return string 
-     */
-    public function getUsername()
-    {
-        return $this->username;
-    }
-
-    /**
-     * Set password
-     *
-     * @param string $password
-     * @return User
-     */
-    public function setPassword($password)
-    {
-        $this->password = $password;
-
-        return $this;
-    }
-
-    /**
-     * Get password
-     *
-     * @return string 
-     */
-    public function getPassword()
-    {
-        return $this->password;
-    }
-
-    /**
-     * Set salt
-     *
-     * @param string $salt
-     * @return User
-     */
-    public function setSalt($salt)
-    {
-        $this->salt = $salt;
-
-        return $this;
-    }
-
-    /**
-     * Get salt
-     *
-     * @return string 
-     */
-    public function getSalt()
-    {
-        return $this->salt;
     }
 
     /**
@@ -196,7 +108,7 @@ class User
     /**
      * Get is_admin
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsAdmin()
     {
@@ -219,33 +131,12 @@ class User
     /**
      * Get is_manager
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsManager()
     {
         return $this->is_manager;
     }
 
-    /**
-     * Set email
-     *
-     * @param string $email
-     * @return User
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
 
-        return $this;
-    }
-
-    /**
-     * Get email
-     *
-     * @return string 
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
 }
