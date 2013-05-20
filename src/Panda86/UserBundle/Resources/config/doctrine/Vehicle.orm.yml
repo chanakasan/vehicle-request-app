@@ -1,0 +1,27 @@
+Panda86\UserBundle\Entity\Vehicle:
+    type: entity
+    table: hr_vehicle
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        type:
+            type: string
+            length: '16'
+            nullable: false
+        make:
+            type: string
+            length: '64'
+            nullable: false
+        model:
+            type: string
+            length: '64'
+            nullable: false
+        reg_no:
+            type: string
+            length: '128'
+            nullable: false
+    lifecycleCallbacks: {  }

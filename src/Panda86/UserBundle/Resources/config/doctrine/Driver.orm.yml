@@ -1,0 +1,33 @@
+Panda86\UserBundle\Entity\Driver:
+    type: entity
+    table: hr_driver
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        first_name:
+            type: string
+            length: '64'
+            nullable: false
+        last_name:
+            type: string
+            length: '64'
+            nullable: false
+        address:
+            type: string
+            length: '255'
+            nullable: false
+        dob:
+            type: date
+            nullable: false
+        license_date:
+            type: date
+            nullable: false
+        license_ref:
+            type: string
+            length: '64'
+            nullable: false
+    lifecycleCallbacks: {  }

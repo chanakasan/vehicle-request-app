@@ -1,0 +1,43 @@
+Panda86\UserBundle\Entity\Request:
+    type: entity
+    table: emp_request
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        journey_type:
+            type: string
+            length: '64'
+            nullable: false
+        start_time:
+            type: string
+            length: '64'
+            nullable: false
+        start_loc:
+            type: string
+            length: '64'
+            nullable: false
+        pickup_time:
+            type: string
+            length: '64'
+            nullable: false
+        pickup_loc:
+            type: string
+            length: '64'
+            nullable: false
+        vehicle_type:
+            type: string
+            length: '64'
+            nullable: false
+        purpose:
+            type: string
+            length: '64'
+            nullable: false
+        accompaniedBy:
+            type: string
+            length: '128'
+            nullable: false
+    lifecycleCallbacks: {  }
