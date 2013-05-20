@@ -133,4 +133,88 @@ class Vehicle {
         return $this->reg_no;
     }
 
+    /**
+     * @var integer
+     */
+    private $passenger_no;
+
+    /**
+     * @var boolean
+     */
+    private $ac;
+
+    /**
+     * @var string
+     */
+    private $remarks;
+
+
+    /**
+     * Set passenger_no
+     *
+     * @param integer $passengerNo
+     * @return Vehicle
+     */
+    public function setPassengerNo($passengerNo)
+    {
+        $this->passenger_no = $passengerNo;
+
+        return $this;
+    }
+
+    /**
+     * Get passenger_no
+     *
+     * @return integer 
+     */
+    public function getPassengerNo()
+    {
+        return $this->passenger_no;
+    }
+
+    /**
+     * Set ac
+     *
+     * @param boolean $ac
+     * @return Vehicle
+     */
+    public function setAc($ac)
+    {
+        $this->ac = $ac;
+
+        return $this;
+    }
+
+    /**
+     * Get ac
+     *
+     * @return boolean 
+     */
+    public function getAc()
+    {
+        return $this->ac;
+    }
+
+    /**
+     * Set remarks
+     *
+     * @param string $remarks
+     * @return Vehicle
+     */
+    public function setRemarks($remarks)
+    {
+        $this->remarks = $remarks;
+
+        return $this;
+    }
+
+    /**
+     * Get remarks
+     *
+     * @return string 
+     */
+    public function getRemarks()
+    {
+        return $this->remarks;
+    }
 }

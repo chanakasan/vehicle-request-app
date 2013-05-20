@@ -18,10 +18,6 @@ Panda86\UserBundle\Entity\User:
             nullable: true
         is_admin:
             type: boolean
-            length: null
-            nullable: true
         is_manager:
             type: boolean
-            length: null
-            nullable: true
     lifecycleCallbacks: {  }

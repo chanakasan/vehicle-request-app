@@ -11,23 +11,18 @@ Panda86\UserBundle\Entity\Driver:
         first_name:
             type: string
             length: '64'
-            nullable: false
         last_name:
             type: string
             length: '64'
-            nullable: false
         address:
             type: string
             length: '255'
-            nullable: false
         dob:
-            type: date
-            nullable: false
+            type: string
+            length: '8'
         license_date:
-            type: date
-            nullable: false
+            type: string
         license_ref:
             type: string
             length: '64'
-            nullable: false
     lifecycleCallbacks: {  }

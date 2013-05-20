@@ -11,17 +11,21 @@ Panda86\UserBundle\Entity\Vehicle:
         type:
             type: string
             length: '16'
-            nullable: false
         make:
             type: string
             length: '64'
-            nullable: false
         model:
             type: string
             length: '64'
-            nullable: false
         reg_no:
             type: string
             length: '128'
-            nullable: false
+        passenger_no:
+            type: integer
+        ac:
+            type: boolean
+        remarks:
+            type: string
+            length: '255'
+            nullable: true
     lifecycleCallbacks: {  }

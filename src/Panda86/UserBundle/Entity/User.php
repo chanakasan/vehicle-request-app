@@ -35,7 +35,16 @@ class User extends BaseUser
      */
     protected $is_manager;
 
+    /**
+     * constructor
+     */
+    public function __construct()
+    {
+        $this->is_admin = true;
+        $this->is_manager = false;
+        parent::__construct();
 
+    }
     /**
      * Get id
      *
