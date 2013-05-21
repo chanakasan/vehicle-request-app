@@ -1,0 +1,30 @@
+request:
+    pattern:  /
+    defaults: { _controller: "Panda86UserBundle:Request:index" }
+
+request_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "Panda86UserBundle:Request:show" }
+
+request_new:
+    pattern:  /new
+    defaults: { _controller: "Panda86UserBundle:Request:new" }
+
+request_create:
+    pattern:  /create
+    defaults: { _controller: "Panda86UserBundle:Request:create" }
+    requirements: { _method: post }
+
+request_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "Panda86UserBundle:Request:edit" }
+
+request_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "Panda86UserBundle:Request:update" }
+    requirements: { _method: post|put }
+
+request_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "Panda86UserBundle:Request:delete" }
+    requirements: { _method: post|delete }

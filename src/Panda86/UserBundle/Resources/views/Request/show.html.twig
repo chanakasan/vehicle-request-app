@@ -1,0 +1,66 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Request</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Journey_type</th>
+                <td>{{ entity.journeytype }}</td>
+            </tr>
+            <tr>
+                <th>Start_time</th>
+                <td>{{ entity.starttime }}</td>
+            </tr>
+            <tr>
+                <th>Start_loc</th>
+                <td>{{ entity.startloc }}</td>
+            </tr>
+            <tr>
+                <th>Pickup_time</th>
+                <td>{{ entity.pickuptime }}</td>
+            </tr>
+            <tr>
+                <th>Pickup_loc</th>
+                <td>{{ entity.pickuploc }}</td>
+            </tr>
+            <tr>
+                <th>Vehicle_type</th>
+                <td>{{ entity.vehicletype }}</td>
+            </tr>
+            <tr>
+                <th>Purpose</th>
+                <td>{{ entity.purpose }}</td>
+            </tr>
+            <tr>
+                <th>Accompaniedby</th>
+                <td>{{ entity.accompaniedBy }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('request') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('request_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('request_delete', { 'id': entity.id }) }}" method="post">
+            <input type="hidden" name="_method" value="DELETE" />
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>
+{% endblock %}

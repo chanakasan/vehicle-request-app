@@ -49,7 +49,7 @@ class UserController extends Controller
         $user = new User();
         $user->setFirstName("Nimal");
         $user->setLastName("Perera");
-        $user->setUsername("panda86");
+        $user->setUsername("panda");
         $user->setPassword("pass123");
         //$user->setSalt("ubuntu");
         $user->setEmail("");
@@ -59,8 +59,8 @@ class UserController extends Controller
         $em = $this->getDoctrine()->getManager();
         $em->persist($user);
         $em->flush();
-
-        return new Response('Created user id '.$user->getId());
+        $this->get('session')->getFlashBag()->add('notice', 'Created user id '.$user->getId());
+        return $this->redirect($this->generateUrl('user_index'));
     }
 
     public function removeAction($id)

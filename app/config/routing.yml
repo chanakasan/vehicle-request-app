@@ -15,3 +15,11 @@ admin_login:
 panda86_admin:
     resource: "@Panda86UserBundle/Resources/config/routing.yml"
     prefix:   /
+
+panda86_vehicle:
+        resource: "@Panda86UserBundle/Resources/config/routing/vehicle.yml"
+        prefix:   /vehicle
+
+panda86_request:
+        resource: "@Panda86UserBundle/Resources/config/routing/request.yml"
+        prefix:   /request

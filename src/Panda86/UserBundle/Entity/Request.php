@@ -51,6 +51,11 @@ class Request {
     private $accompaniedBy;
 
 
+    public function __construct()
+    {
+        $this->start_loc = 'ICTA';
+    }
+
     /**
      * Get id
      *

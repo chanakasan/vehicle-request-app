@@ -43,6 +43,10 @@ request_new:
     pattern:  /request/new
     defaults: { _controller: Panda86UserBundle:Request:new }
 
+request_submit:
+    pattern:  /request/submit
+    defaults: { _controller: Panda86UserBundle:Request:submit }
+
 request_success:
     pattern:  /request
     defaults: { _controller: Panda86UserBundle:Request:index }
