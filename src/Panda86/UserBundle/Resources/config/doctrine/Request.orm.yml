@@ -16,20 +16,23 @@ Panda86\UserBundle\Entity\Request:
             length: '64'
         start_time:
             type: date
-            length: '64'
-            nullable: false
+            nullable: true
         start_loc:
             type: string
             length: '64'
             nullable: true
         pickup_time:
             type: date
-            length: '64'
             nullable: true
         pickup_loc:
             type: string
             length: '64'
             nullable: true
+        end_time:
+            type: date
+        end_loc:
+            type: string
+            length: '64'
         vehicle_type:
             type: string
             length: '16'

@@ -1,0 +1,7 @@
+Panda86\UserBundle\Entity\Request:
+    properties:
+        accompaniedBy:
+            - NotBlank: ~
+        start_time:
+            - NotBlank: ~
+            - Type: \DateTime

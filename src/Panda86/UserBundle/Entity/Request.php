@@ -13,10 +13,15 @@ class Request {
     /**
      * @var string
      */
-    private $journey_type;
+    private $requestedFor;
 
     /**
      * @var string
+     */
+    private $journey_type;
+
+    /**
+     * @var \DateTime
      */
     private $start_time;
 
@@ -26,7 +31,7 @@ class Request {
     private $start_loc;
 
     /**
-     * @var string
+     * @var \DateTime
      */
     private $pickup_time;
 
@@ -34,6 +39,16 @@ class Request {
      * @var string
      */
     private $pickup_loc;
+
+    /**
+     * @var \DateTime
+     */
+    private $end_time;
+
+    /**
+     * @var string
+     */
+    private $end_loc;
 
     /**
      * @var string
@@ -51,11 +66,6 @@ class Request {
     private $accompaniedBy;
 
 
-    public function __construct()
-    {
-        $this->start_loc = 'ICTA';
-    }
-
     /**
      * Get id
      *
@@ -67,6 +77,29 @@ class Request {
     }
 
     /**
+     * Set requestedFor
+     *
+     * @param string $requestedFor
+     * @return Request
+     */
+    public function setRequestedFor($requestedFor)
+    {
+        $this->requestedFor = $requestedFor;
+
+        return $this;
+    }
+
+    /**
+     * Get requestedFor
+     *
+     * @return string 
+     */
+    public function getRequestedFor()
+    {
+        return $this->requestedFor;
+    }
+
+    /**
      * Set journey_type
      *
      * @param string $journeyType
@@ -75,7 +108,7 @@ class Request {
     public function setJourneyType($journeyType)
     {
         $this->journey_type = $journeyType;
-    
+
         return $this;
     }
 
@@ -92,20 +125,20 @@ class Request {
     /**
      * Set start_time
      *
-     * @param string $startTime
+     * @param \DateTime $startTime
      * @return Request
      */
     public function setStartTime($startTime)
     {
         $this->start_time = $startTime;
-    
+
         return $this;
     }
 
     /**
      * Get start_time
      *
-     * @return string 
+     * @return \DateTime 
      */
     public function getStartTime()
     {
@@ -121,7 +154,7 @@ class Request {
     public function setStartLoc($startLoc)
     {
         $this->start_loc = $startLoc;
-    
+
         return $this;
     }
 
@@ -138,20 +171,20 @@ class Request {
     /**
      * Set pickup_time
      *
-     * @param string $pickupTime
+     * @param \DateTime $pickupTime
      * @return Request
      */
     public function setPickupTime($pickupTime)
     {
         $this->pickup_time = $pickupTime;
-    
+
         return $this;
     }
 
     /**
      * Get pickup_time
      *
-     * @return string 
+     * @return \DateTime 
      */
     public function getPickupTime()
     {
@@ -167,7 +200,7 @@ class Request {
     public function setPickupLoc($pickupLoc)
     {
         $this->pickup_loc = $pickupLoc;
-    
+
         return $this;
     }
 
@@ -182,6 +215,52 @@ class Request {
     }
 
     /**
+     * Set end_time
+     *
+     * @param \DateTime $endTime
+     * @return Request
+     */
+    public function setEndTime($endTime)
+    {
+        $this->end_time = $endTime;
+
+        return $this;
+    }
+
+    /**
+     * Get end_time
+     *
+     * @return \DateTime 
+     */
+    public function getEndTime()
+    {
+        return $this->end_time;
+    }
+
+    /**
+     * Set end_loc
+     *
+     * @param string $endLoc
+     * @return Request
+     */
+    public function setEndLoc($endLoc)
+    {
+        $this->end_loc = $endLoc;
+
+        return $this;
+    }
+
+    /**
+     * Get end_loc
+     *
+     * @return string 
+     */
+    public function getEndLoc()
+    {
+        return $this->end_loc;
+    }
+
+    /**
      * Set vehicle_type
      *
      * @param string $vehicleType
@@ -190,7 +269,7 @@ class Request {
     public function setVehicleType($vehicleType)
     {
         $this->vehicle_type = $vehicleType;
-    
+
         return $this;
     }
 
@@ -213,7 +292,7 @@ class Request {
     public function setPurpose($purpose)
     {
         $this->purpose = $purpose;
-    
+
         return $this;
     }
 
@@ -236,7 +315,7 @@ class Request {
     public function setAccompaniedBy($accompaniedBy)
     {
         $this->accompaniedBy = $accompaniedBy;
-    
+
         return $this;
     }
 

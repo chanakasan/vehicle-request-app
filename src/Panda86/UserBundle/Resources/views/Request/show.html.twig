@@ -1,4 +1,4 @@
-{% extends '::base.html.twig' %}
+{% extends '::employee.html.twig' %}
 
 {% block body -%}
     <h1>Request</h1>
@@ -15,7 +15,7 @@
             </tr>
             <tr>
                 <th>Start_time</th>
-                <td>{{ entity.starttime }}</td>
+                <td>{{ entity.starttime|date("m/d/Y") }}</td>
             </tr>
             <tr>
                 <th>Start_loc</th>
@@ -23,7 +23,7 @@
             </tr>
             <tr>
                 <th>Pickup_time</th>
-                <td>{{ entity.pickuptime }}</td>
+                <td>{{ entity.pickuptime|date("m/d/Y") }}</td>
             </tr>
             <tr>
                 <th>Pickup_loc</th>

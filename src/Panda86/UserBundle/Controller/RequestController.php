@@ -44,6 +44,9 @@ class RequestController extends Controller
 
             return $this->redirect($this->generateUrl('request_show', array('id' => $entity->getId())));
         }
+        else{
+
+        }
 
         return $this->render('Panda86UserBundle:Request:new.html.twig', array(
             'entity' => $entity,
@@ -178,7 +181,6 @@ class RequestController extends Controller
     {
         return $this->createFormBuilder(array('id' => $id))
             ->add('id', 'hidden')
-            ->getForm()
-        ;
+            ->getForm();
     }
 }

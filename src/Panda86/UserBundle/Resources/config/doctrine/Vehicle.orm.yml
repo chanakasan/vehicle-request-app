@@ -24,6 +24,7 @@ Panda86\UserBundle\Entity\Vehicle:
             type: integer
         ac:
             type: boolean
+            nullable: true
         remarks:
             type: string
             length: '255'
