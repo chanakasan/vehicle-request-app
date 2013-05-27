@@ -2,6 +2,13 @@ parameters:
 #    panda86_admin.example.class: Panda86\AdminBundle\Example
 
 services:
-#    panda86_admin.example:
-#        class: %panda86_admin.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    form.type.datePicker:
+        class: Panda86\UserBundle\Form\Type\DatePickerType
+        tags:
+            - { name: form.type, alias: datePicker }
+
+    form.type.dateTimePicker:
+        class: Panda86\UserBundle\Form\Type\DateTimePickerType
+        tags:
+            - { name: form.type, alias: dateTimePicker }
+

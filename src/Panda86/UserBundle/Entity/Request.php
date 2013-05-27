@@ -5,6 +5,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 class Request {
 
+    
     /**
      * @var integer
      */
@@ -23,6 +24,11 @@ class Request {
     /**
      * @var \DateTime
      */
+    private $start_date;
+
+    /**
+     * @var \DateTime
+     */
     private $start_time;
 
     /**
@@ -33,12 +39,22 @@ class Request {
     /**
      * @var \DateTime
      */
+    private $pickup_date;
+
+    /**
+     * @var \DateTime
+     */
     private $pickup_time;
 
     /**
      * @var string
      */
     private $pickup_loc;
+
+    /**
+     * @var \DateTime
+     */
+    private $end_date;
 
     /**
      * @var \DateTime
@@ -65,6 +81,18 @@ class Request {
      */
     private $accompaniedBy;
 
+    /**
+     * @var \DateTime
+     */
+    private $created_at;
+
+    /**
+     * constructor
+     */
+    public function __construct()
+    {
+        $this->created_at = new \DateTime('now');
+    }
 
     /**
      * Get id
@@ -123,6 +151,29 @@ class Request {
     }
 
     /**
+     * Set start_date
+     *
+     * @param \DateTime $startDate
+     * @return Request
+     */
+    public function setStartDate($startDate)
+    {
+        $this->start_date = $startDate;
+
+        return $this;
+    }
+
+    /**
+     * Get start_date
+     *
+     * @return \DateTime 
+     */
+    public function getStartDate()
+    {
+        return $this->start_date;
+    }
+
+    /**
      * Set start_time
      *
      * @param \DateTime $startTime
@@ -169,6 +220,29 @@ class Request {
     }
 
     /**
+     * Set pickup_date
+     *
+     * @param \DateTime $pickupDate
+     * @return Request
+     */
+    public function setPickupDate($pickupDate)
+    {
+        $this->pickup_date = $pickupDate;
+
+        return $this;
+    }
+
+    /**
+     * Get pickup_date
+     *
+     * @return \DateTime 
+     */
+    public function getPickupDate()
+    {
+        return $this->pickup_date;
+    }
+
+    /**
      * Set pickup_time
      *
      * @param \DateTime $pickupTime
@@ -212,6 +286,29 @@ class Request {
     public function getPickupLoc()
     {
         return $this->pickup_loc;
+    }
+
+    /**
+     * Set end_date
+     *
+     * @param \DateTime $endDate
+     * @return Request
+     */
+    public function setEndDate($endDate)
+    {
+        $this->end_date = $endDate;
+
+        return $this;
+    }
+
+    /**
+     * Get end_date
+     *
+     * @return \DateTime 
+     */
+    public function getEndDate()
+    {
+        return $this->end_date;
     }
 
     /**
@@ -327,5 +424,28 @@ class Request {
     public function getAccompaniedBy()
     {
         return $this->accompaniedBy;
+    }
+
+    /**
+     * Set created_at
+     *
+     * @param \DateTime $createdAt
+     * @return Request
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->created_at = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get created_at
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedAt()
+    {
+        return $this->created_at;
     }
 }

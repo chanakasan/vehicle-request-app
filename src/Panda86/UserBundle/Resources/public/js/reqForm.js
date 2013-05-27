@@ -1,4 +1,8 @@
 $(document).ready(function(){
+    $( "#panda86_userbundle_requesttype_start_date_datepicker" ).datepicker();
+    $( "#panda86_userbundle_requesttype_pickup_date_datepicker" ).datepicker();
+    $( "#panda86_userbundle_requesttype_end_date_datepicker" ).datepicker();
+
     function toggle_journey(value)
     {
         if (value == 'single')
@@ -14,7 +18,7 @@ $(document).ready(function(){
     }
 
     var start_value = $("#panda86_userbundle_requesttype_journey_type").val();
-        toggle_journey(start_value);
+    toggle_journey(start_value);
 
     // when user change the journey type
     $("#panda86_userbundle_requesttype_journey_type").change(function(){
@@ -23,4 +27,3 @@ $(document).ready(function(){
     });
 
 });
-

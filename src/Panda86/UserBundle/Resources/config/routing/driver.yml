@@ -1,0 +1,10 @@
+driver:
+    pattern:  /
+    defaults: { _controller: "Panda86UserBundle:Driver:index" }
+
+driver_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "Panda86UserBundle:Driver:show" }
+
+
+

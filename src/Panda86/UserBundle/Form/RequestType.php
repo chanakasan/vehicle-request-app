@@ -11,48 +11,31 @@ class RequestType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('requestedFor', null, array(
-                'label' => 'Requested For: '
-            ))
+            ->add('requestedFor')
             ->add('journey_type', 'choice', array(
-            'label' => 'Journey Type: ',
             'choices'   => array(
                 'single' => 'Single',
                 'return' => 'Return',
                 ),
             'required'  => true,
             ))
-            ->add('start_time','date', array(
-                'label' => 'Start Date/Time: '
-            ))
-            ->add('start_loc', null, array(
-                'label' => 'Start Location: '
-            ))
-            ->add('pickup_time','date', array(
-                'label' => 'Pickup Date/Time: '
-            ))
-            ->add('pickup_loc', null, array(
-                'label' => 'Pickup Location: '
-            ))
-            ->add('end_time','date', array(
-                'label' => 'End Time: '
-            ))
-            ->add('end_loc', null, array(
-                'label' => 'End Location: '
-            ))
+            ->add('start_date','datePicker')
+            ->add('start_time','dateTimePicker')
+            ->add('start_loc')
+            ->add('pickup_date','datePicker')
+            ->add('pickup_time','dateTimePicker')
+            ->add('pickup_loc')
+            ->add('end_date','datePicker')
+            ->add('end_time','dateTimePicker')
+            ->add('end_loc')
             ->add('vehicle_type', 'choice', array(
-             'label' => 'Vehicle Type: ',
              'choices' => array(
                  'car' => 'Car',
                  'van' => 'Van',
                  'jeep' => 'Jeep',)
             ))
-            ->add('purpose', null, array(
-                'label' => 'Journey Purpose: '
-            ))
-            ->add('accompaniedBy', null, array(
-                'label' => 'Accompanied Officers: '
-            ))
+            ->add('purpose')
+            ->add('accompaniedBy')
         ;
     }
 

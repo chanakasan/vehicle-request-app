@@ -1,0 +1,46 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Driver</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>First_name</th>
+                <td>{{ entity.firstname }}</td>
+            </tr>
+            <tr>
+                <th>Last_name</th>
+                <td>{{ entity.lastname }}</td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td>{{ entity.address }}</td>
+            </tr>
+            <tr>
+                <th>Dob</th>
+                <td>{{ entity.dob }}</td>
+            </tr>
+            <tr>
+                <th>License_date</th>
+                <td>{{ entity.licensedate }}</td>
+            </tr>
+            <tr>
+                <th>License_ref</th>
+                <td>{{ entity.licenseref }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('driver') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

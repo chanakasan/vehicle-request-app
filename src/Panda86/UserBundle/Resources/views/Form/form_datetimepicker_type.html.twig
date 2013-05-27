@@ -1,0 +1,9 @@
+{% block dateTimePicker_widget %}
+    {% set attr = attr|merge({'class': (attr.class|default('') ~ ' panda86DateTimePicker')|trim}) %}
+    <div {{ block('widget_container_attributes') }}>
+        {{ form_errors(form.date) }}
+        {{ form_errors(form.time) }}
+        {{ form_widget(form.date, {'id' : id ~ '_date'}) }}
+        {{ form_widget(form.time, {'id' : id ~ '_time'}) }}
+    </div>
+{% endblock %}

@@ -23,3 +23,7 @@ panda86_vehicle:
 panda86_request:
         resource: "@Panda86UserBundle/Resources/config/routing/request.yml"
         prefix:   /request
+
+Panda86UserBundle_driver:
+        resource: "@Panda86UserBundle/Resources/config/routing/driver.yml"
+        prefix:   /driver
