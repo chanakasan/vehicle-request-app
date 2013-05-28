@@ -4,8 +4,10 @@ namespace Panda86\UserBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
 use Panda86\UserBundle\Entity\Request as EmpRequest;
 use Panda86\UserBundle\Form\RequestType;
+
 /**
  * Request controller.
  *
@@ -34,6 +36,7 @@ class RequestController extends Controller
     public function createAction(Request $request)
     {
         $entity  = new EmpRequest();
+
         $form = $this->createForm(new RequestType(), $entity);
         $form->bind($request);
 
@@ -42,10 +45,7 @@ class RequestController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('request_show', array('id' => $entity->getId())));
-        }
-        else{
-
+            return $this->redirect($this->generateUrl('request_finish', array('id' => $entity->getId())));
         }
 
         return $this->render('Panda86UserBundle:Request:new.html.twig', array(
@@ -88,6 +88,11 @@ class RequestController extends Controller
         return $this->render('Panda86UserBundle:Request:show.html.twig', array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),        ));
+    }
+
+    public function finishAction()
+    {
+        return $this->render('Panda86UserBundle:Request:finish.html.twig');
     }
 
     /**
@@ -181,6 +186,7 @@ class RequestController extends Controller
     {
         return $this->createFormBuilder(array('id' => $id))
             ->add('id', 'hidden')
-            ->getForm();
+            ->getForm()
+        ;
     }
 }

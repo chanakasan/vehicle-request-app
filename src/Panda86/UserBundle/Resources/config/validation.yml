@@ -1,7 +1,14 @@
 Panda86\UserBundle\Entity\Request:
     properties:
-        accompaniedBy:
+        requested_for:
+            - NotBlank: ~
+        end_loc:
+            - NotBlank: ~
+        purpose:
             - NotBlank: ~
         start_time:
-            - NotBlank: ~
+            - Type: \DateTime
+        pickup_time:
+            - Type: \DateTime
+        end_time:
             - Type: \DateTime

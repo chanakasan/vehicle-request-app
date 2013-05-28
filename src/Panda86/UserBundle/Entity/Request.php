@@ -5,7 +5,6 @@ use Doctrine\ORM\Mapping as ORM;
 
 class Request {
 
-    
     /**
      * @var integer
      */
@@ -14,17 +13,12 @@ class Request {
     /**
      * @var string
      */
-    private $requestedFor;
+    private $requested_for;
 
     /**
      * @var string
      */
     private $journey_type;
-
-    /**
-     * @var \DateTime
-     */
-    private $start_date;
 
     /**
      * @var \DateTime
@@ -39,22 +33,12 @@ class Request {
     /**
      * @var \DateTime
      */
-    private $pickup_date;
-
-    /**
-     * @var \DateTime
-     */
     private $pickup_time;
 
     /**
      * @var string
      */
     private $pickup_loc;
-
-    /**
-     * @var \DateTime
-     */
-    private $end_date;
 
     /**
      * @var \DateTime
@@ -79,7 +63,7 @@ class Request {
     /**
      * @var string
      */
-    private $accompaniedBy;
+    private $accompanied_by;
 
     /**
      * @var \DateTime
@@ -87,11 +71,40 @@ class Request {
     private $created_at;
 
     /**
-     * constructor
+     * Constructor
      */
-    public function __construct()
+    public function __construct(array $options = null)
     {
+        $this->start_loc = 'ICTA';
+        $this->start_time = new \DateTime('now');
+        $this->pickup_time = new \DateTime('now');
+        $this->end_time = new \DateTime('now');
         $this->created_at = new \DateTime('now');
+
+        if(is_array($options)) {
+            $this->setOptions($options);
+        }
+
+    }
+
+    /**
+     * Set constructor options dynamically
+     *
+     * @param array $options
+     * @return $this
+     */
+    public function setOptions(array $options)
+    {
+        $class_attr = get_object_vars($this);
+        foreach($options as $key => $val)
+        {
+            $attr = $key;
+            if(array_key_exists($attr, $class_attr))
+            {
+                $this->$attr = $val;
+            }
+        }
+        return $this;
     }
 
     /**
@@ -112,7 +125,7 @@ class Request {
      */
     public function setRequestedFor($requestedFor)
     {
-        $this->requestedFor = $requestedFor;
+        $this->requested_for = $requestedFor;
 
         return $this;
     }
@@ -124,7 +137,7 @@ class Request {
      */
     public function getRequestedFor()
     {
-        return $this->requestedFor;
+        return $this->requested_for;
     }
 
     /**
@@ -148,29 +161,6 @@ class Request {
     public function getJourneyType()
     {
         return $this->journey_type;
-    }
-
-    /**
-     * Set start_date
-     *
-     * @param \DateTime $startDate
-     * @return Request
-     */
-    public function setStartDate($startDate)
-    {
-        $this->start_date = $startDate;
-
-        return $this;
-    }
-
-    /**
-     * Get start_date
-     *
-     * @return \DateTime 
-     */
-    public function getStartDate()
-    {
-        return $this->start_date;
     }
 
     /**
@@ -220,29 +210,6 @@ class Request {
     }
 
     /**
-     * Set pickup_date
-     *
-     * @param \DateTime $pickupDate
-     * @return Request
-     */
-    public function setPickupDate($pickupDate)
-    {
-        $this->pickup_date = $pickupDate;
-
-        return $this;
-    }
-
-    /**
-     * Get pickup_date
-     *
-     * @return \DateTime 
-     */
-    public function getPickupDate()
-    {
-        return $this->pickup_date;
-    }
-
-    /**
      * Set pickup_time
      *
      * @param \DateTime $pickupTime
@@ -286,29 +253,6 @@ class Request {
     public function getPickupLoc()
     {
         return $this->pickup_loc;
-    }
-
-    /**
-     * Set end_date
-     *
-     * @param \DateTime $endDate
-     * @return Request
-     */
-    public function setEndDate($endDate)
-    {
-        $this->end_date = $endDate;
-
-        return $this;
-    }
-
-    /**
-     * Get end_date
-     *
-     * @return \DateTime 
-     */
-    public function getEndDate()
-    {
-        return $this->end_date;
     }
 
     /**
@@ -411,7 +355,7 @@ class Request {
      */
     public function setAccompaniedBy($accompaniedBy)
     {
-        $this->accompaniedBy = $accompaniedBy;
+        $this->accompanied_by = $accompaniedBy;
 
         return $this;
     }
@@ -419,11 +363,11 @@ class Request {
     /**
      * Get accompaniedBy
      *
-     * @return string 
+     * @return string
      */
     public function getAccompaniedBy()
     {
-        return $this->accompaniedBy;
+        return $this->accompanied_by;
     }
 
     /**

@@ -1,0 +1,70 @@
+{% extends '::employee.html.twig' %}
+{% block title %}New request for vehicle - {{ parent() }}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="/public/css/smoothness/jquery-ui-1.10.3.custom.min.css">
+{% endblock %}
+{% block body -%}
+    <h2>Request for a vehicle</h2>
+    <br/>
+
+    {% form_theme form 'Panda86UserBundle:Form:form_datepicker_type.html.twig' %}
+    <form action="{{ path('request_create') }}" method="post" {{ form_enctype(form) }}>
+    <!-- form validation -->
+        <div id="errors">
+            {{ form_errors(form) }}
+        </div>
+        <div id="csrf-token">
+            {{ form_widget(form._token) }}
+        </div>
+    <!-- form fields -->
+        <div id='requestedFor'>
+            {{ form_row(form.requestedFor) }}
+        </div>
+        <div id='journey_type'>
+            {{ form_row(form.journey_type) }}
+        </div>
+        <div id="journey_start">
+            <div id='single_journey'>
+                {{ form_row(form.start_date) }}
+                {{ form_row(form.start_time) }}
+                {{ form_row(form.start_loc) }}
+            </div>
+            <div id='return_journey'>
+                {{ form_row(form.pickup_date) }}
+                {{ form_row(form.pickup_time) }}
+                {{ form_row(form.pickup_loc) }}
+            </div>
+        </div>
+        <div id='journey_end'>
+            {{ form_row(form.end_date) }}
+            {{ form_row(form.end_time) }}
+            {{ form_row(form.end_loc) }}
+        </div>
+        <div id='vehicle_type'>
+            {{ form_row(form.vehicle_type) }}
+        </div>
+        <div id='purpose'>
+            {{ form_row(form.purpose) }}
+        </div>
+        <div id='accompaniedBy'>
+            {{ form_row(form.accompaniedBy) }}
+        </div>
+
+        <div id="btn_submit">
+            <button type="submit" formnovalidate>Send Request</button>
+        </div>
+    </form> <!--/form-->
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('request') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+    {% javascripts '@Panda86UserBundle/Resources/public/js/*' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}

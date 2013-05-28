@@ -1,4 +1,4 @@
-{% extends '::employee.html.twig' %}
+{% extends '::admin.html.twig' %}
 
 {% block body -%}
     <h1>Request</h1>
@@ -10,12 +10,16 @@
                 <td>{{ entity.id }}</td>
             </tr>
             <tr>
+                <th>Requestedfor</th>
+                <td>{{ entity.requestedFor }}</td>
+            </tr>
+            <tr>
                 <th>Journey_type</th>
                 <td>{{ entity.journeytype }}</td>
             </tr>
             <tr>
                 <th>Start_time</th>
-                <td>{{ entity.startdate|date("m/d/Y") }}</td>
+                <td>{{ entity.starttime|date('Y-m-d H:i:s') }}</td>
             </tr>
             <tr>
                 <th>Start_loc</th>
@@ -23,11 +27,19 @@
             </tr>
             <tr>
                 <th>Pickup_time</th>
-                <td>{{ entity.pickuptime|date("m/d/Y") }}</td>
+                <td>{{ entity.pickuptime|date('Y-m-d H:i:s') }}</td>
             </tr>
             <tr>
                 <th>Pickup_loc</th>
                 <td>{{ entity.pickuploc }}</td>
+            </tr>
+            <tr>
+                <th>End_time</th>
+                <td>{{ entity.endtime|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>End_loc</th>
+                <td>{{ entity.endloc }}</td>
             </tr>
             <tr>
                 <th>Vehicle_type</th>
@@ -40,6 +52,10 @@
             <tr>
                 <th>Accompaniedby</th>
                 <td>{{ entity.accompaniedBy }}</td>
+            </tr>
+            <tr>
+                <th>Created_at</th>
+                <td>{{ entity.createdat|date('Y-m-d H:i:s') }}</td>
             </tr>
         </tbody>
     </table>

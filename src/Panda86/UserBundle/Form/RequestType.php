@@ -11,7 +11,7 @@ class RequestType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('requestedFor')
+            ->add('requested_for')
             ->add('journey_type', 'choice', array(
             'choices'   => array(
                 'single' => 'Single',
@@ -19,13 +19,10 @@ class RequestType extends AbstractType
                 ),
             'required'  => true,
             ))
-            ->add('start_date','datePicker')
             ->add('start_time','dateTimePicker')
             ->add('start_loc')
-            ->add('pickup_date','datePicker')
             ->add('pickup_time','dateTimePicker')
             ->add('pickup_loc')
-            ->add('end_date','datePicker')
             ->add('end_time','dateTimePicker')
             ->add('end_loc')
             ->add('vehicle_type', 'choice', array(
@@ -35,7 +32,7 @@ class RequestType extends AbstractType
                  'jeep' => 'Jeep',)
             ))
             ->add('purpose')
-            ->add('accompaniedBy')
+            ->add('accompanied_by')
         ;
     }
 
@@ -48,6 +45,6 @@ class RequestType extends AbstractType
 
     public function getName()
     {
-        return 'panda86_userbundle_requesttype';
+        return 'requesttype';
     }
 }

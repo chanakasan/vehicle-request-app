@@ -8,35 +8,28 @@ Panda86\UserBundle\Entity\Request:
             generator:
                 strategy: AUTO
     fields:
-        requestedFor:
+        requested_for:
             type: string
             length: '64'
         journey_type:
             type: string
             length: '64'
-        start_date:
-            type: date
-            nullable: true
         start_time:
-            type: date
+            type: datetime
             nullable: true
         start_loc:
             type: string
             length: '64'
             nullable: true
-        pickup_date:
-            type: date
         pickup_time:
-            type: date
+            type: datetime
             nullable: true
         pickup_loc:
             type: string
             length: '64'
             nullable: true
-        end_date:
-            type: date
         end_time:
-            type: date
+            type: datetime
         end_loc:
             type: string
             length: '64'
@@ -46,7 +39,7 @@ Panda86\UserBundle\Entity\Request:
         purpose:
             type: string
             length: '64'
-        accompaniedBy:
+        accompanied_by:
             type: string
             length: '128'
             nullable: true

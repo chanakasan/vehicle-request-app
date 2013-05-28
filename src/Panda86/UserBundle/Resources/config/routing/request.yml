@@ -15,6 +15,10 @@ request_create:
     defaults: { _controller: "Panda86UserBundle:Request:create" }
     requirements: { _method: post }
 
+request_finish:
+    pattern:  /finish
+    defaults: { _controller: "Panda86UserBundle:Request:finish" }
+
 request_edit:
     pattern:  /{id}/edit
     defaults: { _controller: "Panda86UserBundle:Request:edit" }
