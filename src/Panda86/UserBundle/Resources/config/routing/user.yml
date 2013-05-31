@@ -1,0 +1,15 @@
+user_index:
+    pattern:  /user
+    defaults: { _controller: Panda86UserBundle:User:index }
+
+user_create:
+    pattern:  /user/create
+    defaults: { _controller: Panda86UserBundle:User:create }
+
+user_profile:
+    pattern:  /user/{id}/profile
+    defaults: { _controller: Panda86UserBundle:User:show }
+
+user_remove:
+    pattern:  /user/{id}/remove
+    defaults: { _controller: Panda86UserBundle:User:remove }

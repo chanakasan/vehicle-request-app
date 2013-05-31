@@ -22,18 +22,3 @@ admin_home:
     pattern:  /admin
     defaults: { _controller: Panda86UserBundle:Default:index }
 
-user_index:
-    pattern:  /admin/user
-    defaults: { _controller: Panda86UserBundle:User:index }
-
-user_create:
-    pattern:  /admin/user/create
-    defaults: { _controller: Panda86UserBundle:User:create }
-
-user_profile:
-    pattern:  /admin/user/{id}/profile
-    defaults: { _controller: Panda86UserBundle:User:show }
-
-user_remove:
-    pattern:  /admin/user/{id}/remove
-    defaults: { _controller: Panda86UserBundle:User:remove }

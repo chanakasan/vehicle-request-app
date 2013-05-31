@@ -45,6 +45,16 @@ class User extends BaseUser
         parent::__construct();
 
     }
+
+    /**
+     * Convert object to array
+     * @return array
+     */
+    public function toArray()
+    {
+        return get_object_vars($this);
+    }
+
     /**
      * Get id
      *
