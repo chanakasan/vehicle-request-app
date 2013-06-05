@@ -1,15 +1,19 @@
 user_index:
-    pattern:  /user
+    pattern:  /users
     defaults: { _controller: Panda86UserBundle:User:index }
+    requirements: { _method: get }
 
 user_create:
-    pattern:  /user/create
+    pattern:  /users/{json_params}
     defaults: { _controller: Panda86UserBundle:User:create }
+    requirements: { _method: get|post|put }
 
 user_profile:
-    pattern:  /user/{id}/profile
+    pattern:  /users/{id}
     defaults: { _controller: Panda86UserBundle:User:show }
+    requirements: { _method: get }
 
 user_remove:
-    pattern:  /user/{id}/remove
+    pattern:  /users/{id}
     defaults: { _controller: Panda86UserBundle:User:remove }
+    requirements: { _method: post|delete }

@@ -50,7 +50,7 @@ class UserController extends Controller
         return new Response(json_encode($user));
     }
 
-    public function createAction()
+    public function createAction($json_params)
     {
         $em = $this->getDoctrine()->getManager();
         for($i=0; $i < 10; $i++)
@@ -82,11 +82,12 @@ class UserController extends Controller
                 'No user id found '.$id
             );
         }
-
         $em = $this->getDoctrine()->getManager();
         $em->remove($user);
         $em->flush();
 
         return $this->redirect($this->generateUrl('user_index'));
     }
+
+
 }
