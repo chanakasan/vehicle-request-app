@@ -14,7 +14,7 @@ class UserController extends Controller
             ->getRepository('Panda86UserBundle:User');
 
         $query = $repository->createQueryBuilder('u')
-            ->select('u.id, u.username')
+            ->select('u.id, u.username, u.first_name, u.last_name, u.email')
             ->orderBy('u.username', 'ASC')
             ->getQuery();
 
@@ -33,7 +33,7 @@ class UserController extends Controller
             ->getRepository('Panda86UserBundle:User');
 
         $query = $repository->createQueryBuilder('u')
-            ->select('u.id, u.username')
+            ->select('u.id, u.username, u.first_name, u.last_name, u.email')
             ->where('u.id = :id')
             ->setParameter('id', $id)
             ->orderBy('u.username', 'ASC')

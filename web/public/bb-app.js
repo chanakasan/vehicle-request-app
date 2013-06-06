@@ -1,4 +1,3 @@
-
 var TodoItem = Backbone.Model.extend({});
 
 //var TodoItem = Backbone.Model.extend({urlRoot: '/users'});
@@ -9,7 +8,7 @@ var todoItem = new TodoItem(
 
 todoItem.set({status: 'complete'});
 
-todoItem.url = '/users';
+todoItem.url = '/app_dev.php/users';
 todoItem.fetch();
 
 var TodoView = Backbone.View.extend({
@@ -23,5 +22,3 @@ var todoView = new TodoView({ model: todoItem });
 todoView.render();
 
 console.log(todoView.el);
-
-

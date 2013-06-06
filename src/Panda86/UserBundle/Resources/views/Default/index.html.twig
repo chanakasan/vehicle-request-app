@@ -1,6 +1,23 @@
- {% extends '::admin-user.html.twig' %}
+ {% extends '::admin-app.html.twig' %}
 
- {% block body %}
-    Welcome! This is Admin Home page.
+ {% block body -%}
+     {#{% if error %}#}
+         {#<div>{{ error|trans({}, 'FOSUserBundle') }}</div>#}
+     {#{% endif %}#}
+
+     <div>
+         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+             {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+             <a href="{{ path('fos_user_security_logout') }}">
+                 {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+             </a>
+         {% endif %}
+     </div>
+
+     {% for key, message in app.session.FlashBag() %}
+         <div class="{{ key }}">
+             {{ message|trans({}, 'FOSUserBundle') }}
+         </div>
+     {% endfor %}
  {% endblock %}
 
