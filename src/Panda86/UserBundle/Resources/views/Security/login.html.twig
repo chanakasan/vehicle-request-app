@@ -5,15 +5,14 @@
         <div>{{ error|trans({}, 'FOSUserBundle') }}</div>
     {% endif %}
     <form class="form-signin" action="{{ path("fos_user_security_check") }}" method="post" >
+
         <h3 class="form-signin-heading">Please log in</h3>
+
         <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 
-        <div>
-            <input class="input-block-level" placeholder="Username" type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
-        </div>
-        <div>
-            <input class="input-block-level" placeholder="Password" type="password" id="password" name="_password" required="required" />
-        </div>
+        <input class="input-block-level" placeholder="Username" type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+
+        <input class="input-block-level" placeholder="Password" type="password" id="password" name="_password" required="required" />
 
         <div>
             <input type="checkbox" id="remember_me" name="_remember_me" value="on" />

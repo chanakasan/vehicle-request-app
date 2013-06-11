@@ -50,7 +50,7 @@ class UserController extends Controller
         return new Response(json_encode($user));
     }
 
-    public function createAction($json_params)
+    public function createAction()
     {
         $em = $this->getDoctrine()->getManager();
         for($i=0; $i < 10; $i++)
@@ -60,10 +60,9 @@ class UserController extends Controller
             $user->setLastName("Doe0".$i);
             $user->setUsername("panda0".$i);
             $user->setPassword("pass123");
-            //$user->setSalt("ubuntu");
+            $user->setRoles(array('ADMIN_USER'));
             $user->setEmail("john".$i."@gmail.com");
-            $user->setIsAdmin(true);
-            $user->setIsManager(false);
+            $user->setSuperAdmin(true);
             $em->persist($user);
             $em->flush();
         }
@@ -88,6 +87,5 @@ class UserController extends Controller
 
         return $this->redirect($this->generateUrl('user_index'));
     }
-
 
 }

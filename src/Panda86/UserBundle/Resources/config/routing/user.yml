@@ -17,3 +17,7 @@ user_remove:
     pattern:  /users/{id}
     defaults: { _controller: Panda86UserBundle:User:remove }
     requirements: { _method: delete }
+
+user_generate:
+    pattern:  /user/generate
+    defaults: { _controller: Panda86UserBundle:User:create }

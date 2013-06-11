@@ -16,9 +16,30 @@
 </head>
 
 <body>
-
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <div class="nav-collapse collapse">
+                <div class="navbar-text pull-right">
+                    {% block admin_login %}{% endblock %}
+                </div>
+            </div><!--/.nav-collapse -->
+            <a class="brand" href="/admin">Admin Section</a>
+            <ul class="nav">
+                <li><a href="/app_dev.php/request/new">Request</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
 <div class="container">
-    {% block body -%}
+    <!-- if javascript is turned off -->
+    <noscript>
+        <p>Javascript is disabled in your browser.</p>
+        <p>Please, turn on Javascript or use a different browser to use this app.</p>
+        <a href="#">Click here to continue</a>
+    </noscript>
+
+    {% block notice %}{% endblock %}
         <div class="row">
             <div class="header">
                 <div id="filter"><label>Show me:</label></div>
@@ -38,7 +59,6 @@
                 </script>
             </div>
         </div>
-    {% endblock %}
 </div>
 
 <script src="/public/js/jquery-1.9.1.min.js"></script>

@@ -17,7 +17,9 @@ class RequestType extends AbstractType
                 'single' => 'Single',
                 'return' => 'Return',
                 ),
-            'required'  => true,
+             'expanded'  => true,
+             'multiple'  => true,
+             'required'  => true,
             ))
             ->add('start_time','dateTimePicker')
             ->add('start_loc')
@@ -29,7 +31,9 @@ class RequestType extends AbstractType
              'choices' => array(
                  'car' => 'Car',
                  'van' => 'Van',
-                 'jeep' => 'Jeep',)
+                 'jeep' => 'Jeep',
+             ),
+             'expanded'  => true,
             ))
             ->add('purpose')
             ->add('accompanied_by')

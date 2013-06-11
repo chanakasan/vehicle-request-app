@@ -1,23 +1,23 @@
  {% extends '::admin-app.html.twig' %}
 
- {% block body -%}
-     {#{% if error %}#}
-         {#<div>{{ error|trans({}, 'FOSUserBundle') }}</div>#}
-     {#{% endif %}#}
-
-     <div>
+ {% block admin_login %}
          {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
              {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
-             <a href="{{ path('fos_user_security_logout') }}">
+             <a id="logout" class="navbar-text" href="{{ path('fos_user_security_logout') }}">
                  {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
              </a>
+         {% else %}
+             <a class="navbar-text" id="login" href="{{ path('fos_user_security_login') }}">
+                 {{ 'layout.login'|trans({}, 'FOSUserBundle') }}
+             </a>
          {% endif %}
-     </div>
+ {% endblock %}
 
+ {% block notice %}
      {% for key, message in app.session.FlashBag() %}
-         <div class="{{ key }}">
+         <p class="{{ key }}">
              {{ message|trans({}, 'FOSUserBundle') }}
-         </div>
+         </p>
      {% endfor %}
  {% endblock %}
 

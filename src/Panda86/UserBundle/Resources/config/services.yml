@@ -1,5 +1,7 @@
 parameters:
 #    panda86_admin.example.class: Panda86\AdminBundle\Example
+        panda86_user.service.login_success_handler.class: Panda86\UserBundle\Service\LoginSuccessHandler
+        panda86_user.service.logout_success_handler.class: Panda86\UserBundle\Service\LogoutSuccessHandler
 
 services:
     form.type.datePicker:
@@ -12,3 +14,14 @@ services:
         tags:
             - { name: form.type, alias: dateTimePicker }
 
+    panda86_user.service.login_success_handler:
+        class: %panda86_user.service.login_success_handler.class%
+        arguments:  [@service_container, @router, @security.context]
+        tags:
+            - { name: 'monolog.logger', channel: 'security' }
+
+#    panda86_user.service.logout_success_handler:
+#        class: %panda86_user.service.logout_success_handler.class%
+#        arguments:  [@service_container, @router]
+#        tags:
+#            - { name: 'monolog.logger', channel: 'security' }

@@ -26,24 +26,12 @@ class User extends BaseUser
     protected $last_name;
 
     /**
-     * @var boolean
-     */
-    protected $is_admin;
-
-    /**
-     * @var boolean
-     */
-    protected $is_manager;
-
-    /**
      * constructor
      */
     public function __construct()
     {
-        $this->is_admin = true;
-        $this->is_manager = false;
         parent::__construct();
-
+        $this->salt = base_convert(sha1(uniqid(mt_rand(), true)), 16, 36);
     }
 
     /**
@@ -110,52 +98,5 @@ class User extends BaseUser
     {
         return $this->last_name;
     }
-
-    /**
-     * Set is_admin
-     *
-     * @param boolean $isAdmin
-     * @return User
-     */
-    public function setIsAdmin($isAdmin)
-    {
-        $this->is_admin = $isAdmin;
-
-        return $this;
-    }
-
-    /**
-     * Get is_admin
-     *
-     * @return boolean
-     */
-    public function getIsAdmin()
-    {
-        return $this->is_admin;
-    }
-
-    /**
-     * Set is_manager
-     *
-     * @param boolean $isManager
-     * @return User
-     */
-    public function setIsManager($isManager)
-    {
-        $this->is_manager = $isManager;
-
-        return $this;
-    }
-
-    /**
-     * Get is_manager
-     *
-     * @return boolean
-     */
-    public function getIsManager()
-    {
-        return $this->is_manager;
-    }
-
 
 }

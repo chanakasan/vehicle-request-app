@@ -3,27 +3,42 @@ $(document).ready(function(){
     $( "#requesttype_pickup_time_datepicker" ).datepicker();
     $( "#requesttype_end_time_datepicker" ).datepicker();
 
-    function toggle_journey(value)
+    function toggle_journey(type, is_checked)
     {
-        if (value == 'single')
+        var tag_id = '#'+type+'_journey';
+
+        if (is_checked == true)
         {
-            $('#return_journey').hide();
-            $('#single_journey').show();
+            $(tag_id).show();
         }
-        else if (value == 'return')
-        {
-            $('#single_journey').hide();
-            $('#return_journey').show();
+        else {
+            $(tag_id).hide();
         }
     }
 
-    var start_value = $("#requesttype_journey_type").val();
-    toggle_journey(start_value);
+    $('#requesttype_journey_type_0').trigger("change");
+    $('#requesttype_journey_type_1').trigger("change");
 
-    // when user change the journey type
-    $("#requesttype_journey_type").change(function(){
-            var new_value = $(this).val();
-            toggle_journey(new_value);
+    //toggle single journey checkbox
+    $("#requesttype_journey_type_0").change(function(){
+        var type = $(this).val();
+        var is_checked = $(this).is(':checked');
+        toggle_journey(type, is_checked);
+    });
+
+    $('#requesttype_journey_type_0').mousedown(function() {
+        $(this).trigger("change");
+    });
+
+    //toggle return journey checkbox
+    $("#requesttype_journey_type_1").change(function(){
+        var type = $(this).val();
+        var is_checked = $(this).is(':checked');
+        toggle_journey(type, is_checked);
+    });
+
+    $('#requesttype_journey_type_1').mousedown(function() {
+        $(this).trigger("change");
     });
 
 });
