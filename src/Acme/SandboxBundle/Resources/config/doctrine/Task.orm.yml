@@ -1,0 +1,20 @@
+Acme\SandboxBundle\Entity\Task:
+    type: entity
+    table: sb_task
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        type:
+            type: string
+            length: '64'
+        name:
+            type: string
+            length: '64'
+        desc:
+            type: string
+            length: 128
+    lifecycleCallbacks: {  }
