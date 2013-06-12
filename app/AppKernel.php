@@ -19,11 +19,11 @@ class AppKernel extends Kernel
             new JMS\AopBundle\JMSAopBundle(),
             new JMS\DiExtraBundle\JMSDiExtraBundle($this),
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
-            new Panda86\UserBundle\Panda86UserBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new Panda86\UserBundle\Panda86UserBundle(),
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
-//            new Bc\Bundle\BootstrapBundle\BcBootstrapBundle(),
+            new Acme\SandboxBundle\AcmeSandboxBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -6,9 +6,9 @@ Panda86\UserBundle\Entity\Request:
             - NotBlank: ~
         purpose:
             - NotBlank: ~
-        start_time:
-            - Type: \DateTime
-        pickup_time:
-            - Type: \DateTime
-        end_time:
-            - Type: \DateTime
+#        start_time:
+#            - Type: \DateTime
+#        pickup_time:
+#            - Type: \DateTime
+#        end_time:
+#            - Type: \DateTime

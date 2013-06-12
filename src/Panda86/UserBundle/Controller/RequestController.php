@@ -27,6 +27,7 @@ class RequestController extends Controller
         return $this->render('Panda86UserBundle:Request:index.html.twig', array(
             'entities' => $entities,
         ));
+
     }
 
     /**

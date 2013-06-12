@@ -31,3 +31,8 @@ Panda86UserBundle_driver:
 Panda86UserBundle_user:
         resource: "@Panda86UserBundle/Resources/config/routing/user.yml"
         prefix:   /
+
+# sandbox routes
+AcmeSandboxBundle_sandbox:
+        resource: "@AcmeSandboxBundle/Resources/config/routing/sandbox.yml"
+        prefix:   /

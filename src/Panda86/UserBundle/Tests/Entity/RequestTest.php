@@ -21,7 +21,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase {
         var_dump($request);exit;
     }
 
-    public function testCanSaveRequest()
+    public function testCanGetAllRequests()
     {
         $args = array(
             'requested_for' => 'EMPLOYEE',
