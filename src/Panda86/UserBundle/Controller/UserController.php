@@ -56,10 +56,11 @@ class UserController extends Controller
         for($i=0; $i < 10; $i++)
         {
             $user = new User();
+            $user->setEnabled(true);
             $user->setFirstName("John0".$i);
             $user->setLastName("Doe0".$i);
             $user->setUsername("panda0".$i);
-            $user->setPassword("pass123");
+            $user->setPlainPassword("pass123");
             $user->setRoles(array('ADMIN_USER'));
             $user->setEmail("john".$i."@gmail.com");
             $user->setSuperAdmin(true);

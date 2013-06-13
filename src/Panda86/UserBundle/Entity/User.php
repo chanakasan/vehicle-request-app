@@ -31,7 +31,6 @@ class User extends BaseUser
     public function __construct()
     {
         parent::__construct();
-        $this->salt = base_convert(sha1(uniqid(mt_rand(), true)), 16, 36);
     }
 
     /**

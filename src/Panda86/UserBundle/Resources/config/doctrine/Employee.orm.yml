@@ -8,4 +8,8 @@ Panda86\UserBundle\Entity\Employee:
             id: true
             generator:
                 strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 128
     lifecycleCallbacks: {  }
