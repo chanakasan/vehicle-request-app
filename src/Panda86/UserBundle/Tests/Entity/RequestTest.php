@@ -28,28 +28,32 @@ class RequestTest extends \PHPUnit_Framework_TestCase {
         );
     }
 
-    private function _createRequest()
-    {
-        return new Request($this->args);
-    }
-
     public function testCanCreateRequest()
     {
-        $request = $this->_createRequest();
+        $request =  new Request($this->args);
+        $this->assertInstanceOf('Panda86\UserBundle\Entity\Request', $request);
+        return $request;
+    }
+
+    /**
+     * @depends testCanCreateRequest
+     */
+    public function testCanSRequest($request)
+    {
         $this->assertEquals($this->args['requested_for'], $request->getRequestedFor());
         $this->assertEquals($this->args['journey_type'], $request->getJourneyType());
         $this->assertEquals($this->args['start_time'], $request->getStartTime());
         $this->assertEquals($this->args['start_loc'], $request->getStartLoc());
         $this->assertEquals($this->args['pickup_time'], $request->getPickupTime());
         $this->assertEquals($this->args['pickup_loc'], $request->getPickupLoc());
-    }
 
+    }
     /**
-     * @depends testCanCreateRequest
+     * @expectedException PHPUnit_Framework_Error
      */
-    public function testCanSaveRequest()
+    public function testFailingInclude()
     {
-        $request = $this->_createRequest();
+        include 'not_existing_file.php';
     }
 
 

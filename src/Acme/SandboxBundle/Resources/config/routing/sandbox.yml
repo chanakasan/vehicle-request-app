@@ -1,3 +1,13 @@
 sandbox:
     pattern:  /sandbox
     defaults: { _controller: "AcmeSandboxBundle:Sandbox:index" }
+
+
+task_index:
+    pattern:  /task
+    defaults: { _controller: "AcmeSandboxBundle:Task:index" }
+
+task_create:
+    pattern:  /task/create
+    defaults: { _controller: "AcmeSandboxBundle:Task:create" }
+

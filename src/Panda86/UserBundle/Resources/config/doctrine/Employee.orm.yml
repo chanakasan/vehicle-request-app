@@ -1,0 +1,11 @@
+Panda86\UserBundle\Entity\Employee:
+    type: entity
+    table: null
+    repositoryClass: Panda86\UserBundle\Entity\EmployeeRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    lifecycleCallbacks: {  }
