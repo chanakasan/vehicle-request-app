@@ -14,13 +14,13 @@ class TaskController extends Controller {
         return new Response("Welcome! to your Task Management App");
     }
 
-    public function createTaskAction()
+    public function createAction()
     {
         $category = new Category();
         $category->setName('Main Tasks');
 
         $task = new Task();
-        $task->setName('Download songs.');
+        $task->setName('Download songs');
         // relate this Task to the category
         $task->setCategory($category);
 

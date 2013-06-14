@@ -18,17 +18,17 @@ class Task
     /**
      * @var string
      */
-    private $category;
-
-    /**
-     * @var string
-     */
     private $name;
 
     /**
      * @var string
      */
-    private $desc;
+    private $descrip;
+
+    /**
+     * @var \Acme\SandboxBundle\Entity\Category
+     */
+    private $category;
 
 
     /**
@@ -39,29 +39,6 @@ class Task
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set category
-     *
-     * @param string $category
-     * @return Task
-     */
-    public function setCategory($category)
-    {
-        $this->category = $category;
-
-        return $this;
-    }
-
-    /**
-     * Get category
-     *
-     * @return string 
-     */
-    public function getCategory()
-    {
-        return $this->category;
     }
 
     /**
@@ -88,25 +65,48 @@ class Task
     }
 
     /**
-     * Set desc
+     * Set descrip
      *
-     * @param string $desc
+     * @param string $descrip
      * @return Task
      */
-    public function setDesc($desc)
+    public function setDescrip($descrip)
     {
-        $this->desc = $desc;
+        $this->descrip = $descrip;
 
         return $this;
     }
 
     /**
-     * Get desc
+     * Get descrip
      *
      * @return string 
      */
-    public function getDesc()
+    public function getDescrip()
     {
-        return $this->desc;
+        return $this->descrip;
+    }
+
+    /**
+     * Set category
+     *
+     * @param \Acme\SandboxBundle\Entity\Category $category
+     * @return Task
+     */
+    public function setCategory(\Acme\SandboxBundle\Entity\Category $category = null)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \Acme\SandboxBundle\Entity\Category 
+     */
+    public function getCategory()
+    {
+        return $this->category;
     }
 }

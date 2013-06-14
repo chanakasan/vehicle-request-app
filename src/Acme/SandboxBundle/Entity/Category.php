@@ -10,6 +10,16 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Category
 {
+
+    /**
+     * Constructor
+     */
+    function __construct()
+    {
+        $this->tasks = new ArrayCollection();
+    }
+
+
     /**
      * @var integer
      */
@@ -23,15 +33,13 @@ class Category
     /**
      * @var string
      */
-    private $desc;
+    private $descrip;
 
     /**
-     * Constructor
+     * @var \Doctrine\Common\Collections\Collection
      */
-    function __construct()
-    {
-        $this->tasks = new ArrayCollection();
-    }
+    private $tasks;
+
 
     /**
      * Get id
@@ -67,32 +75,27 @@ class Category
     }
 
     /**
-     * Set desc
+     * Set descrip
      *
-     * @param string $desc
+     * @param string $descrip
      * @return Category
      */
-    public function setDesc($desc)
+    public function setDescrip($descrip)
     {
-        $this->desc = $desc;
+        $this->descrip = $descrip;
 
         return $this;
     }
 
     /**
-     * Get desc
+     * Get descrip
      *
      * @return string 
      */
-    public function getDesc()
+    public function getDescrip()
     {
-        return $this->desc;
+        return $this->descrip;
     }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $tasks;
-
 
     /**
      * Add tasks

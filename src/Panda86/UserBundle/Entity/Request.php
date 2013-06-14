@@ -392,4 +392,42 @@ class Request {
     {
         return $this->created_at;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $tasks;
+
+
+    /**
+     * Add tasks
+     *
+     * @param \Panda86\UserBundle\Entity\Employee $tasks
+     * @return Request
+     */
+    public function addTask(\Panda86\UserBundle\Entity\Employee $tasks)
+    {
+        $this->tasks[] = $tasks;
+
+        return $this;
+    }
+
+    /**
+     * Remove tasks
+     *
+     * @param \Panda86\UserBundle\Entity\Employee $tasks
+     */
+    public function removeTask(\Panda86\UserBundle\Entity\Employee $tasks)
+    {
+        $this->tasks->removeElement($tasks);
+    }
+
+    /**
+     * Get tasks
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTasks()
+    {
+        return $this->tasks;
+    }
 }

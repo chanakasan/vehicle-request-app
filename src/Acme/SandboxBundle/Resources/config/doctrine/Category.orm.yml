@@ -11,9 +11,10 @@ Acme\SandboxBundle\Entity\Category:
         name:
             type: string
             length: '64'
-        desc:
+        descrip:
             type: string
             length: 128
+            nullable: true
 
     oneToMany:
             tasks:

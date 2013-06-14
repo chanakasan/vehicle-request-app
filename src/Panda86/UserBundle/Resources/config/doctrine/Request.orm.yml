@@ -45,4 +45,9 @@ Panda86\UserBundle\Entity\Request:
             nullable: true
         created_at:
             type: datetime
+
+    oneToMany:
+            tasks:
+                targetEntity: Employee
+                mappedBy: request
     lifecycleCallbacks: {  }
