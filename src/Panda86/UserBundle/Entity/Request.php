@@ -392,42 +392,43 @@ class Request {
     {
         return $this->created_at;
     }
+
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $tasks;
+    private $employees;
 
 
     /**
-     * Add tasks
+     * Add employees
      *
-     * @param \Panda86\UserBundle\Entity\Employee $tasks
+     * @param \Panda86\UserBundle\Entity\Employee $employees
      * @return Request
      */
-    public function addTask(\Panda86\UserBundle\Entity\Employee $tasks)
+    public function addEmployee(\Panda86\UserBundle\Entity\Employee $employees)
     {
-        $this->tasks[] = $tasks;
+        $this->employees[] = $employees;
 
         return $this;
     }
 
     /**
-     * Remove tasks
+     * Remove employees
      *
-     * @param \Panda86\UserBundle\Entity\Employee $tasks
+     * @param \Panda86\UserBundle\Entity\Employee $employees
      */
-    public function removeTask(\Panda86\UserBundle\Entity\Employee $tasks)
+    public function removeEmployee(\Panda86\UserBundle\Entity\Employee $employees)
     {
-        $this->tasks->removeElement($tasks);
+        $this->employees->removeElement($employees);
     }
 
     /**
-     * Get tasks
+     * Get employees
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getTasks()
+    public function getEmployees()
     {
-        return $this->tasks;
+        return $this->employees;
     }
 }

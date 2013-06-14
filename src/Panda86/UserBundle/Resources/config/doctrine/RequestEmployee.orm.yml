@@ -1,6 +1,6 @@
-Panda86\UserBundle\Entity\Request_Employee:
+Panda86\UserBundle\Entity\RequestEmployee:
     type: entity
-    table: requests_employees
+    table: hr_request_employee
     repositoryClass: Panda86\UserBundle\Entity\Request_EmployeeRepository
     id:
         id:

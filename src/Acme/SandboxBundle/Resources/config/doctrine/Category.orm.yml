@@ -1,6 +1,6 @@
 Acme\SandboxBundle\Entity\Category:
     type: entity
-    table: null
+    table: sb_category
     id:
         id:
             type: integer

@@ -5,20 +5,23 @@ namespace Panda86\UserBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Request_Employee
+ * RequestEmployee
  */
-class Request_Employee
+class RequestEmployee
 {
     /**
      * @var integer
      */
     private $id;
 
-    /**
-     * @var boolean
-     */
-    private $isOwner;
 
+    /**
+     * Constructor
+     */
+    public function __construct(array $options = null)
+    {
+        $this->isOwner = false;
+    }
 
     /**
      * Get id
@@ -29,12 +32,27 @@ class Request_Employee
     {
         return $this->id;
     }
+    /**
+     * @var boolean
+     */
+    private $isOwner;
+
+    /**
+     * @var \Panda86\UserBundle\Entity\Request
+     */
+    private $request;
+
+    /**
+     * @var \Panda86\UserBundle\Entity\Employee
+     */
+    private $employee;
+
 
     /**
      * Set isOwner
      *
      * @param boolean $isOwner
-     * @return Request_Employee
+     * @return RequestEmployee
      */
     public function setIsOwner($isOwner)
     {
@@ -52,22 +70,12 @@ class Request_Employee
     {
         return $this->isOwner;
     }
-    /**
-     * @var \Panda86\UserBundle\Entity\Request
-     */
-    private $request;
-
-    /**
-     * @var \Panda86\UserBundle\Entity\Employee
-     */
-    private $employee;
-
 
     /**
      * Set request
      *
      * @param \Panda86\UserBundle\Entity\Request $request
-     * @return Request_Employee
+     * @return RequestEmployee
      */
     public function setRequest(\Panda86\UserBundle\Entity\Request $request = null)
     {
@@ -90,7 +98,7 @@ class Request_Employee
      * Set employee
      *
      * @param \Panda86\UserBundle\Entity\Employee $employee
-     * @return Request_Employee
+     * @return RequestEmployee
      */
     public function setEmployee(\Panda86\UserBundle\Entity\Employee $employee = null)
     {

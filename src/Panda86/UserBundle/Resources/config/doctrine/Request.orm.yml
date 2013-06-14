@@ -1,6 +1,6 @@
 Panda86\UserBundle\Entity\Request:
     type: entity
-    table: emp_request
+    table: hr_request
     id:
         id:
             type: integer
@@ -47,7 +47,7 @@ Panda86\UserBundle\Entity\Request:
             type: datetime
 
     oneToMany:
-            tasks:
+            employees:
                 targetEntity: Employee
                 mappedBy: request
     lifecycleCallbacks: {  }

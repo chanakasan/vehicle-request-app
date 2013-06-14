@@ -1,6 +1,6 @@
 Panda86\UserBundle\Entity\Employee:
     type: entity
-    table: null
+    table: hr_employee
     repositoryClass: Panda86\UserBundle\Entity\EmployeeRepository
     id:
         id:
@@ -14,7 +14,7 @@ Panda86\UserBundle\Entity\Employee:
             length: 128
 
     oneToMany:
-            tasks:
+            requests:
                 targetEntity: Request
                 mappedBy: category
     lifecycleCallbacks: {  }

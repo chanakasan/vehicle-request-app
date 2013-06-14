@@ -52,49 +52,50 @@ class Employee
     {
         return $this->name;
     }
+
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $tasks;
+    private $requests;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->tasks = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->requests = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
-     * Add tasks
+     * Add requests
      *
-     * @param \Panda86\UserBundle\Entity\Request $tasks
+     * @param \Panda86\UserBundle\Entity\Request $requests
      * @return Employee
      */
-    public function addTask(\Panda86\UserBundle\Entity\Request $tasks)
+    public function addRequest(\Panda86\UserBundle\Entity\Request $requests)
     {
-        $this->tasks[] = $tasks;
+        $this->requests[] = $requests;
 
         return $this;
     }
 
     /**
-     * Remove tasks
+     * Remove requests
      *
-     * @param \Panda86\UserBundle\Entity\Request $tasks
+     * @param \Panda86\UserBundle\Entity\Request $requests
      */
-    public function removeTask(\Panda86\UserBundle\Entity\Request $tasks)
+    public function removeRequest(\Panda86\UserBundle\Entity\Request $requests)
     {
-        $this->tasks->removeElement($tasks);
+        $this->requests->removeElement($requests);
     }
 
     /**
-     * Get tasks
+     * Get requests
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getTasks()
+    public function getRequests()
     {
-        return $this->tasks;
+        return $this->requests;
     }
 }

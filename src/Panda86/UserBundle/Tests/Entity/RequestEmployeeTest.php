@@ -2,10 +2,12 @@
 
 namespace Panda86\UserBundle\Tests\Entity;
 
+use Panda86\UserBundle\Entity\Employee;
 use Panda86\UserBundle\Entity\Request;
+use Panda86\UserBundle\Entity\RequestEmployee;
 use Symfony\Component\Config\Definition\Exception\Exception;
 
-class RequestTest extends \PHPUnit_Framework_TestCase {
+class RequestEmployeeTest extends \PHPUnit_Framework_TestCase {
 
     private $args = array();
 
@@ -27,26 +29,20 @@ class RequestTest extends \PHPUnit_Framework_TestCase {
         );
     }
 
-    public function testCanCreateRequest()
+    public function testCanCreateRequestEmployee()
     {
         $request =  new Request($this->args);
-        $this->assertInstanceOf('Panda86\UserBundle\Entity\Request', $request);
-        return $request;
+
+        $employee = new Employee();
+        $employee->setName('Mr. John');
+        $employee->addRequest($request);
+
+        $requestEmployee = new RequestEmployee();
+        $requestEmployee->getIsOwner(true);
+        $requestEmployee->setRequest($request);
+        $requestEmployee->setEmployee($employee);
+
+        $this->assertInstanceOf('Panda86\UserBundle\Entity\RequestEmployee', $requestEmployee);
     }
-
-    /**
-     * @depends testCanCreateRequest
-     */
-    public function testCanSRequest($request)
-    {
-        $this->assertEquals($this->args['requested_for'], $request->getRequestedFor());
-        $this->assertEquals($this->args['journey_type'], $request->getJourneyType());
-        $this->assertEquals($this->args['start_time'], $request->getStartTime());
-        $this->assertEquals($this->args['start_loc'], $request->getStartLoc());
-        $this->assertEquals($this->args['pickup_time'], $request->getPickupTime());
-        $this->assertEquals($this->args['pickup_loc'], $request->getPickupLoc());
-
-    }
-
 
 }

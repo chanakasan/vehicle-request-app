@@ -30,7 +30,7 @@ class RequestRepositoryFunctionalTest extends WebTestCase
             ->findAll()
         ;
 
-        $this->assertCount(26, $results);
+        $this->assertCount(0, $results);
     }
 
     /**
