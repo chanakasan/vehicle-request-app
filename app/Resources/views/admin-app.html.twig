@@ -23,7 +23,8 @@
                 <div class="navbar-text pull-right">
                     {% block admin_login %}{% endblock %}
                 </div>
-            </div><!--/.nav-collapse -->
+            </div>
+            <!--/.nav-collapse -->
             <a class="brand" href="/admin">Admin Section</a>
             <ul class="nav">
                 <li><a href="/app_dev.php/request/new">Request</a></li>
@@ -35,37 +36,35 @@
     <!-- if javascript is turned off -->
     <noscript>
         <p>Javascript is disabled in your browser.</p>
+
         <p>Please, turn on Javascript or use a different browser to use this app.</p>
         <a href="#">Click here to continue</a>
     </noscript>
-
     {% block notice %}{% endblock %}
-        <div class="row">
-            <div class="header">
-                <div id="filter"><label>Show me:</label></div>
-            </div>
+    <div class="row">
+        <div id="content" class="span12">
+            {% block body -%}{% endblock %}
+            <div id="contacts"></div>
+            <script id="contactTemplate" type="text/template">
+                <img src="<%= photo %>" alt="<%= username %>"/>
+                <h1><%= username %><span><%= id %></span></h1>
+                <div><%= first_name %></div>
+                <dl>
+                    <dt>Name:</dt>
+                    <dd><%= first_name %></dd>
+                    <dd><%= last_name %></dd>
+                    <dt>Email:</dt>
+                    <dd><a href="mailto:<%= username %>"><%= email %></a></dd>
+                </dl>
+            </script>
         </div>
-        <div class="row">
-            <div id="content" class="span12">
-                <div id="contacts"></div>
-                <script id="contactTemplate" type="text/template">
-                    <img src="<%= photo %>" alt="<%= username %>" />
-                    <h1><%= username %><span><%= id %></span></h1>
-                    <div><%= first_name %></div>
-                    <dl>
-                        <dt>Name:</dt><dd><%= first_name %></dd><dd><%= last_name %></dd>
-                        <dt>Email:</dt><dd><a href="mailto:<%= username %>"><%= email %></a></dd>
-                    </dl>
-                </script>
-            </div>
-        </div>
+    </div>
 </div>
 
 <script src="/public/js/jquery-1.9.1.min.js"></script>
 <script src="/public/js/underscore.js"></script>
 <script src="/public/js/backbone.js"></script>
 
-<script src="/app/app.js"></script>
-
+<!-- <script src="/app/app.js"></script> -->
 </body>
 </html>
