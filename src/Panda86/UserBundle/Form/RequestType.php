@@ -33,7 +33,11 @@ class RequestType extends AbstractType
              ),
             ))
             ->add('purpose')
-            ->add('accompanied_by')
+            ->add('accompanied_by' , 'entity' , array(
+                'class'    => 'Panda86UserBundle:Request' ,
+                'property' => 'name' ,
+                'expanded' => true ,
+                'multiple' => true , ))
         ;
     }
 
@@ -46,6 +50,6 @@ class RequestType extends AbstractType
 
     public function getName()
     {
-        return 'requesttype';
+        return 'request';
     }
 }

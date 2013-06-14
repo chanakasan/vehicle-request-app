@@ -1,7 +1,7 @@
 $(document).ready(function(){
-    $( "#requesttype_start_time_datepicker" ).datepicker();
-    $( "#requesttype_pickup_time_datepicker" ).datepicker();
-    $( "#requesttype_end_time_datepicker" ).datepicker();
+    $( "#request_start_time_datepicker" ).datepicker();
+    $( "#request_pickup_time_datepicker" ).datepicker();
+    $( "#request_end_time_datepicker" ).datepicker();
 
     function toggle_journey(type, is_checked)
     {
@@ -16,28 +16,28 @@ $(document).ready(function(){
         }
     }
 
-    $('#requesttype_journey_type_0').trigger("change");
-    $('#requesttype_journey_type_1').trigger("change");
+    $('#request_journey_type_0').trigger("change");
+    $('#request_journey_type_1').trigger("change");
 
     //toggle single journey checkbox
-    $("#requesttype_journey_type_0").change(function(){
+    $("#request_journey_type_0").change(function(){
         var type = $(this).val();
         var is_checked = $(this).is(':checked');
         toggle_journey(type, is_checked);
     });
 
-    $('#requesttype_journey_type_0').mousedown(function() {
+    $('#request_journey_type_0').mousedown(function() {
         $(this).trigger("change");
     });
 
     //toggle return journey checkbox
-    $("#requesttype_journey_type_1").change(function(){
+    $("#request_journey_type_1").change(function(){
         var type = $(this).val();
         var is_checked = $(this).is(':checked');
         toggle_journey(type, is_checked);
     });
 
-    $('#requesttype_journey_type_1').mousedown(function() {
+    $('#request_journey_type_1').mousedown(function() {
         $(this).trigger("change");
     });
 

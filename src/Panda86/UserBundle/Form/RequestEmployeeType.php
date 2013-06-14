@@ -6,30 +6,26 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class VehicleType extends AbstractType
+class RequestEmployeeType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('type')
-            ->add('make')
-            ->add('model')
-            ->add('reg_no')
-            ->add('passenger_no')
-            ->add('ac')
-            ->add('remarks')
+            ->add('request')
+            ->add('employee')
+            ->add('owner')
         ;
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Panda86\UserBundle\Entity\Vehicle'
+            'data_class' => 'Panda86\UserBundle\Entity\RequestEmployee'
         ));
     }
 
     public function getName()
     {
-        return 'vehicle';
+        return 'reqEmp';
     }
 }
