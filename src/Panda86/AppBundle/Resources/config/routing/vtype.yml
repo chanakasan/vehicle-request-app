@@ -1,0 +1,30 @@
+vehicle-type:
+    pattern:  /
+    defaults: { _controller: "Panda86AppBundle:VType:index" }
+
+vehicle-type_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "Panda86AppBundle:VType:show" }
+
+vehicle-type_new:
+    pattern:  /new
+    defaults: { _controller: "Panda86AppBundle:VType:new" }
+
+vehicle-type_create:
+    pattern:  /create
+    defaults: { _controller: "Panda86AppBundle:VType:create" }
+    requirements: { _method: post }
+
+vehicle-type_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "Panda86AppBundle:VType:edit" }
+
+vehicle-type_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "Panda86AppBundle:VType:update" }
+    requirements: { _method: post|put }
+
+vehicle-type_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "Panda86AppBundle:VType:delete" }
+    requirements: { _method: post|delete }

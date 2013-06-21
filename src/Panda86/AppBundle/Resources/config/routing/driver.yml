@@ -6,5 +6,25 @@ driver_show:
     pattern:  /{id}/show
     defaults: { _controller: "Panda86AppBundle:Driver:show" }
 
+driver_new:
+    pattern:  /new
+    defaults: { _controller: "Panda86AppBundle:Driver:new" }
 
+driver_create:
+    pattern:  /create
+    defaults: { _controller: "Panda86AppBundle:Driver:create" }
+    requirements: { _method: post }
 
+driver_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "Panda86AppBundle:Driver:edit" }
+
+driver_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "Panda86AppBundle:Driver:update" }
+    requirements: { _method: post|put }
+
+driver_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "Panda86AppBundle:Driver:delete" }
+    requirements: { _method: post|delete }

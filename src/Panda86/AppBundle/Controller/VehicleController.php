@@ -5,38 +5,38 @@ namespace Panda86\AppBundle\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-use Panda86\AppBundle\Entity\Driver;
-use Panda86\AppBundle\Form\DriverType;
+use Panda86\AppBundle\Entity\Vehicle;
+use Panda86\AppBundle\Form\VehicleType;
 
 /**
- * Driver controller.
+ * Vehicle controller.
  *
  */
-class DriverController extends Controller
+class VehicleController extends Controller
 {
     /**
-     * Lists all Driver entities.
+     * Lists all Vehicle entities.
      *
      */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('Panda86AppBundle:Driver')->findAll();
+        $entities = $em->getRepository('Panda86AppBundle:Vehicle')->findAll();
 
-        return $this->render('Panda86AppBundle:Driver:index.html.twig', array(
+        return $this->render('Panda86AppBundle:Vehicle:index.html.twig', array(
             'entities' => $entities,
         ));
     }
 
     /**
-     * Creates a new Driver entity.
+     * Creates a new Vehicle entity.
      *
      */
     public function createAction(Request $request)
     {
-        $entity  = new Driver();
-        $form = $this->createForm(new DriverType(), $entity);
+        $entity  = new Vehicle();
+        $form = $this->createForm(new VehicleType(), $entity);
         $form->bind($request);
 
         if ($form->isValid()) {
@@ -44,69 +44,69 @@ class DriverController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('driver_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('vehicle_show', array('id' => $entity->getId())));
         }
 
-        return $this->render('Panda86AppBundle:Driver:new.html.twig', array(
+        return $this->render('Panda86AppBundle:Vehicle:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
     }
 
     /**
-     * Displays a form to create a new Driver entity.
+     * Displays a form to create a new Vehicle entity.
      *
      */
     public function newAction()
     {
-        $entity = new Driver();
-        $form   = $this->createForm(new DriverType(), $entity);
+        $entity = new Vehicle();
+        $form   = $this->createForm(new VehicleType(), $entity);
 
-        return $this->render('Panda86AppBundle:Driver:new.html.twig', array(
+        return $this->render('Panda86AppBundle:Vehicle:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
     }
 
     /**
-     * Finds and displays a Driver entity.
+     * Finds and displays a Vehicle entity.
      *
      */
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('Panda86AppBundle:Driver')->find($id);
+        $entity = $em->getRepository('Panda86AppBundle:Vehicle')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Driver entity.');
+            throw $this->createNotFoundException('Unable to find Vehicle entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('Panda86AppBundle:Driver:show.html.twig', array(
+        return $this->render('Panda86AppBundle:Vehicle:show.html.twig', array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),        ));
     }
 
     /**
-     * Displays a form to edit an existing Driver entity.
+     * Displays a form to edit an existing Vehicle entity.
      *
      */
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('Panda86AppBundle:Driver')->find($id);
+        $entity = $em->getRepository('Panda86AppBundle:Vehicle')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Driver entity.');
+            throw $this->createNotFoundException('Unable to find Vehicle entity.');
         }
 
-        $editForm = $this->createForm(new DriverType(), $entity);
+        $editForm = $this->createForm(new VehicleType(), $entity);
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('Panda86AppBundle:Driver:edit.html.twig', array(
+        return $this->render('Panda86AppBundle:Vehicle:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -114,31 +114,31 @@ class DriverController extends Controller
     }
 
     /**
-     * Edits an existing Driver entity.
+     * Edits an existing Vehicle entity.
      *
      */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('Panda86AppBundle:Driver')->find($id);
+        $entity = $em->getRepository('Panda86AppBundle:Vehicle')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Driver entity.');
+            throw $this->createNotFoundException('Unable to find Vehicle entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createForm(new DriverType(), $entity);
+        $editForm = $this->createForm(new VehicleType(), $entity);
         $editForm->bind($request);
 
         if ($editForm->isValid()) {
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('driver_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('vehicle_edit', array('id' => $id)));
         }
 
-        return $this->render('Panda86AppBundle:Driver:edit.html.twig', array(
+        return $this->render('Panda86AppBundle:Vehicle:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -146,7 +146,7 @@ class DriverController extends Controller
     }
 
     /**
-     * Deletes a Driver entity.
+     * Deletes a Vehicle entity.
      *
      */
     public function deleteAction(Request $request, $id)
@@ -156,21 +156,21 @@ class DriverController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('Panda86AppBundle:Driver')->find($id);
+            $entity = $em->getRepository('Panda86AppBundle:Vehicle')->find($id);
 
             if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Driver entity.');
+                throw $this->createNotFoundException('Unable to find Vehicle entity.');
             }
 
             $em->remove($entity);
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('driver'));
+        return $this->redirect($this->generateUrl('vehicle'));
     }
 
     /**
-     * Creates a form to delete a Driver entity by id.
+     * Creates a form to delete a Vehicle entity by id.
      *
      * @param mixed $id The entity id
      *

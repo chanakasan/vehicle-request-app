@@ -10,7 +10,7 @@ class Vehicle
     {
         $this->added = new \DateTime;
     }
-  
+
     /**
      * @var integer
      */

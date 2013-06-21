@@ -10,10 +10,6 @@
                 <td>{{ entity.id }}</td>
             </tr>
             <tr>
-                <th>Type</th>
-                <td>{{ entity.type }}</td>
-            </tr>
-            <tr>
                 <th>Make</th>
                 <td>{{ entity.make }}</td>
             </tr>
@@ -26,8 +22,8 @@
                 <td>{{ entity.regno }}</td>
             </tr>
             <tr>
-                <th>Passenger_no</th>
-                <td>{{ entity.passengerno }}</td>
+                <th>Passengers</th>
+                <td>{{ entity.passengers }}</td>
             </tr>
             <tr>
                 <th>Ac</th>
@@ -36,6 +32,14 @@
             <tr>
                 <th>Remarks</th>
                 <td>{{ entity.remarks }}</td>
+            </tr>
+            <tr>
+                <th>Company_owned</th>
+                <td>{{ entity.companyowned }}</td>
+            </tr>
+            <tr>
+                <th>Added</th>
+                <td>{{ entity.added|date('Y-m-d H:i:s') }}</td>
             </tr>
         </tbody>
     </table>

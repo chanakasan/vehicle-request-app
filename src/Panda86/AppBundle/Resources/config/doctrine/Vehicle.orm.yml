@@ -29,7 +29,7 @@ Panda86\AppBundle\Entity\Vehicle:
         company_owned:
             type: boolean
         added:
-            type: date
+            type: datetime
     manyToOne:
         vtype:
             targetEntity: VType

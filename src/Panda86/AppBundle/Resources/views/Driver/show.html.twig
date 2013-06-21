@@ -18,16 +18,20 @@
                 <td>{{ entity.lastname }}</td>
             </tr>
             <tr>
+                <th>Display_name</th>
+                <td>{{ entity.displayname }}</td>
+            </tr>
+            <tr>
                 <th>Address</th>
                 <td>{{ entity.address }}</td>
             </tr>
             <tr>
-                <th>Dob</th>
-                <td>{{ entity.dob }}</td>
+                <th>Birth_date</th>
+                <td>{{ entity.birthdate|date('Y-m-d H:i:s') }}</td>
             </tr>
             <tr>
                 <th>License_date</th>
-                <td>{{ entity.licensedate }}</td>
+                <td>{{ entity.licensedate|date('Y-m-d H:i:s') }}</td>
             </tr>
             <tr>
                 <th>License_ref</th>
@@ -41,6 +45,18 @@
         <a href="{{ path('driver') }}">
             Back to the list
         </a>
+    </li>
+    <li>
+        <a href="{{ path('driver_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('driver_delete', { 'id': entity.id }) }}" method="post">
+            <input type="hidden" name="_method" value="DELETE" />
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
     </li>
 </ul>
 {% endblock %}

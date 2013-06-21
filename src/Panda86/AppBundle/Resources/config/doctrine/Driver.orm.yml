@@ -7,21 +7,23 @@ Panda86\AppBundle\Entity\Driver:
             id: true
             generator:
                 strategy: AUTO
-    fields:
+    fields:      
         first_name:
             type: string
             length: '64'
         last_name:
             type: string
             length: '64'
+        display_name:
+            type: string
+            length: '64'
         address:
             type: string
             length: '255'
-        dob:
-            type: string
-            length: '8'
+        birth_date:
+            type: date            
         license_date:
-            type: string
+            type: date
         license_ref:
             type: string
             length: '64'

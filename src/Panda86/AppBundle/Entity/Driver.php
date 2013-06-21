@@ -5,7 +5,6 @@ use Doctrine\ORM\Mapping as ORM;
 
 class Driver {
 
-
     /**
      * @var integer
      */
@@ -24,12 +23,17 @@ class Driver {
     /**
      * @var string
      */
+    private $display_name;
+
+    /**
+     * @var string
+     */
     private $address;
 
     /**
      * @var \DateTime
      */
-    private $dob;
+    private $birth_date;
 
     /**
      * @var \DateTime
@@ -61,7 +65,7 @@ class Driver {
     public function setFirstName($firstName)
     {
         $this->first_name = $firstName;
-    
+
         return $this;
     }
 
@@ -84,7 +88,7 @@ class Driver {
     public function setLastName($lastName)
     {
         $this->last_name = $lastName;
-    
+
         return $this;
     }
 
@@ -99,6 +103,29 @@ class Driver {
     }
 
     /**
+     * Set display_name
+     *
+     * @param string $displayName
+     * @return Driver
+     */
+    public function setDisplayName($displayName)
+    {
+        $this->display_name = $displayName;
+
+        return $this;
+    }
+
+    /**
+     * Get display_name
+     *
+     * @return string 
+     */
+    public function getDisplayName()
+    {
+        return $this->display_name;
+    }
+
+    /**
      * Set address
      *
      * @param string $address
@@ -107,7 +134,7 @@ class Driver {
     public function setAddress($address)
     {
         $this->address = $address;
-    
+
         return $this;
     }
 
@@ -122,26 +149,26 @@ class Driver {
     }
 
     /**
-     * Set dob
+     * Set birth_date
      *
-     * @param \DateTime $dob
+     * @param \DateTime $birthDate
      * @return Driver
      */
-    public function setDob($dob)
+    public function setBirthDate($birthDate)
     {
-        $this->dob = $dob;
-    
+        $this->birth_date = $birthDate;
+
         return $this;
     }
 
     /**
-     * Get dob
+     * Get birth_date
      *
      * @return \DateTime 
      */
-    public function getDob()
+    public function getBirthDate()
     {
-        return $this->dob;
+        return $this->birth_date;
     }
 
     /**
@@ -153,7 +180,7 @@ class Driver {
     public function setLicenseDate($licenseDate)
     {
         $this->license_date = $licenseDate;
-    
+
         return $this;
     }
 
@@ -176,7 +203,7 @@ class Driver {
     public function setLicenseRef($licenseRef)
     {
         $this->license_ref = $licenseRef;
-    
+
         return $this;
     }
 
