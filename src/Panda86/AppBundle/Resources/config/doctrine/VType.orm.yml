@@ -1,0 +1,26 @@
+Panda86\AppBundle\Entity\VType:
+    type: entity
+    table: hr_vtype
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: '64'
+        descrip:
+            type: string
+            length: 255
+            nullable: true
+    oneToMany:
+            vehicles:
+                targetEntity: Vehicle
+                mappedBy: vtype
+    uniqueConstraints:
+        vtype_name:
+            columns: name
+        # don't forget to init the collection in entity __construct() method
+    lifecycleCallbacks: {  }

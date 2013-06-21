@@ -24,6 +24,7 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new Acme\SandboxBundle\AcmeSandboxBundle(),
+            new Panda86\AppBundle\Panda86AppBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

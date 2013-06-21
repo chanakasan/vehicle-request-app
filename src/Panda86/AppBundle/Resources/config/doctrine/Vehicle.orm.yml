@@ -1,0 +1,40 @@
+Panda86\AppBundle\Entity\Vehicle:
+    type: entity
+    table: hr_vehicle
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        make:
+            type: string
+            length: '64'
+        model:
+            type: string
+            length: '64'
+        reg_no:
+            type: string
+            length: '128'
+        passengers:
+            type: integer
+            length: 11
+        ac:
+            type: boolean        
+        remarks:
+            type: string
+            length: '255'
+            nullable: true
+        company_owned:
+            type: boolean
+        added:
+            type: date
+    manyToOne:
+        vtype:
+            targetEntity: VType
+            inversedBy: vehicles
+            joinColumn:
+                name: vtype_id
+                referencedColumnName: id         
+    lifecycleCallbacks: {  }

@@ -1,0 +1,53 @@
+Panda86\AppBundle\Entity\Request:
+    type: entity
+    table: hr_request
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        requested_for:
+            type: string
+            length: '64'
+        journey_type:
+            type: string
+            length: '64'
+        start_time:
+            type: datetime
+            nullable: true
+        start_loc:
+            type: string
+            length: '64'
+            nullable: true
+        pickup_time:
+            type: datetime
+            nullable: true
+        pickup_loc:
+            type: string
+            length: '64'
+            nullable: true
+        end_time:
+            type: datetime
+        end_loc:
+            type: string
+            length: '64'
+        vehicle_type:
+            type: string
+            length: '16'
+        purpose:
+            type: string
+            length: '64'
+        accompanied_by:
+            type: string
+            length: '128'
+            nullable: true
+        created_at:
+            type: datetime
+
+    oneToMany:
+            employees:
+                targetEntity: Employee
+                mappedBy: request
+    lifecycleCallbacks: {  }

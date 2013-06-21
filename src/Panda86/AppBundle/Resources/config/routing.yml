@@ -1,0 +1,3 @@
+panda86_app_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: Panda86AppBundle:Default:index }
