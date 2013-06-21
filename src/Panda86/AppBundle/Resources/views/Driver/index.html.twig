@@ -1,50 +1,64 @@
 {% extends '::admin-ui.html.twig' %}
 
 {% block body -%}
-    <h1>Driver list</h1>
-
-    <table class="records_list">
+<h1>Driver list</h1>
+<div id="example_wrapper" class="dataTables_wrapper" role="grid">       
+    <table aria-describedby="example_info" class="bordered-table zebra-striped dataTable" id="example1"
+           cellpadding="0" cellspacing="0" border="0">
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>First_name</th>
-                <th>Last_name</th>
-                <th>Display_name</th>
-                <th>Address</th>
-                <th>Birth_date</th>
-                <th>License_date</th>
-                <th>License_ref</th>
-                <th>Actions</th>
+            <tr role="row">
+                <th aria-label="Rendering engine: activate to sort column descending" aria-sort="ascending"
+                    style="width: 162px;" colspan="1" rowspan="1" aria-controls="example" tabindex="0"
+                    role="columnheader" class="header headerSortDown">First Name
+                </th>
+                <th aria-label="Browser: activate to sort column ascending" style="width: 221px;" colspan="1"
+                    rowspan="1" aria-controls="example" tabindex="0" role="columnheader" class="header">Last Name
+                </th>
+                <th aria-label="Platform(s): activate to sort column ascending" style="width: 207px;" colspan="1"
+                    rowspan="1" aria-controls="example" tabindex="0" role="columnheader" class="header">Display Name
+                </th>
+                <th aria-label="Engine version: activate to sort column ascending" style="width: 141px;" colspan="1"
+                    rowspan="1" aria-controls="example" tabindex="0" role="columnheader" class="header">Date of Birth
+                </th>
+                <th aria-label="Browser: activate to sort column ascending" style="width: 221px;" colspan="1"
+                    rowspan="1" aria-controls="example" tabindex="0" role="columnheader" class="header">Address
+                </th>
+                <th aria-label="Platform(s): activate to sort column ascending" style="width: 207px;" colspan="1"
+                    rowspan="1" aria-controls="example" tabindex="0" role="columnheader" class="header">License Issued Date
+                </th>
+                <th aria-label="Engine version: activate to sort column ascending" style="width: 141px;" colspan="1"
+                    rowspan="1" aria-controls="example" tabindex="0" role="columnheader" class="header">License Ref No.
+                </th>
+                <th aria-label="CSS grade: activate to sort column ascending" style="width: 104px;" colspan="1"
+                    rowspan="1" aria-controls="example" tabindex="0" role="columnheader" class="header">
+                </th>
             </tr>
         </thead>
-        <tbody>
-        {% for entity in entities %}
-            <tr>
-                <td><a href="{{ path('driver_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.firstname }}</td>
-                <td>{{ entity.lastname }}</td>
-                <td>{{ entity.displayname }}</td>
-                <td>{{ entity.address }}</td>
-                <td>{% if entity.birthdate %}{{ entity.birthdate|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if entity.licensedate %}{{ entity.licensedate|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ entity.licenseref }}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('driver_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('driver_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
 
-    
-        <ul>
+        <tbody aria-releVant="all" aria-live="polite" role="alert">
+            {% for entity in entities %}
+                <!-- table rows -->
+                <tr class="gradeA odd">
+                    <td class="  sorting_1">{{ entity.firstname }}</td>
+                    <td class=" ">{{ entity.lastname }}</td>
+                    <td class=" ">{{ entity.displayname }}</td>
+                    <td class="center ">{% if entity.birthdate %}{{ entity.birthdate|date('Y-m-d') }}{% endif %}</td>                
+                    <td class="center ">{{ entity.address }}</td>                
+                    <td class="center ">{% if entity.licensedate %}{{ entity.licensedate|date('Y-m-d') }}{% endif %}</td>                                    
+                    <td class="center ">{{ entity.licenseref }}</td>                
+                    <td class="center ">                    
+                        <a href="{{ path('driver_show', { 'id': entity.id }) }}">View</a> |                                        
+                        <a href="{{ path('driver_edit', { 'id': entity.id }) }}">Edit</a>                                        
+                    </td>
+                </tr>
+            {% endfor %}
+                <!--end table 1 rows -->
+            </tbody>
+        </table>
+    </div><br/>
+
+
+    <ul>
         <li>
             <a href="{{ path('driver_new') }}">
                 Create a new entry
