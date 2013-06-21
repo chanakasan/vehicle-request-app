@@ -1,18 +1,24 @@
 <?php
 
-namespace Panda86\UserBundle\Tests\Entity;
+namespace Panda86\AppBundle\Tests\Integration\Entity;
 
-use Panda86\UserBundle\Entity\Employee;
-use Panda86\UserBundle\Entity\Request;
-use Panda86\UserBundle\Entity\RequestEmployee;
+use Panda86\AppBundle\Entity\Employee;
+use Panda86\AppBundle\Entity\Request;
+use Panda86\AppBundle\Entity\RequestEmployee;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class RequestEmployeeRepositoryFunctionalTest extends WebTestCase
 {
+    
     /**
     * @var \Doctrine\ORM\EntityManager
     */
     private $em;
+    
+    /**
+    * @var \Doctrine\ORM\Tools\SchemaTool
+    */
+    private $tool;
 
     private $args = array();
 
@@ -53,14 +59,21 @@ class RequestEmployeeRepositoryFunctionalTest extends WebTestCase
         $employee2->setName('Mr. John2');
         $employee2->addRequest($request);
 
-        $requestEmployee = new RequestEmployee();
-        $requestEmployee->setIsOwner(true);
-        $requestEmployee->setRequest($request);
-        $requestEmployee->setEmployee($employee1);
+        $requestEmployee1 = new RequestEmployee();
+        $requestEmployee1->setIsOwner(true);
+        $requestEmployee1->setRequest($request);
+        $requestEmployee1->setEmployee($employee1);
+        
+        $requestEmployee2 = new RequestEmployee();
+        $requestEmployee2->setIsOwner(false);
+        $requestEmployee2->setRequest($request);
+        $requestEmployee2->setEmployee($employee2);
 
         $this->em->persist($request);
-        $this->em->persist($employee);
-        $this->em->persist($requestEmployee);
+        $this->em->persist($employee1);
+        $this->em->persist($employee2);
+        $this->em->persist($requestEmployee1);
+        $this->em->persist($requestEmployee2);
 
         $this->em->flush();
     }

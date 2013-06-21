@@ -1,8 +1,8 @@
 <?php
 
-namespace Panda86\UserBundle\Tests\Entity;
+namespace Panda86\AppBundle\Tests\Entity;
 
-use Panda86\UserBundle\Entity\Request;
+use Panda86\AppBundle\Entity\Request;
 use Symfony\Component\Config\Definition\Exception\Exception;
 
 class RequestTest extends \PHPUnit_Framework_TestCase {
@@ -30,7 +30,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase {
     public function testCanCreateRequest()
     {
         $request =  new Request($this->args);
-        $this->assertInstanceOf('Panda86\UserBundle\Entity\Request', $request);
+        $this->assertInstanceOf('Panda86\AppBundle\Entity\Request', $request);
         return $request;
     }
 

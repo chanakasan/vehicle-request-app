@@ -1,10 +1,10 @@
 <?php
 
-namespace Panda86\UserBundle\Tests\Entity;
+namespace Panda86\AppBundle\Tests\Entity;
 
-use Panda86\UserBundle\Entity\Employee;
-use Panda86\UserBundle\Entity\Request;
-use Panda86\UserBundle\Entity\RequestEmployee;
+use Panda86\AppBundle\Entity\Employee;
+use Panda86\AppBundle\Entity\Request;
+use Panda86\AppBundle\Entity\RequestEmployee;
 use Symfony\Component\Config\Definition\Exception\Exception;
 
 class RequestEmployeeTest extends \PHPUnit_Framework_TestCase {
@@ -42,7 +42,7 @@ class RequestEmployeeTest extends \PHPUnit_Framework_TestCase {
         $requestEmployee->setRequest($request);
         $requestEmployee->setEmployee($employee);
 
-        $this->assertInstanceOf('Panda86\UserBundle\Entity\RequestEmployee', $requestEmployee);
+        $this->assertInstanceOf('Panda86\AppBundle\Entity\RequestEmployee', $requestEmployee);
     }
 
 }

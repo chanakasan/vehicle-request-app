@@ -1,6 +1,7 @@
 <?php
 
-namespace Panda86\UserBundle\Tests\Entity;
+namespace Panda86\AppBundle\Tests\Entity;
+use Panda86\AppBundle\Tests\Integration\Ke;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class RequestRepositoryFunctionalTest extends WebTestCase
@@ -26,11 +27,10 @@ class RequestRepositoryFunctionalTest extends WebTestCase
     public function testFindById()
     {
         $results = $this->em
-            ->getRepository('Panda86UserBundle:Request')
+            ->getRepository('Panda86AppBundle:Request')
             ->findAll()
         ;
-
-        $this->assertCount(0, $results);
+        $this->assertCount(1, $results);
     }
 
     /**

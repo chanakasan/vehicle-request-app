@@ -4,7 +4,12 @@ namespace Panda86\AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 class Driver {
+    
+    public function __construct() {
+        $this->created = new \DateTime('now');
+    }
 
+   
     /**
      * @var integer
      */
@@ -26,11 +31,6 @@ class Driver {
     private $display_name;
 
     /**
-     * @var string
-     */
-    private $address;
-
-    /**
      * @var \DateTime
      */
     private $birth_date;
@@ -44,6 +44,21 @@ class Driver {
      * @var string
      */
     private $license_ref;
+
+    /**
+     * @var string
+     */
+    private $address;
+
+    /**
+     * @var integer
+     */
+    private $mobile;
+
+    /**
+     * @var \DateTime
+     */
+    private $created;
 
 
     /**
@@ -126,29 +141,6 @@ class Driver {
     }
 
     /**
-     * Set address
-     *
-     * @param string $address
-     * @return Driver
-     */
-    public function setAddress($address)
-    {
-        $this->address = $address;
-
-        return $this;
-    }
-
-    /**
-     * Get address
-     *
-     * @return string 
-     */
-    public function getAddress()
-    {
-        return $this->address;
-    }
-
-    /**
      * Set birth_date
      *
      * @param \DateTime $birthDate
@@ -215,5 +207,74 @@ class Driver {
     public function getLicenseRef()
     {
         return $this->license_ref;
+    }
+
+    /**
+     * Set address
+     *
+     * @param string $address
+     * @return Driver
+     */
+    public function setAddress($address)
+    {
+        $this->address = $address;
+
+        return $this;
+    }
+
+    /**
+     * Get address
+     *
+     * @return string 
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * Set mobile
+     *
+     * @param integer $mobile
+     * @return Driver
+     */
+    public function setMobile($mobile)
+    {
+        $this->mobile = $mobile;
+
+        return $this;
+    }
+
+    /**
+     * Get mobile
+     *
+     * @return integer 
+     */
+    public function getMobile()
+    {
+        return $this->mobile;
+    }
+
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     * @return Driver
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return \DateTime 
+     */
+    public function getCreated()
+    {
+        return $this->created;
     }
 }

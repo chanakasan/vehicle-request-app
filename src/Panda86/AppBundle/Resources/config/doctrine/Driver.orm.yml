@@ -17,9 +17,7 @@ Panda86\AppBundle\Entity\Driver:
         display_name:
             type: string
             length: '64'
-        address:
-            type: string
-            length: '255'
+            nullable: true
         birth_date:
             type: date            
         license_date:
@@ -27,4 +25,12 @@ Panda86\AppBundle\Entity\Driver:
         license_ref:
             type: string
             length: '64'
+        address:
+            type: string
+            length: '255'    
+        mobile:
+            type: integer
+            length: 20
+        created:
+            type: datetime
     lifecycleCallbacks: {  }
