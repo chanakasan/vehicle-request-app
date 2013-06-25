@@ -1,64 +1,69 @@
 <?php
 
 namespace Panda86\AppBundle\Entity;
-use Doctrine\ORM\Mapping as ORM;
 
-class Driver {
+use Doctrine\ORM\Mapping as ORM;
+use Panda86\AppBundle\Entity\Base;
+
+class Driver extends Base {
     
-    public function __construct() {
+    public function __construct(array $options = null)
+    {
         $this->created = new \DateTime('now');
+        $this->mobile = '';
+
+        parent::__construct($options);
     }
 
-   
     /**
      * @var integer
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      */
-    private $first_name;
+    protected $first_name;
 
     /**
      * @var string
      */
-    private $last_name;
+    protected $last_name;
 
     /**
      * @var string
      */
-    private $display_name;
+    protected $display_name;
 
     /**
      * @var \DateTime
      */
-    private $birth_date;
+    protected $birth_date;
 
     /**
      * @var \DateTime
      */
-    private $license_date;
+    protected $license_date;
 
     /**
      * @var string
      */
-    private $license_ref;
+    protected $license_ref;
 
     /**
      * @var string
      */
-    private $address;
+    protected $address;
 
     /**
      * @var integer
      */
-    private $mobile;
+    protected $mobile;
 
     /**
      * @var \DateTime
      */
-    private $created;
+    protected $created;
 
 
     /**

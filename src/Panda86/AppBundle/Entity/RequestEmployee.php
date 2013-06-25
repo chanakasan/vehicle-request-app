@@ -3,25 +3,27 @@
 namespace Panda86\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Panda86\AppBundle\Entity\Base;
 
 /**
  * RequestEmployee
  */
-class RequestEmployee
+class RequestEmployee extends Base
 {
-    /**
-     * @var integer
-     */
-    private $id;
-
-
     /**
      * Constructor
      */
     public function __construct(array $options = null)
     {
         $this->isOwner = false;
+
+        parent::__construct($options);
     }
+
+    /**
+     * @var integer
+     */
+    private $id;
 
     /**
      * Get id

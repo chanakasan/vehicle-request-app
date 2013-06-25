@@ -26,9 +26,9 @@ Panda86\AppBundle\Entity\Vehicle:
             type: string
             length: '255'
             nullable: true
-        company_owned:
+        is_company_owned:
             type: boolean
-        added:
+        was_added:
             type: datetime
     manyToOne:
         vtype:
@@ -36,5 +36,8 @@ Panda86\AppBundle\Entity\Vehicle:
             inversedBy: vehicles
             joinColumn:
                 name: vtype_id
-                referencedColumnName: id         
+                referencedColumnName: id
+    uniqueConstraints:
+        vehicle_reg_no:
+            columns: reg_no
     lifecycleCallbacks: {  }

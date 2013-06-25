@@ -3,35 +3,38 @@
 namespace Panda86\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Panda86\AppBundle\Entity\Base;
 
 /**
  * VType
  */
-class VType
+class VType extends Base
 {    
     /**
      * Constructor
      */
-    public function __construct()
+    public function __construct(array $options = null)
     {
         $this->vehicles = new \Doctrine\Common\Collections\ArrayCollection();
         $this->descrip = '';
+
+        parent::__construct($options);
     }
     
     /**
      * @var integer
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      */
-    private $name;
+    protected $name;
 
     /**
      * @var string
      */
-    private $descrip;          
+    protected $descrip;          
 
     /**
      * Get id
@@ -88,15 +91,11 @@ class VType
     {
         return $this->descrip;
     }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $tasks;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $vehicles;
+    protected $vehicles;
 
 
     /**
@@ -105,7 +104,7 @@ class VType
      * @param \Panda86\AppBundle\Entity\Vehicle $vehicles
      * @return VType
      */
-    public function addVehicle(\Panda86\AppBundle\Entity\Vehicle $vehicles)
+    public function addVehicle(\Panda86\AppBundle\Entity\Vehicle $vehicles = null)
     {
         $this->vehicles[] = $vehicles;
 

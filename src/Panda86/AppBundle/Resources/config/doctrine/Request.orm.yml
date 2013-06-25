@@ -8,46 +8,37 @@ Panda86\AppBundle\Entity\Request:
             generator:
                 strategy: AUTO
     fields:
-        requested_for:
-            type: string
-            length: '64'
         journey_type:
             type: string
             length: '64'
-        start_time:
-            type: datetime
-            nullable: true
-        start_loc:
-            type: string
-            length: '64'
-            nullable: true
-        pickup_time:
-            type: datetime
+        days:
+            type: integer
             nullable: true
         pickup_loc:
             type: string
             length: '64'
-            nullable: true
-        end_time:
+            column: pickup_loc
+        pickup_time:
             type: datetime
-        end_loc:
+            column: pickup_time
+        destination:
             type: string
             length: '64'
-        vehicle_type:
-            type: string
-            length: '16'
+        return_time:
+            type: datetime
+            column: return_time
         purpose:
             type: string
             length: '64'
-        accompanied_by:
-            type: string
-            length: '128'
-            nullable: true
         created_at:
             type: datetime
-
-    oneToMany:
-            employees:
-                targetEntity: Employee
-                mappedBy: request
+        updated_at:
+            type: datetime
+    manyToOne:
+        vtype:
+            targetEntity: VType
+            inversedBy: vehicles
+            joinColumn:
+                name: vtype_id
+                referencedColumnName: id
     lifecycleCallbacks: {  }

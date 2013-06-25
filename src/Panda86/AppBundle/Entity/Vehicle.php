@@ -3,63 +3,68 @@
 namespace Panda86\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Panda86\AppBundle\Entity\Base;
 
-class Vehicle 
+class Vehicle extends Base
 {
-    public function __construct()
+    public function __construct(array $options = null)
     {
-        $this->added = new \DateTime;
+        $this->ac = true;
+        $this->remarks ='';
+        $this->added = new \DateTime('now');
+
+        parent::__construct($options);
     }
 
     /**
      * @var integer
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      */
-    private $make;
+    protected $make;
 
     /**
      * @var string
      */
-    private $model;
+    protected $model;
 
     /**
      * @var string
      */
-    private $reg_no;
+    protected $reg_no;
 
     /**
      * @var integer
      */
-    private $passengers;
+    protected $passengers;
 
     /**
      * @var boolean
      */
-    private $ac;
+    protected $ac;
 
     /**
      * @var string
      */
-    private $remarks;
+    protected $remarks;
 
     /**
      * @var boolean
      */
-    private $company_owned;
+    protected $is_company_owned;
 
     /**
      * @var \DateTime
      */
-    private $added;
+    protected $was_added;
 
     /**
      * @var \Panda86\AppBundle\Entity\VType
      */
-    private $vtype;
+    protected $vtype;
 
 
     /**
@@ -211,49 +216,49 @@ class Vehicle
     }
 
     /**
-     * Set company_owned
+     * Set is_company_owned
      *
-     * @param boolean $companyOwned
+     * @param boolean $isCompanyOwned
      * @return Vehicle
      */
-    public function setCompanyOwned($companyOwned)
+    public function setIsCompanyOwned($isCompanyOwned)
     {
-        $this->company_owned = $companyOwned;
+        $this->is_company_owned = $isCompanyOwned;
 
         return $this;
     }
 
     /**
-     * Get company_owned
+     * Get is_company_owned
      *
      * @return boolean 
      */
-    public function getCompanyOwned()
+    public function getIsCompanyOwned()
     {
-        return $this->company_owned;
+        return $this->is_company_owned;
     }
 
     /**
-     * Set added
+     * Set was_added
      *
-     * @param \DateTime $added
+     * @param \DateTime $wasAdded
      * @return Vehicle
      */
-    public function setAdded($added)
+    public function setWasAdded($wasAdded)
     {
-        $this->added = $added;
+        $this->was_added = $wasAdded;
 
         return $this;
     }
 
     /**
-     * Get added
+     * Get was_added
      *
      * @return \DateTime 
      */
-    public function getAdded()
+    public function getWasAdded()
     {
-        return $this->added;
+        return $this->was_added;
     }
 
     /**

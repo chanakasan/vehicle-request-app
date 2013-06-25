@@ -1,111 +1,78 @@
 <?php
 
 namespace Panda86\AppBundle\Entity;
+
 use Doctrine\ORM\Mapping as ORM;
+use Panda86\AppBundle\Entity\Base;
 
-class Request {
-
-    /**
-     * @var integer
-     */
-    private $id;
-
-    /**
-     * @var string
-     */
-    private $requested_for;
-
-    /**
-     * @var string
-     */
-    private $journey_type;
-
-    /**
-     * @var \DateTime
-     */
-    private $start_time;
-
-    /**
-     * @var string
-     */
-    private $start_loc;
-
-    /**
-     * @var \DateTime
-     */
-    private $pickup_time;
-
-    /**
-     * @var string
-     */
-    private $pickup_loc;
-
-    /**
-     * @var \DateTime
-     */
-    private $end_time;
-
-    /**
-     * @var string
-     */
-    private $end_loc;
-
-    /**
-     * @var string
-     */
-    private $vehicle_type;
-
-    /**
-     * @var string
-     */
-    private $purpose;
-
-    /**
-     * @var string
-     */
-    private $accompanied_by;
-
-    /**
-     * @var \DateTime
-     */
-    private $created_at;
+class Request extends Base {
 
     /**
      * Constructor
      */
     public function __construct(array $options = null)
     {
-        $this->start_loc = 'ICTA';
-        $this->start_time = new \DateTime('now');
-        $this->pickup_time = new \DateTime('now');
-        $this->end_time = new \DateTime('now');
         $this->created_at = new \DateTime('now');
 
-        if(is_array($options)) {
-            $this->setOptions($options);
-        }
-
+        parent::__construct($options);
     }
+
+  
+    /**
+     * @var integer
+     */
+    protected $id;
 
     /**
-     * Set constructor options dynamically
-     *
-     * @param array $options
-     * @return $this
+     * @var string
      */
-    public function setOptions(array $options)
-    {
-        $class_attr = get_object_vars($this);
-        foreach($options as $key => $val)
-        {
-            $attr = $key;
-            if(array_key_exists($attr, $class_attr))
-            {
-                $this->$attr = $val;
-            }
-        }
-        return $this;
-    }
+    protected $journey_type;
+
+    /**
+     * @var integer
+     */
+    protected $days;
+
+    /**
+     * @var string
+     */
+    protected $pickup_loc;
+
+    /**
+     * @var \DateTime
+     */
+    protected $pickup_time;
+
+    /**
+     * @var string
+     */
+    protected $destination;
+
+    /**
+     * @var \DateTime
+     */
+    protected $return_time;
+
+    /**
+     * @var string
+     */
+    protected $purpose;
+
+    /**
+     * @var \DateTime
+     */
+    protected $created_at;
+
+    /**
+     * @var \DateTime
+     */
+    protected $updated_at;
+
+    /**
+     * @var \Panda86\AppBundle\Entity\VType
+     */
+    protected $vtype;
+
 
     /**
      * Get id
@@ -115,29 +82,6 @@ class Request {
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set requestedFor
-     *
-     * @param string $requestedFor
-     * @return Request
-     */
-    public function setRequestedFor($requestedFor)
-    {
-        $this->requested_for = $requestedFor;
-
-        return $this;
-    }
-
-    /**
-     * Get requestedFor
-     *
-     * @return string 
-     */
-    public function getRequestedFor()
-    {
-        return $this->requested_for;
     }
 
     /**
@@ -164,72 +108,26 @@ class Request {
     }
 
     /**
-     * Set start_time
+     * Set days
      *
-     * @param \DateTime $startTime
+     * @param integer $days
      * @return Request
      */
-    public function setStartTime($startTime)
+    public function setDays($days)
     {
-        $this->start_time = $startTime;
+        $this->days = $days;
 
         return $this;
     }
 
     /**
-     * Get start_time
+     * Get days
      *
-     * @return \DateTime 
+     * @return integer 
      */
-    public function getStartTime()
+    public function getDays()
     {
-        return $this->start_time;
-    }
-
-    /**
-     * Set start_loc
-     *
-     * @param string $startLoc
-     * @return Request
-     */
-    public function setStartLoc($startLoc)
-    {
-        $this->start_loc = $startLoc;
-
-        return $this;
-    }
-
-    /**
-     * Get start_loc
-     *
-     * @return string 
-     */
-    public function getStartLoc()
-    {
-        return $this->start_loc;
-    }
-
-    /**
-     * Set pickup_time
-     *
-     * @param \DateTime $pickupTime
-     * @return Request
-     */
-    public function setPickupTime($pickupTime)
-    {
-        $this->pickup_time = $pickupTime;
-
-        return $this;
-    }
-
-    /**
-     * Get pickup_time
-     *
-     * @return \DateTime 
-     */
-    public function getPickupTime()
-    {
-        return $this->pickup_time;
+        return $this->days;
     }
 
     /**
@@ -256,72 +154,72 @@ class Request {
     }
 
     /**
-     * Set end_time
+     * Set pickup_time
      *
-     * @param \DateTime $endTime
+     * @param \DateTime $pickupTime
      * @return Request
      */
-    public function setEndTime($endTime)
+    public function setPickupTime($pickupTime)
     {
-        $this->end_time = $endTime;
+        $this->pickup_time = $pickupTime;
 
         return $this;
     }
 
     /**
-     * Get end_time
+     * Get pickup_time
      *
      * @return \DateTime 
      */
-    public function getEndTime()
+    public function getPickupTime()
     {
-        return $this->end_time;
+        return $this->pickup_time;
     }
 
     /**
-     * Set end_loc
+     * Set destination
      *
-     * @param string $endLoc
+     * @param string $destination
      * @return Request
      */
-    public function setEndLoc($endLoc)
+    public function setDestination($destination)
     {
-        $this->end_loc = $endLoc;
+        $this->destination = $destination;
 
         return $this;
     }
 
     /**
-     * Get end_loc
+     * Get destination
      *
      * @return string 
      */
-    public function getEndLoc()
+    public function getDestination()
     {
-        return $this->end_loc;
+        return $this->destination;
     }
 
     /**
-     * Set vehicle_type
+     * Set return_time
      *
-     * @param string $vehicleType
+     * @param \DateTime $returnTime
      * @return Request
      */
-    public function setVehicleType($vehicleType)
+    public function setReturnTime($returnTime)
     {
-        $this->vehicle_type = $vehicleType;
+        $this->return_time = $returnTime;
 
         return $this;
     }
 
     /**
-     * Get vehicle_type
+     * Get return_time
      *
-     * @return string 
+     * @return \DateTime 
      */
-    public function getVehicleType()
+    public function getReturnTime()
     {
-        return $this->vehicle_type;
+        return $this->return_time;
     }
 
     /**
@@ -348,29 +246,6 @@ class Request {
     }
 
     /**
-     * Set accompaniedBy
-     *
-     * @param string $accompaniedBy
-     * @return Request
-     */
-    public function setAccompaniedBy($accompaniedBy)
-    {
-        $this->accompanied_by = $accompaniedBy;
-
-        return $this;
-    }
-
-    /**
-     * Get accompaniedBy
-     *
-     * @return string
-     */
-    public function getAccompaniedBy()
-    {
-        return $this->accompanied_by;
-    }
-
-    /**
      * Set created_at
      *
      * @param \DateTime $createdAt
@@ -394,41 +269,48 @@ class Request {
     }
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $employees;
-
-
-    /**
-     * Add employees
+     * Set updated_at
      *
-     * @param \Panda86\AppBundle\Entity\Employee $employees
+     * @param \DateTime $updatedAt
      * @return Request
      */
-    public function addEmployee(\Panda86\AppBundle\Entity\Employee $employees)
+    public function setUpdatedAt($updatedAt)
     {
-        $this->employees[] = $employees;
+        $this->updated_at = $updatedAt;
 
         return $this;
     }
 
     /**
-     * Remove employees
+     * Get updated_at
      *
-     * @param \Panda86\AppBundle\Entity\Employee $employees
+     * @return \DateTime 
      */
-    public function removeEmployee(\Panda86\AppBundle\Entity\Employee $employees)
+    public function getUpdatedAt()
     {
-        $this->employees->removeElement($employees);
+        return $this->updated_at;
     }
 
     /**
-     * Get employees
+     * Set vtype
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @param \Panda86\AppBundle\Entity\VType $vtype
+     * @return Request
      */
-    public function getEmployees()
+    public function setVtype(\Panda86\AppBundle\Entity\VType $vtype = null)
     {
-        return $this->employees;
+        $this->vtype = $vtype;
+
+        return $this;
+    }
+
+    /**
+     * Get vtype
+     *
+     * @return \Panda86\AppBundle\Entity\VType 
+     */
+    public function getVtype()
+    {
+        return $this->vtype;
     }
 }

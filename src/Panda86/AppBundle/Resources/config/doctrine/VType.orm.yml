@@ -16,9 +16,9 @@ Panda86\AppBundle\Entity\VType:
             length: 255
             nullable: true
     oneToMany:
-            vehicles:
-                targetEntity: Vehicle
-                mappedBy: vtype
+        vehicles:
+            targetEntity: Vehicle
+            mappedBy: vtype
     uniqueConstraints:
         vtype_name:
             columns: name
