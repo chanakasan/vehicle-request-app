@@ -11,33 +11,21 @@ class RequestType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('requested_for')
             ->add('journey_type', 'choice', array(
             'choices'   => array(
-                'single' => 'Single',
-                'return' => 'Return',
+                'oneday-single' => 'Single',
+                'oneday-return' => 'Return',
                 ),
              'required'  => true,
+             'multiple'  => true,
+             'expanded'  => true,
             ))
-            ->add('start_time','dateTimePicker')
-            ->add('start_loc')
-            ->add('pickup_time','dateTimePicker')
+            ->add('days')
+            ->add('vtype')
+            //->add('pickup_time','dateTimePicker')
             ->add('pickup_loc')
-            ->add('end_time','dateTimePicker')
-            ->add('end_loc')
-            ->add('vehicle_type', 'choice', array(
-             'choices' => array(
-                 'car' => 'Car',
-                 'van' => 'Van',
-                 'jeep' => 'Jeep',
-             ),
-            ))
+            ->add('destination')
             ->add('purpose')
-            ->add('accompanied_by' , 'entity' , array(
-                'class'    => 'Panda86AppBundle:Employee' ,
-                'property' => 'name' ,
-                'expanded' => false ,
-                'multiple' => true , ))
         ;
     }
 

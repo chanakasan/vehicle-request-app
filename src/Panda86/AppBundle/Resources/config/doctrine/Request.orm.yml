@@ -17,16 +17,13 @@ Panda86\AppBundle\Entity\Request:
         pickup_loc:
             type: string
             length: '64'
-            column: pickup_loc
         pickup_time:
             type: datetime
-            column: pickup_time
         destination:
             type: string
             length: '64'
         return_time:
             type: datetime
-            column: return_time
         purpose:
             type: string
             length: '64'

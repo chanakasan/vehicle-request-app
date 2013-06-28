@@ -18,17 +18,17 @@
     <testsuites>
         <testsuite name="My TestSuite">
             <directory>unit</directory>
-            <!--<directory>integration</directory>-->
+            <directory>integration</directory>
             <!--<directory>edge-to-edge</directory>-->
             <!--<directory>end-to-end</directory>-->
         </testsuite>
     </testsuites>
 
-    <!--
+
     <php>
-        <server name="KERNEL_DIR" value="/path/to/your/app/" />
+        <server name="KERNEL_DIR" value="../../../../app" />
     </php>
-    -->
+
 
     <filter>
         <whitelist>

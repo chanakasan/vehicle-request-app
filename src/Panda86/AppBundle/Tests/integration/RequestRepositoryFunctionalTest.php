@@ -1,7 +1,7 @@
 <?php
 
-namespace Panda86\AppBundle\Tests\Entity;
-use Panda86\AppBundle\Tests\Integration\Ke;
+namespace Panda86\AppBundle\Tests\Integration;
+
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class RequestRepositoryFunctionalTest extends WebTestCase
@@ -11,9 +11,11 @@ class RequestRepositoryFunctionalTest extends WebTestCase
     */
     private $em;
 
-    /**
-     * {@inheritDoc}
-     */
+    public static function setUpBeforeClass()
+    {
+
+    }
+
     public function setUp()
     {
         static::$kernel = static::createKernel();
@@ -22,6 +24,8 @@ class RequestRepositoryFunctionalTest extends WebTestCase
             ->get('doctrine')
             ->getManager()
         ;
+
+        $this->generateSchema();
     }
 
     public function testFindById()
@@ -30,12 +34,29 @@ class RequestRepositoryFunctionalTest extends WebTestCase
             ->getRepository('Panda86AppBundle:Request')
             ->findAll()
         ;
-        $this->assertCount(1, $results);
+        $this->assertCount(0, $results);
+    }
+    /**
+     * @return null
+     */
+    protected function generateSchema()
+    {
+        $metadatas = $this->getMetadatas();
+
+        if (!empty($metadatas)) {
+            $tool = new \Doctrine\ORM\Tools\SchemaTool($this->em);
+            $tool->dropSchema($metadatas);
+            $tool->createSchema($metadatas);
+        }
     }
 
     /**
-     * {@inheritDoc}
+     * @return array
      */
+    protected function getMetadatas() {
+        return $this->em->getMetadataFactory()->getAllMetadata();
+    }
+
     protected function tearDown()
     {
         parent::tearDown();

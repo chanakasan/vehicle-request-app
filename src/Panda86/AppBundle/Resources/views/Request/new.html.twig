@@ -8,30 +8,24 @@
 
 {% block body -%}
     <h1>Request for a vehicle</h1>
+
     {% form_theme form 'Panda86AppBundle:Form:form_datetimepicker_type.html.twig' %}
+
     <form action="{{ path('request_create') }}" method="post" {{ form_enctype(form) }}>
         <!-- form validation -->
         {{ form_errors(form) }}
         {{ form_widget(form._token) }}
 
         <!-- form fields -->
-        {{ form_row(form.requested_for, {'label' : 'Requested For: '}) }}
         {{ form_row(form.journey_type, {'label' : 'Journey Type: '}) }}
         <div id='single_journey'>
-            {{ form_row(form.start_time, {'label' : 'Start Date/Time: '}) }}
-            {{ form_row(form.start_loc, {'label' : 'Start Location: '}) }}
-        </div>
-        <div id='return_journey'>
-            {{ form_row(form.pickup_time, {'label' : 'Pickup Date/Time: '}) }}
+            {{ form_row(form.days, {'label' : 'No. of Days: '}) }}
             {{ form_row(form.pickup_loc, {'label' : 'Pickup Location: '}) }}
+            {#{{ form_row(form.pickup_time, {'label' : 'Pickup Date/Time: '}) }}#}
+            {{ form_row(form.destination, {'label' : 'Destination: '}) }}
         </div>
-        <div id='journey_end'>
-            {{ form_row(form.end_time, {'label' : 'End Date/Time: '}) }}
-            {{ form_row(form.end_loc, {'label' : 'End Location: '}) }}
-        </div>
-         {{ form_row(form.vehicle_type, {'label' : 'Vehicle Type: '}) }}
-         {{ form_row(form.purpose, {'label' : 'Purpose of Journey: '}) }}
-         {{ form_row(form.accompanied_by, {'label' : 'Accompanied Officers: '}) }}
+        {{ form_row(form.vtype, {'label' : 'Vehicle Type'}) }}
+        {{ form_row(form.purpose, {'label' : 'Purpose of Journey: '}) }}
 
         <!--/form fields-->
         <p>

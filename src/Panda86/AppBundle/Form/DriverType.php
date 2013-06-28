@@ -30,6 +30,6 @@ class DriverType extends AbstractType
 
     public function getName()
     {
-        return 'panda86_appbundle_drivertype';
+        return 'driver';
     }
 }

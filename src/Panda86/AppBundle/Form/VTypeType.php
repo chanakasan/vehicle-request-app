@@ -25,6 +25,6 @@ class VTypeType extends AbstractType
 
     public function getName()
     {
-        return 'panda86_appbundle_vtypetype';
+        return 'vtype';
     }
 }
