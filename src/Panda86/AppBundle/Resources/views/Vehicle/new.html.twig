@@ -1,10 +1,22 @@
-{% extends '::admin.html.twig' %}
+{% extends '::admin-ui.html.twig' %}
 
 {% block body -%}
-    <h1>Vehicle creation</h1>
+    <h3>Add a Vehicle to list</h3   >
 
-    <form action="{{ path('vehicle_create') }}" method="post" {{ form_enctype(form) }}>
-        {{ form_widget(form) }}
+    <form novalidate action="{{ path('vehicle_create') }}" method="post" {{ form_enctype(form) }}>
+        <!-- form validation -->
+        {{ form_errors(form) }}
+        {{ form_widget(form._token) }}
+        <!-- form fields -->
+        {{ form_row(form.make, {'label' : 'Make: '}) }}
+        {{ form_row(form.model, {'label' : 'Model: '}) }}
+        {{ form_row(form.reg_no, {'label' : 'Registration No.: '}) }}
+        {{ form_row(form.vtype, {'label' : 'Vehicle Type: '}) }}
+        {{ form_row(form.passengers, {'label' : 'No of passengers: '}) }}
+        {{ form_row(form.ac, {'label' : 'Air conditioned: '}) }}
+        {{ form_row(form.remarks, {'label' : 'Other details (Optional): '}) }}
+
+        <!--/ form fields -->
         <p>
             <button type="submit">Create</button>
         </p>

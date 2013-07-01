@@ -11,7 +11,7 @@ class Vehicle extends Base
     {
         $this->ac = true;
         $this->remarks ='';
-        $this->added = new \DateTime('now');
+        $this->was_added = new \DateTime('now');
 
         parent::__construct($options);
     }

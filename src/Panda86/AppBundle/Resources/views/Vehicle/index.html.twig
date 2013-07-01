@@ -1,20 +1,17 @@
-{% extends '::admin.html.twig' %}
+{% extends '::admin-ui.html.twig' %}
 
 {% block body -%}
-    <h1>Vehicle list</h1>
+    <h1>Vehicles' details</h1>
 
     <table class="records_list">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Make</th>
-                <th>Model</th>
-                <th>Reg_no</th>
+                <th>Vehicle</th>
+                <th>Reg. No.</th>
+                <th>Category</th>
                 <th>Passengers</th>
-                <th>Ac</th>
-                <th>Remarks</th>
-                <th>Company_owned</th>
-                <th>Added</th>
+                <th>Date added</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -22,14 +19,11 @@
         {% for entity in entities %}
             <tr>
                 <td><a href="{{ path('vehicle_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.make }}</td>
-                <td>{{ entity.model }}</td>
+                <td>{{ entity.make }} {{ entity.model }}</td>
                 <td>{{ entity.regno }}</td>
+                <td>{{ entity.vtype.name }}</td>
                 <td>{{ entity.passengers }}</td>
-                <td>{{ entity.ac }}</td>
-                <td>{{ entity.remarks }}</td>
-                <td>{{ entity.companyowned }}</td>
-                <td>{% if entity.added %}{{ entity.added|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.wasadded %}{{ entity.wasadded|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>
                 <ul>
                     <li>
