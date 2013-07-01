@@ -16,7 +16,6 @@ class RequestType extends AbstractType
                 'oneday-single' => 'Single',
                 'oneday-return' => 'Return',
                 ),
-             'required'  => true,
              'multiple'  => true,
              'expanded'  => true,
             ))

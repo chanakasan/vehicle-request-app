@@ -1,14 +1,10 @@
-{% extends '::admin.html.twig' %}
+{% extends '::admin-ui.html.twig' %}
 
 {% block body -%}
-    <h1>Vehicle</h1>
+    <h3>Vehicle details</h3>
 
     <table class="record_properties">
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
             <tr>
                 <th>Make</th>
                 <td>{{ entity.make }}</td>
@@ -18,7 +14,7 @@
                 <td>{{ entity.model }}</td>
             </tr>
             <tr>
-                <th>Reg_no</th>
+                <th>Reg No.</th>
                 <td>{{ entity.regno }}</td>
             </tr>
             <tr>
@@ -26,30 +22,25 @@
                 <td>{{ entity.passengers }}</td>
             </tr>
             <tr>
-                <th>Ac</th>
+                <th>Air-Conditioned</th>
                 <td>{{ entity.ac }}</td>
             </tr>
             <tr>
-                <th>Remarks</th>
+                <th>Owned by company</th>
+                <td>{{ entity.iscompanyowned }}</td>
+            </tr>
+            <tr>
+                <th>Other details</th>
                 <td>{{ entity.remarks }}</td>
             </tr>
             <tr>
-                <th>Company_owned</th>
-                <td>{{ entity.companyowned }}</td>
-            </tr>
-            <tr>
-                <th>Added</th>
-                <td>{{ entity.added|date('Y-m-d H:i:s') }}</td>
+                <th>Date added</th>
+                <td>{{ entity.wasadded|date('Y-m-d H:i:s') }}</td>
             </tr>
         </tbody>
     </table>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('vehicle') }}">
-            Back to the list
-        </a>
-    </li>
+<ul class="record_actions">
     <li>
         <a href="{{ path('vehicle_edit', { 'id': entity.id }) }}">
             Edit
@@ -61,6 +52,11 @@
             {{ form_widget(delete_form) }}
             <button type="submit">Delete</button>
         </form>
+    </li>
+    <li>
+        <a href="{{ path('vehicle') }}">
+            Back to the list
+        </a>
     </li>
 </ul>
 {% endblock %}

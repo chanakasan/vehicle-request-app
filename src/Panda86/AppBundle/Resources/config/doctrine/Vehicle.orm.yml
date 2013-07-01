@@ -21,7 +21,7 @@ Panda86\AppBundle\Entity\Vehicle:
             type: integer
             length: 11
         ac:
-            type: boolean        
+            type: boolean
         remarks:
             type: string
             length: '255'

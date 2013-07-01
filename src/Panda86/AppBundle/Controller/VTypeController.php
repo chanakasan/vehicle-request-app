@@ -44,7 +44,7 @@ class VTypeController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('vehicle-type_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('vtype', array('id' => $entity->getId())));
         }
 
         return $this->render('Panda86AppBundle:VType:new.html.twig', array(
@@ -66,27 +66,6 @@ class VTypeController extends Controller
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
-    }
-
-    /**
-     * Finds and displays a VType entity.
-     *
-     */
-    public function showAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('Panda86AppBundle:VType')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find VType entity.');
-        }
-
-        $deleteForm = $this->createDeleteForm($id);
-
-        return $this->render('Panda86AppBundle:VType:show.html.twig', array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),        ));
     }
 
     /**
@@ -135,7 +114,7 @@ class VTypeController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('vehicle-type_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('vtype_edit', array('id' => $id)));
         }
 
         return $this->render('Panda86AppBundle:VType:edit.html.twig', array(
@@ -166,7 +145,7 @@ class VTypeController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('vehicle-type'));
+        return $this->redirect($this->generateUrl('vtype'));
     }
 
     /**

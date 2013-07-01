@@ -20,25 +20,25 @@ class LoadVehicleData implements FixtureInterface
         $vehicle1->setRegNo('XX-1234');
         $vehicle1->setAc(true);
         $vehicle1->setPassengers(3);
-        $vehicle1->setCompanyOwned(true);
+        $vehicle1->setIsCompanyOwned(true);
 
         $vehicle2 = new Vehicle();
         $vehicle2->setMake('Toyota');
         $vehicle2->setModel('Townace');
         //$vehicle2->setType('van');
-        $vehicle2->setRegNo('XX-1234');
+        $vehicle2->setRegNo('XX-1235');
         $vehicle2->setAc(true);
         $vehicle2->setPassengers(8);
-        $vehicle2->setCompanyOwned(true);
+        $vehicle2->setIsCompanyOwned(true);
         
         $vehicle3 = new Vehicle();
         $vehicle3->setMake('Hyundai');
         $vehicle3->setModel('Santa Fe');
         //$vehicle3->setVType('jeep');
-        $vehicle3->setRegNo('XX-1234');
+        $vehicle3->setRegNo('XX-1236');
         $vehicle3->setPassengers(3);
         $vehicle3->setAc(true);
-        $vehicle3->setCompanyOwned(true);
+        $vehicle3->setIsCompanyOwned(true);
                 
         $vtype1 = new VType();
         $vtype1->setName('12-passenger-van');

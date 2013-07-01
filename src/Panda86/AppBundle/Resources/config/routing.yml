@@ -10,6 +10,10 @@ Panda86AppBundle_vehicle:
         resource: "@Panda86AppBundle/Resources/config/routing/vehicle.yml"
         prefix:   /vehicle
 
+Panda86AppBundle_vtype:
+        resource: "@Panda86AppBundle/Resources/config/routing/vtype.yml"
+        prefix:   /vtype
+
 Panda86AppBundle_driver:
         resource: "@Panda86AppBundle/Resources/config/routing/driver.yml"
         prefix:   /driver
