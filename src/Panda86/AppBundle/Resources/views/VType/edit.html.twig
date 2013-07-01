@@ -1,28 +1,29 @@
-{% extends '::admin.html.twig' %}
+{% extends '::admin-ui.html.twig' %}
 
 {% block body -%}
-    <h1>VType edit</h1>
+    <h3>Edit vehicle category </h3>
 
-    <form action="{{ path('vehicle-type_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+    <form action="{{ path('vtype_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
         <input type="hidden" name="_method" value="PUT" />
         {{ form_widget(edit_form) }}
-        <p>
-            <button type="submit">Edit</button>
-        </p>
+        <ul>
+            <li>
+                <button type="submit">Save</button>
+            </li>
+        </ul>
     </form>
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('vehicle-type') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <form action="{{ path('vehicle-type_delete', { 'id': entity.id }) }}" method="post">
-            <input type="hidden" name="_method" value="DELETE" />
-            {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
-        </form>
-    </li>
-</ul>
+    <ul class="record_actions">
+        <li>
+            <form action="{{ path('vtype_delete', { 'id': entity.id }) }}" method="post">
+                <input type="hidden" name="_method" value="DELETE" />
+                {{ form_widget(delete_form) }}
+                <button type="submit">Delete entry</button>
+            </form>
+        </li>
+        <li>
+            <a href="{{ path('vtype') }}">
+                Back to the list
+            </a>
+        </li>
+    </ul>
 {% endblock %}

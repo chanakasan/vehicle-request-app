@@ -2,10 +2,6 @@ vtype:
     pattern:  /
     defaults: { _controller: "Panda86AppBundle:VType:index" }
 
-vtype_show:
-    pattern:  /{id}/show
-    defaults: { _controller: "Panda86AppBundle:VType:show" }
-
 vtype_new:
     pattern:  /new
     defaults: { _controller: "Panda86AppBundle:VType:new" }
