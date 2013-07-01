@@ -1,10 +1,10 @@
-panda86_app_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: Panda86AppBundle:Default:index }
+admin_home:
+    pattern:  /admin
+    defaults: { _controller: Panda86AppBundle:Home:index }
 
-Panda86AppBundle_vehicle-type:
+Panda86AppBundle_vtype:
         resource: "@Panda86AppBundle/Resources/config/routing/vtype.yml"
-        prefix:   /vehicle-type
+        prefix:   /vtype
 
 Panda86AppBundle_vehicle:
         resource: "@Panda86AppBundle/Resources/config/routing/vehicle.yml"
@@ -18,3 +18,6 @@ Panda86AppBundle_driver:
         resource: "@Panda86AppBundle/Resources/config/routing/driver.yml"
         prefix:   /driver
 
+Panda86AppBundle_request:
+        resource: "@Panda86AppBundle/Resources/config/routing/request.yml"
+        prefix:   /request
