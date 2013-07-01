@@ -14,10 +14,10 @@
 
         <input class="input-block-level" placeholder="Password" type="password" id="password" name="_password" required="required" />
 
-        <div>
-            <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-            <label class="checkbox" for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>
-        </div>
+        {#<div>#}
+            {#<input type="checkbox" id="remember_me" name="_remember_me" value="on" />#}
+            {#<label class="checkbox" for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>#}
+        {#</div>#}
 
         <input class="btn btn-primary" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" />
     </form>

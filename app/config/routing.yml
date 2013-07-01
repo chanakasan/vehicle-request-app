@@ -16,23 +16,11 @@ panda86_admin:
     resource: "@Panda86UserBundle/Resources/config/routing.yml"
     prefix:   /
 
-panda86_vehicle:
-        resource: "@Panda86AppBundle/Resources/config/routing/vehicle.yml"
-        prefix:   /vehicle
-
-panda86_request:
-        resource: "@Panda86AppBundle/Resources/config/routing/request.yml"
-        prefix:   /request
-
-Panda86_driver:
-        resource: "@Panda86AppBundle/Resources/config/routing/driver.yml"
-        prefix:   /driver
-
 panda86_app:
     resource: "@Panda86AppBundle/Resources/config/routing.yml"
     prefix:   /
 
 # sandbox routes
-AcmeSandboxBundle_sandbox:
-        resource: "@AcmeSandboxBundle/Resources/config/routing/sandbox.yml"
-        prefix:   /
+Acme_sandbox:
+    resource: "@AcmeSandboxBundle/Resources/config/routing/sandbox.yml"
+    prefix:   /
