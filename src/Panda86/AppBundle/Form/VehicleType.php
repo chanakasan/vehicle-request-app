@@ -21,6 +21,7 @@ class VehicleType extends AbstractType
             ->add('passengers')
             ->add('ac')
             ->add('is_company_owned')
+            ->add('image', 'file')
             ->add('remarks')
         ;
     }

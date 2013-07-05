@@ -30,6 +30,10 @@ Panda86\AppBundle\Entity\Vehicle:
             type: boolean
         was_added:
             type: datetime
+        image:
+            type: string
+            length: '255'
+            nullable: true
     manyToOne:
         vtype:
             targetEntity: VType

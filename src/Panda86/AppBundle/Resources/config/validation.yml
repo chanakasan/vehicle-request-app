@@ -11,3 +11,8 @@ Panda86\AppBundle\Entity\Request:
         purpose:
             - NotBlank: ~
 
+Panda86\AppBundle\Entity\Vehicle:
+    properties:
+        image:
+            - File:
+                maxSize: 6000000
