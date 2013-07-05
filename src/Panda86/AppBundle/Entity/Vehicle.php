@@ -283,4 +283,60 @@ class Vehicle extends Base
     {
         return $this->vtype;
     }
+    /**
+     * @var string
+     */
+    private $image;
+
+
+    /**
+     * Set image
+     *
+     * @param string $image
+     * @return Vehicle
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string 
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    public function getFullImagePath()
+    {
+        return null === $this->image
+            ? null
+            : $this->getImageUploadRootDir().'/'.$this->image;
+    }
+
+    public function getImageWebPath()
+    {
+        return null === $this->image
+            ? null
+            : $this->getImageUploadDir().'/'.$this->image;
+    }
+
+    public function getImageUploadRootDir()
+    {
+        // the absolute directory path where uploaded
+        // documents should be saved
+        return __DIR__.'/../../../../web/'.$this->getImageUploadDir();
+    }
+
+    public function getImageUploadDir()
+    {
+        // get rid of the __DIR__ so it doesn't screw up
+        // when displaying uploaded doc/image in the view.
+        return 'uploads/images/vehicles';
+    }
 }

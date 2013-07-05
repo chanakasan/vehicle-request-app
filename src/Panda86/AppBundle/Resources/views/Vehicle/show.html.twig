@@ -2,7 +2,10 @@
 
 {% block body -%}
     <h3>Vehicle details</h3>
-
+    <br/>
+    <div id="v-photo">
+        <img src="/uploads/images/vehicles/{{ entity.image }}" width="400" height="300"/>
+    </div>
     <table class="record_properties">
         <tbody>
             <tr>
@@ -30,6 +33,10 @@
                 <td>{{ entity.iscompanyowned }}</td>
             </tr>
             <tr>
+                <th>Photo file</th>
+                <td>{{ entity.image }}</td>
+            </tr>
+            <tr>
                 <th>Other details</th>
                 <td>{{ entity.remarks }}</td>
             </tr>
@@ -40,23 +47,23 @@
         </tbody>
     </table>
 
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('vehicle_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>
-        <form action="{{ path('vehicle_delete', { 'id': entity.id }) }}" method="post">
-            <input type="hidden" name="_method" value="DELETE" />
-            {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
-        </form>
-    </li>
-    <li>
-        <a href="{{ path('vehicle') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('vehicle_edit', { 'id': entity.id }) }}">
+                Edit
+            </a>
+        </li>
+        <li>
+            <form action="{{ path('vehicle_delete', { 'id': entity.id }) }}" method="post">
+                <input type="hidden" name="_method" value="DELETE" />
+                {{ form_widget(delete_form) }}
+                <button type="submit">Delete</button>
+            </form>
+        </li>
+        <li>
+            <a href="{{ path('vehicle') }}">
+                Back to the list
+            </a>
+        </li>
+    </ul>
 {% endblock %}
