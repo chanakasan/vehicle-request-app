@@ -12,6 +12,7 @@ class Vehicle extends Base
         $this->ac = true;
         $this->remarks ='';
         $this->was_added = new \DateTime('now');
+        $this->setIsCompanyOwned(true);
 
         parent::__construct($options);
     }
