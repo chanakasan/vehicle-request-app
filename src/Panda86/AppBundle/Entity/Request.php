@@ -13,6 +13,11 @@ class Request extends Base {
     public function __construct(array $options = null)
     {
         $this->created_at = new \DateTime('now');
+        $this->updated_at = new \DateTime('now');
+        $this->days = 1;
+        $this->pickup_loc = 'ICTA';
+        $this->destination = 'Colombo';
+        $this->purpose = 'Official';
 
         parent::__construct($options);
     }

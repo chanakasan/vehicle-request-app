@@ -21,7 +21,8 @@
         <div id='single_journey'>
             {{ form_row(form.days, {'label' : 'No. of Days: '}) }}
             {{ form_row(form.pickup_loc, {'label' : 'Pickup Location: '}) }}
-            {#{{ form_row(form.pickup_time, {'label' : 'Pickup Date/Time: '}) }}#}
+            {{ form_row(form.pickup_time, {'label' : 'Pickup Date/Time: '}) }}
+            <input type="text" id="alternate" size="30" />
             {{ form_row(form.destination, {'label' : 'Destination: '}) }}
         </div>
         {{ form_row(form.vtype, {'label' : 'Vehicle Type'}) }}
@@ -44,5 +45,22 @@
 {% block javascripts %}
     {{ parent() }}
     <script src="/public/js/jquery-ui.js"></script>
+    <script src="/public/js/jquery-ui-i18n.js"></script>
+    <script src="/public/js/jquery.ui.datepicker-en-AU.js"></script>
+    <script src="/public/js/jquery.ui.datepicker-en-GB.js"></script>
+    <script src="/public/js/jquery.ui.datepicker-en-NZ.js"></script>
+    <script>
+        global = {
+            locale   : '{{ app.request.locale }}'
+        }
+    </script>
+    <script src="/public/js/jquery.timeentry.js"></script>
     <script src="/public/js/reqForm.js"></script>
+    <script>
+        $( "#request_pickup_time_datepicker" ).datepicker({
+            altField: "#alternate",
+            altFormat: "DD, d MM, yy"
+        });
+        $('#request_pickup_time_timepicker').timeEntry();
+    </script>
 {% endblock %}

@@ -24,6 +24,7 @@ Panda86\AppBundle\Entity\Request:
             length: '64'
         return_time:
             type: datetime
+            nullable: true
         purpose:
             type: string
             length: '64'

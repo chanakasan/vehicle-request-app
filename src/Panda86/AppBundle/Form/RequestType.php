@@ -13,15 +13,18 @@ class RequestType extends AbstractType
         $builder
             ->add('journey_type', 'choice', array(
             'choices'   => array(
-                'oneday-single' => 'Single',
-                'oneday-return' => 'Return',
+                'single' => 'Single',
+                'return' => 'Single and Return',
                 ),
-             'multiple'  => true,
+             'multiple'  => false,
              'expanded'  => true,
             ))
             ->add('days')
-            ->add('vtype')
-            //->add('pickup_time','dateTimePicker')
+            ->add('vtype', 'entity',array(
+                'class' => 'Panda86AppBundle:VType',
+                'property' => 'name',
+            ))
+            ->add('pickup_time','dateTimePicker')
             ->add('pickup_loc')
             ->add('destination')
             ->add('purpose')

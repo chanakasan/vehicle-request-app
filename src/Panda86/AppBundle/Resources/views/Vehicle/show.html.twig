@@ -26,11 +26,11 @@
             </tr>
             <tr>
                 <th>Air-Conditioned</th>
-                <td>{{ entity.ac }}</td>
+                <td>{% if entity.ac %}Yes{% endif %}</td>
             </tr>
             <tr>
                 <th>Owned by company</th>
-                <td>{{ entity.iscompanyowned }}</td>
+                <td>{% if entity.iscompanyowned %}Yes{% endif %}</td>
             </tr>
             <tr>
                 <th>Photo file</th>

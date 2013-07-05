@@ -10,7 +10,7 @@ class DatePickerType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'widget' => 'single_text'
+            'widget' => 'single_text',
         ));
     }
 

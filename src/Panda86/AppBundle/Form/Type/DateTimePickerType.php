@@ -30,7 +30,7 @@ class DateTimePickerType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver) {
         $resolver->setDefaults(array(
             'date_widget' => 'single_text',
-            'time_widget' => 'choice'
+            'time_widget' => 'single_text'
         ));
     }
 
