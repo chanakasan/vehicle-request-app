@@ -3,8 +3,6 @@
 namespace Panda86\AppBundle\Tests\Unit\Entity;
 
 use Panda86\AppBundle\Entity\Driver;
-use Symfony\Component\Config\Definition\Exception\Exception;
-use Symfony\Component\Validator\Constraints\Date;
 
 class DriverTest extends \PHPUnit_Framework_TestCase {
 
@@ -27,7 +25,7 @@ class DriverTest extends \PHPUnit_Framework_TestCase {
 
     public function testCanCreateDriver()
     {
-        $driver =  new Driver();
+        $driver =  new Driver($this->args);
         $this->assertInstanceOf('Panda86\AppBundle\Entity\Driver', $driver);
         return $driver;
     }
@@ -37,8 +35,6 @@ class DriverTest extends \PHPUnit_Framework_TestCase {
      */
     public function testCanSetAttribs(Driver $driver)
     {
-        $driver->setOptions($this->args);
-
         $this->assertEquals($this->args['first_name'], $driver->getFirstName());
         $this->assertEquals($this->args['last_name'], $driver->getLastName());
         $this->assertEquals($this->args['display_name'], $driver->getDisplayName());

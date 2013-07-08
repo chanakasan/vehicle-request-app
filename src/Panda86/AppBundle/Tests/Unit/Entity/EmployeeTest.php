@@ -11,8 +11,7 @@ class EmployeeTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
             $this->args = array(
-              'employee-01' => new Employee(array(
-                'name' => 'John Doe'))
+                'name' => 'John Doe'
             );
     }
 

@@ -1,0 +1,31 @@
+Panda86\AppBundle\Entity\ApprovedRequest:
+    type: entity
+    table: hr_approved
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        created:
+            type: datetime
+        updated:
+            type: datetime
+    oneToOne:
+        request:
+          targetEntity: Request
+          joinColumn:
+            name: request_id
+            referencedColumnName: id
+        vehicle:
+          targetEntity: Vehicle
+          joinColumn:
+            name: vehicle_id
+            referencedColumnName: id
+        driver:
+          targetEntity: Driver
+          joinColumn:
+            name: driver_id
+            referencedColumnName: id
+    lifecycleCallbacks: {  }

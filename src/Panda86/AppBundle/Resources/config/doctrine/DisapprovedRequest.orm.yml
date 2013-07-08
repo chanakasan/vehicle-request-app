@@ -1,0 +1,21 @@
+Panda86\AppBundle\Entity\DisapprovedRequest:
+    type: entity
+    table: hr_disapproved
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        created:
+            type: datetime
+        updated:
+            type: datetime
+    oneToOne:
+        request:
+          targetEntity: Request
+          joinColumn:
+            name: request_id
+            referencedColumnName: id
+    lifecycleCallbacks: {  }

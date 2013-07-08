@@ -17,8 +17,8 @@
 
     <testsuites>
         <testsuite name="My TestSuite">
-            <directory>unit</directory>
-            <directory>integration</directory>
+            <directory>Unit</directory>
+            <directory>Integration</directory>
             <!--<directory>edge-to-edge</directory>-->
             <!--<directory>end-to-end</directory>-->
         </testsuite>

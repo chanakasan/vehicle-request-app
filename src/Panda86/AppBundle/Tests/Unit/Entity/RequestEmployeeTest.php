@@ -16,19 +16,22 @@ class RequestEmployeeTest extends \PHPUnit_Framework_TestCase {
     public function setUp()
     {
         $this->emp_args = array(
-            'employee1' => new Employee(array(
-                'name' => 'John Doe'
-            ))
+            'name' => 'John Doe'
         );
         $this->req_args = array(
-            'requested_for' => 'Mr. Employee',
             'journey_type' => 'single',
+            'days' => 1,
+            'pickup_loc' => 'ICTA',
+            'pickup_time' =>  strtotime("+1 week 2 days 4 hours 2 seconds"),
+            'destination' => 'colombo',
+            'return_time' => strtotime("+1 week 2 days 6 hours 2 seconds"),
             'vtype' => new VType(array(
                 'name' => '4-passenger-sedan',
                 'descrip' => 'Standard car with four passenger seats'
             )),
             'purpose' => 'Official',
-            'accompanied_by' => 'Mr. Employee B'
+            'created_at' => new \DateTime('now'),
+            'updated_at' => strtotime("+10 minutes"),
         );
     }
 
@@ -55,7 +58,6 @@ class RequestEmployeeTest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals($employee, $requestEmployee->getEmployee());
         $this->assertEquals($request, $requestEmployee->getRequest());
         $this->assertTrue($requestEmployee->getIsOwner());
-
     }
 
 }

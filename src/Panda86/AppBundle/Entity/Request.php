@@ -7,6 +7,29 @@ use Panda86\AppBundle\Entity\Base;
 
 class Request extends Base {
 
+    protected $journey_opts = array('SINGLE', 'RETURN');
+
+    /**
+     * Set journey_type
+     *
+     * @param string $journeyType
+     * @return Request
+     */
+    public function setJourneyType($journeyType)
+    {
+        foreach($this->journey_opts as $opt)
+        {
+            if(strtoupper($journeyType) === $opt)
+            {
+                $this->journey_type = $journeyType;
+                return $this;
+            }
+            else
+                throw new \InvalidArgumentException('Invalid journey type: '.$journeyType);
+        }
+
+    }
+
     /**
      * Constructor
      */
@@ -14,8 +37,11 @@ class Request extends Base {
     {
         $this->created_at = new \DateTime('now');
         $this->updated_at = new \DateTime('now');
-        $this->days = 1;
+        $this->return_time = '';
         $this->pickup_loc = 'ICTA';
+        $this->days = 1;
+        $this->active = true;
+
         $this->destination = 'Colombo';
         $this->purpose = 'Official';
 
@@ -87,19 +113,6 @@ class Request extends Base {
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set journey_type
-     *
-     * @param string $journeyType
-     * @return Request
-     */
-    public function setJourneyType($journeyType)
-    {
-        $this->journey_type = $journeyType;
-
-        return $this;
     }
 
     /**
@@ -317,5 +330,33 @@ class Request extends Base {
     public function getVtype()
     {
         return $this->vtype;
+    }
+    /**
+     * @var boolean
+     */
+    private $active;
+
+
+    /**
+     * Set active
+     *
+     * @param boolean $active
+     * @return Request
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+
+        return $this;
+    }
+
+    /**
+     * Get active
+     *
+     * @return boolean 
+     */
+    public function getActive()
+    {
+        return $this->active;
     }
 }

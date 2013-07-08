@@ -2,19 +2,12 @@
 
 namespace Panda86\AppBundle\Tests\Integration;
 
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-
-class RequestRepositoryFunctionalTest extends WebTestCase
+class FunctionalTestCase extends \PHPUnit_Framework_TestCase
 {
     /**
     * @var \Doctrine\ORM\EntityManager
     */
-    private $em;
-
-    public static function setUpBeforeClass()
-    {
-
-    }
+    protected $em;
 
     public function setUp()
     {
@@ -28,14 +21,6 @@ class RequestRepositoryFunctionalTest extends WebTestCase
         $this->generateSchema();
     }
 
-    public function testFindById()
-    {
-        $results = $this->em
-            ->getRepository('Panda86AppBundle:Request')
-            ->findAll()
-        ;
-        $this->assertCount(0, $results);
-    }
     /**
      * @return null
      */
@@ -53,13 +38,13 @@ class RequestRepositoryFunctionalTest extends WebTestCase
     /**
      * @return array
      */
-    protected function getMetadatas() {
+    protected function getMetadatas()
+    {
         return $this->em->getMetadataFactory()->getAllMetadata();
     }
 
     protected function tearDown()
     {
-        parent::tearDown();
         $this->em->close();
     }
 }

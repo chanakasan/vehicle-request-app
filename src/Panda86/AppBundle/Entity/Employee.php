@@ -21,12 +21,12 @@ class Employee extends Base
     /**
      * @var integer
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      */
-    private $name;
+    protected $name;
 
 
     /**

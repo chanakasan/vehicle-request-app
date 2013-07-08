@@ -17,17 +17,25 @@ class Base
      * @param array $options
      * @return $this
      */
-    public function setOptions(array $options)
+    protected function setOptions(array $options)
     {
-        $class_attr = get_object_vars($this);
+        //$class_methods = get_class_methods(get_class());
+        $attr = get_object_vars($this);
         foreach($options as $key => $val)
         {
-            $attr = $key;
-            if(array_key_exists($attr, $class_attr))
+            //$set_method = $this->_getSetMethod($key);
+            if(array_key_exists($key, $attr))
             {
-                $this->$attr = $val;
+                $this->$key = $val;
             }
         }
         return $this;
+    }
+
+    protected function _getSetMethod($string)
+    {
+        $camelCase = str_replace(' ', '', ucwords(str_replace('_', ' ', $string)));
+        unset($string);
+        return 'set'.$camelCase;
     }
 }

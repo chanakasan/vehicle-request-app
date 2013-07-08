@@ -23,7 +23,7 @@ class AppKernel extends Kernel
             new Panda86\UserBundle\Panda86UserBundle(),
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
-            new Acme\SandboxBundle\AcmeSandboxBundle(),
+//            new Acme\SandboxBundle\AcmeSandboxBundle(),
             new Panda86\AppBundle\Panda86AppBundle(),
         );
 
@@ -32,7 +32,6 @@ class AppKernel extends Kernel
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
         }
-
         return $bundles;
     }
 

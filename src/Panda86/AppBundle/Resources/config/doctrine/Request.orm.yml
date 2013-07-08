@@ -13,7 +13,6 @@ Panda86\AppBundle\Entity\Request:
             length: '64'
         days:
             type: integer
-            nullable: true
         pickup_loc:
             type: string
             length: '64'
@@ -28,6 +27,8 @@ Panda86\AppBundle\Entity\Request:
         purpose:
             type: string
             length: '64'
+        active:
+            type: boolean
         created_at:
             type: datetime
         updated_at:
