@@ -21,6 +21,6 @@ panda86_app:
     prefix:   /
 
 # sandbox routes
-Acme_sandbox:
-    resource: "@AcmeSandboxBundle/Resources/config/routing/sandbox.yml"
-    prefix:   /
+#Acme_sandbox:
+#    resource: "@AcmeSandboxBundle/Resources/config/routing/sandbox.yml"
+#    prefix:   /
