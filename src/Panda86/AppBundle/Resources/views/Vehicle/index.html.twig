@@ -1,19 +1,22 @@
 {% extends '::admin-ui.html.twig' %}
-
+    {% block stylesheets %}
+        {{ parent() }}
+        <link rel="stylesheet" type="text/css" href="/colorbox/colorbox.css" media="all">
+    {% endblock %}
 {% block body -%}
-    <h1>Vehicles' details</h1>
+    <h2>Vehicles' details</h2>
 
     <table class="records_list">
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Vehicle</th>
-                <th>Reg. No.</th>
-                <th>Category</th>
-                <th>Passengers</th>
-                <th>Date added</th>
-                <th>Actions</th>
-            </tr>
+        <tr>
+            <th>Id</th>
+            <th>Vehicle</th>
+            <th>Reg. No.</th>
+            <th>Category</th>
+            <th>Passengers</th>
+            <th>Date added</th>
+            <th>Actions</th>
+        </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
@@ -25,25 +28,32 @@
                 <td>{{ entity.passengers }}</td>
                 <td>{% if entity.wasadded %}{{ entity.wasadded|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('vehicle_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('vehicle_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
+                    <ul>
+                        <li>
+                            <a href="{{ path('vehicle_show', { 'id': entity.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('vehicle_edit', { 'id': entity.id }) }}">edit</a>
+                        </li>
+                    </ul>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-        <ul>
+    <ul>
         <li>
-            <a href="{{ path('vehicle_new') }}">
+            <a href="{{ path('vehicle_new') }}" class="iframe">
                 Create a new entry
             </a>
         </li>
     </ul>
+    {% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="/colorbox/jquery.colorbox-min.js"></script>
+    <script>
+//        $('.iframe').colorbox({width: "70%", height: "100%", iframe: true});
+    </script>
     {% endblock %}
+{% endblock %}
