@@ -10,6 +10,7 @@ class Driver extends Base {
     public function __construct(array $options = null)
     {
         $this->created = new \DateTime('now');
+        $this->updated = new \DateTime('now');
         $this->mobile = '';
 
         parent::__construct($options);
@@ -281,5 +282,33 @@ class Driver extends Base {
     public function getCreated()
     {
         return $this->created;
+    }
+    /**
+     * @var \DateTime
+     */
+    protected $updated;
+
+
+    /**
+     * Set updated
+     *
+     * @param \DateTime $updated
+     * @return Driver
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+
+        return $this;
+    }
+
+    /**
+     * Get updated
+     *
+     * @return \DateTime 
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
     }
 }

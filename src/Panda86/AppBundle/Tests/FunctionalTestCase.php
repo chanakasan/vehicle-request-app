@@ -24,6 +24,11 @@ class FunctionalTestCase extends WebTestCase
             ->get('doctrine')
             ->getManager()
         ;
+        $this->initialize();
+    }
+
+    public function initialize()
+    {
         $this->generateSchema();
     }
 
@@ -57,5 +62,4 @@ class FunctionalTestCase extends WebTestCase
     {
         return $this->em->getMetadataFactory()->getAllMetadata();
     }
-
 }

@@ -28,7 +28,7 @@ class VehicleTest extends \PHPUnit_Framework_TestCase {
     
     public function testCanCreateVehicle()
     {
-        $vehicle =  new Vehicle();
+        $vehicle =  new Vehicle($this->args);
         $this->assertInstanceOf('Panda86\AppBundle\Entity\Vehicle', $vehicle);
         return $vehicle;
     }
@@ -39,15 +39,6 @@ class VehicleTest extends \PHPUnit_Framework_TestCase {
      */
     public function testCanSetAttribs(Vehicle $vehicle)
     {
-        $vehicle->setVtype($this->args['vtype']);
-        $vehicle->setMake($this->args['make']);
-        $vehicle->setModel($this->args['model']);
-        $vehicle->setRegNo($this->args['reg_no']);
-        $vehicle->setPassengers($this->args['passengers']);
-        $vehicle->setIsCompanyOwned($this->args['is_company_owned']);
-        $vehicle->setWasAdded($this->args['was_added']);
-        //var_dump($vehicle);exit;
-
         $this->assertEquals($this->args['vtype'], $vehicle->getVtype());
         $this->assertEquals($this->args['make'], $vehicle->getMake());
         $this->assertEquals($this->args['model'], $vehicle->getModel());

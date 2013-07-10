@@ -8,6 +8,10 @@ Panda86\AppBundle\Entity\DisapprovedRequest:
             generator:
                 strategy: AUTO
     fields:
+        remarks:
+            type: string
+            length: '255'
+            nullable: true
         created:
             type: datetime
         updated:

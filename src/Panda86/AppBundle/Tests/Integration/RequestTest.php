@@ -8,7 +8,7 @@ use Panda86\AppBundle\Entity\RequestEmployee;
 use Panda86\AppBundle\Entity\Request;
 use Panda86\AppBundle\Entity\Employee;
 
-class RequestEmployeeFunctionalTest extends FunctionalTestCase
+class RequestTest extends FunctionalTestCase
 {
     public function setUp()
     {
@@ -30,7 +30,7 @@ class RequestEmployeeFunctionalTest extends FunctionalTestCase
             )),
             'purpose' => 'Official',
             'created_at' => new \DateTime('2013-07-01 12:00:00'),
-            'updated_at' => new \DateTime('2013-07-01 12:10:00'),
+            'updated_at' => new \DateTime('now'),
         );
     }
 

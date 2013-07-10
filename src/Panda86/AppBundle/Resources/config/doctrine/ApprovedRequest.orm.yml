@@ -8,6 +8,10 @@ Panda86\AppBundle\Entity\ApprovedRequest:
             generator:
                 strategy: AUTO
     fields:
+        remarks:
+            type: string
+            length: '255'
+            nuallable: true
         created:
             type: datetime
         updated:

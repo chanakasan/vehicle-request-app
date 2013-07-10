@@ -23,22 +23,27 @@ class DisapprovedRequest extends Base
     /**
      * @var integer
      */
-    private $id;
+    protected $id;
+
+    /**
+     * @var string
+     */
+    protected $remarks;
 
     /**
      * @var \DateTime
      */
-    private $created;
+    protected $created;
 
     /**
      * @var \DateTime
      */
-    private $updated;
+    protected $updated;
 
     /**
      * @var \Panda86\AppBundle\Entity\Request
      */
-    private $request;
+    protected $request;
 
 
     /**
@@ -49,6 +54,29 @@ class DisapprovedRequest extends Base
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set remarks
+     *
+     * @param string $remarks
+     * @return DisapprovedRequest
+     */
+    public function setRemarks($remarks)
+    {
+        $this->remarks = $remarks;
+
+        return $this;
+    }
+
+    /**
+     * Get remarks
+     *
+     * @return string 
+     */
+    public function getRemarks()
+    {
+        return $this->remarks;
     }
 
     /**

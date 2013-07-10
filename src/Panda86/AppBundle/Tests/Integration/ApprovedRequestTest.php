@@ -1,14 +1,15 @@
 <?php
 
-namespace Panda86\AppBundle\Tests\Unit\Entity;
+namespace Panda86\AppBundle\Tests\Integration;
 
+use Panda86\AppBundle\Tests\FunctionalTestCase;
 use Panda86\AppBundle\Entity\ApprovedRequest;
 use Panda86\AppBundle\Entity\Request;
 use Panda86\AppBundle\Entity\VType;
 use Panda86\AppBundle\Entity\Vehicle;
 use Panda86\AppBundle\Entity\Driver;
 
-class ApprovedRequestTest extends \PHPUnit_Framework_TestCase
+class ApprovedRequestTest extends FunctionalTestCase
 {
     private $request;
     private $vehicle;
@@ -16,73 +17,74 @@ class ApprovedRequestTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
+        parent::setUp();
+
         $req1 = array(
             'journey_type' => 'single',
             'days' => 1,
             'pickup_loc' => 'ICTA',
-            'pickup_time' =>  strtotime("+1 week 2 days 4 hours 2 seconds"),
+            'pickup_time' =>  new \DateTime('2013-07-02 14:00:00'),
             'destination' => 'colombo',
-            'return_time' => strtotime("+1 week 2 days 6 hours 2 seconds"),
+            'return_time' => new \DateTime('2013-07-02 16:00:00'),
             'vtype' => new VType(array(
                 'name' => '4-passenger-sedan',
                 'descrip' => 'Standard car with four passenger seats'
             )),
             'purpose' => 'Official',
-            'created_at' => new \DateTime('now'),
-            'updated_at' => strtotime("+10 minutes"),
+            'created_at' => new \DateTime('2013-07-01 12:00:00'),
+            'updated_at' => new \DateTime('now'),
         );
 
         $vehicle1 = array(
-            'vtype' => new VType(array(
-                'name' => '4-passenger-sedan',
-                'descrip' => 'Standard car with four passenger seats'
-            )),
             'make' => 'Toyota',
             'model' => 'Corolla',
             'reg_no' => 'WP NZB-5465',
             'passengers' => 4,
             'is_company_owned' => true,
-            'was_added' => strtotime("+1 week 2 days 4 hours 2 seconds")
         );
 
         $driver1 = array(
             'first_name' => 'John',
             'last_name' => 'Doe',
             'display_name' => 'John Doe',
-            'birth_date' => date('Y-m-d', strtotime('January 18, 1989')),
-            'license_date' => date('Y-m-d', strtotime('January 20, 2005')),
+            'birth_date' => new \DateTime('1980-01-01'),
+            'license_date' => new \DateTime('2008-07-01'),
             'license_ref' => 'WP14124519V',
             'address' => '456/B, New Strret, New Town',
             'mobile' => 94777123456,
-            'created' => strtotime("+1 day 4 hours 2 seconds")
+            'created' => new \DateTime('now')
         );
 
+         $vtype =  new VType(array(
+            'name' => '4-passenger-sedan',
+            'descrip' => 'Standard car with four passenger seats'
+        ));
+        $this->em->persist($vtype);
+
         $this->request = new Request($req1);
+        $this->request->setVtype($vtype);
         $this->vehicle = new Vehicle($vehicle1);
+        $this->vehicle->setVtype($vtype);
         $this->driver = new Driver($driver1);
+
+        $this->em->persist($this->request);
+        $this->em->persist($this->driver);
+        $this->em->persist($this->vehicle);
     }
 
-    public function testCanCreateApprovedRequest()
+    public function testCanSaveApprovedRequest()
     {
         $approved = new ApprovedRequest();
 
         $approved->setRequest($this->request);
         $approved->setVehicle($this->vehicle);
         $approved->setDriver($this->driver);
+        $approved->setRemarks("Pickup points: ICTA, Colombo");
+
+        $this->em->persist($approved);
+        $this->em->flush();
 
         $this->assertInstanceOf('Panda86\AppBundle\Entity\ApprovedRequest', $approved);
-        return $approved;
-    }
-
-    /**
-     * @depends testCanCreateApprovedRequest
-     */
-    public function testCanSetAttributes($approved)
-    {
-        $this->assertEquals($this->request, $approved->getRequest());
-        $this->assertEquals($this->vehicle, $approved->getVehicle());
-        $this->assertEquals($this->driver, $approved->getDriver());
-
     }
 
 }

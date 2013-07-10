@@ -33,4 +33,6 @@ Panda86\AppBundle\Entity\Driver:
             length: 20
         created:
             type: datetime
+        updated:
+            type: datetime
     lifecycleCallbacks: {  }
