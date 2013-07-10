@@ -23,7 +23,7 @@ class RequestEmployee extends Base
     /**
      * @var integer
      */
-    private $id;
+    protected $id;
 
     /**
      * Get id
@@ -37,17 +37,17 @@ class RequestEmployee extends Base
     /**
      * @var boolean
      */
-    private $isOwner;
+    protected $isOwner;
 
     /**
      * @var \Panda86\AppBundle\Entity\Request
      */
-    private $request;
+    protected $request;
 
     /**
      * @var \Panda86\AppBundle\Entity\Employee
      */
-    private $employee;
+    protected $employee;
 
 
     /**

@@ -1,14 +1,21 @@
 <?php
 
-namespace Panda86\AppBundle\Tests\Integration;
+namespace Panda86\AppBundle\Tests;
 
-class FunctionalTestCase extends \PHPUnit_Framework_TestCase
+use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Bundle\FrameworkBundle\Console\Application;
+use Symfony\Component\Console\Input\ArrayInput;
+
+class FunctionalTestCase extends WebTestCase
 {
     /**
-    * @var \Doctrine\ORM\EntityManager
-    */
+     * @var \Doctrine\ORM\EntityManager
+     */
     protected $em;
 
+    /**
+     * {@inheritDoc}
+     */
     public function setUp()
     {
         static::$kernel = static::createKernel();
@@ -17,8 +24,16 @@ class FunctionalTestCase extends \PHPUnit_Framework_TestCase
             ->get('doctrine')
             ->getManager()
         ;
-
         $this->generateSchema();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    protected function tearDown()
+    {
+        parent::tearDown();
+        $this->em->close();
     }
 
     /**
@@ -43,8 +58,4 @@ class FunctionalTestCase extends \PHPUnit_Framework_TestCase
         return $this->em->getMetadataFactory()->getAllMetadata();
     }
 
-    protected function tearDown()
-    {
-        $this->em->close();
-    }
 }

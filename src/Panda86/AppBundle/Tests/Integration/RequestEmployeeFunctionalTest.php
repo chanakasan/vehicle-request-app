@@ -2,9 +2,13 @@
 
 namespace Panda86\AppBundle\Tests\Integration;
 
-use Panda86\AppBundle\Tests\Integration\KernelAwareTestCase;
+use Panda86\AppBundle\Tests\FunctionalTestCase;
+use Panda86\AppBundle\Entity\VType;
+use Panda86\AppBundle\Entity\RequestEmployee;
+use Panda86\AppBundle\Entity\Request;
+use Panda86\AppBundle\Entity\Employee;
 
-class RequestEmployeeFunctionalTest extends KernelAwareTestCase
+class RequestEmployeeFunctionalTest extends FunctionalTestCase
 {
     public function setUp()
     {
@@ -17,16 +21,16 @@ class RequestEmployeeFunctionalTest extends KernelAwareTestCase
             'journey_type' => 'single',
             'days' => 1,
             'pickup_loc' => 'ICTA',
-            'pickup_time' =>  strtotime("+1 week 2 days 4 hours 2 seconds"),
+            'pickup_time' =>  new \DateTime('2013-07-02 14:00:00'),
             'destination' => 'colombo',
-            'return_time' => strtotime("+1 week 2 days 6 hours 2 seconds"),
+            'return_time' => new \DateTime('2013-07-02 16:00:00'),
             'vtype' => new VType(array(
                 'name' => '4-passenger-sedan',
                 'descrip' => 'Standard car with four passenger seats'
             )),
             'purpose' => 'Official',
-            'created_at' => new \DateTime('now'),
-            'updated_at' => strtotime("+10 minutes"),
+            'created_at' => new \DateTime('2013-07-01 12:00:00'),
+            'updated_at' => new \DateTime('2013-07-01 12:10:00'),
         );
     }
 
@@ -44,10 +48,7 @@ class RequestEmployeeFunctionalTest extends KernelAwareTestCase
         $this->em->persist($employee);
         $this->em->persist($requestEmployee);
 
+        $this->em->flush();
         $this->assertInstanceOf('Panda86\AppBundle\Entity\RequestEmployee', $requestEmployee);
     }
-
-
-
-
 }

@@ -3,6 +3,6 @@ parameters:
     database_host: ""
     database_port: ""
     database_name: "test-db.sqlite"
-    database_path: "./test-db.sqlite"
+    database_path: "test-db.sqlite"
     database_user: ""
     database_password: ""
