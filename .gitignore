@@ -6,7 +6,7 @@
 /vendor/
 /app/config/parameters.yml
 web/uploads/*
-
+tests/_log/*
 
 .idea/
 nbproject/
