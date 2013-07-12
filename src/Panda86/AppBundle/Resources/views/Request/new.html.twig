@@ -17,14 +17,19 @@
         {{ form_widget(form._token) }}
 
         <!-- form fields -->
+        {{ form_row(form.days) }}
         {{ form_row(form.journey_type, {'label' : 'Journey Type: '}) }}
+
         <div id='single_journey'>
-            {{ form_row(form.days, {'label' : 'No. of Days: '}) }}
             {{ form_row(form.pickup_loc, {'label' : 'Pickup Location: '}) }}
             {{ form_row(form.pickup_time, {'label' : 'Pickup Date/Time: '}) }}
             <input type="text" id="alternate" size="30" />
             {{ form_row(form.destination, {'label' : 'Destination: '}) }}
         </div>
+        <div id='return_journey'>
+            {#{{ form_row(form.return_time, {'label' : 'Return Time: '}) }}#}
+        </div>
+
         {{ form_row(form.vtype, {'label' : 'Vehicle Type'}) }}
         {{ form_row(form.purpose, {'label' : 'Purpose of Journey: '}) }}
 

@@ -19,7 +19,7 @@ class RequestType extends AbstractType
              'multiple'  => false,
              'expanded'  => true,
             ))
-            ->add('days')
+            ->add('days', 'hidden')
             ->add('vtype', 'entity',array(
                 'class' => 'Panda86AppBundle:VType',
                 'property' => 'name',
