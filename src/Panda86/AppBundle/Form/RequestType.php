@@ -27,6 +27,7 @@ class RequestType extends AbstractType
             ->add('pickup_time','dateTimePicker')
             ->add('pickup_loc')
             ->add('destination')
+            ->add('return_time','dateTimePicker')
             ->add('purpose')
         ;
     }
