@@ -16,6 +16,7 @@ class RequestType extends AbstractType
                 'single' => 'Single',
                 'return' => 'Single and Return',
                 ),
+             'label' => false,
              'multiple'  => false,
              'expanded'  => true,
             ))
@@ -23,12 +24,23 @@ class RequestType extends AbstractType
             ->add('vtype', 'entity',array(
                 'class' => 'Panda86AppBundle:VType',
                 'property' => 'name',
+                'label' => false,
             ))
-            ->add('pickup_time','dateTimePicker')
-            ->add('pickup_loc')
-            ->add('destination')
-            ->add('return_time','dateTimePicker')
-            ->add('purpose')
+            ->add('pickup_time','dateTimePicker', array(
+                'label' => false,
+            ))
+            ->add('pickup_loc', 'text', array(
+                'label' => false,
+            ))
+            ->add('destination', 'text', array(
+                'label' => false,
+            ))
+            ->add('return_time','dateTimePicker', array(
+                'label' => false,
+            ))
+            ->add('purpose', 'text', array(
+                'label' => false,
+            ))
         ;
     }
 
