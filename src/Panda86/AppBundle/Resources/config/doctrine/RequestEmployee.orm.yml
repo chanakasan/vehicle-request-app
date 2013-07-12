@@ -1,7 +1,7 @@
 Panda86\AppBundle\Entity\RequestEmployee:
     type: entity
     table: hr_request_employee
-    repositoryClass: Panda86\AppBundle\Entity\Request_EmployeeRepository
+    repositoryClass: Panda86\AppBundle\Entity\RequestEmployeeRepository
     id:
         id:
             type: integer
