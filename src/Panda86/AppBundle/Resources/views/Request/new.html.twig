@@ -58,10 +58,10 @@
     <script src="/public/js/reqForm.js"></script>
     <script>
         $( "#request_pickup_time_datepicker" ).datepicker({
-            dateFormat: 'dd-mm-yy',
+            dateFormat: 'yy-mm-dd',
             altField: "#alternate",
             altFormat: "DD, d MM, yy"
         });
-        $('#request_pickup_time_timepicker').timeEntry();
+        $('#request_pickup_time_timepicker').timeEntry({show24Hours: true});
     </script>
 {% endblock %}

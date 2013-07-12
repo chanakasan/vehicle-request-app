@@ -40,6 +40,7 @@ class RequestController extends Controller
 
         $form = $this->createForm(new RequestType(), $entity);
         $form->bind($request);
+//        var_dump($request->request->all());exit;
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();

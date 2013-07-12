@@ -37,7 +37,7 @@ class Request extends Base {
     {
         $this->created_at = new \DateTime('now');
         $this->updated_at = new \DateTime('now');
-        $this->return_time = '';
+        $this->return_time = null;
         $this->pickup_loc = 'ICTA';
         $this->days = 1;
         $this->active = true;

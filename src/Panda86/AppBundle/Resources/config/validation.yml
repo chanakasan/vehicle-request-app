@@ -4,8 +4,9 @@ Panda86\AppBundle\Entity\Request:
             - NotBlank: ~
         pickup_loc:
             - NotBlank: ~
-#        pickup_time:
-#            - Type: DateTime
+        pickup_time:
+            - Type: DateTime
+            - NotBlank: ~
         destination:
             - NotBlank: ~
         purpose:
