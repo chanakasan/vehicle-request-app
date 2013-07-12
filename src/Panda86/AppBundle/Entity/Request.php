@@ -24,10 +24,8 @@ class Request extends Base {
                 $this->journey_type = $journeyType;
                 return $this;
             }
-            else
-                throw new \InvalidArgumentException('Invalid journey type: '.$journeyType);
         }
-
+        throw new \InvalidArgumentException('Invalid journey type: '.$journeyType);
     }
 
     /**
@@ -35,15 +33,13 @@ class Request extends Base {
      */
     public function __construct(array $options = null)
     {
+        $this->journey_type = 'single';
+        $this->days = 1;
+        $this->pickup_loc = 'ICTA';
+        $this->return_time = null;
+        $this->active = true;
         $this->created_at = new \DateTime('now');
         $this->updated_at = new \DateTime('now');
-        $this->return_time = null;
-        $this->pickup_loc = 'ICTA';
-        $this->days = 1;
-        $this->active = true;
-
-        $this->destination = 'Colombo';
-        $this->purpose = 'Official';
 
         parent::__construct($options);
     }
