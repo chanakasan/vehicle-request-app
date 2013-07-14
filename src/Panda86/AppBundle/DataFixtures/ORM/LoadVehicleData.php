@@ -41,19 +41,19 @@ class LoadVehicleData implements FixtureInterface
         $vehicle3->setIsCompanyOwned(true);
                 
         $vtype1 = new VType();
-        $vtype1->setName('12-passenger-van');
+        $vtype1->setName('x-12-passenger-van');
         $vtype1->setDescrip('');
         $vtype1->getVehicles()->add($vehicle2);
         $vehicle2->setVtype($vtype1);
         
         $vtype2 = new VType();
-        $vtype2->setName('4-passenger-sedan');
+        $vtype2->setName('x-4-passenger-sedan');
         $vtype2->setDescrip('');
         $vtype2->getVehicles()->add($vehicle1);
         $vehicle1->setVtype($vtype2);
         
         $vtype3 = new VType();
-        $vtype3->setName('4-passenger-jeep');
+        $vtype3->setName('x-4-passenger-jeep');
         $vtype3->setDescrip('');     
         $vtype3->getVehicles()->add($vehicle3);
         $vehicle3->setVtype($vtype3);
