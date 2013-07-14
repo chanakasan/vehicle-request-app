@@ -65,8 +65,9 @@ class VTypeTest extends \PHPUnit_Framework_TestCase {
      */
     public function testCanRemoveVehicle(VType $vtype)
     {
-        //var_dump($vtype->getVehicles()[0]);exit;
-        $vtype->removeVehicle($vtype->getVehicles()[0]);
+        // var_dump($vtype->getVehicles());exit;        
+        $result = $vtype->getVehicles();
+        $vtype->removeVehicle($result[0]);
         $this->assertCount(0, $vtype->getVehicles());
     }
 }
