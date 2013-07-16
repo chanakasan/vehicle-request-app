@@ -27,4 +27,7 @@ Panda86\AppBundle\Entity\RequestEmployee:
                 joinColumn:
                     name: emp_id
                     referencedColumnName: id
+    uniqueConstraints:
+            req_unique:
+                columns: [req_id, emp_id]
     lifecycleCallbacks: {  }
