@@ -5,6 +5,7 @@ namespace Panda86\AppBundle\Tests;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Input\ArrayInput;
+use Symfony\Component\Console\Input\StringInput;
 
 class FunctionalTestCase extends WebTestCase
 {
@@ -12,6 +13,8 @@ class FunctionalTestCase extends WebTestCase
      * @var \Doctrine\ORM\EntityManager
      */
     protected $em;
+
+    protected static $application;
 
     /**
      * {@inheritDoc}
@@ -24,12 +27,33 @@ class FunctionalTestCase extends WebTestCase
             ->get('doctrine')
             ->getManager()
         ;
-        $this->initialize();
+        self::runCommand('doctrine:database:create');
+        self::runCommand('doctrine:schema:update --force');
+        self::runCommand('doctrine:fixtures:load --append');
     }
 
     public function initialize()
     {
         $this->generateSchema();
+    }
+
+    protected static function runCommand($command)
+    {
+        $command = sprintf('%s --quiet', $command);
+
+        return self::getApplication()->run(new StringInput($command));
+    }
+
+    protected static function getApplication()
+    {
+        if (null === self::$application) {
+            $client = static::createClient();
+
+            self::$application = new Application($client->getKernel());
+            self::$application->setAutoExit(false);
+        }
+
+        return self::$application;
     }
 
     /**
@@ -41,25 +65,4 @@ class FunctionalTestCase extends WebTestCase
         $this->em->close();
     }
 
-    /**
-     * @return null
-     */
-    protected function generateSchema()
-    {
-        $metadatas = $this->getMetadatas();
-
-        if (!empty($metadatas)) {
-            $tool = new \Doctrine\ORM\Tools\SchemaTool($this->em);
-            $tool->dropSchema($metadatas);
-            $tool->createSchema($metadatas);
-        }
-    }
-
-    /**
-     * @return array
-     */
-    protected function getMetadatas()
-    {
-        return $this->em->getMetadataFactory()->getAllMetadata();
-    }
 }
