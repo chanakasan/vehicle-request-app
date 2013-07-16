@@ -22,8 +22,17 @@ class RequestEmployeeTest extends FunctionalTestCase
     public function testCanGetList()
     {
         $result = $this->repo->getList();
-        var_dump($result);exit;
-        $this->assertTrue($this->repo->getList());
+
+        foreach($result as $row)
+        {
+            $this->assertInternalType('int', $row['request']->getId());
+            $this->assertInternalType('string', $row['owner']->getName());
+
+            foreach($row['otherPassengers'] as $passenger)
+            {
+                $this->assertInternalType('string', $passenger->getName());
+            }
+        }
     }    
     
 }
