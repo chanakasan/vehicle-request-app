@@ -23,21 +23,27 @@
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td>{{ entity.request.id }}</td>
-                <td>{% if entity.isOwner==true %}{{ entity.employee.name }}{% endif %}</td>
-                <td>{{ entity.request.journeytype }}</td>
-                <td>{% if entity.request.pickuptime %}{{ entity.request.pickuptime|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ entity.request.pickuploc }}</td>
-                <td>{{ entity.request.destination }}</td>
-                <td>{% if entity.request.returntime %}{{ entity.request.pickuptime|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ entity.request.vtype.getname }}</td>
-                <td>{{ entity.request.purpose }}</td>
-                <td>{% if entity.isOwner==false %}{{ entity.employee.name }}{% endif %}</td>
-                <td>{% if entity.request.createdat %}{{ entity.request.createdat|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity['request'].id }}</td>
+                <td>{{ entity['owner'].name }}</td>
+                <td>{{ entity['request'].journeytype }}</td>
+                <td>{% if entity['request'].pickuptime %}{{ entity['request'].pickuptime|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity['request'].pickuploc }}</td>
+                <td>{{ entity['request'].destination }}</td>
+                <td>{% if entity['request'].returntime %}{{ entity['request'].returntime|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity['request'].vtype.getname }}</td>
+                <td>{{ entity['request'].purpose }}</td>
+                <td>
+                    {% if entity['otherPassengers']|length > 0 %}
+                        {% for passenger in entity['otherPassengers'] %}
+                            <li>{{ passenger.name|e }}</li>
+                        {% endfor %}
+                    {% endif %}
+                </td>
+                <td>{% if entity['request'].createdat %}{{ entity['request'].createdat|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('requestdata_show', { 'id': entity.request.id }) }}">show</a>
+                            <a href="{{ path('requestdata_show', { 'id': entity['request'].id }) }}">show</a>
                         </li>
                     </ul>
                 </td>

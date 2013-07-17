@@ -20,7 +20,7 @@ class RequestEmployeeController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('Panda86AppBundle:RequestEmployee')->findAll();
+        $entities = $em->getRepository('Panda86AppBundle:RequestEmployee')->getList();
 
         return $this->render('Panda86AppBundle:RequestEmployee:index.html.twig', array(
             'entities' => $entities,
