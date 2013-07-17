@@ -27,8 +27,9 @@ Panda86\AppBundle\Entity\Request:
         purpose:
             type: string
             length: '64'
-        active:
-            type: boolean
+        status:
+            type: string
+            length: '64'
         created_at:
             type: datetime
         updated_at:

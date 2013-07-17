@@ -52,5 +52,35 @@ class RequestTest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals($this->req1['updated_at'], $request->getUpdatedAt());
     }
 
+    /**
+     * @depends testCanCreateRequest
+     */
+    public function testCanGetStatus(Request $request)
+    {
+        $this->assertEquals('pending', $request->getStatus());
+    }
+
+    /**
+     * @depends testCanCreateRequest
+     */
+    public function testCanSetStatus(Request $request)
+    {
+        $request->setStatus('approved');
+        $this->assertEquals('approved', $request->getStatus());
+
+        $request->setStatus('disapproved');
+        $this->assertEquals('disapproved', $request->getStatus());
+    }
+    
+    /**
+     * @depends testCanCreateRequest
+     * @expectedException InvalidArgumentException
+     */
+    public function testInvalidSetStatus(Request $request)
+    {
+        $request->setStatus('AnInvalidStatus');
+        $this->assertEquals('AnInvalidStatus', $request->getStatus());
+    }
+
 
 }

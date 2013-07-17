@@ -7,7 +7,33 @@ use Panda86\AppBundle\Entity\Base;
 
 class Request extends Base {
 
+    const DEFAULT_JOURNEY_TYPE = 'single';
+    const DEFAULT_PICKUP_LOC = 'ICTA';
+    const DEFAULT_NO_DAYS = 1;
+    const DEFAULT_RETURN_TIME = null;
+    const DEFAULT_STATUS = 'pending';
+
     protected $journey_opts = array('SINGLE', 'RETURN');
+    protected $status_opts = array('PENDING', 'APPROVED', 'DISAPPROVED');
+
+    /**
+     * Set status
+     *
+     * @param string $status
+     * @return Request
+     */
+    public function setStatus($status)
+    {
+        foreach($this->status_opts as $opt)
+        {
+            if(strtoupper($status) === $opt)
+            {
+                $this->status = strtolower($status);
+                return $this;
+            }
+        }
+        throw new \InvalidArgumentException('Invalid status: '.$status);
+    }
 
     /**
      * Set journey_type
@@ -21,7 +47,7 @@ class Request extends Base {
         {
             if(strtoupper($journeyType) === $opt)
             {
-                $this->journey_type = $journeyType;
+                $this->journey_type = strtolower($journeyType);
                 return $this;
             }
         }
@@ -33,18 +59,18 @@ class Request extends Base {
      */
     public function __construct(array $options = null)
     {
-        $this->journey_type = 'single';
-        $this->days = 1;
-        $this->pickup_loc = 'ICTA';
-        $this->return_time = null;
-        $this->active = true;
+        $this->status = self::DEFAULT_STATUS;
+        $this->journey_type = self::DEFAULT_JOURNEY_TYPE;
+        $this->days = self::DEFAULT_NO_DAYS;
+        $this->pickup_loc = self::DEFAULT_PICKUP_LOC;
+        $this->return_time = self::DEFAULT_RETURN_TIME;
+
         $this->created_at = new \DateTime('now');
         $this->updated_at = new \DateTime('now');
 
         parent::__construct($options);
     }
-
-  
+   
     /**
      * @var integer
      */
@@ -84,6 +110,11 @@ class Request extends Base {
      * @var string
      */
     protected $purpose;
+
+    /**
+     * @var string
+     */
+    protected $status;
 
     /**
      * @var \DateTime
@@ -260,6 +291,16 @@ class Request extends Base {
     }
 
     /**
+     * Get status
+     *
+     * @return string 
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
      * Set created_at
      *
      * @param \DateTime $createdAt
@@ -326,33 +367,5 @@ class Request extends Base {
     public function getVtype()
     {
         return $this->vtype;
-    }
-    /**
-     * @var boolean
-     */
-    private $active;
-
-
-    /**
-     * Set active
-     *
-     * @param boolean $active
-     * @return Request
-     */
-    public function setActive($active)
-    {
-        $this->active = $active;
-
-        return $this;
-    }
-
-    /**
-     * Get active
-     *
-     * @return boolean 
-     */
-    public function getActive()
-    {
-        return $this->active;
     }
 }
