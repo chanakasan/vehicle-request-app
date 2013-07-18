@@ -1,102 +1,123 @@
 {% extends '::employee.html.twig' %}
 
-{% block title %}New request - {{ parent() }}{% endblock %}
 {% block stylesheets %}
+    <style>
+        [class*="span"].centred {
+            margin-left: auto;
+            margin-right: auto;
+            float: none;
+        }
+    </style>
     {{ parent() }}
     <link rel="stylesheet" href="/public/css/smoothness/jquery-ui-1.10.3.custom.min.css">
     <link rel="stylesheet" href="/public/css/request/new.css">
 {% endblock %}
 
 {% block body -%}
-    <h2>Request for a vehicle</h2><br/>
+    <div class="row">
+        <div class="span9 centred">
+            {% form_theme form 'Panda86AppBundle:Form:form_datetimepicker_type.html.twig' %}
+            <img id="top" src="/public/css/request/top.png" alt="">
 
-    {% form_theme form 'Panda86AppBundle:Form:form_datetimepicker_type.html.twig' %}
-    <form class="appnitro form-horizontal" action="{{ path('request_create') }}" method="post" {{ form_enctype(form) }}>
-        <!-- form validation -->
-        {{ form_errors(form) }}
-        {{ form_widget(form._token) }}
+            <div id="form_container">
+                <h1>Header</h1>
 
-        <!-- form fields -->
-        {{ form_row(form.days) }}
-        <div class="control-group">
-            <label class="control-label">Journey Type</label>
-            <div class="controls">
-                {{ form_row(form.journey_type) }}
-            </div>
-        </div>
+                <form id="new_form" class="appnitro form-horizontal" action="{{ path('request_create') }}"
+                      method="post" {{ form_enctype(form) }}>
+                    <div class="form_description">
+                        <h2>New vehicle reservation request</h2><br/>
+                    </div>
+                    <!-- form validation -->
+                    {{ form_errors(form) }}
+                    {{ form_widget(form._token) }}
 
-        <div id='single_journey'>
-            <div class="control-group">
-                <label class="control-label">Pickup Location</label>
-                <div class="controls">
-                    {{ form_row(form.pickup_loc) }}
+                    <!-- form fields -->
+                    {{ form_row(form.days) }}
+
+                    <div class="control-group">
+                        <label class="control-label">Journey Type</label>
+
+                        <div class="controls">
+                            {{ form_row(form.journey_type) }}
+                        </div>
+                    </div>
+                    <div id='single_journey'>
+                        <div class="control-group">
+                            <label class="control-label">Pickup Location</label>
+
+                            <div class="controls">
+                                {{ form_row(form.pickup_loc) }}
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Pickup Date/Time</label>
+
+                            <div class="controls">
+                                {{ form_row(form.pickup_time) }}
+                            </div>
+                        </div>
+                        {#<input type="text" id="alternate" size="30" />#}
+                        <div class="control-group">
+                            <label class="control-label">Destination</label>
+
+                            <div class="controls">
+                                {{ form_row(form.destination) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div id='return_journey'>
+                        {#{{ form_row(form.return_time, {'label' : 'Return Time: '}) }}#}
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Vehicle Type</label>
+
+                        <div class="controls">
+                            {{ form_row(form.vtype) }}
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Purpose of journey</label>
+
+                        <div class="controls">
+                            {{ form_row(form.purpose) }}
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <button type="submit" formnovalidate="">Send Request</button>
+                        </div>
+                    </div>
+                    <!--/form fields-->
+                </form>
+                <div id="footer">
+                    <a href="http://www.icta.lk">ICTA | &copy 2013</a>
                 </div>
             </div>
-            <div class="control-group">
-                <label class="control-label">Pickup Date/Time</label>
-                <div class="controls">
-                    {{ form_row(form.pickup_time) }}
-                </div>
-            </div>
-            {#<input type="text" id="alternate" size="30" />#}
-            <div class="control-group">
-                <label class="control-label">Destination</label>
-                <div class="controls">
-                    {{ form_row(form.destination) }}
-                </div>
-            </div>
+            <img id="bottom" src="/public/css/request/bottom.png" alt="">
+            <br/>
+            <ul class="record_actions">
+                <li>
+                    <a href="{{ path('request_finish') }}">
+                        Cancel Request
+                    </a>
+                </li>
+            </ul>
         </div>
-        <div id='return_journey'>
-            {#{{ form_row(form.return_time, {'label' : 'Return Time: '}) }}#}
-        </div>
-        <div class="control-group">
-            <label class="control-label">Vehicle Type</label>
-            <div class="controls">
-                {{ form_row(form.vtype) }}
-            </div>
-        </div>
-        <div class="control-group">
-            <label class="control-label">Purpose of journey</label>
-            <div class="controls">
-                {{ form_row(form.purpose) }}
-            </div>
-        </div>
-        <div class="control-group">
-            <div class="controls">
-                <button type="submit" formnovalidate="">Send Request</button>
-            </div>
-        </div>
-        <!--/form fields-->
-    </form>
-<br/>
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('request_finish') }}">
-            Cancel Request
-        </a>
-    </li>
-</ul>
+    </div>
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}
-    <script src="/public/js/jquery-ui.js"></script>
-    <script src="/public/js/jquery-ui-i18n.js"></script>
-    <script src="/public/js/jquery.ui.datepicker-en-AU.js"></script>
-    <script src="/public/js/jquery.ui.datepicker-en-GB.js"></script>
-    <script src="/public/js/jquery.ui.datepicker-en-NZ.js"></script>
-    <script>
-        global = {
-            locale   : '{{ app.request.locale }}'
-        }
-    </script>
     <script src="/public/js/jquery.timeentry.js"></script>
     <script src="/public/js/reqForm.js"></script>
     <script>
-        $( "#request_pickup_time_datepicker" ).datepicker({
+        $("#request_pickup_time_datepicker").datepicker({
             dateFormat: 'yy-mm-dd',
             altField: "#alternate",
             altFormat: "DD, d MM, yy"
         });
-        $('#request_pickup_time_timepicker').timeEntry({show24Hours: true});
+        $('#request_pickup_time_timepicker').timeEntry({
+            spinnerImage: '/public/images/spinnerDefault.png',
+            show24Hours: true
+        });
     </script>
 {% endblock %}

@@ -51,13 +51,21 @@ class RequestController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('request_finish', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('request_finish'));
         }
 
         return $this->render('Panda86AppBundle:Request:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
+    }
+
+    /**
+     * Shows request finish page
+     */
+    public function finishAction()
+    {
+        return $this->render('Panda86AppBundle:Request:finish.html.twig');
     }
 
     /**
@@ -78,11 +86,6 @@ class RequestController extends Controller
         return $this->render('Panda86AppBundle:Request:show.html.twig', array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),        ));
-    }
-
-    public function finishAction()
-    {
-        return $this->render('Panda86AppBundle:Request:finish.html.twig');
     }
 
     /**
