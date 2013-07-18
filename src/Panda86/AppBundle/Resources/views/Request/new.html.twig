@@ -4,13 +4,14 @@
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" href="/public/css/smoothness/jquery-ui-1.10.3.custom.min.css">
+    <link rel="stylesheet" href="/public/css/request/new.css">
 {% endblock %}
 
 {% block body -%}
     <h2>Request for a vehicle</h2><br/>
 
     {% form_theme form 'Panda86AppBundle:Form:form_datetimepicker_type.html.twig' %}
-    <form class="form-horizontal" action="{{ path('request_create') }}" method="post" {{ form_enctype(form) }}>
+    <form class="appnitro form-horizontal" action="{{ path('request_create') }}" method="post" {{ form_enctype(form) }}>
         <!-- form validation -->
         {{ form_errors(form) }}
         {{ form_widget(form._token) }}

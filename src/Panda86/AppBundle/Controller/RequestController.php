@@ -15,24 +15,29 @@ use Panda86\AppBundle\Form\RequestType;
 class RequestController extends Controller
 {
     /**
-     * Lists all Request entities.
-     *
+     * Shows the start page for a request
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entities = $em->getRepository('Panda86AppBundle:Request')->findAll();
-
-        return $this->render('Panda86AppBundle:Request:index.html.twig', array(
-            'entities' => $entities,
-        ));
-
+        return $this->render('Panda86AppBundle:Request:index.html.twig');
     }
 
     /**
-     * Creates a new Request entity.
-     *
+     * Displays a form to create a new Request entity.
+     */
+    public function newAction()
+    {
+        $entity = new EmpRequest();
+        $form   = $this->createForm(new RequestType(), $entity);
+
+        return $this->render('Panda86AppBundle:Request:new.html.twig', array(
+            'entity' => $entity,
+            'form'   => $form->createView(),
+        ));
+    }
+
+    /**
+     * Persist form data to database.
      */
     public function createAction(Request $request)
     {
@@ -40,7 +45,6 @@ class RequestController extends Controller
 
         $form = $this->createForm(new RequestType(), $entity);
         $form->bind($request);
-//        var_dump($request->request->all());exit;
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -57,23 +61,7 @@ class RequestController extends Controller
     }
 
     /**
-     * Displays a form to create a new Request entity.
-     *
-     */
-    public function newAction()
-    {
-        $entity = new EmpRequest();
-        $form   = $this->createForm(new RequestType(), $entity);
-
-        return $this->render('Panda86AppBundle:Request:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        ));
-    }
-
-    /**
      * Finds and displays a Request entity.
-     *
      */
     public function showAction($id)
     {
