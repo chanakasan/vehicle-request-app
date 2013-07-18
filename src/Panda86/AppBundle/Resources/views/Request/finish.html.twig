@@ -1,7 +1,31 @@
 {% extends '::employee.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        [class*="span"].centred {
+            margin-left: auto;
+            margin-right: auto;
+            float: none;
+        }
+        h3, p {
+            text-align: center;
+        }
+    </style>
+    <link href="/public/css/request/start.css" rel="stylesheet"/>
+{% endblock %}
+
  {% block body %}
-     <h3>Thank you! for using our App.</h3>
-     <p>You may close this browser window now.</p>
+     <div class="row">
+         <div class="span9 centred">
+             <img id="top" src="/public/css/request/top.png" alt="">
+             <div id="form_container">
+
+                 <h3>Thank you! for using our App.</h3>
+                 <p>You may close this browser window now.</p>
+             </div>
+             <img id="bottom" src="/public/css/request/bottom.png" alt="">
+         </div>
+     </div>
  {% endblock %}
 

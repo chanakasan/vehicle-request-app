@@ -1,6 +1,7 @@
 {% extends '::employee.html.twig' %}
 
 {% block stylesheets %}
+    {{ parent() }}
     <style>
         [class*="span"].centred {
             margin-left: auto;
@@ -8,7 +9,6 @@
             float: none;
         }
     </style>
-    {{ parent() }}
     <link rel="stylesheet" href="/public/css/smoothness/jquery-ui-1.10.3.custom.min.css">
     <link rel="stylesheet" href="/public/css/request/new.css">
 {% endblock %}
@@ -107,13 +107,13 @@
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}
+    <script src="/public/js/jquery-1.9.1.min.js"></script>
+    <script src="/public/js/jquery-ui.js"></script>
     <script src="/public/js/jquery.timeentry.js"></script>
     <script src="/public/js/reqForm.js"></script>
     <script>
         $("#request_pickup_time_datepicker").datepicker({
-            dateFormat: 'yy-mm-dd',
-            altField: "#alternate",
-            altFormat: "DD, d MM, yy"
+            dateFormat: 'yy-mm-dd'
         });
         $('#request_pickup_time_timepicker').timeEntry({
             spinnerImage: '/public/images/spinnerDefault.png',

@@ -51,7 +51,7 @@ class RequestController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('request_finish'));
+            return $this->render('Panda86AppBundle:Request:finish.html.twig');
         }
 
         return $this->render('Panda86AppBundle:Request:new.html.twig', array(
