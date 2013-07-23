@@ -10,6 +10,7 @@
         }
     </style>
     <link rel="stylesheet" href="/public/css/smoothness/jquery-ui-1.10.3.custom.min.css">
+    <link rel="stylesheet" href="/chosen/chosen.css">
     <link rel="stylesheet" href="/public/css/request/new.css">
 {% endblock %}
 
@@ -37,7 +38,29 @@
                     <div class="control-group">
                         <label class="control-label">Requester Name</label>
                         <div class="controls">
-                            {{ form_row }}
+                            <select data-placeholder="Name of requester"  class="chzn-select" tabindex="8">
+                                <option value="11" selected="selected">{{ employees[0].name }}</option>
+                                <option value="1">Kathleen Oliver </option>
+                                <option value="2">Margaret Butler </option>
+                                <option value="3">Todd Riley </option>
+                                <option value="4">Rachel Carter </option>
+                                <option value="5">Melissa Hayes </option>
+                                <option value="6">Arthur Mason </option>
+                                <option value="7">Ralph Mccoy </option>
+                                <option value="8">Craig Cook </option>
+                                <option value="9">Judy Evans </option>
+                                <option value="10">Larry Nelson </option>
+                                <option value="11">Michelle Burton </option>
+                                <option value="12">Lillian Butler </option>
+                                <option value="13">Mark Lewis </option>
+                                <option value="14">Ruby Mason </option>
+                                <option value="15">Heather Fuller </option>
+                                <option value="16">Jeremy Phillips </option>
+                                <option value="17">Terry Jordan </option>
+                                <option value="18">Janet Romero </option>
+                                <option value="19">Matthew Clark </option>
+                                <option value="20">Kathy Johnson </option>
+                            </select>
                         </div>
                     </div>
                     <div class="control-group">
@@ -89,6 +112,33 @@
                         </div>
                     </div>
                     <div class="control-group">
+                        <label class="control-label">Others travelling in vehicle</label>
+                        <div class="controls">
+                            <select data-placeholder="Names of other staff members" style="width:350px;" multiple class="chzn-select" tabindex="8">
+                                <option value="1">Kathleen Oliver </option>
+                                <option value="2">Margaret Butler </option>
+                                <option value="3">Todd Riley </option>
+                                <option value="4">Rachel Carter </option>
+                                <option value="5">Melissa Hayes </option>
+                                <option value="6">Arthur Mason </option>
+                                <option value="7">Ralph Mccoy </option>
+                                <option value="8">Craig Cook </option>
+                                <option value="9">Judy Evans </option>
+                                <option value="10">Larry Nelson </option>
+                                <option value="11">Michelle Burton </option>
+                                <option value="12">Lillian Butler </option>
+                                <option value="13">Mark Lewis </option>
+                                <option value="14">Ruby Mason </option>
+                                <option value="15">Heather Fuller </option>
+                                <option value="16">Jeremy Phillips </option>
+                                <option value="17">Terry Jordan </option>
+                                <option value="18">Janet Romero </option>
+                                <option value="19">Matthew Clark </option>
+                                <option value="20">Kathy Johnson </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="control-group">
                         <div class="controls">
                             <button type="submit" formnovalidate="">Send Request</button>
                         </div>
@@ -116,7 +166,8 @@
     <script src="/public/js/jquery-1.9.1.min.js"></script>
     <script src="/public/js/jquery-ui.js"></script>
     <script src="/public/js/jquery.timeentry.js"></script>
-    <script src="/public/js/reqForm.js"></script>
+    <script src="/chosen/chosen.jquery.js"></script>
+    <script src="/public/js/newReqForm.js"></script>
     <script>
         $("#request_pickup_time_datepicker").datepicker({
             dateFormat: 'yy-mm-dd'
