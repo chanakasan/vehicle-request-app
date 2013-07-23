@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Panda86\AppBundle\Entity\Request as EmpRequest;
+use Panda86\AppBundle\Entity\RequestEmployee;
 use Panda86\AppBundle\Form\RequestType;
 
 /**
@@ -30,7 +31,11 @@ class RequestController extends Controller
         $entity = new EmpRequest();
         $form   = $this->createForm(new RequestType(), $entity);
 
+        $em = $this->getDoctrine()->getManager();
+        $employees = $em->getRepository('Panda86AppBundle:Employee')->findAll();
+
         return $this->render('Panda86AppBundle:Request:new.html.twig', array(
+            'employees'=> $employees,
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
@@ -49,6 +54,24 @@ class RequestController extends Controller
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
+
+            $requestEmployee  = new RequestEmployee();
+            $requestEmployee->setRequest($request);
+            $requestEmployee->setEmployee($requestOwner);
+            $requestEmployee->setIsOwner(true);
+
+            $em->persist($requestEmployee);
+
+            foreach($otherPassengers as $passenger)
+            {
+                $reqEmptmp  = new RequestEmployee();
+                $reqEmptmp->setRequest($request);
+                $reqEmptmp->setEmployee($passenger);
+                $reqEmptmp->setIsOwner(false);
+
+                $em->persist($reqEmptmp);
+            }
+
             $em->flush();
 
             return $this->render('Panda86AppBundle:Request:finish.html.twig');
