@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Panda86\AppBundle\Entity\Request as EmpRequest;
+use Panda86\AppBundle\Entity\RequestEmployee;
 use Panda86\AppBundle\Form\RequestType;
 
 /**
@@ -30,7 +31,12 @@ class RequestController extends Controller
         $entity = new EmpRequest();
         $form   = $this->createForm(new RequestType(), $entity);
 
+        $em = $this->getDoctrine()->getManager();
+        $employees = $em->getRepository('Panda86AppBundle:Employee')->findAll();
+
+//        var_dump($employees);exit;
         return $this->render('Panda86AppBundle:Request:new.html.twig', array(
+            'employees'=> $employees,
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
@@ -49,12 +55,49 @@ class RequestController extends Controller
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
+
+            if(isset($_POST['requester']))
+            {
+                $owner_id = htmlentities($_POST['requester']);
+            }
+            else
+            {
+                throw $this->createNotFoundException("requester value not set");
+            }
+
+            $requestOwner = $em->getReference('Panda86AppBundle:Employee', $owner_id);
+
+            $requestEmployee  = new RequestEmployee();
+            $requestEmployee->setRequest($entity);
+            $requestEmployee->setEmployee($requestOwner);
+            $requestEmployee->setIsOwner(true);
+            $em->persist($requestEmployee);
+
+            if(isset($_POST['other_p']))
+                $otherPassengers = $_POST['other_p'];
+            else
+                $otherPassengers = array();
+
+            foreach($otherPassengers as $emp_id_tmp)
+            {
+                $reqEmptmp  = new RequestEmployee();
+                $reqEmptmp->setRequest($entity);
+                $employee_tmp = $em->getReference('Panda86AppBundle:Employee', htmlentities($emp_id_tmp));
+                $reqEmptmp->setEmployee($employee_tmp);
+                $reqEmptmp->setIsOwner(false);
+
+                $em->persist($reqEmptmp);
+            }
+
             $em->flush();
 
             return $this->render('Panda86AppBundle:Request:finish.html.twig');
         }
-
+        // if form is not valid
+        $em = $this->getDoctrine()->getManager();
+        $employees = $em->getRepository('Panda86AppBundle:Employee')->findAll();
         return $this->render('Panda86AppBundle:Request:new.html.twig', array(
+            'employees' => $employees,
             'entity' => $entity,
             'form'   => $form->createView(),
         ));

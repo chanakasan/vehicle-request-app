@@ -10,6 +10,7 @@
         }
     </style>
     <link rel="stylesheet" href="/public/css/smoothness/jquery-ui-1.10.3.custom.min.css">
+    <link rel="stylesheet" href="/chosen/chosen.css">
     <link rel="stylesheet" href="/public/css/request/new.css">
 {% endblock %}
 
@@ -34,6 +35,16 @@
                     <!-- form fields -->
                     {{ form_row(form.days) }}
 
+                    <div class="control-group">
+                        <label class="control-label">Requester Name</label>
+                        <div class="controls">
+                            <select name="requester" data-placeholder="Name of requester"  class="chzn-select" tabindex="-1">
+                                {% for employee in employees %}
+                                    <option name="requester" value="{{ employee.getId }}">{{ employee.getName }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
                     <div class="control-group">
                         <label class="control-label">Journey Type</label>
 
@@ -83,6 +94,16 @@
                         </div>
                     </div>
                     <div class="control-group">
+                        <label class="control-label">Others travelling in vehicle</label>
+                        <div class="controls">
+                            <select name="other_p" data-placeholder="Names of other staff members" style="width:350px;" multiple="multiple" class="chzn-select" tabindex="-1">
+                                {% for employee in employees %}
+                                    <option name="other_p" value="{{ employee.getId }}">{{ employee.getName }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="control-group">
                         <div class="controls">
                             <button type="submit" formnovalidate="">Send Request</button>
                         </div>
@@ -110,7 +131,8 @@
     <script src="/public/js/jquery-1.9.1.min.js"></script>
     <script src="/public/js/jquery-ui.js"></script>
     <script src="/public/js/jquery.timeentry.js"></script>
-    <script src="/public/js/reqForm.js"></script>
+    <script src="/chosen/chosen.jquery.js"></script>
+    <script src="/public/js/newReqForm.js"></script>
     <script>
         $("#request_pickup_time_datepicker").datepicker({
             dateFormat: 'yy-mm-dd'
