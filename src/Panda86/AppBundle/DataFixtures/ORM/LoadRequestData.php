@@ -20,10 +20,6 @@ class LoadRequestData implements FixtureInterface
             'pickup_loc' => 'ICTA',
             'pickup_time' =>  new \DateTime('2013-08-01 14:00:00'),
             'destination' => 'colombo',
-            'vtype' => new VType(array(
-                'name' => '4-passenger-sedan',
-                'descrip' => 'Standard car with four passenger seats'
-            )),
             'purpose' => 'Meeting'
         );
         $req2 = array(
@@ -33,10 +29,6 @@ class LoadRequestData implements FixtureInterface
             'pickup_time' =>  new \DateTime('2013-08-02 14:00:00'),
             'destination' => 'colombo',
             'return_time' => new \DateTime('2013-08-02 16:00:00'),
-            'vtype' => new VType(array(
-                'name' => '7-passenger-mini-van',
-                'descrip' => ''
-            )),
             'purpose' => 'Meeting',
         );
         $req3 = array(
@@ -46,17 +38,19 @@ class LoadRequestData implements FixtureInterface
             'pickup_time' =>  new \DateTime('2013-08-22 14:00:00'),
             'destination' => 'Colombo 10',
             'return_time' => new \DateTime('2013-08-22 18:00:00'),
-            'vtype' => new VType(array(
-                'name' => '12-passenger-van',
-                'descrip' => ''
-            )),
             'purpose' => 'Conference',
         );
 
-        $request1 = new Request($req1);
-        $request2 = new Request($req2);
-        $request3 = new Request($req3);
+        $vtypes =  $manager->getRepository('Panda86AppBundle:VType')->findAll();
 
+        $request1 = new Request($req1);
+        $request1->setVType($vtypes[0]);
+
+        $request2 = new Request($req2);
+        $request2->setVType($vtypes[1]);
+
+        $request3 = new Request($req3);
+        $request3->setVType($vtypes[2]);
 
         $manager->persist($request1);
         $manager->persist($request2);

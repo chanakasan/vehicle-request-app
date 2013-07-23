@@ -17,7 +17,7 @@ class VTypeTest extends FunctionalTestCase
     public function  testCanSaveVType()
     {
         $vtype = new VType(array(
-            'name' => '12-passenger-van',
+            'name' => '15-passenger-large-van',
             'descrip' => 'Standard car with four passenger seats'
         ));
 

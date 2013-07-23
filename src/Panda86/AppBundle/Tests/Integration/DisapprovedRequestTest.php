@@ -31,14 +31,10 @@ class DisapprovedRequestTest extends FunctionalTestCase
             'updated_at' => new \DateTime('now'),
         );
 
-         $vtype =  new VType(array(
-            'name' => '4-passenger-sedan',
-            'descrip' => 'Standard car with four passenger seats'
-        ));
-        $this->em->persist($vtype);
+        $vtypes =  $this->em->getRepository('Panda86AppBundle:VType')->findAll();
 
         $this->request = new Request($req1);
-        $this->request->setVtype($vtype);
+        $this->request->setVtype($vtypes[0]);
 
         $this->em->persist($this->request);
     }

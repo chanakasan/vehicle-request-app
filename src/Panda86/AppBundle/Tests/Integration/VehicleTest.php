@@ -17,7 +17,7 @@ class VehicleTest extends FunctionalTestCase
         $this->args = array(
             'make' => 'Toyota',
             'model' => 'Corolla',
-            'reg_no' => 'WP NZB-5465',
+            'reg_no' => 'WP NEW-9999',
             'passengers' => 4,
             'is_company_owned' => true,
             'was_added' => new \DateTime('now')
@@ -27,14 +27,11 @@ class VehicleTest extends FunctionalTestCase
     public function  testCanSaveVehicle()
     {
         $vehicle =  new Vehicle($this->args);
-        $vtype = new VType(array(
-            'name' => '7-passenger-mini-van',
-            'descrip' => 'Standard car with four passenger seats'
-        ));
-        $vehicle->setVtype($vtype);
+
+        $vtypes =  $this->em->getRepository('Panda86AppBundle:VType')->findAll();
+        $vehicle->setVtype($vtypes[0]);
 
         $this->em->persist($vehicle);
-        $this->em->persist($vtype);
         $this->em->flush();
 
         $this->assertInstanceOf('Panda86\AppBundle\Entity\Vehicle', $vehicle);

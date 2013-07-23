@@ -38,7 +38,6 @@ Panda86\AppBundle\Entity\Request:
         vtype:
             targetEntity: VType
             inversedBy: vehicles
-            cascade: ["persist"]
             joinColumn:
                 name: vtype_id
                 referencedColumnName: id

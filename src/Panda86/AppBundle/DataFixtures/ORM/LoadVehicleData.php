@@ -25,7 +25,6 @@ class LoadVehicleData implements FixtureInterface
         $vehicle2 = new Vehicle();
         $vehicle2->setMake('Toyota');
         $vehicle2->setModel('Townace');
-        //$vehicle2->setType('van');
         $vehicle2->setRegNo('XX-1235');
         $vehicle2->setAc(true);
         $vehicle2->setPassengers(8);
@@ -34,30 +33,29 @@ class LoadVehicleData implements FixtureInterface
         $vehicle3 = new Vehicle();
         $vehicle3->setMake('Hyundai');
         $vehicle3->setModel('Santa Fe');
-        //$vehicle3->setVType('jeep');
         $vehicle3->setRegNo('XX-1236');
         $vehicle3->setPassengers(3);
         $vehicle3->setAc(true);
         $vehicle3->setIsCompanyOwned(true);
-                
+
         $vtype1 = new VType();
-        $vtype1->setName('x-12-passenger-van');
+        $vtype1->setName('12-passenger-van');
         $vtype1->setDescrip('');
         $vtype1->getVehicles()->add($vehicle2);
         $vehicle2->setVtype($vtype1);
-        
+
         $vtype2 = new VType();
-        $vtype2->setName('x-4-passenger-sedan');
-        $vtype2->setDescrip('');
+        $vtype2->setName('4-passenger-sedan');
+        $vtype2->setDescrip('Standard car with four passenger seats');
         $vtype2->getVehicles()->add($vehicle1);
         $vehicle1->setVtype($vtype2);
-        
+
         $vtype3 = new VType();
-        $vtype3->setName('x-4-passenger-jeep');
-        $vtype3->setDescrip('');     
+        $vtype3->setName('4-passenger-jeep');
+        $vtype3->setDescrip('');
         $vtype3->getVehicles()->add($vehicle3);
         $vehicle3->setVtype($vtype3);
-                
+
         $manager->persist($vtype1);
         $manager->persist($vtype2);
         $manager->persist($vtype3);

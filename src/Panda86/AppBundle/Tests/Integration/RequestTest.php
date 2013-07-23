@@ -24,10 +24,6 @@ class RequestTest extends FunctionalTestCase
             'pickup_time' =>  new \DateTime('2013-07-02 14:00:00'),
             'destination' => 'colombo',
             'return_time' => new \DateTime('2013-07-02 16:00:00'),
-            'vtype' => new VType(array(
-                'name' => '4-passenger-sedan',
-                'descrip' => 'Standard car with four passenger seats'
-            )),
             'purpose' => 'Official',
             'created_at' => new \DateTime('2013-07-01 12:00:00'),
             'updated_at' => new \DateTime('now'),
@@ -36,8 +32,12 @@ class RequestTest extends FunctionalTestCase
 
     public function testCanSaveRequestEmployee()
     {
+        $vtypes =  $this->em->getRepository('Panda86AppBundle:VType')->findAll();
+
         $requestEmployee = new RequestEmployee();
+
         $request =  new Request($this->req_args);
+        $request->setVType($vtypes[0]);
         $employee = new Employee($this->emp_args);
 
         $requestEmployee->setIsOwner(true);
