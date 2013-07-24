@@ -1,26 +1,79 @@
-{% extends '::admin.html.twig' %}
+{% extends '::admin-ui.html.twig' %}
 
 {% block body -%}
-    <h1>RequestEmployee</h1>
-
+    <h2>Req #{{ entity.request.id }} details</h2>
+    <br/>
     <table class="record_properties">
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
-                <th>Isowner</th>
-                <td>{{ entity.isOwner }}</td>
-            </tr>
+        <tr>
+            <th>Request ID</th>
+            <td>{{ entity.request.id }}</td>
+        </tr>
+        <tr>
+            <th>Requester</th>
+            <td>{{ entity.employee.name }}</td>
+        </tr>
+        <tr>
+            <th>Journey details</th>
+            <td>
+                <p>
+                    Type : {{ entity.request.journeytype }}
+                </p>
+                <p>
+                   Days : {{ entity.request.days }}
+               </p>
+            </td>
+        </tr>
+        <tr>
+            <th>Requested vehicle</th>
+            <td>{{ entity.request.vtype.name }}</td>
+        </tr>
+        {#<tr>#}
+            {#<th>Start_time</th>#}
+            {#<td>{{ entity.request.starttime|date('Y-m-d H:i:s') }}</td>#}
+        {#</tr>#}
+        {#<tr>#}
+            {#<th>Start_loc</th>#}
+            {#<td>{{ entity.request.startloc }}</td>#}
+        {#</tr>#}
+        <tr>
+            <th>Pickup time</th>
+            <td>{{ entity.request.pickuptime|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th>Pickup location</th>
+            <td>{{ entity.request.pickuploc }}</td>
+        </tr>
+        <tr>
+            <th>Destination</th>
+            <td>{{ entity.request.destination }}</td>
+        </tr>
+        <tr>
+            <th>Purpose of travel</th>
+            <td>{{ entity.request.purpose }}</td>
+        </tr>
+        <tr>
+            <th>Other passengers</th>
+            <td>
+                {% if otherPassengers|length > 0 %}
+                {% for passenger in otherPassengers %}
+                    <li>{{ passenger.employee.name|e }}</li>
+                {% endfor %}
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th>Date created</th>
+            <td>{{ entity.request.createdat|date('Y-m-d H:i:s') }}</td>
+        </tr>
         </tbody>
     </table>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('requestdata') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('request') }}">
+                Back to the list
+            </a>
+        </li>
+    </ul>
 {% endblock %}
