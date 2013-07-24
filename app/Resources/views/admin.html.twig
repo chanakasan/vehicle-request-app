@@ -41,7 +41,18 @@
 
             <div class="nav-collapse collapse">
                 <div class="navbar-text pull-right">
-                    {% block admin_login %}{% endblock %}
+                    {% block admin_login %}
+                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                            {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                            <a id="logout" class="navbar-text" href="{{ path('fos_user_security_logout') }}">
+                                {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                            </a>
+                        {% else %}
+                            <a class="navbar-text" id="login" href="{{ path('fos_user_security_login') }}">
+                                {{ 'layout.login'|trans({}, 'FOSUserBundle') }}
+                            </a>
+                        {% endif %}
+                    {% endblock %}
                 </div>
                 <ul class="nav">
                     <li class="active"><a href="#">#</a></li>
@@ -75,6 +86,15 @@
                         </ul>
                     </li>
                 </ul>
+                <div class="flash-notice">
+                    {% block notice %}
+                        {% for key, message in app.session.FlashBag() %}
+                            <p class="{{ key }}">
+                                {{ message|trans({}, 'FOSUserBundle') }}
+                            </p>
+                        {% endfor %}
+                    {% endblock %}
+                </div>
             </div>
             <!--/.nav-collapse -->
         </div>
