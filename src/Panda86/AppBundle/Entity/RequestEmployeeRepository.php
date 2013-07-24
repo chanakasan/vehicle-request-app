@@ -17,6 +17,43 @@ class RequestEmployeeRepository extends EntityRepository
     }
 
     /**
+     * Returns entity with request details and requester details
+     * @param mixed $id
+     * @return array|null|object
+     */
+    public function find($id)
+    {
+        $query = $this->getEntityManager()->createQuery('
+                    SELECT c FROM Panda86AppBundle:RequestEmployee c WHERE c.request =?1 AND c.isOwner = ?2
+                ');
+        $query->setParameter(1, $id);
+        $query->setParameter(2, true);
+
+        $result =  $query->getResult();
+
+        if($result[0]->getIsOwner())
+            return $result[0];
+        else
+            throw new \Exception('Error in app logic');
+    }
+
+    /**
+     * Returns other passengers associated with a request
+     * @param $id
+     * @return array
+     */
+    public function findOtherPassengers($id)
+    {
+        $query1 = $this->getEntityManager()->createQuery('
+                    SELECT c FROM Panda86AppBundle:RequestEmployee c WHERE c.request = ?1 AND c.isOwner = ?2
+                ');
+        $query1->setParameter(1, $id);
+        $query1->setParameter(2, false);
+
+        return $query1->getResult();
+    }
+
+    /**
      * @todo Find more efficient way to do this
      * @return array
      */
