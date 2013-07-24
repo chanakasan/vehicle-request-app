@@ -11,18 +11,19 @@ class VehicleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('make')
-            ->add('model')
-            ->add('reg_no')
+            ->add('make', null, array('label'=> false))
+            ->add('model', null, array('label'=> false))
+            ->add('reg_no', null, array('label'=> false))
             ->add('vtype','entity', array(
                 'class'=>'Panda86\AppBundle\Entity\VType',
                 'property'=>'name',
+                'label' => false
                 ))
-            ->add('passengers')
-            ->add('ac')
-            ->add('is_company_owned')
-            ->add('image', 'file')
-            ->add('remarks')
+            ->add('passengers', null, array('label'=> false))
+            ->add('ac', null, array('label'=> false))
+            ->add('is_company_owned', null, array('label'=> false))
+            ->add('image', 'file', array('label'=> false))
+            ->add('remarks', null, array('label'=> false))
         ;
     }
 
