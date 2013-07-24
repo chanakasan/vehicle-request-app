@@ -1,79 +1,114 @@
 {% extends '::admin-ui.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        [class*="span"].centred {
+            margin-left: auto;
+            margin-right: auto;
+            float: none;
+        }
+    </style>
+    <link rel="stylesheet" href="/public/css/smoothness/jquery-ui-1.10.3.custom.min.css">
+    <link rel="stylesheet" href="/chosen/chosen.css">
+    <link rel="stylesheet" href="/public/css/request/new.css">
+{% endblock %}
 {% block body -%}
-    <h2>Req #{{ entity.request.id }} details</h2>
-    <br/>
-    <table class="record_properties">
-        <tbody>
-        <tr>
-            <th>Request ID</th>
-            <td>{{ entity.request.id }}</td>
-        </tr>
-        <tr>
-            <th>Requester</th>
-            <td>{{ entity.employee.name }}</td>
-        </tr>
-        <tr>
-            <th>Journey details</th>
-            <td>
-                <p>
-                    Type : {{ entity.request.journeytype }}
-                </p>
-                <p>
-                   Days : {{ entity.request.days }}
-               </p>
-            </td>
-        </tr>
-        <tr>
-            <th>Requested vehicle</th>
-            <td>{{ entity.request.vtype.name }}</td>
-        </tr>
-        {#<tr>#}
-            {#<th>Start_time</th>#}
-            {#<td>{{ entity.request.starttime|date('Y-m-d H:i:s') }}</td>#}
-        {#</tr>#}
-        {#<tr>#}
-            {#<th>Start_loc</th>#}
-            {#<td>{{ entity.request.startloc }}</td>#}
-        {#</tr>#}
-        <tr>
-            <th>Pickup time</th>
-            <td>{{ entity.request.pickuptime|date('Y-m-d H:i:s') }}</td>
-        </tr>
-        <tr>
-            <th>Pickup location</th>
-            <td>{{ entity.request.pickuploc }}</td>
-        </tr>
-        <tr>
-            <th>Destination</th>
-            <td>{{ entity.request.destination }}</td>
-        </tr>
-        <tr>
-            <th>Purpose of travel</th>
-            <td>{{ entity.request.purpose }}</td>
-        </tr>
-        <tr>
-            <th>Other passengers</th>
-            <td>
-                {% if otherPassengers|length > 0 %}
-                {% for passenger in otherPassengers %}
-                    <li>{{ passenger.employee.name|e }}</li>
-                {% endfor %}
-                {% endif %}
-            </td>
-        </tr>
-        <tr>
-            <th>Date created</th>
-            <td>{{ entity.request.createdat|date('Y-m-d H:i:s') }}</td>
-        </tr>
-        </tbody>
-    </table>
+    <div class="row">
+        <div class="span9 centred">
 
-    <ul class="record_actions">
-        <li>
-            <a href="{{ path('request') }}">
-                Back to the list
-            </a>
-        </li>
-    </ul>
+            <img id="top" src="/public/css/request/top.png" alt="">
+
+            <div id="form_container">
+                <h1>Header</h1>
+
+                <form class="appnitro form-horizontal">
+
+                    <table class="record_properties">
+                        <div class="form_description">
+                            <h2>Req #{{ entity.request.id }} details</h2>
+                        </div>
+                        <tbody>
+                        <tr>
+                            <th>Request ID</th>
+                            <td>{{ entity.request.id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Requester</th>
+                            <td>{{ entity.employee.name }}</td>
+                        </tr>
+                        <tr>
+                            <th>Journey details</th>
+                            <td>
+                                <p>
+                                    Type : {{ entity.request.journeytype }}
+                                </p>
+
+                                <p>
+                                    Days : {{ entity.request.days }}
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Requested vehicle</th>
+                            <td>{{ entity.request.vtype.name }}</td>
+                        </tr>
+                        {#<tr>#}
+                        {#<th>Start_time</th>#}
+                        {#<td>{{ entity.request.starttime|date('Y-m-d H:i:s') }}</td>#}
+                        {#</tr>#}
+                        {#<tr>#}
+                        {#<th>Start_loc</th>#}
+                        {#<td>{{ entity.request.startloc }}</td>#}
+                        {#</tr>#}
+                        <tr>
+                            <th>Pickup time</th>
+                            <td>{{ entity.request.pickuptime|date('Y-m-d H:i:s') }}</td>
+                        </tr>
+                        <tr>
+                            <th>Pickup location</th>
+                            <td>{{ entity.request.pickuploc }}</td>
+                        </tr>
+                        <tr>
+                            <th>Destination</th>
+                            <td>{{ entity.request.destination }}</td>
+                        </tr>
+                        <tr>
+                            <th>Purpose of travel</th>
+                            <td>{{ entity.request.purpose }}</td>
+                        </tr>
+                        <tr>
+                            <th>Other passengers</th>
+                            <td>
+                                {% if otherPassengers|length > 0 %}
+                                    {% for passenger in otherPassengers %}
+                                        <li>{{ passenger.employee.name|e }}</li>
+                                    {% endfor %}
+                                {% endif %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Date created</th>
+                            <td>{{ entity.request.createdat|date('Y-m-d H:i:s') }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </form>
+                <ul class="record_actions">
+                    <li>
+                        <a href="{{ path('request') }}">
+                            Back to the list
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <img id="bottom" src="/public/css/request/bottom.png" alt="">
+        </div>
+    </div>
+
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="/public/js/jquery-1.9.1.min.js"></script>
 {% endblock %}
