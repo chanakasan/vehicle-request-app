@@ -24,6 +24,43 @@ class RequestController extends Controller
     }
 
     /**
+     * Lists all RequestEmployee entities.
+     *
+     */
+    public function listAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entities = $em->getRepository('Panda86AppBundle:RequestEmployee')->getList();
+
+        return $this->render('Panda86AppBundle:RequestEmployee:index.html.twig', array(
+            'entities' => $entities,
+        ));
+    }
+
+    /**
+     * Finds and displays a RequestEmployee entity.
+     *
+     */
+    public function showAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('Panda86AppBundle:RequestEmployee')->find($id);
+        $otherPassengers = $em->getRepository('Panda86AppBundle:RequestEmployee')->findOtherPassengers($id);
+
+//        var_dump($otherPassengers);exit;
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find RequestEmployee entity.');
+        }
+
+        return $this->render('Panda86AppBundle:RequestEmployee:show.html.twig', array(
+            'entity'      => $entity,
+            'otherPassengers' => $otherPassengers,
+        ));
+    }
+
+    /**
      * Displays a form to create a new Request entity.
      */
     public function newAction()
@@ -109,26 +146,6 @@ class RequestController extends Controller
     public function finishAction()
     {
         return $this->render('Panda86AppBundle:Request:finish.html.twig');
-    }
-
-    /**
-     * Finds and displays a Request entity.
-     */
-    public function showAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('Panda86AppBundle:Request')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Request entity.');
-        }
-
-        $deleteForm = $this->createDeleteForm($id);
-
-        return $this->render('Panda86AppBundle:Request:show.html.twig', array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),        ));
     }
 
     /**

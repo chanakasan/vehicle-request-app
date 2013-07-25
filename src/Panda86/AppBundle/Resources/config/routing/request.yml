@@ -1,10 +1,7 @@
-request:
+# For employee access #
+request_start:
     pattern:  /
     defaults: { _controller: "Panda86AppBundle:Request:index" }
-
-request_show:
-    pattern:  /{id}/show
-    defaults: { _controller: "Panda86AppBundle:Request:show" }
 
 request_new:
     pattern:  /new
@@ -18,6 +15,15 @@ request_create:
 request_finish:
     pattern:  /finish
     defaults: { _controller: "Panda86AppBundle:Request:finish" }
+
+# For admin access #
+request_list:
+    pattern:  /list
+    defaults: { _controller: "Panda86AppBundle:Request:list" }
+
+request_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "Panda86AppBundle:Request:show" }
 
 request_edit:
     pattern:  /{id}/edit

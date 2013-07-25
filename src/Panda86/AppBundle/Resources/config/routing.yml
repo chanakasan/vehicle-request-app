@@ -2,9 +2,6 @@ admin_home:
     pattern:  /admin
     defaults: { _controller: Panda86AppBundle:Home:index }
 
-Panda86AppBundle_vtype:
-        resource: "@Panda86AppBundle/Resources/config/routing/vtype.yml"
-        prefix:   /vtype
 
 Panda86AppBundle_vehicle:
         resource: "@Panda86AppBundle/Resources/config/routing/vehicle.yml"
@@ -21,7 +18,3 @@ Panda86AppBundle_driver:
 Panda86AppBundle_request:
         resource: "@Panda86AppBundle/Resources/config/routing/request.yml"
         prefix:   /request
-
-Panda86AppBundle_requestdata:
-        resource: "@Panda86AppBundle/Resources/config/routing/requestemployee.yml"
-        prefix:   /requestdata
