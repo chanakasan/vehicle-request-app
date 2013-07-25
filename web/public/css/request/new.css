@@ -230,7 +230,7 @@ form li .datepicker
 
 .form_description
 {
-	border-bottom:1px dotted #ccc;
+	/*border-bottom:1px dotted #ccc;*/
 	clear:both;
 	display:inline-block;
 	margin:0 0 1em;
@@ -263,7 +263,7 @@ form hr
 
 form li.section_break
 {
-	border-top:1px dotted #ccc;
+	/*border-top:1px dotted #ccc;*/
 	margin-top:9px;
 	padding-bottom:0;
 	padding-left:9px;

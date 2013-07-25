@@ -33,7 +33,7 @@ class RequestController extends Controller
 
         $entities = $em->getRepository('Panda86AppBundle:RequestEmployee')->getList();
 
-        return $this->render('Panda86AppBundle:RequestEmployee:index.html.twig', array(
+        return $this->render('Panda86AppBundle:Request:list.html.twig', array(
             'entities' => $entities,
         ));
     }
@@ -54,7 +54,7 @@ class RequestController extends Controller
             throw $this->createNotFoundException('Unable to find RequestEmployee entity.');
         }
 
-        return $this->render('Panda86AppBundle:RequestEmployee:show.html.twig', array(
+        return $this->render('Panda86AppBundle:Request:show.html.twig', array(
             'entity'      => $entity,
             'otherPassengers' => $otherPassengers,
         ));
