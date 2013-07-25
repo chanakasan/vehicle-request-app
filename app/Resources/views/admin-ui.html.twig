@@ -97,19 +97,17 @@
             <a href="#">Click here to continue</a>
         </noscript>
 
-        <!-- Example row of columns -->
+        <!-- Renders page contents here -->
+        {% block body %}{% endblock %}
+
+        <hr/>
         <div class="row">
             <div class="span12">
-                {% block body %}{% endblock %}
+                <footer>
+                    <p>&copy; ICTA {{ '' | date('Y') }}</p>
+                </footer>
             </div>
         </div>
-
-        <hr>
-
-        <footer>
-            <p>&copy; ICTA {{ '' | date('Y') }}</p>
-        </footer>
-
     </div>
     <!-- /container -->
 
@@ -122,6 +120,5 @@
         <script src="/public/js/jquery.dataTables.js"></script>
         <script src="/public/js/DS_bootstrap.js"></script>
     {% endblock %}
-
 </body>
 </html>
