@@ -35,7 +35,7 @@
                     {{ form_row(form.days) }}
 
                     <div class="control-group">
-                        <label class="control-label">Requester Name</label>
+                        <label class="control-label">Requester name</label>
                         <div class="controls">
                             <select name="requester" data-placeholder="Name of requester"  class="chzn-select" tabindex="-1">
                                 {% for employee in employees %}
@@ -45,7 +45,7 @@
                         </div>
                     </div>
                     <div class="control-group">
-                        <label class="control-label">Journey Type</label>
+                        <label class="control-label">Journey type</label>
 
                         <div class="controls">
                             {{ form_row(form.journey_type) }}
@@ -53,20 +53,15 @@
                     </div>
                     <div id='single_journey'>
                         <div class="control-group">
-                            <label class="control-label">Pickup Location</label>
+                            <label class="control-label">Pickup location</label>
 
                             <div class="controls">
                                 {{ form_row(form.pickup_loc) }}
                             </div>
                         </div>
                         <div class="control-group">
-                            <label class="control-label">Pickup Date/Time</label>
-
-                            <div class="controls">
                                 {{ form_row(form.pickup_time) }}
-                            </div>
                         </div>
-                        {#<input type="text" id="alternate" size="30" />#}
                         <div class="control-group">
                             <label class="control-label">Destination</label>
 
@@ -79,7 +74,7 @@
                         {#{{ form_row(form.return_time, {'label' : 'Return Time: '}) }}#}
                     </div>
                     <div class="control-group">
-                        <label class="control-label">Vehicle Type</label>
+                        <label class="control-label">Vehicle type</label>
 
                         <div class="controls">
                             {{ form_row(form.vtype) }}
@@ -95,7 +90,7 @@
                     <div class="control-group">
                         <label class="control-label">Others travelling in vehicle</label>
                         <div class="controls">
-                            <select name="other_p" data-placeholder="Names of other staff members" style="width:350px;" multiple="multiple" class="chzn-select" tabindex="-1">
+                            <select class="input-xlarge chzn-select"  name="other_p[]" data-placeholder="Names of other staff members" multiple="multiple" tabindex="-1">
                                 {% for employee in employees %}
                                     <option name="other_p" value="{{ employee.getId }}">{{ employee.getName }}</option>
                                 {% endfor %}
@@ -132,7 +127,6 @@
             dateFormat: 'yy-mm-dd'
         });
         $('#request_pickup_time_timepicker').timeEntry({
-            spinnerImage: '/public/images/spinnerDefault.png',
             show24Hours: true
         });
     </script>
