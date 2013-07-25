@@ -3,7 +3,19 @@
     <div {{ block('widget_container_attributes') }}>
         {{ form_errors(form.date) }}
         {{ form_errors(form.time) }}
-        {{ form_widget(form.date, {'id' : id ~ '_datepicker'}) }}
-        {{ form_widget(form.time, {'id' : id ~ '_timepicker'}) }}
+
+        <label class="control-label">Pickup date/time</label>
+        <div class="controls">
+            <div class="input-append" >
+                {{ form_widget(form.date, {'id' : id ~ '_datepicker', 'attr': {'class': 'input-medium'} }) }}
+                <span class="add-on"><i class="icon-calendar"></i></span>
+            </div>
+        </div>
+        <div class="controls">
+            <div class="input-append" >
+                {{ form_widget(form.time, {'id' : id ~ '_timepicker', 'attr': {'class': 'input-small'} }) }}
+                <span class="add-on"><i class="icon-time"></i></span>
+            </div>
+        </div>
     </div>
 {% endblock %}
