@@ -19,7 +19,6 @@
         <div class="span9 centred">
             {% form_theme form 'Panda86AppBundle:Form:form_datetimepicker_type.html.twig' %}
             <img id="top" src="/public/css/request/top.png" alt="">
-
             <div id="form_container">
                 <h1>Header</h1>
 
@@ -108,6 +107,9 @@
                             <button type="submit" formnovalidate="">Send Request</button>
                         </div>
                     </div>
+                    <div id="cancel-btn">
+                        <b><a class="muted pull-right" href="{{ path('request_finish') }}">X Cancel Request</a></b>
+                    </div>
                     <!--/form fields-->
                 </form>
                 <div id="footer">
@@ -115,14 +117,6 @@
                 </div>
             </div>
             <img id="bottom" src="/public/css/request/bottom.png" alt="">
-            <br/>
-            <ul class="record_actions">
-                <li>
-                    <a href="{{ path('request_finish') }}">
-                        Cancel Request
-                    </a>
-                </li>
-            </ul>
         </div>
     </div>
 {% endblock %}
