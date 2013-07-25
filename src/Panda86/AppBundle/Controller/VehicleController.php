@@ -43,18 +43,21 @@ class VehicleController extends Controller
             $em = $this->getDoctrine()->getManager();
 
             $file = $form['image']->getData();
-            // try to guess the extension (more secure)
-            $extension = $file->guessExtension();
-            if (!$extension) {
-                // extension cannot be guessed
-                $extension = 'jpg';
+            if($file)
+            {
+                $extension = $file->guessExtension();
+                // try to guess the extension (more secure)
+
+                if (!$extension) {
+                    // extension cannot be guessed
+                    $extension = 'jpg';
+                }
+                $dir = $entity->getImageUploadRootDir();
+                $filename = $entity->getRegNo().'.'.$extension;
+
+                $entity->setImage($filename);
+                $file->move($dir, $filename);
             }
-            $dir = $entity->getImageUploadRootDir();
-            $filename = $entity->getRegNo().'.'.$extension;
-
-            $entity->setImage($filename);
-            $file->move($dir, $filename);
-
             $em->persist($entity);
             $em->flush();
 
