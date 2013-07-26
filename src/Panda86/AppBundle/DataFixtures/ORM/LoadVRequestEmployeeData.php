@@ -8,7 +8,7 @@ use Panda86\AppBundle\Entity\RequestEmployee;
 use Panda86\AppBundle\Entity\Request;
 use Panda86\AppBundle\Entity\Employee;
 
-class LoadRequestEmployeeData implements FixtureInterface
+class LoadVRequestEmployeeData implements FixtureInterface
 {
     /**
      * {@inheritDoc}

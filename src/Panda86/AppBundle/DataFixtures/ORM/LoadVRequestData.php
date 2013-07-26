@@ -7,7 +7,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Panda86\AppBundle\Entity\Request;
 use Panda86\AppBundle\Entity\VType;
 
-class LoadRequestData implements FixtureInterface
+class LoadVRequestData implements FixtureInterface
 {
     /**
      * {@inheritDoc}
