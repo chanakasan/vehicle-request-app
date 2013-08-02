@@ -1,5 +1,29 @@
 {% extends '::admin.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel='stylesheet' href='/assets/fullcalendar/cupertino/theme.css' />
+    <link href='/assets/fullcalendar/fullcalendar.css' rel='stylesheet' />
+    <link href='/assets/fullcalendar/fullcalendar.print.css' rel='stylesheet' media='print' />
+    <style>
+        #calendar {
+            width: 900px;
+            margin: 0 auto;
+        }
+    </style>
+{% endblock %}
+
 {% block body %}
-    hi
+    <div class="row">
+        <div class="span12">
+            <div id='calendar'></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src='/assets/jquery/jquery-ui-1.10.2.custom.min.js'></script>
+    <script src='/assets/fullcalendar/fullcalendar.js'></script>
+    <script src='/app/js/admin/calendar.js'></script>
 {% endblock %}
