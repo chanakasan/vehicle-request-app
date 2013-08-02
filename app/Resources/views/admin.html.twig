@@ -84,20 +84,6 @@
                 <a class="brand" href="{{ path('app_root') }}">Admin Section</a>
 
                 <div class="nav-collapse collapse">
-                    <div class="navbar-text pull-right">
-                        {% block admin_login %}
-                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                                {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
-                                <a id="logout" class="navbar-text" href="{{ path('fos_user_security_logout') }}">
-                                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-                                </a>
-                            {% else %}
-                                <a class="navbar-text" id="login" href="{{ path('fos_user_security_login') }}">
-                                    {{ 'layout.login'|trans({}, 'FOSUserBundle') }}
-                                </a>
-                            {% endif %}
-                        {% endblock %}
-                    </div>
                     <ul class="nav">
                         <li class="active"><a href="#">#</a></li>
                         <li class="dropdown">
@@ -133,13 +119,18 @@
                             </ul>
                         </li>
                     </ul>
-                    <div class="flash-notice">
-                        {% block notice %}
-                            {% for key, message in app.session.FlashBag() %}
-                                <p class="{{ key }}">
-                                    {{ message|trans({}, 'FOSUserBundle') }}
-                                </p>
-                            {% endfor %}
+                    <div class="pull-right navbar-text">
+                        {% block admin_login %}
+                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                                <a id="logout" class="navbar-text" href="{{ path('fos_user_security_logout') }}">
+                                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                                </a>
+                            {% else %}
+                                <a class="navbar-text" id="login" href="{{ path('fos_user_security_login') }}">
+                                    {{ 'layout.login'|trans({}, 'FOSUserBundle') }}
+                                </a>
+                            {% endif %}
                         {% endblock %}
                     </div>
                 </div>
@@ -156,6 +147,16 @@
             <p>Please, turn on Javascript or use a different browser to use this app.</p>
             <a href="#">Click here to continue</a>
         </noscript>
+
+        <div class="flash-notice">
+            {% block notice %}
+                {% for key, message in app.session.FlashBag() %}
+                    <p class="{{ key }}">
+                        {{ message|trans({}, 'FOSUserBundle') }}
+                    </p>
+                {% endfor %}
+            {% endblock %}
+        </div>
 
         <!-- Renders page contents here -->
         {% block body %}{% endblock %}
