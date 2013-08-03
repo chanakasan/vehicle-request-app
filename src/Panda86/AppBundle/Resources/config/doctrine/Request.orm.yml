@@ -16,6 +16,9 @@ Panda86\AppBundle\Entity\Request:
         pickup_loc:
             type: string
             length: '64'
+        start_time:
+            type: datetime
+            nullable: true
         pickup_time:
             type: datetime
         destination:

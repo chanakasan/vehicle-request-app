@@ -21,6 +21,7 @@ class RequestTest extends FunctionalTestCase
             'journey_type' => 'single',
             'days' => 1,
             'pickup_loc' => 'ICTA',
+            'start_time' =>  new \DateTime('2013-07-02 13:00:00'),
             'pickup_time' =>  new \DateTime('2013-07-02 14:00:00'),
             'destination' => 'colombo',
             'return_time' => new \DateTime('2013-07-02 16:00:00'),

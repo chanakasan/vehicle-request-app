@@ -15,16 +15,17 @@ class RequestTest extends \PHPUnit_Framework_TestCase {
             'journey_type' => 'single',
             'days' => 1,
             'pickup_loc' => 'ICTA',
-            'pickup_time' =>  strtotime("+1 week 2 days 4 hours 2 seconds"),
+            'start_time' =>  new \DateTime('2013-07-02 13:00:00'),
+            'pickup_time' =>  new \DateTime('2013-07-02 14:00:00'),
             'destination' => 'colombo',
-            'return_time' => strtotime("+1 week 2 days 6 hours 2 seconds"),
+            'return_time' => new \DateTime('2013-07-02 16:00:00'),
             'vtype' => new VType(array(
                 'name' => '4-passenger-sedan',
                 'descrip' => 'Standard car with four passenger seats'
             )),
             'purpose' => 'Official',
             'created_at' => new \DateTime('now'),
-            'updated_at' => strtotime("+10 minutes"),
+            'updated_at' => new \DateTime('+5 minutes'),
         );
     }
 
@@ -43,6 +44,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals($this->req1['journey_type'], $request->getJourneyType());
         $this->assertEquals($this->req1['days'], $request->getDays());
         $this->assertEquals($this->req1['pickup_loc'], $request->getPickupLoc());
+        $this->assertEquals($this->req1['start_time'], $request->getStartTime());
         $this->assertEquals($this->req1['pickup_time'], $request->getPickupTime());
         $this->assertEquals($this->req1['destination'], $request->getDestination());
         $this->assertEquals($this->req1['destination'], $request->getDestination());

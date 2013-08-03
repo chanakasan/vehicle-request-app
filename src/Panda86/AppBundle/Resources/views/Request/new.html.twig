@@ -9,16 +9,16 @@
             float: none;
         }
     </style>
-    <link rel="stylesheet" href="/public/css/smoothness/jquery-ui-1.10.3.custom.min.css">
-    <link rel="stylesheet" href="/chosen/chosen.css">
-    <link rel="stylesheet" href="/public/css/request/new.css">
+    <link rel="stylesheet" href="/assets/jquery-ui/redmond/jquery-ui-1.10.3.custom.css">
+    <link rel="stylesheet" href="/assets/chosen/chosen.css">
+    <link rel="stylesheet" href="/app/css/request/new.css">
 {% endblock %}
 
 {% block body -%}
     <div class="row">
         <div class="span9 centred">
             {% form_theme form 'Panda86AppBundle:Form:form_datetimepicker_type.html.twig' %}
-            <img id="top" src="/public/css/request/top.png" alt="">
+            <img id="top" src="/app/images/pform/top.png" alt="">
             <div id="form_container">
                 <h1>Header</h1>
 
@@ -111,17 +111,16 @@
                     <a href="http://www.icta.lk">ICTA | &copy 2013</a>
                 </div>
             </div>
-            <img id="bottom" src="/public/css/request/bottom.png" alt="">
+            <img id="bottom" src="/app/images/pform/bottom.png" alt="">
         </div>
     </div>
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}
-    <script src="/public/js/jquery-1.9.1.min.js"></script>
-    <script src="/public/js/jquery-ui.js"></script>
-    <script src="/public/js/jquery.timeentry.js"></script>
-    <script src="/chosen/chosen.jquery.js"></script>
-    <script src="/public/js/newReqForm.js"></script>
+    <script src="/assets/jquery-ui/jquery-ui-1.10.3.custom.js"></script>
+    <script src="/assets/jquery.timeentry.js"></script>
+    <script src="/assets/chosen/chosen.jquery.js"></script>
+    <script src="/app/js/request/newReqForm.js"></script>
     <script>
         $("#request_pickup_time_datepicker").datepicker({
             dateFormat: 'yy-mm-dd'
