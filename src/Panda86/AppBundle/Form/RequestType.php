@@ -26,6 +26,9 @@ class RequestType extends AbstractType
                 'property' => 'name',
                 'label' => false,
             ))
+            ->add('start_time','text', array(
+                'label' => false,
+            ))
             ->add('pickup_time','dateTimePicker', array(
                 'label' => false,
             ))
@@ -35,7 +38,7 @@ class RequestType extends AbstractType
             ->add('destination', 'text', array(
                 'label' => false,
             ))
-            ->add('return_time','dateTimePicker', array(
+            ->add('return_time','text', array(
                 'label' => false,
             ))
             ->add('purpose', 'text', array(

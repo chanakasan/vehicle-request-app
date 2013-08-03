@@ -10,26 +10,41 @@ $(document).ready(function(){
     for (var selector in config) {
         $(selector).chosen(config[selector]);
     }
-//    function toggle_journey(type, is_checked)
-//    {
-//        var tag_id = '#'+type+'_journey';
-//
-//        if (is_checked == true)
-//        {
-//            $(tag_id).show();
-//        }
-//        else {
-//            $(tag_id).hide();
-//        }
-//    }
-//
+    $("#request_pickup_time_datepicker").datepicker({
+        dateFormat: 'yy-mm-dd'
+    });
+    $('#request_start_time_timepicker').timeEntry({
+        show24Hours: true,
+        spinnerImage: ''
+    });
+    $('#request_start_time').timeEntry({
+        show24Hours: true,
+        spinnerImage: ''
+    });
+    $('#request_return_time').timeEntry({
+        show24Hours: true,
+        spinnerImage: ''
+    });
+    function toggle_journey(type, is_selected)
+    {
+        var tag_id = '#'+type+'_journey';
+
+        if (is_selected == true)
+        {
+            $(tag_id).show();
+        }
+        else {
+            $(tag_id).hide();
+        }
+    }
+
 //    $('#request_journey_type_0').trigger("change");
 //    $('#request_journey_type_1').trigger("change");
 //
 //    //toggle single journey checkbox
 //    $("#request_journey_type_0").change(function(){
 //        var type = $(this).val();
-//        var is_checked = $(this).is(':checked');
+//        var is_checked = $(this).is(':selected');
 //        toggle_journey(type, is_checked);
 //    });
 //

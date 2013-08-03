@@ -11,8 +11,9 @@
 class_name: WebGuy
 modules:
     enabled:
-        - PhpBrowser
+        - Selenium2
         - WebHelper
     config:
-        PhpBrowser:
-            url: 'http://localhost:3000/app_dev.php'
+        Selenium2:
+            url: 'http://dev.vr:8888/app_dev.php'
+            browser: firefox
