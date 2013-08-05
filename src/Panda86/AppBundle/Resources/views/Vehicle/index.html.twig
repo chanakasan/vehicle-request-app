@@ -1,7 +1,9 @@
-{% extends '::admin-ui.html.twig' %}
+{% extends '::admin.html.twig' %}
     {% block stylesheets %}
         {{ parent() }}
-        <link rel="stylesheet" type="text/css" href="/colorbox/colorbox.css" media="all">
+        <link rel="stylesheet" type="text/css" href="/assets/DataTables/dataTables.css">
+        <link rel="stylesheet" type="text/css" href="/assets/colorbox/colorbox.css" media="all">
+        <link rel="stylesheet" type="text/css" href="/app/css/common/list.css" media="all">
     {% endblock %}
 {% block body -%}
     <div class="row">
@@ -56,7 +58,7 @@
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}
-    <script type="text/javascript" src="/colorbox/jquery.colorbox-min.js"></script>
+    <script type="text/javascript" src="/assets/colorbox/jquery.colorbox-min.js"></script>
     <script>
         //        $('.iframe').colorbox({width: "70%", height: "100%", iframe: true});
     </script>
