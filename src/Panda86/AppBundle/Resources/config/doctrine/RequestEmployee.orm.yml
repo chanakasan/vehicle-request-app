@@ -12,6 +12,8 @@ Panda86\AppBundle\Entity\RequestEmployee:
         isOwner:
             type: boolean
             column: is_owner
+        active:
+            type: boolean
 
     manyToOne:
             request:

@@ -2,13 +2,14 @@
 
 namespace Panda86\AppBundle\DataFixtures\ORM;
 
-use Doctrine\Common\DataFixtures\FixtureInterface;
+use Doctrine\Common\DataFixtures\AbstractFixture;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Panda86\AppBundle\Entity\RequestEmployee;
 use Panda86\AppBundle\Entity\Request;
 use Panda86\AppBundle\Entity\Employee;
 
-class LoadVRequestEmployeeData implements FixtureInterface
+class LoadRequestEmployeeData extends AbstractFixture implements OrderedFixtureInterface
 {
     /**
      * {@inheritDoc}
@@ -81,6 +82,16 @@ class LoadVRequestEmployeeData implements FixtureInterface
         $manager->persist($reqEmp31);
 
         $manager->flush();
+    }
+
+    /**
+     * Get the order of this execution
+     *
+     * @return int
+     */
+    public function getOrder()
+    {
+        return 5;
     }
 
 }

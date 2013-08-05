@@ -67,6 +67,7 @@ class Request extends Base {
         $this->start_time = self::DEFAULT_START_TIME;
         $this->return_time = self::DEFAULT_RETURN_TIME;
 
+        $this->active = true;
         $this->created_at = new \DateTime('now');
         $this->updated_at = new \DateTime('now');
 
@@ -398,4 +399,32 @@ class Request extends Base {
         return $this->vtype;
     }
 
+    /**
+     * @var boolean
+     */
+    protected $active;
+
+
+    /**
+     * Set active
+     *
+     * @param boolean $active
+     * @return Request
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+
+        return $this;
+    }
+
+    /**
+     * Get active
+     *
+     * @return boolean 
+     */
+    public function getActive()
+    {
+        return $this->active;
+    }
 }

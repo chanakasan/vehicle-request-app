@@ -2,11 +2,12 @@
 
 namespace Panda86\AppBundle\DataFixtures\ORM;
 
-use Doctrine\Common\DataFixtures\FixtureInterface;
+use Doctrine\Common\DataFixtures\AbstractFixture;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Panda86\AppBundle\Entity\Employee;
 
-class LoadEmployeeData implements FixtureInterface
+class LoadEmployeeData extends AbstractFixture  implements OrderedFixtureInterface
 {
     /**
      * {@inheritDoc}
@@ -29,5 +30,15 @@ class LoadEmployeeData implements FixtureInterface
         $path_to_file = __DIR__.'/../employee-data.txt';
         $names = file($path_to_file);
         return $names;
+    }
+
+    /**
+     * Get the order of this execution
+     *
+     * @return int
+     */
+    public function getOrder()
+    {
+        return 2;
     }
 }

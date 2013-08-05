@@ -16,6 +16,7 @@ class RequestEmployee extends Base
     public function __construct(array $options = null)
     {
         $this->isOwner = false;
+        $this->active = true;
 
         parent::__construct($options);
     }
@@ -117,5 +118,33 @@ class RequestEmployee extends Base
     public function getEmployee()
     {
         return $this->employee;
+    }
+    /**
+     * @var boolean
+     */
+    private $active;
+
+
+    /**
+     * Set active
+     *
+     * @param boolean $active
+     * @return RequestEmployee
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+
+        return $this;
+    }
+
+    /**
+     * Get active
+     *
+     * @return boolean 
+     */
+    public function getActive()
+    {
+        return $this->active;
     }
 }

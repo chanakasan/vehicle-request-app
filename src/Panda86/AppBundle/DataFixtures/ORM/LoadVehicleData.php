@@ -2,12 +2,13 @@
 
 namespace Panda86\AppBundle\DataFixtures\ORM;
 
-use Doctrine\Common\DataFixtures\FixtureInterface;
+use Doctrine\Common\DataFixtures\AbstractFixture;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Panda86\AppBundle\Entity\Vehicle;
 use Panda86\AppBundle\Entity\VType;
 
-class LoadVehicleData implements FixtureInterface
+class LoadVehicleData extends AbstractFixture implements OrderedFixtureInterface
 {
     /**
      * {@inheritDoc}
@@ -63,5 +64,15 @@ class LoadVehicleData implements FixtureInterface
         $manager->persist($vehicle2);
         $manager->persist($vehicle3);
         $manager->flush();
+    }
+
+    /**
+     * Get the order of this execution
+     *
+     * @return int
+     */
+    public function getOrder()
+    {
+        return 3;
     }
 }
