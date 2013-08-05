@@ -20,7 +20,7 @@ class RequestController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('Panda86AppBundle:Request:index.html.twig');
+        return $this->render('Panda86AppBundle:Request:start.html.twig');
     }
 
     /**

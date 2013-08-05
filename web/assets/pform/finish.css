@@ -1,6 +1,6 @@
 body
 {
-	background:#ffffff;
+	background: #c2c2c2;
 	font-family:"Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
 	font-size:small;
 	margin:8px 0 16px;
@@ -9,7 +9,7 @@ body
 
 #form_container
 {
-	background:#fff;
+	background: #e8e8e8;
 	border:1px solid #ccc;
 	margin:0 auto;
 	text-align:left;
@@ -328,7 +328,7 @@ span.symbol
 
 input.text
 {
-	background:#fff url(shadow.gif) repeat-x top;
+	background:#fff url(../../app/css/request/shadow.gif) repeat-x top;
 	border-bottom:1px solid #ddd;
 	border-left:1px solid #c3c3c3;
 	border-right:1px solid #c3c3c3;
@@ -349,7 +349,7 @@ input.file
 
 textarea.textarea
 {
-	background:#fff url(shadow.gif) repeat-x top;
+	background:#fff url(../../app/css/request/shadow.gif) repeat-x top;
 	border-bottom:1px solid #ddd;
 	border-left:1px solid #c3c3c3;
 	border-right:1px solid #c3c3c3;
@@ -367,7 +367,7 @@ select.select
 	font-size:100%;
 	margin:1px 0;
 	padding:1px 0 0;
-	background:#fff url(shadow.gif) repeat-x top;
+	background:#fff url(../../app/css/request/shadow.gif) repeat-x top;
 	border-bottom:1px solid #ddd;
 	border-left:1px solid #c3c3c3;
 	border-right:1px solid #c3c3c3;
