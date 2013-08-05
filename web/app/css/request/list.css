@@ -1,0 +1,18 @@
+body {
+    background: rgba(235, 235, 235, 0.74);
+}
+
+.dt-table {
+    min-height: 480px;
+}
+
+table {
+    display: table;
+    border-collapse: separate;
+    border-spacing: 1px;
+    border-color: gray;
+}
+
+#list1 {
+    background: rgba(126, 160, 174, 0.7);
+}
