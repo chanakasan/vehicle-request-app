@@ -13,7 +13,7 @@ $(document).ready(function(){
     $("#request_pickup_time_datepicker").datepicker({
         dateFormat: 'yy-mm-dd'
     });
-    $('#request_start_time_timepicker').timeEntry({
+    $('#request_pickup_time_timepicker').timeEntry({
         show24Hours: true,
         spinnerImage: ''
     });
