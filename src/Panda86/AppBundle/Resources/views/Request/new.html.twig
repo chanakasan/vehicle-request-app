@@ -8,6 +8,9 @@
             margin-right: auto;
             float: none;
         }
+        .form-required {
+            color: red;
+        }
     </style>
     <link rel="stylesheet" href="/assets/jquery-ui/redmond/jquery-ui-1.10.3.custom.css">
     <link rel="stylesheet" href="/assets/chosen/chosen.css">
@@ -35,7 +38,9 @@
                     {{ form_row(form.days) }}
 
                     <div class="control-group">
-                        <label class="control-label">Requester name</label>
+                        <label class="control-label">Requester name
+                            <span class="form-required" title="This field is required.">*</span>
+                        </label>
                         <div class="controls">
                             <select name="requester" data-placeholder="Name of requester"  class="chzn-select" tabindex="-1">
                                 {% for employee in employees %}
@@ -45,29 +50,36 @@
                         </div>
                     </div>
                     <div class="control-group">
-                        <label class="control-label">Journey type</label>
-
+                        <label class="control-label">Journey type
+                            <span class="form-required" title="This field is required.">*</span>
+                        </label>
                         <div class="controls">
                             {{ form_row(form.journey_type) }}
                         </div>
                     </div>
                     <div id='single_journey'>
                         <div class="control-group">
-                            <label class="control-label">Pickup location</label>
+                            <label class="control-label">Pickup location
+                                <span class="form-required" title="This field is required.">*</span>
+                            </label>
 
                             <div class="controls">
                                 {{ form_row(form.pickup_loc) }}
                             </div>
                         </div>
                         <div class="control-group">
-                            <label class="control-label">Destination</label>
+                            <label class="control-label">Destination
+                                <span class="form-required" title="This field is required.">*</span>
+                            </label>
 
                             <div class="controls">
                                 {{ form_row(form.destination) }}
                             </div>
                         </div>
                         <div class="control-group">
-                            <label class="control-label">Start time</label>
+                            <label class="control-label">Start time
+                                <span class="form-required" title="This field is required.">*</span>
+                            </label>
 
                             <div class="controls">
                                 <div class="input-append">
@@ -92,14 +104,18 @@
                         </div>
                     </div>
                     <div class="control-group">
-                        <label class="control-label">Vehicle type</label>
+                        <label class="control-label">Vehicle type
+                            <span class="form-required" title="This field is required.">*</span>
+                        </label>
 
                         <div class="controls">
                             {{ form_row(form.vtype) }}
                         </div>
                     </div>
                     <div class="control-group">
-                        <label class="control-label">Purpose of journey</label>
+                        <label class="control-label">Purpose of journey
+                            <span class="form-required" title="This field is required.">*</span>
+                        </label>
 
                         <div class="controls">
                             {{ form_row(form.purpose) }}
