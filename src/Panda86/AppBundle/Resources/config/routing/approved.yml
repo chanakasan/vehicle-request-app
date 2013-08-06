@@ -1,0 +1,30 @@
+approved:
+    pattern:  /
+    defaults: { _controller: "Panda86AppBundle:ApprovedRequest:index" }
+
+approved_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "Panda86AppBundle:ApprovedRequest:show" }
+
+approved_new:
+    pattern:  /new
+    defaults: { _controller: "Panda86AppBundle:ApprovedRequest:new" }
+
+approved_create:
+    pattern:  /create
+    defaults: { _controller: "Panda86AppBundle:ApprovedRequest:create" }
+    requirements: { _method: post }
+
+approved_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "Panda86AppBundle:ApprovedRequest:edit" }
+
+approved_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "Panda86AppBundle:ApprovedRequest:update" }
+    requirements: { _method: post|put }
+
+approved_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "Panda86AppBundle:ApprovedRequest:delete" }
+    requirements: { _method: post|delete }
