@@ -85,7 +85,6 @@
 
                 <div class="nav-collapse collapse">
                     <ul class="nav">
-                        <li class="active"><a href="#">#</a></li>
                         <li class="dropdown">
                             <a href="{{ path('request_list') }}" class="dropdown-toggle" data-toggle="dropdown">Requests<b
                                         class="caret"></b></a>
@@ -119,7 +118,7 @@
                             </ul>
                         </li>
                     </ul>
-                    <div class="pull-right navbar-text">
+                    <p class="pull-right navbar-text">
                         {% block admin_login %}
                             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                                 {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
@@ -132,7 +131,7 @@
                                 </a>
                             {% endif %}
                         {% endblock %}
-                    </div>
+                    </p>
                 </div>
                 <!--/.nav-collapse -->
             </div>
@@ -165,7 +164,7 @@
     <div id="push"></div>
 </div>
 <!--/ wrap -->
-
+<br/>
 <div id="footer">
     <div class="container">
         <p class="muted credit">&copy; ICTA {{ '' | date('Y') }}</p>
