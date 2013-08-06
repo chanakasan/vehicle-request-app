@@ -12,20 +12,21 @@ use Panda86\AppBundle\Form\ApprovedRequestType;
  * ApprovedRequest controller.
  *
  */
-class ApprovedRequestController extends Controller
+class ApproveController extends Controller
 {
+
     /**
-     * Lists all ApprovedRequest entities.
+     * Displays a form to create a new ApprovedRequest entity.
      *
      */
-    public function indexAction()
+    public function newAction()
     {
-        $em = $this->getDoctrine()->getManager();
+        $entity = new ApprovedRequest();
+        $form   = $this->createForm(new ApprovedRequestType(), $entity);
 
-        $entities = $em->getRepository('Panda86AppBundle:ApprovedRequest')->findAll();
-
-        return $this->render('Panda86AppBundle:ApprovedRequest:index.html.twig', array(
-            'entities' => $entities,
+        return $this->render('Panda86AppBundle:Approve:new.html.twig', array(
+            'entity' => $entity,
+            'form'   => $form->createView(),
         ));
     }
 
@@ -44,32 +45,17 @@ class ApprovedRequestController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('approved_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('approve_show', array('id' => $entity->getId())));
         }
 
-        return $this->render('Panda86AppBundle:ApprovedRequest:new.html.twig', array(
+        return $this->render('Panda86AppBundle:Approve:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
     }
 
     /**
-     * Displays a form to create a new ApprovedRequest entity.
-     *
-     */
-    public function newAction()
-    {
-        $entity = new ApprovedRequest();
-        $form   = $this->createForm(new ApprovedRequestType(), $entity);
-
-        return $this->render('Panda86AppBundle:ApprovedRequest:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        ));
-    }
-
-    /**
-     * Finds and displays a ApprovedRequest entity.
+     * Finds and displays a Approve entity.
      *
      */
     public function showAction($id)
@@ -84,13 +70,13 @@ class ApprovedRequestController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('Panda86AppBundle:ApprovedRequest:show.html.twig', array(
+        return $this->render('Panda86AppBundle:Approve:show.html.twig', array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),        ));
     }
 
     /**
-     * Displays a form to edit an existing ApprovedRequest entity.
+     * Displays a form to edit an existing Approved entity.
      *
      */
     public function editAction($id)
@@ -106,7 +92,7 @@ class ApprovedRequestController extends Controller
         $editForm = $this->createForm(new ApprovedRequestType(), $entity);
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('Panda86AppBundle:ApprovedRequest:edit.html.twig', array(
+        return $this->render('Panda86AppBundle:Approved:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -124,7 +110,7 @@ class ApprovedRequestController extends Controller
         $entity = $em->getRepository('Panda86AppBundle:ApprovedRequest')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find ApprovedRequest entity.');
+            throw $this->createNotFoundException('Unable to find Approved entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -135,10 +121,10 @@ class ApprovedRequestController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('approved_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('approve_edit', array('id' => $id)));
         }
 
-        return $this->render('Panda86AppBundle:ApprovedRequest:edit.html.twig', array(
+        return $this->render('Panda86AppBundle:Approve:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -166,7 +152,7 @@ class ApprovedRequestController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('approved'));
+        return $this->redirect($this->generateUrl('request_list'));
     }
 
     /**

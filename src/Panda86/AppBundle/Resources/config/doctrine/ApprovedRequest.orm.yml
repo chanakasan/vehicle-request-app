@@ -11,7 +11,7 @@ Panda86\AppBundle\Entity\ApprovedRequest:
         remarks:
             type: string
             length: '255'
-            nuallable: true
+            nullable: true
         active:
             type: boolean
         message:

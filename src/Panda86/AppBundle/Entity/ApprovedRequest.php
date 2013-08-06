@@ -17,7 +17,6 @@ class ApprovedRequest extends Base
         $this->active = true;
         $this->created = new \DateTime('now');
         $this->updated = new \DateTime('now');
-        $this->remarks = '';
 
         parent::__construct($options);
     }

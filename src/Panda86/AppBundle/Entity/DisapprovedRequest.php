@@ -151,12 +151,12 @@ class DisapprovedRequest extends Base
     /**
      * @var boolean
      */
-    private $active;
+    protected  $active;
 
     /**
      * @var string
      */
-    private $message;
+    protected  $message;
 
 
     /**
