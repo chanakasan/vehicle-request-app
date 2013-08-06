@@ -3,7 +3,6 @@
 $I = new WebGuy($scenario);
 $I->wantTo('verify that an employee can make a request');
 $I->amOnPage('/request/new');
-$I->see('New vehicle reservation request');
 
 $I->selectOption('request_journey_type_1', 'single');
 $I->fillField('request_pickup_loc', 'Kollupitiya');
