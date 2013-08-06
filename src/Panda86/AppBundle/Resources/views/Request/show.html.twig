@@ -9,9 +9,7 @@
             float: none;
         }
     </style>
-    {#<link rel="stylesheet" href="/public/css/smoothness/jquery-ui-1.10.3.custom.min.css">#}
-    <link rel="stylesheet" href="/assets/chosen/chosen.css">
-    <link rel="stylesheet" href="/app/css/request/new.css">
+    <link rel="stylesheet" href="/assets/pform/show.css">
 {% endblock %}
 {% block body -%}
     <div class="row">
@@ -20,11 +18,14 @@
             <img id="top" src="/assets/pform/top.png" alt="">
 
             <div id="form_container">
+                <div id="close" class="pull-right">
+                    <a class="btn btn-danger" href="{{ path('request_list') }}">X</a>
+                </div>
                 <h1>Header</h1>
 
                 <form class="appnitro form-horizontal">
 
-                    <table class="record_properties">
+                    <table class="record_properties table table-striped">
                         <div class="form_description">
                             <h2>Req #{{ entity.request.id }} details</h2>
                         </div>
@@ -94,13 +95,6 @@
                         </tbody>
                     </table>
                 </form>
-                <ul class="record_actions">
-                    <li>
-                        <a href="{{ path('request_list') }}">
-                            Back to the list
-                        </a>
-                    </li>
-                </ul>
             </div>
             <img id="bottom" src="/assets/pform/bottom.png" alt="">
         </div>
@@ -108,5 +102,5 @@
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}
-    <script src="/public/js/jquery-1.9.1.min.js"></script>
+    <script src="/assets/jquery/jquery-1.9.1.min.js"></script>
 {% endblock %}
