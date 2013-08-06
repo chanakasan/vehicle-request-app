@@ -14,6 +14,7 @@ class DisapprovedRequest extends Base
      */
     public function __construct(array $options = null)
     {
+        $this->active = true;
         $this->created = new \DateTime('now');
         $this->updated = new \DateTime('now');
 
@@ -146,5 +147,61 @@ class DisapprovedRequest extends Base
     public function getRequest()
     {
         return $this->request;
+    }
+    /**
+     * @var boolean
+     */
+    private $active;
+
+    /**
+     * @var string
+     */
+    private $message;
+
+
+    /**
+     * Set active
+     *
+     * @param boolean $active
+     * @return DisapprovedRequest
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+
+        return $this;
+    }
+
+    /**
+     * Get active
+     *
+     * @return boolean 
+     */
+    public function getActive()
+    {
+        return $this->active;
+    }
+
+    /**
+     * Set message
+     *
+     * @param string $message
+     * @return DisapprovedRequest
+     */
+    public function setMessage($message)
+    {
+        $this->message = $message;
+
+        return $this;
+    }
+
+    /**
+     * Get message
+     *
+     * @return string 
+     */
+    public function getMessage()
+    {
+        return $this->message;
     }
 }

@@ -12,6 +12,11 @@ Panda86\AppBundle\Entity\ApprovedRequest:
             type: string
             length: '255'
             nuallable: true
+        active:
+            type: boolean
+        message:
+            text: text
+            nullable: true
         created:
             type: datetime
         updated:

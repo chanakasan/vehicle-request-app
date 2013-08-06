@@ -34,7 +34,7 @@ class ApprovedRequestTest extends FunctionalTestCase
         $vehicle1 = array(
             'make' => 'Toyota',
             'model' => 'Corolla',
-            'reg_no' => 'WP NZB-5465',
+            'reg_no' => 'WP NZB-5555',
             'passengers' => 4,
             'is_company_owned' => true,
         );

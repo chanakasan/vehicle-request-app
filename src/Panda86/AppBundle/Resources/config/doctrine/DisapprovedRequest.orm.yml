@@ -12,6 +12,11 @@ Panda86\AppBundle\Entity\DisapprovedRequest:
             type: string
             length: '255'
             nullable: true
+        active:
+            type: boolean
+        message:
+            text: text
+            nullable: true
         created:
             type: datetime
         updated:

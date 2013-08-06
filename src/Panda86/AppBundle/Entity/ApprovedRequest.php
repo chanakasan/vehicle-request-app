@@ -14,6 +14,7 @@ class ApprovedRequest extends Base
      */
     public function __construct(array $options = null)
     {
+        $this->active = true;
         $this->created = new \DateTime('now');
         $this->updated = new \DateTime('now');
         $this->remarks = '';
@@ -203,5 +204,61 @@ class ApprovedRequest extends Base
     public function getDriver()
     {
         return $this->driver;
+    }
+    /**
+     * @var boolean
+     */
+    protected  $active;
+
+    /**
+     * @var string
+     */
+    protected $message;
+
+
+    /**
+     * Set active
+     *
+     * @param boolean $active
+     * @return ApprovedRequest
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+
+        return $this;
+    }
+
+    /**
+     * Get active
+     *
+     * @return boolean 
+     */
+    public function getActive()
+    {
+        return $this->active;
+    }
+
+    /**
+     * Set message
+     *
+     * @param string $message
+     * @return ApprovedRequest
+     */
+    public function setMessage($message)
+    {
+        $this->message = $message;
+
+        return $this;
+    }
+
+    /**
+     * Get message
+     *
+     * @return string 
+     */
+    public function getMessage()
+    {
+        return $this->message;
     }
 }
