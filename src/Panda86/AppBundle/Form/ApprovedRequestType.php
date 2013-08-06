@@ -23,7 +23,7 @@ class ApprovedRequestType extends AbstractType
                 ))
             ->add('driver', 'entity',array(
                 'class' => 'Panda86AppBundle:Driver',
-                'property' => 'name',
+                'property' => 'display_name',
                 'label' => false,
                 ))
             ->add('remarks')
