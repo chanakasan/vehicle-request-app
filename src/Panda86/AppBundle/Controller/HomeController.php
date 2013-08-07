@@ -8,6 +8,6 @@ class HomeController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('Panda86AppBundle:Home:index.html.twig');
+        return $this->render('Panda86AppBundle:Dashboard:index.html.twig');
     }
 }

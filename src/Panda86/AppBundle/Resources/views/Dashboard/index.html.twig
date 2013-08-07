@@ -1,8 +1,12 @@
 {% extends '::admin-app.html.twig' %}
 
+{% block title %}
+    {{ parent() }}
+    - Dashboard
+{% endblock %}
 {% block stylesheets %}
     {{ parent() }}
-    <link rel='stylesheet' href='/assets/fullcalendar/cupertino/theme.css' />
+    <link href='/assets/fullcalendar/cupertino/theme.css' rel='stylesheet'  />
     <link href='/assets/fullcalendar/fullcalendar.css' rel='stylesheet' />
     <link href='/assets/fullcalendar/fullcalendar.print.css' rel='stylesheet' media='print' />
     <style>
