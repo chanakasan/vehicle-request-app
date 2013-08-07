@@ -1,24 +1,22 @@
-{% extends '::admin-app.html.twig' %}
+{% extends 'Panda86AppBundle::details-view.html.twig' %}
 
-{% block body -%}
-    <h1>Driver</h1>
-
-    <table class="record_properties">
+{% set closeBtn_url = path('driver') %}
+{% block table %}
+    <table class="record_properties table table-striped">
+        <div class="form_description">
+            <h2>Driver details - {{ entity.displayname }}</h2>
+        </div>
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
-                <th>First_name</th>
+                <th>First name</th>
                 <td>{{ entity.firstname }}</td>
             </tr>
             <tr>
-                <th>Last_name</th>
+                <th>Last name</th>
                 <td>{{ entity.lastname }}</td>
             </tr>
             <tr>
-                <th>Display_name</th>
+                <th>Display name</th>
                 <td>{{ entity.displayname }}</td>
             </tr>
             <tr>
@@ -26,37 +24,17 @@
                 <td>{{ entity.address }}</td>
             </tr>
             <tr>
-                <th>Birth_date</th>
-                <td>{{ entity.birthdate|date('Y-m-d H:i:s') }}</td>
+                <th>Birth date</th>
+                <td>{{ entity.birthdate|date('Y-m-d') }}</td>
             </tr>
             <tr>
-                <th>License_date</th>
-                <td>{{ entity.licensedate|date('Y-m-d H:i:s') }}</td>
+                <th>License date</th>
+                <td>{{ entity.licensedate|date('Y-m-d') }}</td>
             </tr>
             <tr>
-                <th>License_ref</th>
+                <th>License ref</th>
                 <td>{{ entity.licenseref }}</td>
             </tr>
         </tbody>
     </table>
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('driver') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('driver_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>
-        <form action="{{ path('driver_delete', { 'id': entity.id }) }}" method="post">
-            <input type="hidden" name="_method" value="DELETE" />
-            {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
-        </form>
-    </li>
-</ul>
 {% endblock %}
