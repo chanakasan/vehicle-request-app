@@ -1,5 +1,6 @@
 {% extends '::admin-app.html.twig' %}
 
+{% block title %}{{ parent() }} - List of all Requests {% endblock %}
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" type="text/css" href="/assets/DataTables/dataTables.css">
@@ -10,7 +11,7 @@
 {% block body -%}
     <div class="row">
         <div class="span10 offset1">
-            <h2>Requests index</h2><br/>
+            <h2>Requests for vehicle reservations</h2><br/>
         </div>
     </div>
             <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered"
@@ -27,18 +28,23 @@
                 </thead>
                 <tbody>
                 {% for entity in entities %}
-                    <tr>
+                    {% if entity['request'].status == 2 %}
+                        {% set class = 'danger' %}
+                    {% elseif entity['request'].status == 1 %}
+                        {% set class = 'success' %}
+                    {% else %}
+                        {% set class = 'warning' %}
+                    {% endif %}
+                    <tr class="{{ class }}">
                         <td>{{ entity['request'].id }}</td>
                         <td>{{ entity['owner'].name }}</td>
                         <td>{{ entity['request'].vtype.name }}</td>
                         <td>{% if entity['request'].pickuptime %}{{ entity['request'].pickuptime|date('Y-m-d H:i:s') }}{% endif %}</td>
                         <td>{{ entity['request'].purpose }}</td>
                         <td>
-                            <ul>
-                                <li>
-                                    <a href="{{ path('request_show', { 'id': entity['request'].id }) }}">show</a>
-                                </li>
-                            </ul>
+                            <a href="{{ path('request_show', { 'id': entity['request'].id }) }}">Show</a> |
+                            <a href="{{ path('approve_new', { 'id': entity['request'].id }) }}">Approve</a>
+                            {#<a href="{{ path('disapprove_new', { 'id': entity['request'].id }) }}">Disapprove</a>#}
                         </td>
                     </tr>
                 {% endfor %}

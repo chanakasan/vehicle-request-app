@@ -27,6 +27,7 @@ Panda86\AppBundle\Entity\ApprovedRequest:
           joinColumn:
             name: request_id
             referencedColumnName: id
+          cascade: ['persist']
         vehicle:
           targetEntity: Vehicle
           joinColumn:

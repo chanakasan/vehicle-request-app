@@ -38,14 +38,15 @@ class ApproveController extends Controller
     {
         $entity  = new ApprovedRequest();
         $form = $this->createForm(new ApprovedRequestType(), $entity);
-        $form->bind($request);
+        $form->handleRequest($request);
 
         if ($form->isValid()) {
+            $entity->getRequest()->setStatus(1);
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('approve_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('request_list'));
         }
 
         return $this->render('Panda86AppBundle:Approve:new.html.twig', array(
@@ -115,7 +116,7 @@ class ApproveController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createForm(new ApprovedRequestType(), $entity);
-        $editForm->bind($request);
+        $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
             $em->persist($entity);
@@ -138,7 +139,7 @@ class ApproveController extends Controller
     public function deleteAction(Request $request, $id)
     {
         $form = $this->createDeleteForm($id);
-        $form->bind($request);
+        $form->handleRequest($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -160,7 +161,7 @@ class ApproveController extends Controller
      *
      * @param mixed $id The entity id
      *
-     * @return Symfony\Component\Form\Form The form
+//     * @return Symfony\Component\Form\Form The form
      */
     private function createDeleteForm($id)
     {

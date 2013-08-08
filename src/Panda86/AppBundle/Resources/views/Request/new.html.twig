@@ -63,8 +63,7 @@
 
                 <div class="controls">
                     <div class="input-append">
-                        {{ form_row(form.start_time, {'attr': {'class': 'input-medium', 'placeholder' : '24 Hours e.g. HH:MM' }}
-                        ) }}
+                        {{ form_widget(form.start_time, {'attr': {'class': 'input-medium', 'placeholder' : '24 Hours e.g. HH:MM'} } ) }}
                         <span class="add-on"><i class="icon-time"></i></span>
                     </div>
                 </div>
@@ -79,8 +78,7 @@
 
                 <div class="controls">
                     <div class="input-append">
-                        {{ form_row(form.return_time, {'attr': {'class': 'input-medium', 'placeholder' : '24 Hours e.g. HH:MM' }}
-                        ) }}
+                        {{ form_widget(form.return_time, {'attr': {'class': 'input-medium', 'placeholder' : '24 Hours e.g. HH:MM' } } ) }}
                         <span class="add-on"><i class="icon-time"></i></span>
                     </div>
                 </div>
@@ -118,7 +116,7 @@
         </div>
         <div class="control-group">
             <div class="controls">
-                <button type="submit" formnovalidate="">Send Request</button>
+                <button class="btn btn-success" type="submit" formnovalidate="">Send Request</button>
             </div>
         </div>
         <!--/form fields-->

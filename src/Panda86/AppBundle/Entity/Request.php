@@ -12,10 +12,12 @@ class Request extends Base {
     const DEFAULT_NO_DAYS = 1;
     const DEFAULT_START_TIME = null;
     const DEFAULT_RETURN_TIME = null;
-    const DEFAULT_STATUS = 'pending';
+    const DEFAULT_STATUS = 0;
+    const APPROVED_STATUS = 1;
+    const DISAPPROVED_STATUS = 2;
 
     protected $journey_opts = array('SINGLE', 'RETURN');
-    protected $status_opts = array('PENDING', 'APPROVED', 'DISAPPROVED');
+    protected $status_opts = array(self::DEFAULT_STATUS, self::APPROVED_STATUS, self::  DISAPPROVED_STATUS);
 
     /**
      * Set status
@@ -27,9 +29,9 @@ class Request extends Base {
     {
         foreach($this->status_opts as $opt)
         {
-            if(strtoupper($status) === $opt)
+            if($status === $opt)
             {
-                $this->status = strtolower($status);
+                $this->status = $status;
                 return $this;
             }
         }

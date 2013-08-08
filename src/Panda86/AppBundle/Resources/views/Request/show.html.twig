@@ -7,7 +7,10 @@
 {% set closeBtn_url = path('request_list') %}
 {% block table %}
     <div class="form_description">
-        <h2>Req #{{ entity.request.id }} details</h2>
+        <h2>Req #{{ entity.request.id }} details </h2>
+            {% if entity.request.status == 1 %}
+               <p class="text-success">Approved <img src="/app/img/request/approved.png" alt=""> </p>
+            {% endif %}
     </div>
     <tbody>
     <tr>
