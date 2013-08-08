@@ -1,28 +1,28 @@
-{% extends '::admin-app.html.twig' %}
+{% extends 'Panda86AppBundle::edit-view.html.twig' %}
 
-{% block body -%}
-    <h1>Driver edit</h1>
-
-    <form action="{{ path('driver_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
-        <input type="hidden" name="_method" value="PUT" />
+{% set closeBtn_url = path('driver') %}
+{% block form %}
+    <form class="appnitro form-horizontal" action="{{ path('driver_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+        <input type="hidden" name="_method" value="PUT"/>
+        <div class="form_description">
+            <h2>Edit driver's info</h2><br/>
+        </div>
         {{ form_widget(edit_form) }}
-        <p>
-            <button type="submit">Edit</button>
-        </p>
+        <br/>
+        <div class="row">
+            <div class="span2" style="text-align:center">
+                <button class="btn btn-success" type="submit" formnovalidate="">Save</button>
+            </div>
+        </div>
     </form>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('driver') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <form action="{{ path('driver_delete', { 'id': entity.id }) }}" method="post">
-            <input type="hidden" name="_method" value="DELETE" />
-            {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
-        </form>
-    </li>
-</ul>
+    <div class="row">
+        <div class="span2" style="text-align:center">
+            <form action="{{ path('driver_delete', { 'id': entity.id }) }}" method="post">
+                <input type="hidden" name="_method" value="DELETE"/>
+                {{ form_widget(delete_form) }}
+                <button id="del_entry" class="btn btn-danger" type="submit">Remove</button>
+            </form>
+        </div>
+    </div>
 {% endblock %}

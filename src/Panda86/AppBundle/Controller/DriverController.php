@@ -135,7 +135,7 @@ class DriverController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('driver_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('driver', array('id' => $id)));
         }
 
         return $this->render('Panda86AppBundle:Driver:edit.html.twig', array(
@@ -174,7 +174,7 @@ class DriverController extends Controller
      *
      * @param mixed $id The entity id
      *
-     * @return Symfony\Component\Form\Form The form
+//     * @return Symfony\Component\Form\Form The form
      */
     private function createDeleteForm($id)
     {

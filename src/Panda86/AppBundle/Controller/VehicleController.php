@@ -152,7 +152,7 @@ class VehicleController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('vehicle_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('vehicle', array('id' => $id)));
         }
 
         return $this->render('Panda86AppBundle:Vehicle:edit.html.twig', array(
@@ -191,7 +191,7 @@ class VehicleController extends Controller
      *
      * @param mixed $id The entity id
      *
-     * @return Symfony\Component\Form\Form The form
+//     * @return Symfony\Component\Form\Form The form
      */
     private function createDeleteForm($id)
     {

@@ -17,15 +17,13 @@
             </div>
         </div>
     </form>
-    <div class="record_actions">
-        <form action="{{ path('vtype_delete', { 'id': entity.id }) }}" method="post">
-            <input type="hidden" name="_method" value="DELETE"/>
-            {{ form_widget(delete_form) }}
-            <div class="row">
-                <div class="span2" style="text-align:center">
-                    <button id="del_entry" class="btn btn-danger" type="submit">Delete entry</button>
-                </div>
-            </div>
-        </form>
+    <div class="row">
+        <div class="span2" style="text-align:center">
+            <form action="{{ path('vtype_delete', { 'id': entity.id }) }}" method="post">
+                <input type="hidden" name="_method" value="DELETE"/>
+                {{ form_widget(delete_form) }}
+                <button id="del_entry" class="btn btn-danger" type="submit">Remove</button>
+            </form>
+        </div>
     </div>
 {% endblock %}
