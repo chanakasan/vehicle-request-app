@@ -2,7 +2,6 @@
 
 {% set closeBtn_url = path('vehicle') %}
 {% block table %}
-    <table class="record_properties table table-striped">
     <div class="form_description">
         <h2> Vehicle details - {{ entity.make }} {{ entity.model }} {{ entity.regno }}</h2>
     </div>
@@ -47,5 +46,4 @@
             <td>{{ entity.wasadded|date('Y-m-d H:i:s') }}</td>
         </tr>
         </tbody>
-    </table>
 {% endblock %}
