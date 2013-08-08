@@ -9,7 +9,11 @@
     <div class="form_description">
         <h2>Req #{{ entity.request.id }} details </h2>
             {% if entity.request.status == 1 %}
-               <p class="text-success">Approved <img src="/app/img/request/approved.png" alt=""> </p>
+               <p class="text-success"><strong>Approved</strong> <img src="/app/img/request/approved.png" alt=""> </p>
+            {% elseif entity.request.status == 2 %}
+               <p class="text-error"><strong>Disapproved</strong> <img src="/app/img/request/disapproved.png" alt=""> </p>
+            {% else %}
+               <p class="text-warning"><strong>Pending</strong> <img src="/app/img/request/pending.png" alt=""> </p>
             {% endif %}
     </div>
     <tbody>

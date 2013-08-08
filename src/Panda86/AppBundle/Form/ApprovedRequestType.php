@@ -26,7 +26,9 @@ class ApprovedRequestType extends AbstractType
                 'property' => 'display_name',
                 'label' => false,
                 ))
-            ->add('remarks')
+            ->add('remarks', 'text', arraY(
+                'label' => false,
+                ))
         ;
     }
 
@@ -39,6 +41,6 @@ class ApprovedRequestType extends AbstractType
 
     public function getName()
     {
-        return 'panda86_appbundle_approvedrequesttype';
+        return 'approved';
     }
 }

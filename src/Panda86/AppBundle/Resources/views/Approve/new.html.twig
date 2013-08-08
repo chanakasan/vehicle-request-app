@@ -1,12 +1,13 @@
-{% extends '::admin-app.html.twig' %}
+{% extends 'Panda86AppBundle::create-view.html.twig' %}
 
-{% block body -%}
-    <h1>Approve Request</h1>
-
+{% set closeBtn_url = path('request_list') %}
+{% block form %}
     <form class="appnitro form-horizontal" novalidate action="{{ path('approve_create') }}" method="post" {{ form_enctype(form) }}>
         {{ form_errors(form) }}
         {{ form_widget(form._token) }}
-
+        <div class="form_description">
+            <h2>Approve request</h2><br/>
+        </div>
         <div class="control-group">
             <label class="control-label">Req ID
                 <span class="form-required" title="This field is required.">*</span>
@@ -36,8 +37,15 @@
             </div>
         </div>
         <div class="control-group">
+            <label class="control-label">Remarks</label>
+
             <div class="controls">
-                <button class="btn btn-success" type="submit" formnovalidate="">Approve</button>
+                {{ form_row(form.remarks) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <button id="approve_btn" class="btn btn-success" type="submit" formnovalidate="">Approve</button>
             </div>
         </div>
     </form>

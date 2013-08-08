@@ -63,4 +63,6 @@ $(document).ready(function(){
 //        $(this).trigger("change");
 //    });
 
+//    $('#closeBtn').popover();
+//    $('#closeBtn').popover('show');
 });
