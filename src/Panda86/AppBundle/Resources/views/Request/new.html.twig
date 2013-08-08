@@ -1,4 +1,4 @@
-{% extends 'Panda86AppBundle::create-view.html.twig' %}
+{% extends 'Panda86AppBundle::request-create-view.html.twig' %}
 
 {% set closeBtn_url = path('request_finish') %}
 {% block form %}
@@ -6,9 +6,8 @@
     <form id="new_form" class="appnitro form-horizontal" action="{{ path('request_create') }}"
           method="post" {{ form_enctype(form) }}>
         <div class="form_description">
-            <h2>New vehicle reservation request</h2>
+            <h2>New vehicle reservation request</h2><br/>
         </div>
-        <br/>
         <!-- form validation -->
         {{ form_errors(form) }}
         {{ form_widget(form._token) }}

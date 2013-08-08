@@ -1,116 +1,86 @@
-{% extends '::admin-app.html.twig' %}
+{% extends 'Panda86AppBundle::create-view.html.twig' %}
 
-{% block stylesheets %}
-    {{ parent() }}
-    <style>
-        [class*="span"].centred {
-            margin-left: auto;
-            margin-right: auto;
-            float: none;
-        }
-    </style>
-    <link rel="stylesheet" href="/public/css/smoothness/jquery-ui-1.10.3.custom.min.css">
-    <link rel="stylesheet" href="/chosen/chosen.css">
-    <link rel="stylesheet" href="/public/css/request/new.css">
-{% endblock %}
-{% block body -%}
-    <div class="row">
-        <div class="span9 centred">
+{% set closeBtn_url = path('vehicle') %}
 
-            <img id="top" src="/public/css/request/top.png" alt="">
-
-            <div id="form_container">
-                <h1>Header</h1>
-
-                <form class="appnitro form-horizontal" novalidate action="{{ path('vehicle_create') }}"
-                      method="post" {{ form_enctype(form) }}>
-                    <div class="form_description">
-                        <h2>Add new vehicle</h2><br/>
-                    </div>
-                    <!-- form validation -->
-                    {{ form_errors(form) }}
-                    {{ form_widget(form._token) }}
-
-                    <!-- form fields -->
-                    <div class="control-group">
-                        <label class="control-label">Make</label>
-
-                        <div class="controls">
-                            {{ form_row(form.make) }}
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label">Model</label>
-
-                        <div class="controls">
-                            {{ form_row(form.model) }}
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label">Reg. no</label>
-
-                        <div class="controls">
-                            {{ form_row(form.reg_no) }}
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label">Vehicle type</label>
-
-                        <div class="controls">
-                            {{ form_row(form.vtype) }}
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label">No. of passengers</label>
-
-                        <div class="controls">
-                            {{ form_row(form.passengers) }}
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label">Owned by the company</label>
-
-                        <div class="controls">
-                            {{ form_row(form.is_company_owned) }}
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label">Air-conditioned</label>
-
-                        <div class="controls">
-                            {{ form_row(form.ac) }}
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label">Upload a photo</label>
-
-                        <div class="controls">
-                            {{ form_row(form.image) }}
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label">Other details</label>
-
-                        <div class="controls">
-                            {{ form_row(form.remarks) }}
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <div class="controls">
-                            <button type="submit" formnovalidate="">Add</button>
-                        </div>
-                    </div>
-                    <!--/ form fields -->
-                    <div id="footer">
-                        <a href="http://www.icta.lk">ICTA | &copy 2013</a>
-                    </div>
-                </form>
-            </div>
-            <img id="bottom" src="/public/css/request/bottom.png" alt="">
+{% block form %}
+    <form class="appnitro form-horizontal" novalidate action="{{ path('vehicle_create') }}"
+          method="post" {{ form_enctype(form) }}>
+        <div class="form_description">
+            <h2>Add new vehicle</h2><br/>
         </div>
-    </div>
-{% endblock %}
-{% block javascripts %}
-    {{ parent() }}
-    <script src="/public/js/jquery-1.9.1.min.js"></script>
+        <!-- form validation -->
+        {{ form_errors(form) }}
+        {{ form_widget(form._token) }}
+
+        <!-- form fields -->
+        <div class="control-group">
+            <label class="control-label">Make</label>
+
+            <div class="controls">
+                {{ form_row(form.make) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">Model</label>
+
+            <div class="controls">
+                {{ form_row(form.model) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">Reg. no</label>
+
+            <div class="controls">
+                {{ form_row(form.reg_no) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">Vehicle type</label>
+
+            <div class="controls">
+                {{ form_row(form.vtype) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">No. of passengers</label>
+
+            <div class="controls">
+                {{ form_row(form.passengers) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">Owned by the company</label>
+
+            <div class="controls">
+                {{ form_row(form.is_company_owned) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">Air-conditioned</label>
+
+            <div class="controls">
+                {{ form_row(form.ac) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">Upload a photo</label>
+
+            <div class="controls">
+                {{ form_row(form.image) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">Other details</label>
+
+            <div class="controls">
+                {{ form_row(form.remarks) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <button type="submit" formnovalidate="">Add</button>
+            </div>
+        </div>
+        <!--/ form fields -->
+    </form>
 {% endblock %}

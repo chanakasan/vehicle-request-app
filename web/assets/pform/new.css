@@ -1,10 +1,6 @@
 body
 {
 	background:#CDDCEC;
-	font-family:"Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
-	font-size:small;
-	margin:8px 0 16px;
-	text-align:center;
 }
 
 #form_container
@@ -24,7 +20,7 @@ body
 	width:650px;
 }
 
-#footer
+#form_footer
 {
 	width:640px;
 	clear:both;
@@ -35,7 +31,7 @@ body
 	font-size: 85%;
 }
 
-#footer a{
+#form_footer a{
 	color:#999999;
 	text-decoration: none;
 	border-bottom: 1px dotted #999999;
@@ -588,13 +584,13 @@ ul.password{
 	width: 100%;
 }
 
-.embed #footer{
+.embed #form_footer{
 	text-align: left;
 	padding-left: 10px;
 	width: 99%;
 }
 
-.embed #footer.success{
+.embed #form_footer.success{
 	text-align: center;
 }
 
