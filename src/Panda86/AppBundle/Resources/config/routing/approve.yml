@@ -1,6 +1,6 @@
-approve_show:
-    pattern:  /{id}/show
-    defaults: { _controller: "Panda86AppBundle:Approve:show" }
+approve_getjson:
+    pattern:  /a
+    defaults: { _controller: "Panda86AppBundle:Approve:getJson", _format: json }
 
 approve_new:
     pattern:  /new
@@ -10,6 +10,10 @@ approve_create:
     pattern:  /create
     defaults: { _controller: "Panda86AppBundle:Approve:create" }
     requirements: { _method: post }
+
+approve_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "Panda86AppBundle:Approve:show" }
 
 approve_edit:
     pattern:  /{id}/edit

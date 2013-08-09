@@ -16,6 +16,30 @@ class ApproveController extends Controller
 {
 
     /**
+     *  Send json data about approved requests
+     */
+    public function getJsonAction()
+    {
+        $e1 = array(
+            'allDay' => false,
+            'title' => 'Toyota Corolla - WP 5065',
+            'start'=> '2013-08-09 11:36:39',
+             'url' => 'http://dev.vr:8888/app_dev.php/request/38/show'
+        );
+
+        $e2 = array(
+            'allDay' => false,
+            'title' => 'Toyota Serena - NP 4323',
+            'start'=> '2013-08-10 11:36:39',
+             'url' => 'http://dev.vr:8888/app_dev.php/request/38/show'
+        );
+
+        $response = new \Symfony\Component\HttpFoundation\Response(json_encode(array($e1, $e2)));
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
+    }
+
+    /**
      * Displays a form to create a new ApprovedRequest entity.
      *
      */
