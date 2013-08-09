@@ -25,5 +25,11 @@ monolog:
 #assetic:
 #    use_controller: true
 
-#swiftmailer:
-#    delivery_address: me@example.com
+swiftmailer:
+    transport:  smtp
+    encryption: ssl
+    auth_mode:  login
+    host:       smtp.gmail.com
+    username:   nadeera679@gmail.com
+    password:   nadeera123
+#    delivery_address: chanakasan@gmail.com
