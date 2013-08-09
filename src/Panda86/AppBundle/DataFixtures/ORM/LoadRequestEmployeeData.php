@@ -115,8 +115,8 @@ class LoadRequestEmployeeData extends AbstractFixture implements OrderedFixtureI
 
         $manager->persist($reqEmp52);
 
-        /* Add some more requests */
-        for($i=5; $i<15; $i++)
+        /* Add some extra pending requests */
+        for($i=5; $i<7; $i++)
         {
             $reqEmp0 = new RequestEmployee();
             $reqEmp0->setRequest($requests[$i]);
@@ -134,6 +134,49 @@ class LoadRequestEmployeeData extends AbstractFixture implements OrderedFixtureI
             $reqEmp01->setEmployee($emp[$i+7]);
             $manager->persist($reqEmp01);
         }
+
+        /* Add some extra approved requests */
+        for($i=7; $i<13; $i++)
+        {
+            $reqEmp0 = new RequestEmployee();
+            $requests[$i]->setStatus(1); // approve
+            $reqEmp0->setRequest($requests[$i]);
+            $reqEmp0->setEmployee($emp[$i+5]);
+            $reqEmp0->setIsOwner(true);
+            $manager->persist($reqEmp0);
+
+            $reqEmp01 = new RequestEmployee();
+            $reqEmp01->setRequest($requests[$i]);
+            $reqEmp01->setEmployee($emp[$i+6]);
+            $manager->persist($reqEmp01);
+
+            $reqEmp01 = new RequestEmployee();
+            $reqEmp01->setRequest($requests[$i]);
+            $reqEmp01->setEmployee($emp[$i+7]);
+            $manager->persist($reqEmp01);
+        }
+
+        /* Add some extra disapproved requests */
+        for($i=13; $i<15; $i++)
+        {
+            $reqEmp0 = new RequestEmployee();
+            $requests[$i]->setStatus(2); // disapprove
+            $reqEmp0->setRequest($requests[$i]);
+            $reqEmp0->setEmployee($emp[$i+5]);
+            $reqEmp0->setIsOwner(true);
+            $manager->persist($reqEmp0);
+
+            $reqEmp01 = new RequestEmployee();
+            $reqEmp01->setRequest($requests[$i]);
+            $reqEmp01->setEmployee($emp[$i+6]);
+            $manager->persist($reqEmp01);
+
+            $reqEmp01 = new RequestEmployee();
+            $reqEmp01->setRequest($requests[$i]);
+            $reqEmp01->setEmployee($emp[$i+7]);
+            $manager->persist($reqEmp01);
+        }
+
         $manager->flush();
     }
 
