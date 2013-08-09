@@ -1,2 +1,15 @@
-<p>Hi! {{ name }}</p>
+<p>Dear {{ request.owner }},</p>
+<br/>
+<p>
+    Your vehicle request has been approved with the reference no. {{ request.id }}.
+    To view details about your request please click on the link below.
+</p>
+<a href="#">View request details</a>
+<br/>
+<p>Your assigned vehicle is {{ request.vehicle.reg_no }}</p>
+<p>Your assigned driver is Mr. {{ request.driver.display_name }}</p>
 
+<p>Thank you.</p>
+
+<p>Kind Regards,</p>
+<p>Support Team</p>
