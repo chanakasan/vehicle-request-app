@@ -14,46 +14,31 @@ use Panda86\AppBundle\Form\ApprovedRequestType;
  */
 class ApproveController extends Controller
 {
-
-    public function emailAction()
-    {
-        $name = 'Chanaka';
-        $message = \Swift_Message::newInstance()
-            ->setSubject('Hello Email')
-            ->setFrom('send@example.com')
-            ->setTo('chanakasan@gmail.com')
-            ->setBody(
-                $this->renderView(
-                    'Panda86AppBundle:Template:approved-email.html.twig',
-                    array('name' => $name)
-                )
-            )
-        ;
-        $this->get('mailer')->send($message);
-
-        return new \Symfony\Component\HttpFoundation\Response('Email Sent!');
-    }
-
     /**
      *  Send json data about approved requests
      */
     public function getJsonAction()
     {
-        $e1 = array(
-            'allDay' => false,
-            'title' => 'Toyota Corolla - WP 5065',
-            'start'=> '2013-08-09 11:36:39',
-             'url' => 'http://dev.vr:8888/app_dev.php/request/38/show'
-        );
+        $em = $this->getDoctrine()->getManager();
+        $entities = $em->getRepository('Panda86AppBundle:ApprovedRequest')->findAll();
 
-        $e2 = array(
-            'allDay' => false,
-            'title' => 'Toyota Serena - NP 4323',
-            'start'=> '2013-08-10 11:36:39',
-             'url' => 'http://dev.vr:8888/app_dev.php/request/38/show'
-        );
+        $allApproved = array();
+        foreach($entities as $entity)
+        {
+            $vehicle =  $entity->getVehicle()->getMake();
+            $vehicle .= ' '.$entity->getVehicle()->getModel();
+            $vehicle .= ' - '.$entity->getVehicle()->getRegno();
 
-        $response = new \Symfony\Component\HttpFoundation\Response(json_encode(array($e1, $e2)));
+            $pickuptime = $entity->getRequest()->getPickupTime();
+            $start = $pickuptime->format('Y-m-d H:i:s');
+
+            $temp = array(
+                'title' => $vehicle,
+                'start' => $start
+            );
+            $allApproved[] = $temp;
+        }
+        $response = new \Symfony\Component\HttpFoundation\Response(json_encode($allApproved));
         $response->headers->set('Content-Type', 'application/json');
         return $response;
     }
@@ -212,5 +197,24 @@ class ApproveController extends Controller
             ->add('id', 'hidden')
             ->getForm()
         ;
+    }
+
+    public function emailAction()
+    {
+        $name = 'Chanaka';
+        $message = \Swift_Message::newInstance()
+            ->setSubject('Hello Email')
+            ->setFrom('send@example.com')
+            ->setTo('chanakasan@gmail.com')
+            ->setBody(
+                $this->renderView(
+                    'Panda86AppBundle:Template:approved-email.html.twig',
+                    array('name' => $name)
+                )
+            )
+        ;
+        $this->get('mailer')->send($message);
+
+        return new \Symfony\Component\HttpFoundation\Response('Email Sent!');
     }
 }
