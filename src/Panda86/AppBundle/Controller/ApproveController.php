@@ -203,15 +203,24 @@ class ApproveController extends Controller
 
     public function emailAction()
     {
-        $name = 'Chanaka';
+        $request = new \StdClass();
+        $request->driver = new \StdClass();
+        $request->vehicle = new \StdClass();
+
+        $request->owner = 'Martin Doe';
+        $request->id = 1;
+        $request->vehicle->reg_no = 'Toyota Corolla - NB-3456';
+        $request->driver->display_name = 'John Doe';
+
         $message = \Swift_Message::newInstance()
-            ->setSubject('Hello Email')
-            ->setFrom('send@example.com')
+            ->setContentType("text/html")
+            ->setSubject('Vehicle request status')
+            ->setFrom('donotreply@icta.lk')
             ->setTo('chanakasan@gmail.com')
             ->setBody(
                 $this->renderView(
-                    'Panda86AppBundle:Template:approved-email.html.twig',
-                    array('name' => $name)
+                    'Panda86AppBundle:Template:disapproved-email.html.twig',
+                    array('request' => $request)
                 )
             )
         ;
