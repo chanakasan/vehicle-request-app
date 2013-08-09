@@ -31,7 +31,7 @@ class RequestEmployeeRepository extends EntityRepository
 
         $result =  $query->getResult();
 
-        if($result[0]->getIsOwner())
+        if(isset($result[0]) && $result[0]->getIsOwner())
             return $result[0];
         else
             throw new \Exception('Error in app logic');
