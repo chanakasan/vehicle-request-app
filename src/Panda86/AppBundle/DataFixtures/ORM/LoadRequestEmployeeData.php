@@ -17,10 +17,12 @@ class LoadRequestEmployeeData extends AbstractFixture implements OrderedFixtureI
     public function load(ObjectManager $manager)
     {
         $requests = $manager->getRepository('Panda86AppBundle:Request')->findAll();
-//        var_dump($requests);exit;
+
         $req1 = $requests[0];
         $req2 = $requests[1];
         $req3 = $requests[2];
+        $req4 = $requests[3];
+        $req5 = $requests[4];
 
         $emp = $manager->getRepository('Panda86AppBundle:Employee')->findAll();
         $emp1 = $emp[0];
@@ -36,9 +38,9 @@ class LoadRequestEmployeeData extends AbstractFixture implements OrderedFixtureI
         /* first request */
         // record one
         $reqEmp11 = new RequestEmployee();
-        $reqEmp11->setIsOwner(true);
         $reqEmp11->setRequest($req1);
         $reqEmp11->setEmployee($emp1);
+        $reqEmp11->setIsOwner(true);
 
         $manager->persist($reqEmp11);
 
@@ -59,9 +61,9 @@ class LoadRequestEmployeeData extends AbstractFixture implements OrderedFixtureI
         /* second request */
         // record one
         $reqEmp21 = new RequestEmployee();
-        $reqEmp21->setIsOwner(true);
         $reqEmp21->setRequest($req2);
         $reqEmp21->setEmployee($emp2);
+        $reqEmp21->setIsOwner(true);
 
         $manager->persist($reqEmp21);
 
@@ -75,12 +77,63 @@ class LoadRequestEmployeeData extends AbstractFixture implements OrderedFixtureI
         /* third request */
         // record one
         $reqEmp31 = new RequestEmployee();
-        $reqEmp31->setIsOwner(true);
         $reqEmp31->setRequest($req3);
         $reqEmp31->setEmployee($emp8);
+        $reqEmp31->setIsOwner(true);
 
         $manager->persist($reqEmp31);
 
+        /* fourth request */
+        // record one
+        $reqEmp41 = new RequestEmployee();
+        $reqEmp41->setRequest($req4);
+        $reqEmp41->setEmployee($emp4);
+        $reqEmp41->setIsOwner(true);
+
+        $manager->persist($reqEmp41);
+
+        // record two
+        $reqEmp42 = new RequestEmployee();
+        $reqEmp42->setRequest($req4);
+        $reqEmp42->setEmployee($emp6);
+
+        $manager->persist($reqEmp42);
+
+        /* fifth request */
+        // record one
+        $reqEmp51 = new RequestEmployee();
+        $reqEmp51->setRequest($req5);
+        $reqEmp51->setEmployee($emp7);
+        $reqEmp51->setIsOwner(true);
+
+        $manager->persist($reqEmp51);
+
+        // record two
+        $reqEmp52 = new RequestEmployee();
+        $reqEmp52->setRequest($req5);
+        $reqEmp52->setEmployee($emp9);
+
+        $manager->persist($reqEmp52);
+
+        /* Add some more requests */
+        for($i=5; $i<15; $i++)
+        {
+            $reqEmp0 = new RequestEmployee();
+            $reqEmp0->setRequest($requests[$i]);
+            $reqEmp0->setEmployee($emp[$i+5]);
+            $reqEmp0->setIsOwner(true);
+            $manager->persist($reqEmp0);
+
+            $reqEmp01 = new RequestEmployee();
+            $reqEmp01->setRequest($requests[$i]);
+            $reqEmp01->setEmployee($emp[$i+6]);
+            $manager->persist($reqEmp01);
+
+            $reqEmp01 = new RequestEmployee();
+            $reqEmp01->setRequest($requests[$i]);
+            $reqEmp01->setEmployee($emp[$i+7]);
+            $manager->persist($reqEmp01);
+        }
         $manager->flush();
     }
 
