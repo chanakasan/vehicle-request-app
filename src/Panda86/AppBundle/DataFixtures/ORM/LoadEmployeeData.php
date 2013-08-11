@@ -14,6 +14,14 @@ class LoadEmployeeData extends AbstractFixture  implements OrderedFixtureInterfa
      */
     public function load(ObjectManager $manager)
     {
+        /* Please remove this record */
+        $tmp = new Employee();
+        $tmp->setName('Chanaka Sandaruwan');
+        $tmp->setEmail('chanakasan@gmail.com');
+        $manager->persist($tmp);
+        /* End - Remove this record */
+
+        /* Load sample data */
         $names = $this->_getAllNames();
         foreach($names as $name)
         {
@@ -21,8 +29,8 @@ class LoadEmployeeData extends AbstractFixture  implements OrderedFixtureInterfa
             $employee->setName($name);
 
             $manager->persist($employee);
-            $manager->flush();
         }
+        $manager->flush();
     }
 
     private function _getAllNames()

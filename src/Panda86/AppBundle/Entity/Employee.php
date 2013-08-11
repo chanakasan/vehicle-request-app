@@ -16,6 +16,7 @@ class Employee extends Base
     public function __construct(array $options = null)
     {
         parent::__construct($options);
+        $this->email = 'example@icta.lk'; /* temporary default value for email */
     }
 
     /**
@@ -60,5 +61,33 @@ class Employee extends Base
     public function getName()
     {
         return $this->name;
+    }
+    /**
+     * @var string
+     */
+    protected  $email;
+
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     * @return Employee
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string 
+     */
+    public function getEmail()
+    {
+        return $this->email;
     }
 }

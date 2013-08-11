@@ -12,4 +12,7 @@ Panda86\AppBundle\Entity\Employee:
         name:
             type: string
             length: 128
+        email:
+            type: string
+            length: 64
     lifecycleCallbacks: {  }
