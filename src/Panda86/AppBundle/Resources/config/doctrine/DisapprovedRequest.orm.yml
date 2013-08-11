@@ -26,5 +26,6 @@ Panda86\AppBundle\Entity\DisapprovedRequest:
           targetEntity: Request
           joinColumn:
             name: request_id
+            nullable: false
             referencedColumnName: id
     lifecycleCallbacks: {  }

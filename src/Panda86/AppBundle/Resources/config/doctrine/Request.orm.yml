@@ -45,5 +45,6 @@ Panda86\AppBundle\Entity\Request:
             inversedBy: vehicles
             joinColumn:
                 name: vtype_id
+                nullable: false
                 referencedColumnName: id
     lifecycleCallbacks: {  }

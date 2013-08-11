@@ -26,16 +26,20 @@ Panda86\AppBundle\Entity\ApprovedRequest:
           targetEntity: Request
           joinColumn:
             name: request_id
+            nullable: false
             referencedColumnName: id
           cascade: ['persist']
+    manyToOne:
         vehicle:
           targetEntity: Vehicle
           joinColumn:
-            name: vehicle_id
-            referencedColumnName: id
+              name: vehicle_id
+              nullable: false
+              referencedColumnName: id
         driver:
           targetEntity: Driver
           joinColumn:
             name: driver_id
+            nullable: false
             referencedColumnName: id
     lifecycleCallbacks: {  }

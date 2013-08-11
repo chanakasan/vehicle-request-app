@@ -18,7 +18,13 @@ swiftmailer:
 
 doctrine:
     dbal:
-        driver: pdo_sqlite
-        path: %kernel.root_dir%/../test-db.sqlite
+#        driver: pdo_sqlite
+#        path: %kernel.root_dir%/../test-db.sqlite
 #        path: :memory:
-        charset: UTF8
+        driver:   pdo_mysql
+        host:     127.0.0.1
+        port:     ~
+        dbname:   vr_test
+        user:     root
+        password: ~
+        charset:  UTF8

@@ -21,6 +21,7 @@ Panda86\AppBundle\Entity\RequestEmployee:
                 inversedBy: employees
                 joinColumn:
                     name: req_id
+                    nullable: false
                     referencedColumnName: id
 
             employee:
@@ -28,6 +29,7 @@ Panda86\AppBundle\Entity\RequestEmployee:
                 inversedBy: requests
                 joinColumn:
                     name: emp_id
+                    nullable: false
                     referencedColumnName: id
     uniqueConstraints:
             req_unique:

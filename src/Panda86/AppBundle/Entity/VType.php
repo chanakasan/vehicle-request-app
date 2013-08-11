@@ -16,7 +16,6 @@ class VType extends Base
     public function __construct(array $options = null)
     {
         $this->vehicles = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->descrip = '';
 
         parent::__construct($options);
     }
