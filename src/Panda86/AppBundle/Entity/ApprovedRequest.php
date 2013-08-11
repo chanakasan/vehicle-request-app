@@ -142,8 +142,9 @@ class ApprovedRequest extends Base
      * @param \Panda86\AppBundle\Entity\Request $request
      * @return ApprovedRequest
      */
-    public function setRequest(\Panda86\AppBundle\Entity\Request $request = null)
+    public function setRequest(\Panda86\AppBundle\Entity\Request $request)
     {
+        $request->setStatus(1); /* Mark request as approved */
         $this->request = $request;
 
         return $this;
@@ -165,7 +166,7 @@ class ApprovedRequest extends Base
      * @param \Panda86\AppBundle\Entity\Vehicle $vehicle
      * @return ApprovedRequest
      */
-    public function setVehicle(\Panda86\AppBundle\Entity\Vehicle $vehicle = null)
+    public function setVehicle(\Panda86\AppBundle\Entity\Vehicle $vehicle)
     {
         $this->vehicle = $vehicle;
 
@@ -188,7 +189,7 @@ class ApprovedRequest extends Base
      * @param \Panda86\AppBundle\Entity\Driver $driver
      * @return ApprovedRequest
      */
-    public function setDriver(\Panda86\AppBundle\Entity\Driver $driver = null)
+    public function setDriver(\Panda86\AppBundle\Entity\Driver $driver)
     {
         $this->driver = $driver;
 
