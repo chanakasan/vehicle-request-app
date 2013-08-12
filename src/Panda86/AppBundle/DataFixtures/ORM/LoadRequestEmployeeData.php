@@ -7,7 +7,7 @@ use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Panda86\AppBundle\Entity\RequestEmployee;
 use Panda86\AppBundle\Entity\Request;
-use Panda86\AppBundle\Entity\Employee;
+use Panda86\AppBundle\Entity\ApprovedRequest;
 
 class LoadRequestEmployeeData extends AbstractFixture implements OrderedFixtureInterface
 {
@@ -34,6 +34,9 @@ class LoadRequestEmployeeData extends AbstractFixture implements OrderedFixtureI
         $emp7 = $emp[6];
         $emp8 = $emp[7];
         $emp9 = $emp[8];
+
+        $vehicles = $manager->getRepository('Panda86AppBundle:Vehicle')->findAll();
+        $drivers = $manager->getRepository('Panda86AppBundle:Driver')->findAll();
 
         /* first request */
         // record one
@@ -139,11 +142,16 @@ class LoadRequestEmployeeData extends AbstractFixture implements OrderedFixtureI
         for($i=7; $i<13; $i++)
         {
             $reqEmp0 = new RequestEmployee();
-            $requests[$i]->setStatus(1); // approve
             $reqEmp0->setRequest($requests[$i]);
             $reqEmp0->setEmployee($emp[$i+5]);
             $reqEmp0->setIsOwner(true);
             $manager->persist($reqEmp0);
+
+            $approved = new ApprovedRequest(); // approve
+            $approved->setRequest($requests[$i]); // approve
+            $approved->setVehicle($vehicles[0]); // assign vehicle
+            $approved->setDriver($drivers[0]); // assign driver
+            $manager->persist($approved);
 
             $reqEmp01 = new RequestEmployee();
             $reqEmp01->setRequest($requests[$i]);

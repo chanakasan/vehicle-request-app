@@ -85,14 +85,16 @@ class LoadRequestData extends AbstractFixture implements OrderedFixtureInterface
         $manager->persist($request4);
         $manager->persist($request5);
 
+        $j = 1;
         /* Add some more requests */
         for($i=0; $i<10; $i++)
         {
+            if($j < 9) $j++;
             $req_data = array(
                 'journey_type' => 'single',
                 'days' => 1,
                 'pickup_loc' => 'ICTA',
-                'pickup_time' =>  new \DateTime('2013-08-01 14:00:00'),
+                'pickup_time' =>  new \DateTime("2013-08-0{$j} 14:00:00"),
                 'destination' => 'colombo',
                 'purpose' => 'Meeting'
             );
