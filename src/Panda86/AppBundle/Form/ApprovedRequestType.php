@@ -18,7 +18,7 @@ class ApprovedRequestType extends AbstractType
             ))
             ->add('vehicle', 'entity', array(
                 'class' => 'Panda86AppBundle:Vehicle',
-                'property' => 'id',
+                'property' => 'reg_no',
                 'label' => false,
                 ))
             ->add('driver', 'entity',array(
