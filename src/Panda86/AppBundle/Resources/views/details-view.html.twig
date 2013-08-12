@@ -1,4 +1,8 @@
 {% extends 'Panda86AppBundle::pform-centred-view.html.twig' %}
 
 {% block stylesheet %}{{ parent() }}{% endblock %}
-{% block content %}{% endblock %}
+{% block content %}
+    <form class="appnitro form-horizontal">
+        {% block table %}{% endblock %}
+    </form>
+{% endblock %}

@@ -1,7 +1,7 @@
-{% extends 'Panda86AppBundle::create-view.html.twig' %}
+{% extends 'Panda86AppBundle::pform-centred-view.html.twig' %}
 
 {% set closeBtn_url = path('driver') %}
-{% block form %}
+{% block content %}
     <form action="{{ path('driver_create') }}" class="appnitro form-horizontal"
           method="post" {{ form_enctype(form) }}>
         <div class="form_description">

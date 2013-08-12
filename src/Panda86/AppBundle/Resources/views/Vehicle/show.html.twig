@@ -2,12 +2,13 @@
 
 {% set closeBtn_url = path('vehicle') %}
 {% block table %}
-    <div class="form_description">
-        <h2> Vehicle details - {{ entity.make }} {{ entity.model }} {{ entity.regno }}</h2>
-    </div>
-    <div id="v-photo">
-        <img src="/uploads/images/vehicles/{{ entity.image }}" width="400" height="300"/>
-    </div>
+    <table class="record_properties table table-striped">
+        <div class="form_description">
+            <h2> Vehicle details - {{ entity.make }} {{ entity.model }} {{ entity.regno }}</h2>
+        </div>
+        <div id="v-photo">
+            <img src="/uploads/images/vehicles/{{ entity.image }}" width="400" height="300"/>
+        </div>
         <tbody>
         <tr>
             <th>Make</th>
@@ -46,4 +47,6 @@
             <td>{{ entity.wasadded|date('Y-m-d H:i:s') }}</td>
         </tr>
         </tbody>
+    </table>
+
 {% endblock %}

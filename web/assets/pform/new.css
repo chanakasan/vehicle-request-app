@@ -6,7 +6,6 @@ body
 #form_container
 {
 	background:#fff;
-
 	margin:0 auto;
 	text-align:left;
 	width:640px;
@@ -227,7 +226,7 @@ form li .datepicker
 
 .form_description
 {
-	border-bottom:1px dotted #ccc;
+	/*border-bottom:1px dotted #ccc;*/
 	clear:both;
 	display:inline-block;
 	margin:0 0 1em;
