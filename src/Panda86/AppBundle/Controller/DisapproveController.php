@@ -42,12 +42,13 @@ class DisapproveController extends Controller
      * Displays a form to create a new DisapprovedRequest entity.
      *
      */
-    public function newAction()
+    public function newAction($req_id)
     {
         $entity = new DisapprovedRequest();
         $form   = $this->createForm(new DisapprovedRequestType(), $entity);
 
         return $this->render('Panda86AppBundle:Disapprove:new.html.twig', array(
+            'req_id' => $req_id,
             'entity' => $entity,
             'form'   => $form->createView(),
         ));

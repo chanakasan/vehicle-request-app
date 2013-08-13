@@ -7,24 +7,10 @@ disapprove_show:
     defaults: { _controller: "Panda86AppBundle:Disapprove:show" }
 
 disapprove_new:
-    pattern:  /new
+    pattern:  /new/{req_id}
     defaults: { _controller: "Panda86AppBundle:Disapprove:new" }
 
 disapprove_create:
     pattern:  /create
     defaults: { _controller: "Panda86AppBundle:Disapprove:create" }
     requirements: { _method: post }
-
-disapprove_edit:
-    pattern:  /{id}/edit
-    defaults: { _controller: "Panda86AppBundle:Disapprove:edit" }
-
-disapprove_update:
-    pattern:  /{id}/update
-    defaults: { _controller: "Panda86AppBundle:Disapprove:update" }
-    requirements: { _method: post|put }
-
-disapprove_delete:
-    pattern:  /{id}/delete
-    defaults: { _controller: "Panda86AppBundle:Disapprove:delete" }
-    requirements: { _method: post|delete }
