@@ -11,12 +11,14 @@ class DisapprovedRequestType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('remarks')
-            ->add('active')
-            ->add('message')
-            ->add('created')
-            ->add('updated')
-            ->add('request')
+            ->add('request', 'entity',array(
+                'class' => 'Panda86AppBundle:Request',
+                'property' => 'id',
+                'label' => false,
+            ))
+            ->add('remarks', 'text', arraY(
+                'label' => false,
+            ))
         ;
     }
 

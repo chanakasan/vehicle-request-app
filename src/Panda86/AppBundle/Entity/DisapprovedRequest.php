@@ -191,6 +191,7 @@ class DisapprovedRequest extends Base
      */
     public function setRequest(\Panda86\AppBundle\Entity\Request $request)
     {
+        $request->setStatus(2); /* update request status to disapproved */
         $this->request = $request;
 
         return $this;
