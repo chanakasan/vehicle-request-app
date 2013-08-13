@@ -9,17 +9,19 @@
         <div class="form_description">
             <h2>Disapprove request</h2><br/>
         </div>
-        <div id="req_info" style="border: solid 0.5px">
-            Request details goes here ...
+        <div id="req_info" style="padding:10px; border: solid 0.5px">
+            {% render controller('Panda86AppBundle:Request:show', { 'id': req_id, 'embed': true }) %}
         </div>
         <br/>
-        <div class="control-group">
-            <label class="control-label">Req ID
-                <span class="form-required" title="This field is required.">*</span>
-            </label>
+        <div id="req_id_field" style="display: none">
+            <div class="control-group">
+                <label class="control-label">Req ID
+                    <span class="form-required" title="This field is required.">*</span>
+                </label>
 
-            <div class="controls">
-                {{ form_row(form.request) }}
+                <div class="controls">
+                    {{ form_row(form.request) }}
+                </div>
             </div>
         </div>
         <div class="control-group">
