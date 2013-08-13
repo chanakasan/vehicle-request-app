@@ -22,3 +22,7 @@ Panda86AppBundle_request:
 Panda86AppBundle_approve:
         resource: "@Panda86AppBundle/Resources/config/routing/approve.yml"
         prefix:   /approve
+
+Panda86AppBundle_disapprove:
+      resource: "@Panda86AppBundle/Resources/config/routing/disapprove.yml"
+      prefix:   /disapprove
