@@ -1,0 +1,29 @@
+{% extends 'Panda86AppBundle::list-view.html.twig' %}
+
+{% set heading = 'Vehicle Categories' %}
+{% set newBtn_url = path('vtype_new') %}
+
+{% block table %}
+    <thead>
+    <tr>
+        <th>Category</th>
+        <th>Description</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td>{{ entity.name }}</td>
+            <td>{{ entity.descrip }}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('vtype_edit', { 'id': entity.id }) }}">Edit/Delete</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+{% endblock %}

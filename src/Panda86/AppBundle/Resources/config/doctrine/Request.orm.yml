@@ -1,0 +1,50 @@
+Panda86\AppBundle\Entity\Request:
+    type: entity
+    table: hr_request
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        journey_type:
+            type: string
+            length: '64'
+        days:
+            type: integer
+        pickup_loc:
+            type: string
+            length: '64'
+        start_time:
+            type: datetime
+            nullable: true
+        pickup_time:
+            type: datetime
+        destination:
+            type: string
+            length: '64'
+        return_time:
+            type: datetime
+            nullable: true
+        purpose:
+            type: string
+            length: '64'
+        status:
+            type: integer
+            length: '1'
+        active:
+            type: boolean
+        created_at:
+            type: datetime
+        updated_at:
+            type: datetime
+    manyToOne:
+        vtype:
+            targetEntity: VType
+            inversedBy: vehicles
+            joinColumn:
+                name: vtype_id
+                nullable: false
+                referencedColumnName: id
+    lifecycleCallbacks: {  }

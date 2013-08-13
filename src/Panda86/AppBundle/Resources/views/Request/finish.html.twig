@@ -1,0 +1,31 @@
+{% extends '::app.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        [class*="span"].centred {
+            margin-left: auto;
+            margin-right: auto;
+            float: none;
+        }
+        h3, p {
+            text-align: center;
+        }
+    </style>
+    <link href="/assets/pform/finish.css" rel="stylesheet"/>
+{% endblock %}
+
+ {% block body %}
+     <div class="row">
+         <div class="span9 centred">
+             <img id="top" src="/assets/pform/top.png" alt="">
+             <div id="form_container">
+
+                 <h3>Thank you! for using our App.</h3>
+                 <p>You may close this browser window now.</p>
+             </div>
+             <img id="bottom" src="/assets/pform/bottom.png" alt="">
+         </div>
+     </div>
+ {% endblock %}
+

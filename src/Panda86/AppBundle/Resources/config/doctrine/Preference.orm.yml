@@ -1,0 +1,23 @@
+Panda86\AppBundle\Entity\Preference:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        application:
+            type: string
+            length: '64'
+        user:
+            type: string
+            length: '32'
+        name:
+            type: string
+            length: '64'
+        value:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }

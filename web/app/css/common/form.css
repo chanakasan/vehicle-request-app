@@ -1,0 +1,29 @@
+legend#desc {
+    font-size: 16px;
+}
+
+#vehicleDiv
+{
+    width:200px;
+    height:150px;
+}
+#vehicleImg
+{
+    max-width:100%;
+    max-height:100%;
+    margin:auto;
+    display:block;
+}
+
+#driverDiv
+{
+    width:50px;
+    height:100px;
+}
+#driverImg
+{
+    max-width:100%;
+    max-height:100%;
+    margin:auto;
+    display:block;
+}

@@ -1,0 +1,45 @@
+Panda86\AppBundle\Entity\ApprovedRequest:
+    type: entity
+    table: hr_approved
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        remarks:
+            type: string
+            length: '255'
+            nullable: true
+        active:
+            type: boolean
+        message:
+            text: text
+            nullable: true
+        created:
+            type: datetime
+        updated:
+            type: datetime
+    oneToOne:
+        request:
+          targetEntity: Request
+          joinColumn:
+            name: request_id
+            nullable: false
+            referencedColumnName: id
+          cascade: ['persist']
+    manyToOne:
+        vehicle:
+          targetEntity: Vehicle
+          joinColumn:
+              name: vehicle_id
+              nullable: false
+              referencedColumnName: id
+        driver:
+          targetEntity: Driver
+          joinColumn:
+            name: driver_id
+            nullable: false
+            referencedColumnName: id
+    lifecycleCallbacks: {  }

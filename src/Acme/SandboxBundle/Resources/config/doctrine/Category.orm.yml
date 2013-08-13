@@ -1,0 +1,24 @@
+Acme\SandboxBundle\Entity\Category:
+    type: entity
+    table: sb_category
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: '64'
+        descrip:
+            type: string
+            length: 128
+            nullable: true
+
+    oneToMany:
+            tasks:
+                targetEntity: Task
+                mappedBy: category
+        # don't forget to init the collection in entity __construct() method
+    lifecycleCallbacks: {  }

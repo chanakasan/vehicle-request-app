@@ -1,0 +1,26 @@
+vtype:
+    pattern:  /
+    defaults: { _controller: "Panda86AppBundle:VType:index" }
+
+vtype_new:
+    pattern:  /new
+    defaults: { _controller: "Panda86AppBundle:VType:new" }
+
+vtype_create:
+    pattern:  /create
+    defaults: { _controller: "Panda86AppBundle:VType:create" }
+    requirements: { _method: post }
+
+vtype_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "Panda86AppBundle:VType:edit" }
+
+vtype_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "Panda86AppBundle:VType:update" }
+    requirements: { _method: post|put }
+
+vtype_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "Panda86AppBundle:VType:delete" }
+    requirements: { _method: post|delete }

@@ -1,0 +1,17 @@
+{% extends 'Panda86AppBundle::create-view.html.twig' %}
+
+{% set closeBtn_url = path('vtype') %}
+{% block form %}
+    <form action="{{ path('vtype_create') }}" class="appnitro form-horizontal"
+      method="post" {{ form_enctype(form) }}>
+    <div class="form_description">
+        <h2>Add new vehicle category</h2><br/>
+    </div>
+        {{ form_widget(form) }}
+        <div class="control-group">
+            <div class="controls">
+                <button type="submit" formnovalidate="">Create</button>
+            </div>
+        </div>
+    </form>
+{% endblock %}

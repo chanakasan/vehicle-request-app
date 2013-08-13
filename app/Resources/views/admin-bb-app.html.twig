@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Admin - Vehicle Requests</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <style>
+        body {
+            padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+        }
+    </style>
+    <link href="/assets/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="/app/css/driver/screen.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <div class="nav-collapse collapse">
+                <div class="navbar-text pull-right">
+                    {% block admin_login %}{% endblock %}
+                </div>
+            </div>
+            <!--/.nav-collapse -->
+            <a class="brand" href="{{ path('app_root') }}">Admin Section</a>
+            <ul class="nav">
+                <li><a href="{{ path('request_new') }}">Request</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <!-- if javascript is turned off -->
+    <noscript>
+        <p>Javascript is disabled in your browser.</p>
+
+        <p>Please, turn on Javascript or use a different browser to use this app.</p>
+        <a href="#">Click here to continue</a>
+    </noscript>
+    {% block notice %}{% endblock %}
+    <div class="row">
+        <div id="content" class="span12">
+            {% block body -%}{% endblock %}
+            <div id="contacts"></div>
+            <script id="contactTemplate" type="text/template">
+                <img src="<%= photo %>" alt="<%= username %>"/>
+                <h1><%= username %><span><%= id %></span></h1>
+                <div><%= first_name %></div>
+                <dl>
+                    <dt>Name:</dt>
+                    <dd><%= first_name %></dd>
+                    <dd><%= last_name %></dd>
+                    <dt>Email:</dt>
+                    <dd><a href="mailto:<%= username %>"><%= email %></a></dd>
+                </dl>
+            </script>
+        </div>
+    </div>
+</div>
+
+<script src="/assets/jquery/jquery-1.9.1.min.js"></script>
+<script src="/assets/underscore.js"></script>
+<script src="/assets/backbone.js"></script>
+
+<!-- <script src="/app/app.js"></script> -->
+</body>
+</html>

@@ -1,0 +1,37 @@
+Panda86\AppBundle\Entity\RequestEmployee:
+    type: entity
+    table: hr_request_employee
+    repositoryClass: Panda86\AppBundle\Entity\RequestEmployeeRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        isOwner:
+            type: boolean
+            column: is_owner
+        active:
+            type: boolean
+
+    manyToOne:
+            request:
+                targetEntity: Request
+                inversedBy: employees
+                joinColumn:
+                    name: req_id
+                    nullable: false
+                    referencedColumnName: id
+
+            employee:
+                targetEntity: Employee
+                inversedBy: requests
+                joinColumn:
+                    name: emp_id
+                    nullable: false
+                    referencedColumnName: id
+    uniqueConstraints:
+            req_unique:
+                columns: [req_id, emp_id]
+    lifecycleCallbacks: {  }

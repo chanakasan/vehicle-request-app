@@ -1,0 +1,45 @@
+{% extends '::app.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        [class*="span"].centred {
+            margin-left: auto;
+            margin-right: auto;
+            float: none;
+        }
+        .form-required {
+            color: red;
+        }
+    </style>
+    <link rel="stylesheet" href="/assets/jquery-ui/redmond/jquery-ui-1.10.3.custom.css">
+    <link rel="stylesheet" href="/assets/chosen/chosen.css">
+    <link rel="stylesheet" href="/assets/pform/new.css">
+{% endblock %}
+
+{% block body -%}
+    <div class="row">
+        <div class="span9 centred">
+            {% form_theme form 'Panda86AppBundle:Form:form_datetimepicker_type.html.twig' %}
+            <img id="top" src="/assets/pform/top.png" alt="">
+            <div id="form_container">
+                <div id="closeDiv" class="pull-right">
+                    <a id="closeBtn" href="{{ closeBtn_url }}" data-original-title="A Title" class="btn btn-danger" data-toggle="popover" title="" data-content="And here's some amazing content. It's very engaging. right?">X</a>
+                </div>
+                <h1>Header</h1>
+                {%  block form %}{% endblock %}
+                <div id="form_footer">
+                    <a href="http://www.icta.lk">ICTA | &copy 2013</a>
+                </div>
+            </div>
+            <img id="bottom" src="/assets/pform/bottom.png" alt="">
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="/assets/jquery-ui/jquery-ui-1.10.3.custom.js"></script>
+    <script src="/assets/jquery.timeentry.js"></script>
+    <script src="/assets/chosen/chosen.jquery.js"></script>
+    <script src="/app/js/request/newReq.js"></script>
+{% endblock %}

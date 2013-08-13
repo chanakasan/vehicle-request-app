@@ -1,0 +1,54 @@
+{% extends '::app.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="/assets/pform/start.css" rel="stylesheet"/>
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="span12">
+            <img id="top" src="/assets/pform/top.png" alt="">
+            <div id="form_container">
+                <h1>Header</h1>
+                <form id="start_form" class="appnitro" method="post" action="{{ path('request_new') }}">
+                    <div class="form_description">
+                        <h2>Request a vehicle reservation </h2>
+                    </div>
+                    <ul>
+                        <li class="section_break">
+                            <h3><b>To request a vehicle reservation:</b>
+                                <p></p>
+                                <i>
+                                    <p>1. Please select and fill out a form from below.</p>
+                                    <p>2. Company must approve the request.</p>
+                                    <p>3. Confirmation of the reservation will be notified to you by email.</p>
+                                </i>
+                            </h3>
+                        </li>
+                        <br/>
+                        <li id="li_17">
+                            <label class="description" for="element_17">Vehicle needed for -- no. of days </label>
+
+                            <div>
+                                <select class="element select medium" id="noofdays" name="no_days">
+                                    <option value="1" selected="selected">1 day</option>
+                                    <option value="2">2 days</option>
+                                    <option value="3">3 days</option>
+                                    <option value="4">4 days</option>
+                                </select>
+                            </div>
+                        </li>
+                        <li class="buttons">
+                            <button id="showForm" name="showForm" type="submit">Show request form</button>
+                        </li>
+                    </ul>
+                </form>
+                <div id="footer">
+                    <a href="http://www.icta.lk">ICTA | &copy 2013</a>
+                </div>
+            </div>
+            <img id="bottom" src="/assets/pform/bottom.png" alt="">
+        </div>
+    </div>
+{% endblock %}

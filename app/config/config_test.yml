@@ -1,5 +1,6 @@
 imports:
     - { resource: config_dev.yml }
+#    - { resource: parameters_test.yml }
 
 framework:
     test: ~
@@ -14,3 +15,16 @@ web_profiler:
 
 swiftmailer:
     disable_delivery: true
+
+doctrine:
+    dbal:
+#        driver: pdo_sqlite
+#        path: %kernel.root_dir%/../test-db.sqlite
+#        path: :memory:
+        driver:   pdo_mysql
+        host:     127.0.0.1
+        port:     ~
+        dbname:   vr_test
+        user:     root
+        password: ~
+        charset:  UTF8

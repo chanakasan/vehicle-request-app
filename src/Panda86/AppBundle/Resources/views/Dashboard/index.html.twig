@@ -1,0 +1,52 @@
+{% extends '::admin-app.html.twig' %}
+
+{% block title %}
+    {{ parent() }}
+    - Dashboard
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href='/assets/fullcalendar/cupertino/theme.css' rel='stylesheet'  />
+    <link href='/assets/fullcalendar/fullcalendar.css' rel='stylesheet' />
+    <link href='/assets/fullcalendar/fullcalendar.print.css' rel='stylesheet' media='print' />
+    <style>
+        #calendar {
+            width: 900px;
+            margin: 0 auto;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="span12">
+            <div id='calendar'></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span12">
+            <!-- Modal -->
+            <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+                    <h4 id="myModalLabel">Reservation Info</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Reserved vehicle : <span class="muted" id="ivehicle"></span></p>
+                    <p>Driver : <span class="muted" id="idriver"></span></p>
+                    <p>Reserved time: <span class="muted" id="time_from"></span></p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src='/assets/fullcalendar/jquery-ui-1.10.2.custom.min.js'></script>
+    <script src='/assets/fullcalendar/fullcalendar.js'></script>
+    <script src='/app/js/dashboard/calendar.js'></script>
+{% endblock %}

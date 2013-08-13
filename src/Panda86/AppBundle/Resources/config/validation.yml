@@ -1,0 +1,19 @@
+Panda86\AppBundle\Entity\Request:
+    properties:
+        journey_type:
+            - NotBlank: ~
+        pickup_loc:
+            - NotBlank: ~
+        pickup_time:
+            - Type: DateTime
+            - NotBlank: ~
+        destination:
+            - NotBlank: ~
+        purpose:
+            - NotBlank: ~
+
+Panda86\AppBundle\Entity\Vehicle:
+    properties:
+        image:
+            - File:
+                maxSize: 6000000

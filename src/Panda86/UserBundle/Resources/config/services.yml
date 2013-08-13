@@ -1,0 +1,7 @@
+parameters:
+#    panda86_app.example.class: Panda86\AppBundle\Example
+
+services:
+#    panda86_app.example:
+#        class: %panda86_app.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

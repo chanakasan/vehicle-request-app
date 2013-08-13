@@ -1,0 +1,19 @@
+Panda86\UserBundle\Entity\User:
+    type: entity
+    table: hr_user
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        first_name:
+            type: string
+            length: '64'
+            nullable: true
+        last_name:
+            type: string
+            length: '64'
+            nullable: true
+    lifecycleCallbacks: {  }

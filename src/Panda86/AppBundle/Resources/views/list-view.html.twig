@@ -1,0 +1,28 @@
+{% extends '::admin-app.html.twig' %}
+    {% block stylesheets %}
+        {{ parent() }}
+        <link rel="stylesheet" type="text/css" href="/assets/DataTables/dataTables.css">
+        <link rel="stylesheet" type="text/css" href="/assets/colorbox/colorbox.css" media="all">
+        <link rel="stylesheet" type="text/css" href="/app/css/common/list.css" media="all">
+    {% endblock %}
+{% block body %}
+    <div class="row">
+        <div class="span10 offset1">
+            <h2>{{ heading }}</h2>
+            <table class="table table-striped">
+                {% block table %}{% endblock %}
+            </table>
+            <ul>
+                <li>
+                    <a href="{{ newBtn_url }}" class="iframe">
+                        Create a new entry
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="/assets/colorbox/jquery.colorbox-min.js"></script>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'Panda86AppBundle::details-view.html.twig' %}
+
+{% set closeBtn_url = path('vehicle') %}
+{% block table %}
+    <table class="record_properties table table-striped">
+        <div class="form_description">
+            <h2> Vehicle details - {{ entity.make }} {{ entity.model }} {{ entity.regno }}</h2>
+        </div>
+        <div id="v-photo">
+            <img src="/uploads/images/vehicles/{{ entity.image }}" width="400" height="300"/>
+        </div>
+        <tbody>
+        <tr>
+            <th>Make</th>
+            <td>{{ entity.make }}</td>
+        </tr>
+        <tr>
+            <th>Model</th>
+            <td>{{ entity.model }}</td>
+        </tr>
+        <tr>
+            <th>Reg No.</th>
+            <td>{{ entity.regno }}</td>
+        </tr>
+        <tr>
+            <th>Passengers</th>
+            <td>{{ entity.passengers }}</td>
+        </tr>
+        <tr>
+            <th>Air-Conditioned</th>
+            <td>{% if entity.ac %}Yes{% endif %}</td>
+        </tr>
+        <tr>
+            <th>Owned by company</th>
+            <td>{% if entity.iscompanyowned %}Yes{% endif %}</td>
+        </tr>
+        <tr>
+            <th>Photo file</th>
+            <td>{{ entity.image }}</td>
+        </tr>
+        <tr>
+            <th>Other details</th>
+            <td>{{ entity.remarks }}</td>
+        </tr>
+        <tr>
+            <th>Date added</th>
+            <td>{{ entity.wasadded|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+{% endblock %}

@@ -1,0 +1,18 @@
+Panda86\AppBundle\Entity\Employee:
+    type: entity
+    table: hr_employee
+    repositoryClass: Panda86\AppBundle\Entity\EmployeeRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 128
+        email:
+            type: string
+            length: 64
+    lifecycleCallbacks: {  }
