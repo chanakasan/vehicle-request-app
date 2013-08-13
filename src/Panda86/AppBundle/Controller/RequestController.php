@@ -42,20 +42,20 @@ class RequestController extends Controller
      * Finds and displays a RequestEmployee entity.
      *
      */
-    public function showAction($id)
+    public function showAction($id, $embed = false)
     {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('Panda86AppBundle:RequestEmployee')->find($id);
         $otherPassengers = $em->getRepository('Panda86AppBundle:RequestEmployee')->findOtherPassengers($id);
 
-//        var_dump($otherPassengers);exit;
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find RequestEmployee entity.');
         }
 
         return $this->render('Panda86AppBundle:Request:show.html.twig', array(
-            'entity'      => $entity,
+            'embedded' => $embed,
+            'entity' => $entity,
             'otherPassengers' => $otherPassengers,
         ));
     }

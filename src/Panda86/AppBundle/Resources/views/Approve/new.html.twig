@@ -8,8 +8,8 @@
         <div class="form_description">
             <h2>Approve request</h2><br/>
         </div>
-        <div id="req_info" style="border: solid 0.5px">
-             Request details goes here ...
+        <div id="req_info" style="padding:10px; border: solid 0.5px">
+            {% render controller('Panda86AppBundle:Request:show', { 'id': req_id, 'embed': true }) %}
         </div>
         <br/>
         <div class="control-group">
