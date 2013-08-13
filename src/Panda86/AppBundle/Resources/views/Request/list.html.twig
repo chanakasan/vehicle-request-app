@@ -46,7 +46,7 @@
             <th>Requester</th>
             <th>Requested vehicle</th>
             <th>Requested Date/Time</th>
-            <th>Purpose of travel</th>
+            {#<th>Purpose of travel</th>#}
             <th>Actions</th>
         </tr>
         </thead>
@@ -64,12 +64,12 @@
                 <td>{{ entity['owner'].name }}</td>
                 <td>{{ entity['request'].vtype.name }}</td>
                 <td>{% if entity['request'].pickuptime %}{{ entity['request'].pickuptime|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ entity['request'].purpose }}</td>
+                {#<td>{{ entity['request'].purpose }}</td>#}
                 <td>
-                    <a href="{{ path('request_show', { 'id': entity['request'].id }) }}">Show</a>
-                    {% if entity['request'].status == 0 %}|
-                        <a href="{{ path('approve_new', { 'id': entity['request'].id }) }}">Approve</a>
-                        {#<a href="{{ path('disapprove_new', { 'id': entity['request'].id }) }}">Disapprove</a>#}
+                    <a href="{{ path('request_show', { 'id': entity['request'].id }) }}"><i class="icon-info-sign"></i></a>
+                    {% if entity['request'].status == 0 %} |
+                        <a href="{{ path('approve_new', { 'id': entity['request'].id }) }}"><i class="icon-ok-sign"></i></a> |
+                        <a href="{{ path('disapprove_new', { 'id': entity['request'].id }) }}"><i class="icon-ban-circle"></i></a>
                     {% endif %}
                 </td>
             </tr>
