@@ -28,4 +28,5 @@ Panda86\AppBundle\Entity\DisapprovedRequest:
             name: request_id
             nullable: false
             referencedColumnName: id
+          cascade: ['persist']
     lifecycleCallbacks: {  }

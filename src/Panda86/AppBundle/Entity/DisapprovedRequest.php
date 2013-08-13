@@ -21,30 +21,41 @@ class DisapprovedRequest extends Base
         parent::__construct($options);
     }
 
+
     /**
      * @var integer
      */
-    protected $id;
+    private $id;
 
     /**
      * @var string
      */
-    protected $remarks;
+    private $remarks;
+
+    /**
+     * @var boolean
+     */
+    private $active;
+
+    /**
+     * @var string
+     */
+    private $message;
 
     /**
      * @var \DateTime
      */
-    protected $created;
+    private $created;
 
     /**
      * @var \DateTime
      */
-    protected $updated;
+    private $updated;
 
     /**
      * @var \Panda86\AppBundle\Entity\Request
      */
-    protected $request;
+    private $request;
 
 
     /**
@@ -78,6 +89,52 @@ class DisapprovedRequest extends Base
     public function getRemarks()
     {
         return $this->remarks;
+    }
+
+    /**
+     * Set active
+     *
+     * @param boolean $active
+     * @return DisapprovedRequest
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+
+        return $this;
+    }
+
+    /**
+     * Get active
+     *
+     * @return boolean 
+     */
+    public function getActive()
+    {
+        return $this->active;
+    }
+
+    /**
+     * Set message
+     *
+     * @param string $message
+     * @return DisapprovedRequest
+     */
+    public function setMessage($message)
+    {
+        $this->message = $message;
+
+        return $this;
+    }
+
+    /**
+     * Get message
+     *
+     * @return string 
+     */
+    public function getMessage()
+    {
+        return $this->message;
     }
 
     /**
@@ -132,8 +189,9 @@ class DisapprovedRequest extends Base
      * @param \Panda86\AppBundle\Entity\Request $request
      * @return DisapprovedRequest
      */
-    public function setRequest(\Panda86\AppBundle\Entity\Request $request = null)
+    public function setRequest(\Panda86\AppBundle\Entity\Request $request)
     {
+        $request->setStatus(2); /* update request status to disapproved */
         $this->request = $request;
 
         return $this;
@@ -147,61 +205,5 @@ class DisapprovedRequest extends Base
     public function getRequest()
     {
         return $this->request;
-    }
-    /**
-     * @var boolean
-     */
-    protected  $active;
-
-    /**
-     * @var string
-     */
-    protected  $message;
-
-
-    /**
-     * Set active
-     *
-     * @param boolean $active
-     * @return DisapprovedRequest
-     */
-    public function setActive($active)
-    {
-        $this->active = $active;
-
-        return $this;
-    }
-
-    /**
-     * Get active
-     *
-     * @return boolean 
-     */
-    public function getActive()
-    {
-        return $this->active;
-    }
-
-    /**
-     * Set message
-     *
-     * @param string $message
-     * @return DisapprovedRequest
-     */
-    public function setMessage($message)
-    {
-        $this->message = $message;
-
-        return $this;
-    }
-
-    /**
-     * Get message
-     *
-     * @return string 
-     */
-    public function getMessage()
-    {
-        return $this->message;
     }
 }
