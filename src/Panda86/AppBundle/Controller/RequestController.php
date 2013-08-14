@@ -61,6 +61,25 @@ class RequestController extends Controller
     }
 
     /**
+     * Find and display a request's details using the given code
+     *
+     */
+    public function detailsAction($code)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('Panda86AppBundle:RequestLink')->findByCode($code);
+//        var_dump($entity); exit;
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find RequestLink entity.');
+        }
+
+        return $this->render('Panda86AppBundle:Request:show.html.twig', array(
+            'entity' => $entity->getRequest(),
+        ));
+    }
+
+    /**
      * Displays a form to create a new Request entity.
      */
     public function newAction()
