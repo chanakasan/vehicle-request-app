@@ -16,6 +16,7 @@
     <!--[if lt IE 9]>
     <script src="/assets/bootstrap/js/html5shiv.js"></script>
     <![endif]-->
+    <!-- Fav and touch icons -->
     <link rel="shortcut icon" href="/app/img/favicon-admin.ico">
 </head>
 <body>
@@ -75,35 +76,38 @@
                             {% endif %}
                         {% endblock %}
                     </p>
-                </div><!--/nav-collapse -->
+                </div>
+                <!--/nav-collapse -->
             </div>
         </div>
-    </div><!--/ navbar -->
-
+    </div>
+    <!--/ navbar -->
     <div class="container">
-        <noscript><!-- if javascript is turned off -->
-            <meta http-equiv="refresh" content="1;url=js_error.html">
-            <p>Javascript is disabled in your browser.</p>
-            <p>Please, turn on Javascript or use a different browser to use this app.</p>
-            <a href="#">Click here to continue</a>
-        </noscript>
-        <div class="flash-notice">
-            {% block notice %}
-                {% for key, message in app.session.FlashBag() %}
-                    <p class="{{ key }}">
-                        {{ message|trans({}, 'FOSUserBundle') }}
-                    </p>
+        <!-- if javascript is turned off -->
+        {% block noscript %}
+            {{ include('no-script.html') }}
+        {% endblock %}
+
+        <div class="row"><!-- Flash notification messages -->
+            <div class="span10 offset1">
+                {% for flashMessage in app.session.flashbag.get('success') %}
+                    <div class="alert alert-success">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        {{ flashMessage }}
+                    </div>
                 {% endfor %}
-            {% endblock %}
+            </div>
         </div>
         <!-- Renders page contents here -->
         {% block body %}{% endblock %}
     </div>
     <!-- /container -->
     <div id="push"></div>
-</div><!--/ wrap -->
+</div>
+<!--/ wrap -->
 
 <br/>
+
 <div id="footer">
     <div class="container">
         <p class="muted credit">&copy; ICTA {{ '' | date('Y') }}</p>
