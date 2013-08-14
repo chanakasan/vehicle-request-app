@@ -29,6 +29,14 @@ class DisapproveController extends Controller
             $em->persist($entity);
             $em->flush();
 
+            $flashmsg = "Request #{$entity->getRequest()->getId()} was disapproved! ";
+            // sendEmail()
+            $flashmsg .= 'An email message was sent to the requester.';
+
+            $this->get('session')->getFlashBag()->add(
+                'notice',
+                $flashmsg
+            );
             return $this->redirect($this->generateUrl('request_list', array('id' => $entity->getId())));
         }
 
