@@ -25,27 +25,8 @@ $(document).ready(function () {
 
     dataTableInit();
 
-    /* Colorbox */
-    $('.iframe').colorbox({width: "70%", height: "80%", iframe: true});
-
-    /* Update pending count */
-    var pending_count = $('#list1 .warning').length;
-    $('#pending').text(pending_count);
-
-    /* Update status */
-    $('.approve').on('click', function () {
-        var row = $(this).closest('tr');
-        $(row).attr('class', 'success');
-        return false;
-    });
-    $('.decline').on('click', function () {
-        var row = $(this).closest('tr');
-        $(row).addClass('danger');
-        return false;
-    });
-
     /* Nav pills */
-    $('ul.nav li').on('click', function(){
+    $('#content-nav ul.nav-pills li').on('click', function(){
         $('ul.nav li').removeClass('active');
         $(this).addClass('active');
         return false;
