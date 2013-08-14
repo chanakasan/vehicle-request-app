@@ -125,9 +125,16 @@ class RequestController extends Controller
 
                 $em->persist($reqEmptmp);
             }
-
             $em->flush();
 
+            $flashmsg = "Your request was sent successfully! ";
+            // sendEmail()
+            $flashmsg .= 'An email message with a link to your request\'s details will be sent to you shortly.';
+
+            $this->get('session')->getFlashBag()->add(
+                'success',
+                $flashmsg
+            );
             return $this->render('Panda86AppBundle:Request:finish.html.twig');
         }
         // if form is not valid
