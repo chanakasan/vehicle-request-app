@@ -87,21 +87,15 @@
         {% block noscript %}
             {{ include('no-script.html') }}
         {% endblock %}
+
         <div class="row"><!-- Flash notification messages -->
             <div class="span10 offset1">
-                <div class="flash-notice">
-                    {% block notice %}
-                        {% for key, message in app.session.FlashBag() %}
-                            <div class="alert alert-info">
-                                <button type="button" class="close" data-dismiss="alert">&times;</button>
-
-                                <p class="{{ key }}">
-                                    {{ message|trans({}, 'FOSUserBundle') }}
-                                </p>
-                            </div>
-                        {% endfor %}
-                    {% endblock %}
-                </div>
+                {% for flashMessage in app.session.flashbag.get('success') %}
+                    <div class="alert alert-success">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        {{ flashMessage }}
+                    </div>
+                {% endfor %}
             </div>
         </div>
         <!-- Renders page contents here -->

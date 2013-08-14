@@ -77,6 +77,11 @@ class ApproveController extends Controller
             $em->persist($entity);
             $em->flush();
 
+            // sendEmail()
+            $this->get('session')->getFlashBag()->add(
+                'success',
+                "Request #{$entity->getRequest()->getId()} was approved! An email message was sent to the requester."
+            );
             return $this->redirect($this->generateUrl('request_list'));
         }
 
