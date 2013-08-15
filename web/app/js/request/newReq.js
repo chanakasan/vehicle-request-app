@@ -1,5 +1,5 @@
 $(document).ready(function(){
-// jquery chosen
+// jquery chosen plugin
     var config = {
         '.chzn-select'           : {},
         '.chzn-select-deselect'  : {allow_single_deselect:true},
@@ -10,20 +10,37 @@ $(document).ready(function(){
     for (var selector in config) {
         $(selector).chosen(config[selector]);
     }
-    $("#request_pickup_time_datepicker").datepicker({
-        dateFormat: 'yy-mm-dd'
+// jquery ui datepicker
+//    $("#request_pickup_time_datepicker").datepicker({
+//        dateFormat: 'yy-mm-dd'
+//    });
+
+// jquery timeEntry plugin
+//    $('#request_pickup_time_timepicker').timeEntry({
+//        show24Hours: true,
+//        spinnerImage: ''
+//    });
+//    $('#request_start_time').timeEntry({
+//        show24Hours: true,
+//        spinnerImage: ''
+//    });
+//    $('#request_return_time').timeEntry({
+//        show24Hours: true,
+//        spinnerImage: ''
+//    });
+
+    $(function() {// Init time picker
+        $('.req-timepicker').datetimepicker({
+            pickDate: false,
+//            maskInput: true,
+            pickSeconds: false,
+            pick12HourFormat: true
+        });
     });
-    $('#request_pickup_time_timepicker').timeEntry({
-        show24Hours: true,
-        spinnerImage: ''
-    });
-    $('#request_start_time').timeEntry({
-        show24Hours: true,
-        spinnerImage: ''
-    });
-    $('#request_return_time').timeEntry({
-        show24Hours: true,
-        spinnerImage: ''
+    $(function() {// Init date picker
+        $('.req-datepicker').datetimepicker({
+            pickTime: false
+        });
     });
     function toggle_journey(type, is_selected)
     {
