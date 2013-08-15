@@ -429,4 +429,71 @@ class Request extends Base {
     {
         return $this->active;
     }
+
+    /**
+     * @var \Panda86\AppBundle\Entity\Employee
+     */
+    protected $requester;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    protected $accompanied_by;
+
+
+    /**
+     * Set requester
+     *
+     * @param \Panda86\AppBundle\Entity\Employee $requester
+     * @return Request
+     */
+    public function setRequester(\Panda86\AppBundle\Entity\Employee $requester)
+    {
+        $this->requester = $requester;
+
+        return $this;
+    }
+
+    /**
+     * Get requester
+     *
+     * @return \Panda86\AppBundle\Entity\Employee 
+     */
+    public function getRequester()
+    {
+        return $this->requester;
+    }
+
+    /**
+     * Add accompanied_by
+     *
+     * @param \Panda86\AppBundle\Entity\Employee $accompaniedBy
+     * @return Request
+     */
+    public function addAccompaniedBy(\Panda86\AppBundle\Entity\Employee $accompaniedBy)
+    {
+        $this->accompanied_by[] = $accompaniedBy;
+
+        return $this;
+    }
+
+    /**
+     * Remove accompanied_by
+     *
+     * @param \Panda86\AppBundle\Entity\Employee $accompaniedBy
+     */
+    public function removeAccompaniedBy(\Panda86\AppBundle\Entity\Employee $accompaniedBy)
+    {
+        $this->accompanied_by->removeElement($accompaniedBy);
+    }
+
+    /**
+     * Get accompanied_by
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAccompaniedBy()
+    {
+        return $this->accompanied_by;
+    }
 }

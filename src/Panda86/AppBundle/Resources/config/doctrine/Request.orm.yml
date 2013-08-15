@@ -39,6 +39,13 @@ Panda86\AppBundle\Entity\Request:
             type: datetime
         updated_at:
             type: datetime
+    oneToOne:
+        requester:
+          targetEntity: Employee
+          joinColumn:
+            name: emp_id
+            nullable: false
+            referencedColumnName: id
     manyToOne:
         vtype:
             targetEntity: VType
@@ -47,4 +54,8 @@ Panda86\AppBundle\Entity\Request:
                 name: vtype_id
                 nullable: false
                 referencedColumnName: id
+    oneToMany:
+        accompanied_by:
+            targetEntity: Employee
+            mappedBy: otherPassengers
     lifecycleCallbacks: {  }
