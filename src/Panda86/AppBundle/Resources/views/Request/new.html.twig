@@ -21,11 +21,12 @@
             </label>
 
             <div class="controls">
-                <select name="requester" data-placeholder="Name of requester" class="chzn-select" tabindex="-1">
-                    {% for employee in employees %}
-                        <option name="requester" value="{{ employee.getId }}">{{ employee.getName }}</option>
-                    {% endfor %}
-                </select>
+                {{ form_widget(form.requester, {'attr': {'class': 'chzn-select', 'data-placeholder': 'Name of requester', 'tabindex':'-1'} } ) }}
+                {#<select name="requester" data-placeholder="Name of requester" class="chzn-select" tabindex="-1">#}
+                    {#{% for employee in employees %}#}
+                        {#<option name="requester" value="{{ employee.getId }}">{{ employee.getName }}</option>#}
+                    {#{% endfor %}#}
+                {#</select>#}
             </div>
         </div>
         <div class="control-group">
@@ -106,12 +107,13 @@
             <label class="control-label">Others travelling in vehicle</label>
 
             <div class="controls">
-                <select class="input-xlarge chzn-select" name="other_p[]"
-                        data-placeholder="Names of other staff members" multiple="multiple" tabindex="-1">
-                    {% for employee in employees %}
-                        <option name="other_p" value="{{ employee.getId }}">{{ employee.getName }}</option>
-                    {% endfor %}
-                </select>
+                {{ form_widget(form.accompanied_by, {'attr': {'class': 'chzn-select', 'data-placeholder': 'Name of requester', 'tabindex':'-1'} } ) }}
+                {#<select class="input-xlarge chzn-select" name="other_p[]"#}
+                        {#data-placeholder="Names of other staff members" multiple="multiple" tabindex="-1">#}
+                    {#{% for employee in employees %}#}
+                        {#<option name="other_p" value="{{ employee.getId }}">{{ employee.getName }}</option>#}
+                    {#{% endfor %}#}
+                {#</select>#}
             </div>
         </div>
         <div class="control-group">

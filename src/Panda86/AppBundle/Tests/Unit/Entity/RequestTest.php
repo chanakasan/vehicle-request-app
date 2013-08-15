@@ -2,6 +2,7 @@
 
 namespace Panda86\AppBundle\Tests\Entity;
 
+use Panda86\AppBundle\Entity\Employee;
 use Panda86\AppBundle\Entity\Request;
 use Panda86\AppBundle\Entity\VType;
 
@@ -59,7 +60,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase {
      */
     public function testCanGetStatus(Request $request)
     {
-        $this->assertEquals('pending', $request->getStatus());
+        $this->assertEquals(0, $request->getStatus());
     }
 
     /**
@@ -67,11 +68,11 @@ class RequestTest extends \PHPUnit_Framework_TestCase {
      */
     public function testCanSetStatus(Request $request)
     {
-        $request->setStatus('approved');
-        $this->assertEquals('approved', $request->getStatus());
+        $request->setStatus(1);
+        $this->assertEquals(1, $request->getStatus());
 
-        $request->setStatus('disapproved');
-        $this->assertEquals('disapproved', $request->getStatus());
+        $request->setStatus(2);
+        $this->assertEquals(2, $request->getStatus());
     }
     
     /**
@@ -84,5 +85,37 @@ class RequestTest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals('AnInvalidStatus', $request->getStatus());
     }
 
+    /**
+     * @depends testCanCreateRequest
+     */
+    public function testCanSetRequester(Request $request)
+    {
+        $john_doe = new Employee(array(
+            'name' => 'John Doe',
+            'email' => 'john@doe.com',
+        ));
+        $request->setRequester($john_doe);
+        $this->assertInstanceOf('Panda86\AppBundle\Entity\Employee', $request->getRequester());
+    }
 
+    /**
+     * @depends testCanCreateRequest
+     */
+    public function testCanSetOtherPassengets(Request $request)
+    {
+        $john_doe = new Employee(array(
+            'name' => 'John Doe',
+            'email' => 'john@doe.com',
+        ));
+        $martin_doe = new Employee(array(
+            'name' => 'Martin Doe',
+            'email' => 'john@doe.com',
+        ));
+        $request->addAccompaniedBy($john_doe);
+        $request->addAccompaniedBy($martin_doe);
+
+        $otherPassengers = $request->getAccompaniedBy();
+        $this->assertInstanceOf('Panda86\AppBundle\Entity\Employee', $otherPassengers[0]);
+        $this->assertInstanceOf('Panda86\AppBundle\Entity\Employee', $otherPassengers[1]);
+    }
 }

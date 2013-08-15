@@ -40,11 +40,27 @@ Panda86\AppBundle\Entity\Request:
         updated_at:
             type: datetime
     manyToOne:
+        requester: # Many-to-one uni-directional
+            targetEntity: Employee
+            joinColumn:
+                name: requester_id
+                nullable: false
+                referencedColumnName: id
         vtype:
             targetEntity: VType
-            inversedBy: vehicles
             joinColumn:
                 name: vtype_id
                 nullable: false
                 referencedColumnName: id
+    manyToMany:
+        accompanied_by:
+            targetEntity: Employee
+            joinTable:
+                name: hr_request_passenger
+                joinColumns:
+                  req_id:
+                    referencedColumnName: id
+                inverseJoinColumns:
+                  emp_id:
+                    referencedColumnName: id
     lifecycleCallbacks: {  }
