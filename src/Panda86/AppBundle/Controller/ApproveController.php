@@ -35,6 +35,7 @@ class ApproveController extends Controller
             $temp = array(
                 'title' => $vehicle,
                 'start' => $start,
+                'requester' => $entity->getRequest()->getRequester()->getName(),
                 'vehicle' => $vehicle,
                 'driver' => $entity->getDriver()->getDisplayname(),
             );
