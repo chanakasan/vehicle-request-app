@@ -76,10 +76,20 @@ class ApproveController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
+            $flashmsg = "Request #{$entity->getRequest()->getId()} has been approved! ";
 
-            $flashmsg = "Request #{$entity->getRequest()->getId()} was approved! ";
-            // sendEmail()
-            $flashmsg .= 'An email message was sent to the requester.';
+            $reqLink = $em->getRepository('Panda86AppBundle:RequestLink')->findOneBy(array('request' => $entity->getRequest()->getId()));
+            $code  = $reqLink->getCode();
+            $email = $entity->getRequest()->getRequester()->getEmail();
+
+            if($this->_sendMail($email, $entity, $code))
+            {
+                $flashmsg .= 'An email message has been sent to the requester.';
+            }
+            else
+            {
+                $flashmsg .= 'Email sending failed!';
+            }
 
             $this->get('session')->getFlashBag()->add(
                 'notice',
@@ -94,31 +104,24 @@ class ApproveController extends Controller
         ));
     }
 
-    public function emailAction()
+    private  function _sendMail($email, $entity, $code)
     {
-        $request = new \StdClass();
-        $request->driver = new \StdClass();
-        $request->vehicle = new \StdClass();
-
-        $request->owner = 'Martin Doe';
-        $request->id = 1;
-        $request->vehicle->reg_no = 'Toyota Corolla - NB-3456';
-        $request->driver->display_name = 'John Doe';
-
         $message = \Swift_Message::newInstance()
             ->setContentType("text/html")
-            ->setSubject('Vehicle request status')
+            ->setSubject('Vehicle request approved!')
             ->setFrom('donotreply@icta.lk')
-            ->setTo('chanakasan@gmail.com')
+            ->setTo($email)
             ->setBody(
                 $this->renderView(
-                    'Panda86AppBundle:Template:disapproved-email.html.twig',
-                    array('request' => $request)
+                    'Panda86AppBundle:Template:request-approved-email.html.twig', array(
+                        'entity' => $entity,
+                        'code' => $code
+                    )
                 )
             )
         ;
         $this->get('mailer')->send($message);
 
-        return new \Symfony\Component\HttpFoundation\Response('Email Sent!');
+        return true;
     }
 }

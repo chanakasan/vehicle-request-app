@@ -16,6 +16,10 @@ request_finish:
     pattern:  /finish
     defaults: { _controller: "Panda86AppBundle:Request:finish" }
 
+request_details:
+    pattern:  /c/{code}
+    defaults: { _controller: "Panda86AppBundle:Request:details" }
+
 # For admin access #
 request_list:
     pattern:  /list

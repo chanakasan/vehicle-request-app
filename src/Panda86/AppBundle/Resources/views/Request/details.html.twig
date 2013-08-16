@@ -1,12 +1,8 @@
-{% extends embedded == true
-? 'Panda86AppBundle::embedded-details-view.html.twig'
-: 'Panda86AppBundle::details-view.html.twig' %}
+{% extends 'Panda86AppBundle::guest-details-view.html.twig' %}
 
 {% block title %}
-  {% if embedded == false %}
     {{ parent() }}
     - Req #{{ entity.id }} details
-  {% endif %}
 {% endblock %}
 
 {% set closeBtn_url = path('request_list') %}
@@ -25,7 +21,7 @@
     <tbody>
     <tr>
         <th>Request ID</th>
-        <td>{{ entity.id }}</td>
+        <td>#{{ entity.id }}</td>
     </tr>
     <tr>
         <th>Requester</th>
@@ -78,8 +74,8 @@
     <tr>
         <th>Other passengers</th>
         <td>
-            {% if entity.accompaniedby|length > 0 %}
-                {% for passenger in entity.accompaniedby %}
+            {% if entity.accompaniedBy|length > 0 %}
+                {% for passenger in entity.accompaniedBy %}
                     <li>{{ passenger.name|e }}</li>
                 {% endfor %}
             {% endif %}

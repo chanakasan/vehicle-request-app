@@ -11,13 +11,17 @@ class RequestType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('requester', 'entity',array(
+                'class' => 'Panda86AppBundle:Employee',
+                'property' => 'name',
+                'label' => false,
+            ))
             ->add('journey_type', 'choice', array(
             'choices'   => array(
                 'single' => 'Single',
                 'return' => 'Single and Return',
                 ),
              'label' => false,
-             'multiple'  => false,
              'expanded'  => true,
             ))
             ->add('days', 'hidden')
@@ -47,6 +51,12 @@ class RequestType extends AbstractType
             ))
             ->add('purpose', 'text', array(
                 'label' => false,
+            ))
+            ->add('accompanied_by', 'entity',array(
+                'class' => 'Panda86AppBundle:Employee',
+                'property' => 'name',
+                'label' => false,
+                'multiple'  => true,
             ))
         ;
     }

@@ -28,10 +28,20 @@ class DisapproveController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
+            $flashmsg = "Request #{$entity->getRequest()->getId()} has been disapproved! ";
 
-            $flashmsg = "Request #{$entity->getRequest()->getId()} was disapproved! ";
-            // sendEmail()
-            $flashmsg .= 'An email message was sent to the requester.';
+            $reqLink = $em->getRepository('Panda86AppBundle:RequestLink')->findOneBy(array('request' => $entity->getRequest()->getId()));
+            $code  = $reqLink->getCode();
+            $email = $entity->getRequest()->getRequester()->getEmail();
+
+            if($this->_sendMail($email, $entity, $code))
+            {
+                $flashmsg .= 'An email message has been sent to the requester.';
+            }
+            else
+            {
+                $flashmsg .= 'Email sending failed!';
+            }
 
             $this->get('session')->getFlashBag()->add(
                 'notice',
@@ -62,4 +72,24 @@ class DisapproveController extends Controller
         ));
     }
 
+    private  function _sendMail($email, $entity, $code)
+    {
+        $message = \Swift_Message::newInstance()
+            ->setContentType("text/html")
+            ->setSubject('Vehicle request disapproved due to unavailability')
+            ->setFrom('donotreply@icta.lk')
+            ->setTo($email)
+            ->setBody(
+                $this->renderView(
+                    'Panda86AppBundle:Template:request-disapproved-email.html.twig', array(
+                        'entity' => $entity,
+                        'code' => $code
+                    )
+                )
+            )
+        ;
+        $this->get('mailer')->send($message);
+
+        return true;
+    }
 }

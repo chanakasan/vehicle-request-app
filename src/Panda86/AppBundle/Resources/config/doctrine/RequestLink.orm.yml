@@ -1,0 +1,21 @@
+Panda86\AppBundle\Entity\RequestLink:
+    type: entity
+    table: hr_request_link
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        code:
+            type: string
+            length: 255
+    oneToOne:
+        request:
+          targetEntity: Request
+          joinColumn:
+            name: request_id
+            nullable: false
+            referencedColumnName: id
+    lifecycleCallbacks: {  }

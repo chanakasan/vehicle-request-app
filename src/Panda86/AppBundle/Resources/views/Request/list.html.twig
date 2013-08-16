@@ -51,24 +51,24 @@
         </thead>
         <tbody>
         {% for entity in entities %}
-            {% if entity['request'].status == 2 %}
+            {% if entity.status == 2 %}
                 {% set class = 'disapproved error' %}
-            {% elseif entity['request'].status == 1 %}
+            {% elseif entity.status == 1 %}
                 {% set class = 'approved success' %}
             {% else %}
                 {% set class = 'pending warning' %}
             {% endif %}
             <tr class="{{ class }}">
-                <td>{{ entity['request'].id }}</td>
-                <td>{{ entity['owner'].name }}</td>
-                <td>{{ entity['request'].vtype.name }}</td>
-                <td>{% if entity['request'].pickuptime %}{{ entity['request'].pickuptime|date('Y-m-d \\- g:i a') }}{% endif %}</td>
+                <td>{{ entity.id }}</td>
+                <td>{{ entity.requester.name }}</td>
+                <td>{{ entity.vtype.name }}</td>
+                <td>{% if entity.pickuptime %}{{ entity.pickuptime|date('Y-m-d \\- g:i a') }}{% endif %}</td>
                 <td>
-                    <a href="{{ path('request_show', { 'id': entity['request'].id }) }}"><i class="icon-info-sign"></i></a>
-                    {% if entity['request'].status == 0 %} |
-                        <a href="{{ path('approve_new', { 'req_id': entity['request'].id }) }}"><i
+                    <a href="{{ path('request_show', { 'id': entity.id }) }}"><i class="icon-info-sign"></i></a>
+                    {% if entity.status == 0 %} |
+                        <a href="{{ path('approve_new', { 'req_id': entity.id }) }}"><i
                                     class="icon-ok-sign"></i></a> |
-                        <a href="{{ path('disapprove_new', { 'req_id': entity['request'].id }) }}"><i
+                        <a href="{{ path('disapprove_new', { 'req_id': entity.id }) }}"><i
                                     class="icon-ban-circle"></i></a>
                     {% endif %}
                 </td>

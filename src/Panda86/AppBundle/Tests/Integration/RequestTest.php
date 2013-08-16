@@ -3,21 +3,19 @@
 namespace Panda86\AppBundle\Tests\Integration;
 
 use Panda86\AppBundle\Tests\FunctionalTestCase;
-use Panda86\AppBundle\Entity\VType;
-use Panda86\AppBundle\Entity\RequestEmployee;
+
 use Panda86\AppBundle\Entity\Request;
 use Panda86\AppBundle\Entity\Employee;
 
 class RequestTest extends FunctionalTestCase
 {
+    public $req;
+
     public function setUp()
     {
         parent::setUp();
 
-        $this->emp_args = array(
-            'name' => 'John Doe'
-        );
-        $this->req_args = array(
+        $this->req = array(
             'journey_type' => 'single',
             'days' => 1,
             'pickup_loc' => 'ICTA',
@@ -31,25 +29,25 @@ class RequestTest extends FunctionalTestCase
         );
     }
 
-    public function testCanSaveRequestEmployee()
+    public function testCanSaveRequests()
     {
+        $employees =  $this->em->getRepository('Panda86AppBundle:Employee')->findAll();
         $vtypes =  $this->em->getRepository('Panda86AppBundle:VType')->findAll();
 
-        $requestEmployee = new RequestEmployee();
-
-        $request =  new Request($this->req_args);
+        $request =  new Request($this->req);
         $request->setVType($vtypes[0]);
-        $employee = new Employee($this->emp_args);
+        $request->setRequester($employees[99]);
 
-        $requestEmployee->setIsOwner(true);
-        $requestEmployee->setRequest($request);
-        $requestEmployee->setEmployee($employee);
+        $req_with_passengers =  new Request($this->req);
+        $req_with_passengers->setVType($vtypes[0]);
+        $req_with_passengers->setRequester($employees[120]);
+        $req_with_passengers->addAccompaniedBy($employees[101]);
+        $req_with_passengers->addAccompaniedBy($employees[102]);
 
         $this->em->persist($request);
-        $this->em->persist($employee);
-        $this->em->persist($requestEmployee);
+        $this->em->persist($req_with_passengers);
 
         $this->em->flush();
-        $this->assertInstanceOf('Panda86\AppBundle\Entity\RequestEmployee', $requestEmployee);
+        $this->assertInstanceOf('Panda86\AppBundle\Entity\Request', $request);
     }
 }

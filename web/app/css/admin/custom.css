@@ -3,7 +3,6 @@
 html,
 body {
     height: 100%;
-    background: rgba(235, 235, 235, 0.74);
     /* The html and body elements cannot have any padding or margin. */
 }
 

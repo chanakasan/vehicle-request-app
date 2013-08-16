@@ -3,9 +3,9 @@
 {% set closeBtn_url = path('request_finish') %}
 {% block form %}
     {% form_theme form 'Panda86AppBundle:Form:form_datetimepicker_type.html.twig' %}
-    <form id="new_form" class="appnitro form-horizontal" action="{{ path('request_create') }}"
-          method="post" {{ form_enctype(form) }}>
-        <div class="form_description">
+    <form id='new_form' class='appnitro form-horizontal' action='{{ path('request_create') }}'
+          method='post' {{ form_enctype(form) }}>
+        <div class='form_description'>
             <h2>New vehicle reservation request</h2><br/>
         </div>
         <!-- form validation -->
@@ -15,108 +15,114 @@
         <!-- form fields -->
         {{ form_row(form.days) }}
 
-        <div class="control-group">
-            <label class="control-label">Requester name
-                <span class="form-required" title="This field is required.">*</span>
+        <div class='control-group'>
+            <label class='control-label'>Requester name
+                <span class='form-required' title='This field is required.'>*</span>
             </label>
 
-            <div class="controls">
-                <select name="requester" data-placeholder="Name of requester" class="chzn-select" tabindex="-1">
-                    {% for employee in employees %}
-                        <option name="requester" value="{{ employee.getId }}">{{ employee.getName }}</option>
-                    {% endfor %}
-                </select>
+            <div class='controls'>
+                {{ form_widget(form.requester, {'attr': {'class': 'chzn-select', 'data-placeholder': 'Name of requester', 'tabindex':'-1'} } ) }}
+                {#<select name='requester' data-placeholder='Name of requester' class='chzn-select' tabindex='-1'>#}
+                    {#{% for employee in employees %}#}
+                        {#<option name='requester' value='{{ employee.getId }}'>{{ employee.getName }}</option>#}
+                    {#{% endfor %}#}
+                {#</select>#}
             </div>
         </div>
-        <div class="control-group">
-            <label class="control-label">Journey type
-                <span class="form-required" title="This field is required.">*</span>
+        <div class='control-group'>
+            <label class='control-label'>Journey type
+                <span class='form-required' title='This field is required.'>*</span>
             </label>
 
-            <div class="controls">
+            <div class='controls'>
                 {{ form_row(form.journey_type) }}
             </div>
         </div>
         <div id='single_journey'>
-            <div class="control-group">
-                <label class="control-label">Pickup location
-                    <span class="form-required" title="This field is required.">*</span>
+            <div class='control-group'>
+                <label class='control-label'>Pickup location
+                    <span class='form-required' title='This field is required.'>*</span>
                 </label>
 
-                <div class="controls">
+                <div class='controls'>
                     {{ form_row(form.pickup_loc) }}
                 </div>
             </div>
-            <div class="control-group">
-                <label class="control-label">Destination
-                    <span class="form-required" title="This field is required.">*</span>
+            <div class='control-group'>
+                <label class='control-label'>Destination
+                    <span class='form-required' title='This field is required.'>*</span>
                 </label>
 
-                <div class="controls">
+                <div class='controls'>
                     {{ form_row(form.destination) }}
                 </div>
             </div>
-            <div class="control-group">
-                <label class="control-label">Start time
-                    <span class="form-required" title="This field is required.">*</span>
+            <div class='control-group'>
+                <label class='control-label'>Start time
+                    <span class='form-required' title='This field is required.'>*</span>
                 </label>
 
-                <div class="controls">
-                    <div class="input-append">
-                        {{ form_widget(form.start_time, {'attr': {'class': 'input-medium', 'placeholder' : '24 Hours e.g. HH:MM'} } ) }}
-                        <span class="add-on"><i class="icon-time"></i></span>
+                <div class='req-timepicker controls'>
+                    <div class='input-append'>
+                        {{ form_widget(form.start_time, {'attr': {'class': 'input-medium', 'placeholder' : '24 hours e.g. hh:mm', 'data-format':'hh:mm', 'type':'text'} } ) }}
+                        <span class='add-on'>
+                            <i data-time-icon='icon-time' data-date-icon='icon-calendar'></i>
+                        </span>
                     </div>
                 </div>
             </div>
-            <div class="control-group">
+            <div class='control-group'>
                 {{ form_row(form.pickup_time) }}
             </div>
         </div>
         <div id='return_journey'>
-            <div class="control-group">
-                <label class="control-label">Return time</label>
+            <div class='control-group'>
+                <label class='control-label'>Return time</label>
 
-                <div class="controls">
-                    <div class="input-append">
-                        {{ form_widget(form.return_time, {'attr': {'class': 'input-medium', 'placeholder' : '24 Hours e.g. HH:MM' } } ) }}
-                        <span class="add-on"><i class="icon-time"></i></span>
+                <div class='req-timepicker controls'>
+                    <div class='input-append'>
+                        {{ form_widget(form.return_time, {'attr': {'class': 'input-medium', 'placeholder' : '24 hours e.g. hh:mm', 'data-format':'hh:mm', 'type':'text' } } ) }}
+                        <span class='add-on'>
+                            <i data-time-icon='icon-time' data-date-icon='icon-calendar'></i>
+                        </span>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="control-group">
-            <label class="control-label">Vehicle type
-                <span class="form-required" title="This field is required.">*</span>
+        <div class='control-group'>
+            <label class='control-label'>Vehicle type
+                <span class='form-required' title='This field is required.'>*</span>
             </label>
 
-            <div class="controls">
+            <div class='controls'>
                 {{ form_row(form.vtype) }}
             </div>
         </div>
-        <div class="control-group">
-            <label class="control-label">Purpose of journey
-                <span class="form-required" title="This field is required.">*</span>
+        <div class='control-group'>
+            <label class='control-label'>Purpose of journey
+                <span class='form-required' title='This field is required.'>*</span>
             </label>
 
-            <div class="controls">
+            <div class='controls'>
                 {{ form_row(form.purpose) }}
             </div>
         </div>
-        <div class="control-group">
-            <label class="control-label">Others travelling in vehicle</label>
+        <div class='control-group'>
+            <label class='control-label'>Others travelling in vehicle</label>
 
-            <div class="controls">
-                <select class="input-xlarge chzn-select" name="other_p[]"
-                        data-placeholder="Names of other staff members" multiple="multiple" tabindex="-1">
-                    {% for employee in employees %}
-                        <option name="other_p" value="{{ employee.getId }}">{{ employee.getName }}</option>
-                    {% endfor %}
-                </select>
+            <div class='controls'>
+                {{ form_widget(form.accompanied_by, {'attr': {'class': 'chzn-select', 'data-placeholder': 'Name of requester', 'tabindex':'-1'} } ) }}
+                {#<select class='input-xlarge chzn-select' name='other_p[]'#}
+                        {#data-placeholder='Names of other staff members' multiple='multiple' tabindex='-1'>#}
+                    {#{% for employee in employees %}#}
+                        {#<option name='other_p' value='{{ employee.getId }}'>{{ employee.getName }}</option>#}
+                    {#{% endfor %}#}
+                {#</select>#}
             </div>
         </div>
-        <div class="control-group">
-            <div class="controls">
-                <button class="btn btn-success" type="submit" formnovalidate="">Send Request</button>
+        <div class='control-group'>
+            <div class='controls'>
+                <button class='btn btn-success' type='submit' formnovalidate=''>Send Request</button>
             </div>
         </div>
         <!--/form fields-->

@@ -100,6 +100,7 @@ class Request extends Base {
      * @var \DateTime
      */
     protected $start_time;
+
     /**
      * @var \DateTime
      */
@@ -121,9 +122,14 @@ class Request extends Base {
     protected $purpose;
 
     /**
-     * @var string
+     * @var integer
      */
     protected $status;
+
+    /**
+     * @var boolean
+     */
+    protected $active;
 
     /**
      * @var \DateTime
@@ -136,9 +142,19 @@ class Request extends Base {
     protected $updated_at;
 
     /**
+     * @var \Panda86\AppBundle\Entity\Employee
+     */
+    protected $requester;
+
+    /**
      * @var \Panda86\AppBundle\Entity\VType
      */
     protected $vtype;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    protected $accompanied_by;
 
 
     /**
@@ -208,9 +224,9 @@ class Request extends Base {
     }
 
     /**
-     * Set pickup_time
+     * Set start_time
      *
-     * @param \DateTime $pickupTime
+     * @param \DateTime $startTime
      * @return Request
      */
     public function setStartTime($startTime)
@@ -221,7 +237,7 @@ class Request extends Base {
     }
 
     /**
-     * Get pickup_time
+     * Get start_time
      *
      * @return \DateTime 
      */
@@ -246,7 +262,7 @@ class Request extends Base {
     /**
      * Get pickup_time
      *
-     * @return \DateTime
+     * @return \DateTime 
      */
     public function getPickupTime()
     {
@@ -325,11 +341,34 @@ class Request extends Base {
     /**
      * Get status
      *
-     * @return string 
+     * @return integer 
      */
     public function getStatus()
     {
         return $this->status;
+    }
+
+    /**
+     * Set active
+     *
+     * @param boolean $active
+     * @return Request
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+
+        return $this;
+    }
+
+    /**
+     * Get active
+     *
+     * @return boolean 
+     */
+    public function getActive()
+    {
+        return $this->active;
     }
 
     /**
@@ -379,12 +418,35 @@ class Request extends Base {
     }
 
     /**
+     * Set requester
+     *
+     * @param \Panda86\AppBundle\Entity\Employee $requester
+     * @return Request
+     */
+    public function setRequester(\Panda86\AppBundle\Entity\Employee $requester)
+    {
+        $this->requester = $requester;
+
+        return $this;
+    }
+
+    /**
+     * Get requester
+     *
+     * @return \Panda86\AppBundle\Entity\Employee 
+     */
+    public function getRequester()
+    {
+        return $this->requester;
+    }
+
+    /**
      * Set vtype
      *
      * @param \Panda86\AppBundle\Entity\VType $vtype
      * @return Request
      */
-    public function setVtype(\Panda86\AppBundle\Entity\VType $vtype = null)
+    public function setVtype(\Panda86\AppBundle\Entity\VType $vtype)
     {
         $this->vtype = $vtype;
 
@@ -402,31 +464,35 @@ class Request extends Base {
     }
 
     /**
-     * @var boolean
-     */
-    protected $active;
-
-
-    /**
-     * Set active
+     * Add accompanied_by
      *
-     * @param boolean $active
+     * @param \Panda86\AppBundle\Entity\Employee $accompaniedBy
      * @return Request
      */
-    public function setActive($active)
+    public function addAccompaniedBy(\Panda86\AppBundle\Entity\Employee $accompaniedBy)
     {
-        $this->active = $active;
+        $this->accompanied_by[] = $accompaniedBy;
 
         return $this;
     }
 
     /**
-     * Get active
+     * Remove accompanied_by
      *
-     * @return boolean 
+     * @param \Panda86\AppBundle\Entity\Employee $accompaniedBy
      */
-    public function getActive()
+    public function removeAccompaniedBy(\Panda86\AppBundle\Entity\Employee $accompaniedBy)
     {
-        return $this->active;
+        $this->accompanied_by->removeElement($accompaniedBy);
+    }
+
+    /**
+     * Get accompanied_by
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAccompaniedBy()
+    {
+        return $this->accompanied_by;
     }
 }

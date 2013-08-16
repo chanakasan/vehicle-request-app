@@ -1,0 +1,12 @@
+<p>Dear {{ entity.request.requester.name }},</p>
+
+<p>
+    Your vehicle request with the reference no. #{{ entity.request.id }} has been approved.
+    To view details about your request please click on the link below.
+</p>
+<p><a href="{{ url('request_details', {'code': code}) }}">View request</a></p>
+<br/>
+<p>Your assigned vehicle is {{ entity.vehicle.regno }}. Your assigned driver is Mr. {{ entity.driver.displayname }}</p>
+<br/>
+<p>Thanks,</p>
+<p>Support Team at ICTA</p>
