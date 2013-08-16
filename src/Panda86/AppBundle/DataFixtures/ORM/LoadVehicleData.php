@@ -40,20 +40,24 @@ class LoadVehicleData extends AbstractFixture implements OrderedFixtureInterface
         $vehicle3->setIsCompanyOwned(true);
 
         $vtype1 = new VType();
-        $vtype1->setName('12-passenger-van');
-        $vtype1->setDescrip('');
+        $vtype1->setName('12-passenger Van');
+        $vtype1->setPassengers(12);
+        $vtype1->setType('van');
         $vtype1->getVehicles()->add($vehicle2);
         $vehicle2->setVtype($vtype1);
 
         $vtype2 = new VType();
-        $vtype2->setName('4-passenger-sedan');
+        $vtype2->setName('4-passenger Sedan');
+        $vtype2->setPassengers(4);
+        $vtype2->setType('sedan');
         $vtype2->setDescrip('Standard car with four passenger seats');
         $vtype2->getVehicles()->add($vehicle1);
         $vehicle1->setVtype($vtype2);
 
         $vtype3 = new VType();
-        $vtype3->setName('4-passenger-jeep');
-        $vtype3->setDescrip('');
+        $vtype3->setName('4-passenger Jeep');
+        $vtype3->setPassengers(4);
+        $vtype3->setType('jeep');
         $vtype3->getVehicles()->add($vehicle3);
         $vehicle3->setVtype($vtype3);
 
