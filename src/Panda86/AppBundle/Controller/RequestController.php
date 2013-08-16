@@ -61,13 +61,13 @@ class RequestController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('Panda86AppBundle:RequestLink')->findByCode($code);
+        $entity = $em->getRepository('Panda86AppBundle:RequestLink')->findOneBy(array('code' => $code));
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find RequestLink entity.');
         }
 
-        return $this->render('Panda86AppBundle:Request:show.html.twig', array(
+        return $this->render('Panda86AppBundle:Request:details.html.twig', array(
             'entity' => $entity->getRequest(),
         ));
     }
