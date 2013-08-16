@@ -1,11 +1,10 @@
-<p>Dear {{ entity.requester.name }},</p>
+<p>Dear {{ entity.request.requester.name }},</p>
 
 <p>
-    Please kindly note that your vehicle request with the request reference no. #{{ entity.request.id }} has been
+    Please kindly note that your vehicle request with the reference no. #{{ entity.request.id }} has been
     disapproved due to unavailability of a vehicle.
 </p>
 <p><a href="{{ url('request_details', {'code': code}) }}">View request</a></p>
-<br/>
 <p>If you like our further assistance regarding your request please call us on our extension no.</p>
 <br/>
 <p>Thanks.</p>

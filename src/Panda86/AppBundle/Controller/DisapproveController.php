@@ -28,10 +28,20 @@ class DisapproveController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
+            $flashmsg = "Request #{$entity->getRequest()->getId()} has been disapproved! ";
 
-            $flashmsg = "Request #{$entity->getRequest()->getId()} was disapproved! ";
-            // sendEmail()
-            $flashmsg .= 'An email message was sent to the requester.';
+            $reqLink = $em->getRepository('Panda86AppBundle:RequestLink')->findOneBy(array('request' => $entity->getRequest()->getId()));
+            $code  = $reqLink->getCode();
+            $email = $entity->getRequest()->getRequester()->getEmail();
+
+            if($this->_sendMail($email, $entity, $code))
+            {
+                $flashmsg .= 'An email message has been sent to the requester.';
+            }
+            else
+            {
+                $flashmsg .= 'Email sending failed!';
+            }
 
             $this->get('session')->getFlashBag()->add(
                 'notice',
