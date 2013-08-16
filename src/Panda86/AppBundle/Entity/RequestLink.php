@@ -9,6 +9,20 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class RequestLink
 {
+    private function _random_string($length = 10)
+    {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, strlen($characters) - 1)];
+        }
+        return $randomString;
+    }
+
+    public function __construct()
+    {
+        $this->code = $this->_random_string(128);
+    }
     /**
      * @var integer
      */
@@ -18,7 +32,6 @@ class RequestLink
      * @var string
      */
     private $code;
-
 
     /**
      * Get id

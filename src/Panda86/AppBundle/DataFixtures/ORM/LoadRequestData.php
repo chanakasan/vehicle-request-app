@@ -103,27 +103,22 @@ class LoadRequestData extends AbstractFixture implements OrderedFixtureInterface
 
         $req1Link = new RequestLink();
         $req1Link->setRequest($request1);
-        $req1Link->setCode($this->_random_string(128));
         $manager->persist($req1Link);
 
         $req2Link = new RequestLink();
         $req2Link->setRequest($request2);
-        $req2Link->setCode($this->_random_string(128));
         $manager->persist($req2Link);
 
         $req3Link = new RequestLink();
         $req3Link->setRequest($request3);
-        $req3Link->setCode($this->_random_string(128));
         $manager->persist($req3Link);
 
         $req4Link = new RequestLink();
         $req4Link->setRequest($request4);
-        $req4Link->setCode($this->_random_string(128));
         $manager->persist($req4Link);
 
         $req5Link = new RequestLink();
         $req5Link->setRequest($request5);
-        $req5Link->setCode($this->_random_string(128));
         $manager->persist($req5Link);
 
 //        $j = 1;
@@ -154,15 +149,6 @@ class LoadRequestData extends AbstractFixture implements OrderedFixtureInterface
         $manager->flush();
     }
 
-    private function _random_string($length = 10)
-    {
-        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $randomString = '';
-        for ($i = 0; $i < $length; $i++) {
-            $randomString .= $characters[rand(0, strlen($characters) - 1)];
-        }
-        return $randomString;
-    }
     /**
      * Get the order of this execution
      *
