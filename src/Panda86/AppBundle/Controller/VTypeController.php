@@ -41,9 +41,18 @@ class VTypeController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            //set name for vehicle type
+            $name = $entity->getPassengers().'-passenger '.ucfirst(trim($entity->getType()));
+            $entity->setName($name);
+
             $em->persist($entity);
             $em->flush();
 
+            $flashmsg = "$name created!";
+            $this->get('session')->getFlashBag()->add(
+                'success',
+                $flashmsg
+            );
             return $this->redirect($this->generateUrl('vtype', array('id' => $entity->getId())));
         }
 

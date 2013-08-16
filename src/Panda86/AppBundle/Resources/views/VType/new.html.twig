@@ -1,5 +1,8 @@
 {% extends 'Panda86AppBundle::create-view.html.twig' %}
 
+{% block title %}
+    {{ parent() }} - Create type
+{% endblock %}
 {% set closeBtn_url = path('vtype') %}
 {% block form %}
     <form action="{{ path('vtype_create') }}" class="appnitro form-horizontal"
@@ -7,7 +10,32 @@
     <div class="form_description">
         <h2>Add new vehicle category</h2><br/>
     </div>
-        {{ form_widget(form) }}
+        <!-- form validation -->
+        {{ form_errors(form) }}
+        {{ form_widget(form._token) }}
+
+        <div class="control-group">
+            <label class="control-label">Type</label>
+
+            <div class="controls">
+                {{ form_row(form.type) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">Passenger count</label>
+
+            <div class="controls">
+                {{ form_row(form.passengers) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">Display name</label>
+
+            <div class="controls">
+                {{ form_row(form.name, {'attr':{'disabled':'disabled', 'placeholder': 'auto-completed'} }) }}
+            </div>
+        </div>
+
         <div class="control-group">
             <div class="controls">
                 <button type="submit" formnovalidate="">Create</button>
