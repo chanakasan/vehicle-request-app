@@ -62,4 +62,24 @@ class DisapproveController extends Controller
         ));
     }
 
+    private  function _sendMail($email, $entity, $code)
+    {
+        $message = \Swift_Message::newInstance()
+            ->setContentType("text/html")
+            ->setSubject('Vehicle request disapproved due to unavailability')
+            ->setFrom('donotreply@icta.lk')
+            ->setTo($email)
+            ->setBody(
+                $this->renderView(
+                    'Panda86AppBundle:Template:request-disapproved-email.html.twig', array(
+                        'entity' => $entity,
+                        'code' => $code
+                    )
+                )
+            )
+        ;
+        $this->get('mailer')->send($message);
+
+        return true;
+    }
 }
