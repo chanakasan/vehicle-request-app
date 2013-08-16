@@ -16,7 +16,6 @@ class VType extends Base
     public function __construct(array $options = null)
     {
         $this->vehicles = new \Doctrine\Common\Collections\ArrayCollection();
-
         parent::__construct($options);
     }
     
@@ -128,5 +127,61 @@ class VType extends Base
     public function getVehicles()
     {
         return $this->vehicles;
+    }
+    /**
+     * @var integer
+     */
+    protected $passengers;
+
+    /**
+     * @var string
+     */
+    protected $type;
+
+
+    /**
+     * Set passengers
+     *
+     * @param integer $passengers
+     * @return VType
+     */
+    public function setPassengers($passengers)
+    {
+        $this->passengers = $passengers;
+
+        return $this;
+    }
+
+    /**
+     * Get passengers
+     *
+     * @return integer 
+     */
+    public function getPassengers()
+    {
+        return $this->passengers;
+    }
+
+    /**
+     * Set type
+     *
+     * @param string $type
+     * @return VType
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string 
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 }
