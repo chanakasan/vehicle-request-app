@@ -2,6 +2,7 @@
 
 namespace Panda86\AppBundle\Controller;
 
+use Panda86\AppBundle\Entity\RequestLink;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Panda86\AppBundle\Entity\Request as EmpRequest;
@@ -98,12 +99,26 @@ class RequestController extends Controller
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
+            /* create a random code link to request */
+            $reqLink = new RequestLink();
+            $reqLink->setRequest($entity);
+            $em->persist($reqLink);
 
             $em->flush();
 
-            $flashmsg = "Your request was sent successfully! ";
-            // sendEmail()
-            $flashmsg .= 'An email message with a link to your request\'s details will be sent to you shortly.';
+            $flashmsg = "Your request has been sent! ";
+
+            $code  = $reqLink->getCode();
+            $email = $entity->getRequester()->getEmail();
+
+            if($this->_sendMail($email, $entity, $code))
+            {
+                $flashmsg .= 'An email message with a link to your request\'s details will be sent to you shortly.';
+            }
+            else
+            {
+                $flashmsg .= 'Email sending failed!';
+            }
 
             $this->get('session')->getFlashBag()->add(
                 'success',
@@ -126,4 +141,24 @@ class RequestController extends Controller
         return $this->render('Panda86AppBundle:Request:finish.html.twig');
     }
 
+    private  function _sendMail($email, $entity, $code)
+    {
+        $message = \Swift_Message::newInstance()
+            ->setContentType("text/html")
+            ->setSubject('Vehicle request created!')
+            ->setFrom('donotreply@icta.lk')
+            ->setTo($email)
+            ->setBody(
+                $this->renderView(
+                    'Panda86AppBundle:Template:request-created-email.html.twig', array(
+                        'entity' => $entity,
+                        'code' => $code
+                     )
+                )
+            )
+        ;
+        $this->get('mailer')->send($message);
+
+        return true;
+    }
 }
