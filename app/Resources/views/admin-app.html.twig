@@ -90,24 +90,7 @@
 
         <div class="row"><!-- Flash notification messages -->
             <div class="span10 offset1">
-                {% for flashMessage in app.session.flashbag.get('success') %}
-                    <div class="alert alert-success">
-                        <button type="button" class="close" data-dismiss="alert">&times;</button>
-                        {{ flashMessage }}
-                    </div>
-                {% endfor %}
-                {% for flashMessage in app.session.flashbag.get('error') %}
-                    <div class="alert alert-info">
-                        <button type="button" class="close" data-dismiss="alert">&times;</button>
-                        {{ flashMessage }}
-                    </div>
-                {% endfor %}
-                {% for flashMessage in app.session.flashbag.get('notice') %}
-                    <div class="alert alert-info">
-                        <button type="button" class="close" data-dismiss="alert">&times;</button>
-                        {{ flashMessage }}
-                    </div>
-                {% endfor %}
+                {{ include('show-flash-msgs.html.twig') }}
             </div>
         </div>
         <!-- Renders page contents here -->
