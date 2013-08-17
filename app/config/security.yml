@@ -4,8 +4,10 @@ security:
         FOS\UserBundle\Model\UserInterface: sha512
 
     role_hierarchy:
+        ROLE_ANONYMOUS:
+        ROLE_USER:        ROLE_ANONYMOUS
         ROLE_ADMIN:       ROLE_USER
-        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+        ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
     providers:
         fos_userbundle:
@@ -22,8 +24,9 @@ security:
                 path:   /logout
                 target: /
             anonymous: ~
-            #http_basic:
-            #    realm: "Secured Demo Area"
 
     access_control:
-        #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY } # public access
+        - { path: ^/u, roles: IS_AUTHENTICATED_ANONYMOUSLY } # public access
+        - { path: ^/_wdt, roles: IS_AUTHENTICATED_ANONYMOUSLY } # debug toolbar
+        - { path: ^/, roles: ROLE_ADMIN }

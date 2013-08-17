@@ -1,26 +1,3 @@
-# For employee access #
-request_start:
-    pattern:  /
-    defaults: { _controller: "Panda86AppBundle:Request:index" }
-
-request_new:
-    pattern:  /new
-    defaults: { _controller: "Panda86AppBundle:Request:new" }
-
-request_create:
-    pattern:  /create
-    defaults: { _controller: "Panda86AppBundle:Request:create" }
-    requirements: { _method: post }
-
-request_finish:
-    pattern:  /finish
-    defaults: { _controller: "Panda86AppBundle:Request:finish" }
-
-request_details:
-    pattern:  /c/{code}
-    defaults: { _controller: "Panda86AppBundle:Request:details" }
-
-# For admin access #
 request_list:
     pattern:  /list
     defaults: { _controller: "Panda86AppBundle:Request:list" }
