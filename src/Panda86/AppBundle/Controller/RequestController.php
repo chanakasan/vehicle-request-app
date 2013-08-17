@@ -136,8 +136,15 @@ class RequestController extends Controller
     /**
      * Shows request finish page
      */
-    public function finishAction()
+    public function finishAction($mode = 'cancel')
     {
+        if($mode === 'cancel')
+        {
+            $this->get('session')->getFlashBag()->add(
+                'warning',
+                'The request was cancelled!'
+            );
+        }
         return $this->render('Panda86AppBundle:Request:finish.html.twig');
     }
 

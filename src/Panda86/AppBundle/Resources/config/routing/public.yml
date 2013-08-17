@@ -13,7 +13,7 @@ request_create:
     requirements: { _method: post }
 
 request_finish:
-    pattern:  /finish
+    pattern:  /finish/{mode}
     defaults: { _controller: "Panda86AppBundle:Request:finish" }
 
 request_details:
