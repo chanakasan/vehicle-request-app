@@ -5,22 +5,18 @@ app_root:
         path: /admin
         permanent: true
 
-admin_login:
-    path:     /admin/login
-    defaults:
-        _controller: FrameworkBundle:Redirect:urlRedirect
-        path: /login
-        permanent: true
-
-panda86_admin:
+panda86_user_bundle:
     resource: "@Panda86UserBundle/Resources/config/routing.yml"
     prefix:   /
 
-panda86_app:
+panda86_app_bundle:
     resource: "@Panda86AppBundle/Resources/config/routing.yml"
     prefix:   /
 
-# sandbox routes
-#Acme_sandbox:
+Panda86AppBundle_public:
+      resource: "@Panda86AppBundle/Resources/config/routing/public.yml"
+      prefix:   /u/request
+
+#Acme_sandbox_bundle:
 #    resource: "@AcmeSandboxBundle/Resources/config/routing/sandbox.yml"
 #    prefix:   /

@@ -14,6 +14,7 @@ class LoadUserData implements FixtureInterface
     public function load(ObjectManager $manager)
     {
         $userAdmin = new User();
+        $userAdmin->addRole('ROLE_ADMIN');
         $userAdmin->setEnabled(true);
         $userAdmin->setFirstName('John');
         $userAdmin->setLastName('Doe');
