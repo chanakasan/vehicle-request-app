@@ -28,7 +28,7 @@ class DisapproveController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
-            $flashmsg = "Request #{$entity->getRequest()->getId()} has been disapproved! ";
+            $flashmsg = "#{$entity->getRequest()->getId()} has been disapproved! ";
 
             $reqLink = $em->getRepository('Panda86AppBundle:RequestLink')->findOneBy(array('request' => $entity->getRequest()->getId()));
             $code  = $reqLink->getCode();
@@ -44,7 +44,7 @@ class DisapproveController extends Controller
             }
 
             $this->get('session')->getFlashBag()->add(
-                'notice',
+                'info',
                 $flashmsg
             );
             return $this->redirect($this->generateUrl('request_list', array('id' => $entity->getId())));
