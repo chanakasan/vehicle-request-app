@@ -1,27 +1,23 @@
-Panda86AppBundle_home:
-    pattern:  /admin
-    defaults: { _controller: Panda86AppBundle:Home:index }
-
 Panda86AppBundle_vehicle:
         resource: "@Panda86AppBundle/Resources/config/routing/vehicle.yml"
-        prefix:   /vehicle
+        prefix:   /s/vehicle
 
 Panda86AppBundle_vtype:
         resource: "@Panda86AppBundle/Resources/config/routing/vtype.yml"
-        prefix:   /vtype
+        prefix:   /s/vtype
 
 Panda86AppBundle_driver:
         resource: "@Panda86AppBundle/Resources/config/routing/driver.yml"
-        prefix:   /driver
+        prefix:   /s/driver
 
 Panda86AppBundle_approve:
         resource: "@Panda86AppBundle/Resources/config/routing/approve.yml"
-        prefix:   /approve
+        prefix:   /a/approve
 
 Panda86AppBundle_disapprove:
       resource: "@Panda86AppBundle/Resources/config/routing/disapprove.yml"
-      prefix:   /disapprove
+      prefix:   /a/disapprove
 
 Panda86AppBundle_request:
         resource: "@Panda86AppBundle/Resources/config/routing/request.yml"
-        prefix:   /request
+        prefix:   /a/request

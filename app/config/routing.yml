@@ -2,8 +2,12 @@ app_root:
     path:     /
     defaults:
         _controller: FrameworkBundle:Redirect:urlRedirect
-        path: /admin
+        path: /u/request
         permanent: true
+
+Panda86AppBundle_home:
+    pattern:  /admin
+    defaults: { _controller: Panda86AppBundle:Home:index }
 
 panda86_user_bundle:
     resource: "@Panda86UserBundle/Resources/config/routing.yml"

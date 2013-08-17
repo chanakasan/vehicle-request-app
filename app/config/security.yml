@@ -22,11 +22,12 @@ security:
                 provider: fos_userbundle
             logout:
                 path:   /logout
-                target: /
+                target: /login
             anonymous: ~
 
     access_control:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY } # public access
-        - { path: ^/u, roles: IS_AUTHENTICATED_ANONYMOUSLY } # public access
         - { path: ^/_wdt, roles: IS_AUTHENTICATED_ANONYMOUSLY } # debug toolbar
-        - { path: ^/, roles: ROLE_ADMIN }
+        - { path: ^/s, roles: ROLE_SUPER_ADMIN } # super admin access
+        - { path: ^/a, roles: ROLE_ADMIN } # admin access
+        - { path: /, roles: IS_AUTHENTICATED_ANONYMOUSLY } # public access
