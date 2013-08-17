@@ -6,16 +6,16 @@ request_show:
     pattern:  /{id}/show
     defaults: { _controller: "Panda86AppBundle:Request:show" }
 
-request_edit:
-    pattern:  /{id}/edit
-    defaults: { _controller: "Panda86AppBundle:Request:edit" }
-
-request_update:
-    pattern:  /{id}/update
-    defaults: { _controller: "Panda86AppBundle:Request:update" }
-    requirements: { _method: post|put }
-
-request_delete:
-    pattern:  /{id}/delete
-    defaults: { _controller: "Panda86AppBundle:Request:delete" }
-    requirements: { _method: post|delete }
+#request_edit:
+#    pattern:  /{id}/edit
+#    defaults: { _controller: "Panda86AppBundle:Request:edit" }
+#
+#request_update:
+#    pattern:  /{id}/update
+#    defaults: { _controller: "Panda86AppBundle:Request:update" }
+#    requirements: { _method: post|put }
+#
+#request_delete:
+#    pattern:  /{id}/delete
+#    defaults: { _controller: "Panda86AppBundle:Request:delete" }
+#    requirements: { _method: post|delete }
