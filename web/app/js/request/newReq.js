@@ -56,5 +56,10 @@ $(document).ready(function(){
             $('#return_journey').show('slow');
         }
     });
+//    jQuery.validator.setDefaults({
+//        debug: true
+//    });
+    // jquery validation
+    $('#newReq_form').validate();
 
 });

@@ -3,7 +3,7 @@
 {% set closeBtn_url = path('request_finish', {'mode' : 'cancel'}) %}
 {% block form %}
     {% form_theme form 'Panda86AppBundle:Form:form_datetimepicker_type.html.twig' %}
-    <form id='new_form' class='appnitro form-horizontal' action='{{ path('request_create') }}'
+    <form id='newReq_form' class='appnitro form-horizontal' action='{{ path('request_create') }}'
           method='post' {{ form_enctype(form) }}>
         <div class='form_description'>
             <h2>New vehicle reservation request</h2><br/>
@@ -101,19 +101,19 @@
             </label>
 
             <div class='controls'>
-                {{ form_row(form.purpose) }}
+                {{ form_row(form.purpose, {'attr': {'required': 'required'} }) }}
             </div>
         </div>
         <div class='control-group'>
             <label class='control-label'>Others travelling in vehicle</label>
 
             <div class='controls'>
-                {{ form_widget(form.accompanied_by, {'attr': {'class': 'chzn-select', 'data-placeholder': 'Name of requester', 'tabindex':'-1'} } ) }}
+                {{ form_widget(form.accompanied_by, {'attr': {'class': 'chzn-select', 'data-placeholder': 'Names of staff members', 'tabindex':'-1'} } ) }}
             </div>
         </div>
         <div class='control-group'>
             <div class='controls'>
-                <button class='btn btn-success' type='submit' formnovalidate=''>Send Request</button>
+                <input class='btn btn-success' type='submit' value='Send Request'>
             </div>
         </div>
         <!--/form fields-->
