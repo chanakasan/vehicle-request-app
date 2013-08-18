@@ -62,4 +62,6 @@ $(document).ready(function(){
     // jquery validation
     $('#newReq_form').validate();
 
+    // show tooltips
+    $('.show-tooltip').tooltip();
 });

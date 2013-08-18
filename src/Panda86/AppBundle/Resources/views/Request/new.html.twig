@@ -21,7 +21,8 @@
             </label>
 
             <div class='controls'>
-                {{ form_widget(form.requester, {'attr': {'class': 'chzn-select', 'data-placeholder': 'Name of requester', 'tabindex':'-1'} } ) }}
+                {% set attr = {'title': 'Person who requests the vehicle', 'data-toggle': 'tooltip', 'data-placement': 'right', 'class': 'show-tooltip chzn-select', 'data-placeholder': 'Name of requester', 'tabindex':'-1'} %}
+                {{ form_widget(form.requester, {'attr': attr } ) }}
             </div>
         </div>
         <div class='control-group'>
@@ -30,7 +31,7 @@
             </label>
 
             <div class='controls'>
-                {{ form_row(form.journey_type) }}
+                {{ form_row(form.journey_type, {'attr': {'class': 'radio'} }) }}
             </div>
         </div>
         <div id='single_journey'>
@@ -101,7 +102,8 @@
             </label>
 
             <div class='controls'>
-                {{ form_row(form.purpose, {'attr': {'required': 'required'} }) }}
+                {% set attr = {'class': 'show-tooltip', 'required': 'required', 'title': 'Reason for this journey', 'data-toggle': 'tooltip', 'data-placement': 'right'} %}
+                {{ form_row(form.purpose, {'attr': attr }) }}
             </div>
         </div>
         <div class='control-group'>
