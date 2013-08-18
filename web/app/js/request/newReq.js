@@ -10,24 +10,6 @@ $(document).ready(function(){
     for (var selector in config) {
         $(selector).chosen(config[selector]);
     }
-// jquery ui datepicker
-//    $("#request_pickup_time_datepicker").datepicker({
-//        dateFormat: 'yy-mm-dd'
-//    });
-
-// jquery timeEntry plugin
-//    $('#request_pickup_time_timepicker').timeEntry({
-//        show24Hours: true,
-//        spinnerImage: ''
-//    });
-//    $('#request_start_time').timeEntry({
-//        show24Hours: true,
-//        spinnerImage: ''
-//    });
-//    $('#request_return_time').timeEntry({
-//        show24Hours: true,
-//        spinnerImage: ''
-//    });
 
     $(function() {// Init time picker
         $('.req-timepicker').datetimepicker({
@@ -42,44 +24,37 @@ $(document).ready(function(){
             pickTime: false
         });
     });
-    function toggle_journey(type, is_selected)
-    {
-        var tag_id = '#'+type+'_journey';
 
-        if (is_selected == true)
+    // set default journey_type to single and hide return time
+    $(function(){
+        $('#request_journey_type_0').prop('checked', true);
+        $('#return_journey').hide();
+    });
+
+    $('#request_journey_type_0').mousedown(function() {
+        $(this).trigger("change");
+    });
+    //hide return time
+    $("#request_journey_type_0").change(function(e){
+        e.preventDefault();
+        var is_checked = $(this).is(':checked');
+        if(is_checked === true)
         {
-            $(tag_id).show();
+            $('#return_journey').hide('slow');
         }
-        else {
-            $(tag_id).hide();
+    });
+
+    $('#request_journey_type_1').mousedown(function() {
+        $(this).trigger("change");
+    });
+    //show return time
+    $("#request_journey_type_1").change(function(e  ){
+        e.preventDefault();
+        var is_checked = $(this).is(':checked');
+        if(is_checked === true)
+        {
+            $('#return_journey').show('slow');
         }
-    }
+    });
 
-//    $('#request_journey_type_0').trigger("change");
-//    $('#request_journey_type_1').trigger("change");
-//
-//    //toggle single journey checkbox
-//    $("#request_journey_type_0").change(function(){
-//        var type = $(this).val();
-//        var is_checked = $(this).is(':selected');
-//        toggle_journey(type, is_checked);
-//    });
-//
-//    $('#request_journey_type_0').mousedown(function() {
-//        $(this).trigger("change");
-//    });
-//
-//    //toggle return journey checkbox
-//    $("#request_journey_type_1").change(function(){
-//        var type = $(this).val();
-//        var is_checked = $(this).is(':checked');
-//        toggle_journey(type, is_checked);
-//    });
-//
-//    $('#request_journey_type_1').mousedown(function() {
-//        $(this).trigger("change");
-//    });
-
-//    $('#closeBtn').popover();
-//    $('#closeBtn').popover('show');
 });
