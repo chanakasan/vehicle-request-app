@@ -26,7 +26,7 @@ $.fn.dataTableExt.afnFiltering.push(
 
 $(document).ready(function () {
     function dataTableInit() {
-        dTable = $('#requests_list').dataTable({
+        listTable = $('#requests_list').dataTable({
         /* for bootstrap 2 grid */
             "sDom": "<'row dt-info'<'span10 offset1'i>>" +
                 "<'row dt-search'<'span4 offset7'f>>" +
@@ -42,11 +42,18 @@ $(document).ready(function () {
     }
     dataTableInit(); // Initialize dataTable
 
+    (function(){ // set pending count
+        var oSettings = listTable.fnSettings();
+        var count = oSettings.fnRecordsDisplay();
+        var show_no = count == 0 ? '' : count;
+        $('#pending_count').text(show_no);
+
+    })();
     /* Nav pills */
     $('#content-nav ul li').on('click', function(){
         $('ul.nav li').removeClass('active');
         $(this).addClass('active');
-        dTable.fnDraw(); // redraw dTable rows
+        listTable.fnDraw(); // redraw dTable rows
         return false;
     });
 });
