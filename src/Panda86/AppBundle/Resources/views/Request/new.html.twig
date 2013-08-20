@@ -17,7 +17,7 @@
 
         <div class='control-group'>
             <label class='control-label'>Requester name
-                <span class='form-required' title='This field is required.'>*</span>
+                <span class='f-required'>*</span>
             </label>
 
             <div class='controls'>
@@ -27,7 +27,7 @@
         </div>
         <div class='control-group'>
             <label class='control-label'>Journey type
-                <span class='form-required' title='This field is required.'>*</span>
+                <span class='f-required'>*</span>
             </label>
 
             <div class='controls'>
@@ -37,7 +37,7 @@
         <div id='single_journey'>
             <div class='control-group'>
                 <label class='control-label'>Pickup location
-                    <span class='form-required' title='This field is required.'>*</span>
+                    <span class='f-required'>*</span>
                 </label>
 
                 <div class='controls'>
@@ -46,7 +46,7 @@
             </div>
             <div class='control-group'>
                 <label class='control-label'>Destination
-                    <span class='form-required' title='This field is required.'>*</span>
+                    <span class='f-required'>*</span>
                 </label>
 
                 <div class='controls'>
@@ -55,7 +55,7 @@
             </div>
             <div class='control-group'>
                 <label class='control-label'>Start time
-                    <span class='form-required' title='This field is required.'>*</span>
+                    <span class='f-required'>*</span>
                 </label>
 
                 <div class='req-timepicker controls'>
@@ -74,7 +74,7 @@
         <div id='return_journey'>
             <div class='control-group'>
                 <label class='control-label'>Return time
-                    <span class='form-required' title='This field is required.'>*</span>
+                    <span class='f-required'>*</span>
                 </label>
 
                 <div class='req-timepicker controls'>
@@ -89,7 +89,7 @@
         </div>
         <div class='control-group'>
             <label class='control-label'>Vehicle type
-                <span class='form-required' title='This field is required.'>*</span>
+                <span class='f-required'>*</span>
             </label>
 
             <div class='controls'>
@@ -98,7 +98,7 @@
         </div>
         <div class='control-group'>
             <label class='control-label'>Purpose of journey
-                <span class='form-required' title='This field is required.'>*</span>
+                <span class='f-required'>*</span>
             </label>
 
             <div class='controls'>
@@ -113,6 +113,15 @@
                 {{ form_widget(form.accompanied_by, {'attr': {'class': 'chzn-select', 'data-placeholder': 'Names of staff members', 'tabindex':'-1'} } ) }}
             </div>
         </div>
+        <div class='control-group'>
+            <label class='control-label'>Additional info
+            </label>
+
+            <div class='controls'>
+                <textarea></textarea>
+            </div>
+        </div>
+
         <div class='control-group'>
             <div class='controls'>
                 <input class='btn btn-success' type='submit' value='Send Request'>

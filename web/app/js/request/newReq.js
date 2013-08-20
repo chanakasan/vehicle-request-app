@@ -47,7 +47,7 @@ $(document).ready(function(){
     $('#request_journey_type_1').mousedown(function() {
         $(this).trigger("change");
     });
-    //show return time
+    /* show return time */
     $("#request_journey_type_1").change(function(e  ){
         e.preventDefault();
         var is_checked = $(this).is(':checked');
@@ -56,12 +56,20 @@ $(document).ready(function(){
             $('#return_journey').show('slow');
         }
     });
-//    jQuery.validator.setDefaults({
-//        debug: true
-//    });
-    // jquery validation
-    $('#newReq_form').validate();
 
-    // show tooltips
+    /* init jquery validation */
+    $('#newReq_form').validate({
+        errorPlacement: function(label, element) {
+            label.addClass('inline text-error');
+            label.insertAfter(element);
+        },
+        wrapper: 'span'
+    });
+    /* jquery validate debug mode */
+    //    jQuery.validator.setDefaults({
+    //        debug: true
+    //    });
+
+    /* show tooltips */
     $('.show-tooltip').tooltip();
 });
