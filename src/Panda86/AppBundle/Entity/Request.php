@@ -495,4 +495,32 @@ class Request extends Base {
     {
         return $this->accompanied_by;
     }
+    /**
+     * @var string
+     */
+    private $more_info;
+
+
+    /**
+     * Set more_info
+     *
+     * @param string $moreInfo
+     * @return Request
+     */
+    public function setMoreInfo($moreInfo)
+    {
+        $this->more_info = $moreInfo;
+
+        return $this;
+    }
+
+    /**
+     * Get more_info
+     *
+     * @return string 
+     */
+    public function getMoreInfo()
+    {
+        return $this->more_info;
+    }
 }

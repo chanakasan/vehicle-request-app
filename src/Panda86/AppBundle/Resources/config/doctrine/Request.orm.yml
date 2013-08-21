@@ -30,6 +30,9 @@ Panda86\AppBundle\Entity\Request:
         purpose:
             type: string
             length: '64'
+        more_info:
+            type: text
+            nullable: true
         status:
             type: integer
             length: '1'
