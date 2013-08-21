@@ -5,7 +5,7 @@
     - Req #{{ entity.id }} details
 {% endblock %}
 
-{% set closeBtn_url = path('request_list') %}
+{% set closeBtn_url = path('request_finish', {'mode': 'close'}) %}
 {% block table %}
     <table class="record_properties table table-striped">
     <div class="form_description">

@@ -5,7 +5,7 @@ app_root:
         path: /u/request
         permanent: true
 
-Panda86AppBundle_home:
+app_home:
     pattern:  /admin
     defaults: { _controller: Panda86AppBundle:Home:index }
 
@@ -20,6 +20,10 @@ panda86_app_bundle:
 Panda86AppBundle_public:
       resource: "@Panda86AppBundle/Resources/config/routing/public.yml"
       prefix:   /u/request
+
+Panda86AppBundle_app_public:
+      resource: "@Panda86AppBundle/Resources/config/routing/app-public.yml"
+      prefix:   /app
 
 #Acme_sandbox_bundle:
 #    resource: "@AcmeSandboxBundle/Resources/config/routing/sandbox.yml"

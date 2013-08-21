@@ -1,11 +1,3 @@
-approve_getjson:
-    pattern:  /a
-    defaults: { _controller: "Panda86AppBundle:Approve:getJson", _format: json }
-
-approve_email:
-    pattern:  /email
-    defaults: { _controller: "Panda86AppBundle:Approve:email" }
-
 approve_new:
     pattern:  /new/{req_id}
     defaults: { _controller: "Panda86AppBundle:Approve:new" }
