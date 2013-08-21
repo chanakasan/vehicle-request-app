@@ -1,0 +1,21 @@
+# For public access #
+request_start:
+    pattern:  /
+    defaults: { _controller: "Panda86AppBundle:Request:index" }
+
+request_new:
+    pattern:  /new
+    defaults: { _controller: "Panda86AppBundle:Request:new" }
+
+request_create:
+    pattern:  /create
+    defaults: { _controller: "Panda86AppBundle:Request:create" }
+    requirements: { _method: post }
+
+request_finish:
+    pattern:  /finish/{mode}
+    defaults: { _controller: "Panda86AppBundle:Request:finish" }
+
+request_details:
+    pattern:  /{code}
+    defaults: { _controller: "Panda86AppBundle:Request:details" }

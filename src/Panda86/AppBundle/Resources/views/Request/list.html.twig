@@ -17,21 +17,21 @@
         <div class="span10 offset1">
             <div id="content-nav">
                 <ul class="nav nav-pills">
-                    <li id="nPending">
+                    <li id="pending" class="active">
                         <a href="#">Pending
-                            <span id="pending" class="badge">0</span>
+                            <span id="pending_count" class="badge"></span>
                         </a>
                     </li>
-                    <li id="nApproved">
+                    <li id="approved">
                         <a href="#">Approved</a>
                     </li>
-                    <li id="nDisapproved">
+                    <li id="disapproved">
                         <a href="#">Disapproved</a>
                     </li>
-                    <li id="nExpired">
+                    <li id="expired">
                         <a href="#">Expired</a>
                     </li>
-                    <li class="active">
+                    <li id="all">
                         <a href="#">All</a>
                     </li>
                 </ul>
@@ -45,7 +45,7 @@
             <th>Requester</th>
             <th>Requested vehicle</th>
             <th>Requested Date/Time</th>
-            {#<th>Purpose of travel</th>#}
+            <th style="display:none">Status</th>
             <th>Actions</th>
         </tr>
         </thead>
@@ -63,6 +63,7 @@
                 <td>{{ entity.requester.name }}</td>
                 <td>{{ entity.vtype.name }}</td>
                 <td>{% if entity.pickuptime %}{{ entity.pickuptime|date('Y-m-d \\- g:i a') }}{% endif %}</td>
+                <td style="display:none">{{ entity.status }}</td>
                 <td>
                     <a href="{{ path('request_show', { 'id': entity.id }) }}"><i class="icon-info-sign"></i></a>
                     {% if entity.status == 0 %} |

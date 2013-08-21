@@ -35,6 +35,7 @@ class ApproveController extends Controller
             $temp = array(
                 'title' => $vehicle,
                 'start' => $start,
+                'requester' => $entity->getRequest()->getRequester()->getName(),
                 'vehicle' => $vehicle,
                 'driver' => $entity->getDriver()->getDisplayname(),
             );
@@ -76,7 +77,7 @@ class ApproveController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
-            $flashmsg = "Request #{$entity->getRequest()->getId()} has been approved! ";
+            $flashmsg = "#{$entity->getRequest()->getId()} has been approved! ";
 
             $reqLink = $em->getRepository('Panda86AppBundle:RequestLink')->findOneBy(array('request' => $entity->getRequest()->getId()));
             $code  = $reqLink->getCode();
@@ -92,7 +93,7 @@ class ApproveController extends Controller
             }
 
             $this->get('session')->getFlashBag()->add(
-                'notice',
+                'info',
                 $flashmsg
             );
             return $this->redirect($this->generateUrl('request_list'));

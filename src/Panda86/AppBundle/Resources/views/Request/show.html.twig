@@ -3,92 +3,97 @@
 : 'Panda86AppBundle::details-view.html.twig' %}
 
 {% block title %}
-  {% if embedded == false %}
-    {{ parent() }}
-    - Req #{{ entity.id }} details
-  {% endif %}
+    {% if embedded == false %}
+        {{ parent() }}
+        - Req #{{ entity.id }} details
+    {% endif %}
 {% endblock %}
 
 {% set closeBtn_url = path('request_list') %}
 {% block table %}
     <table class="record_properties table table-striped">
-    <div class="form_description">
-        <h2>Req #{{ entity.id }} details </h2>
+        <div class="form_description">
+            <h2>Req #{{ entity.id }} details </h2>
+        </div>
+        <div id="req_status">
             {% if entity.status == 1 %}
-               <p class="text-success"><strong>Approved</strong> <img src="/app/img/request/approved.png" alt=""> </p>
+                <p class="text-success"><strong>Approved</strong> <img class="hidden-print"
+                                                                       src="/app/img/request/approved.png" alt=""></p>
             {% elseif entity.status == 2 %}
-               <p class="text-error"><strong>Disapproved</strong> <img src="/app/img/request/disapproved.png" alt=""> </p>
+                <p class="text-error"><strong>Disapproved</strong> <img src="/app/img/request/disapproved.png" alt="">
+                </p>
             {% else %}
-               <p class="text-warning"><strong>Pending</strong> <img src="/app/img/request/pending.png" alt=""> </p>
+                <p class="text-warning"><strong>Pending</strong> <img src="/app/img/request/pending.png" alt=""></p>
             {% endif %}
-    </div>
-    <tbody>
-    <tr>
-        <th>Request ID</th>
-        <td>{{ entity.id }}</td>
-    </tr>
-    <tr>
-        <th>Requester</th>
-        <td>{{ entity.requester.name }}</td>
-    </tr>
-    <tr>
-        <th>Journey details</th>
-        <td>
-            <p>
-                Type : {{ entity.journeytype }}
-            </p>
+        </div>
+        <br/>
+        <tbody>
+        <tr>
+            <th>Request ID</th>
+            <td>#{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>Requester</th>
+            <td>{{ entity.requester.name }}</td>
+        </tr>
+        <tr>
+            <th>Journey details</th>
+            <td>
+                <p>
+                    Type : {{ entity.journeytype }}
+                </p>
 
-            <p>
-                Days : {{ entity.days }}
-            </p>
-        </td>
-    </tr>
-    <tr>
-        <th>Requested vehicle</th>
-        <td>{{ entity.vtype.name }}</td>
-    </tr>
-    <tr>
-        <th>Pickup location</th>
-        <td>{{ entity.pickuploc }}</td>
-    </tr>
-    <tr>
-        <th>Destination</th>
-        <td>{{ entity.destination }}</td>
-    </tr>
-    <tr>
-        <th>Pickup time</th>
-        <td>{{ entity.pickuptime|date('Y-m-d g:i a') }}</td>
-    </tr>
-    {% if entity.starttime %}
-        <tr>
-            <th>Start time</th>
-            <td>{{ entity.starttime|date('g:i a') }}</td>
+                <p>
+                    Days : {{ entity.days }}
+                </p>
+            </td>
         </tr>
-    {% endif %}
-    {% if entity.returntime %}
         <tr>
-            <th>Return time</th>
-            <td>{{ entity.returntime|date('g:i a') }}</td>
+            <th>Requested vehicle</th>
+            <td>{{ entity.vtype.name }}</td>
         </tr>
-    {% endif %}
-    <tr>
-        <th>Purpose of travel</th>
-        <td>{{ entity.purpose }}</td>
-    </tr>
-    <tr>
-        <th>Other passengers</th>
-        <td>
-            {% if entity.accompaniedby|length > 0 %}
-                {% for passenger in entity.accompaniedby %}
-                    <li>{{ passenger.name|e }}</li>
-                {% endfor %}
-            {% endif %}
-        </td>
-    </tr>
-    <tr>
-        <th>Date created</th>
-        <td>{{ entity.createdat|date('Y-m-d g:i a') }}</td>
-    </tr>
-    </tbody>
+        <tr>
+            <th>Pickup location</th>
+            <td>{{ entity.pickuploc }}</td>
+        </tr>
+        <tr>
+            <th>Destination</th>
+            <td>{{ entity.destination }}</td>
+        </tr>
+        <tr>
+            <th>Pickup time</th>
+            <td>{{ entity.pickuptime|date('Y-m-d \\- g:i a') }}</td>
+        </tr>
+        {% if entity.starttime %}
+            <tr>
+                <th>Start time</th>
+                <td>{{ entity.starttime|date('g:i a') }}</td>
+            </tr>
+        {% endif %}
+        {% if entity.returntime %}
+            <tr>
+                <th>Return time</th>
+                <td>{{ entity.returntime|date('g:i a') }}</td>
+            </tr>
+        {% endif %}
+        <tr>
+            <th>Purpose of travel</th>
+            <td>{{ entity.purpose }}</td>
+        </tr>
+        <tr>
+            <th>Other passengers</th>
+            <td>
+                {% if entity.accompaniedby|length > 0 %}
+                    {% for passenger in entity.accompaniedby %}
+                        <li>{{ passenger.name|e }}</li>
+                    {% endfor %}
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th>Date created</th>
+            <td>{{ entity.createdat|date('Y-m-d \\- g:i a') }}</td>
+        </tr>
+        </tbody>
     </table>
 {% endblock %}

@@ -15,6 +15,7 @@ $(document).ready(function () {
             jsEvent.preventDefault();
             $('#ivehicle').text(calEvent.vehicle);
             $('#idriver').text(calEvent.driver);
+            $('#requester').text(calEvent.requester);
             $('#time_from').text(calEvent.start.toTimeString());
 
             $('#myModal').modal('show');

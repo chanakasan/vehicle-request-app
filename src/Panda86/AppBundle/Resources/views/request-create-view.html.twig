@@ -8,11 +8,10 @@
             margin-right: auto;
             float: none;
         }
-        .form-required {
+        .f-required {
             color: red;
         }
     </style>
-    <link rel="stylesheet" href="/assets/jquery-ui/redmond/jquery-ui-1.10.3.custom.css">
     <link rel="stylesheet" href="/assets/chosen/chosen.css">
     <link rel="stylesheet" href="/assets/pform/new.css">
     <link rel="stylesheet" href="/assets/datetimepicker/css/bootstrap-datetimepicker.min.css">
@@ -39,9 +38,8 @@
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}
-    <script src="/assets/jquery-ui/jquery-ui-1.10.3.custom.js"></script>
-    <script src="/assets/jquery.timeentry.js"></script>
     <script src="/assets/chosen/chosen.jquery.js"></script>
     <script src="/assets/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="/assets/jquery.validate.js"></script>
     <script src="/app/js/request/newReq.js"></script>
 {% endblock %}

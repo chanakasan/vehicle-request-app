@@ -1,12 +1,15 @@
 {% extends 'Panda86AppBundle::list-view.html.twig' %}
 
-{% set heading = 'Vehicle Categories' %}
+{% block title %}
+    {{ parent() }} - Vehicle types
+{% endblock %}
+{% set heading = 'Vehicle Types' %}
 {% set newBtn_url = path('vtype_new') %}
 
 {% block table %}
     <thead>
     <tr>
-        <th>Category</th>
+        <th>Name</th>
         <th>Description</th>
         <th>Actions</th>
     </tr>
@@ -19,7 +22,7 @@
             <td>
                 <ul>
                     <li>
-                        <a href="{{ path('vtype_edit', { 'id': entity.id }) }}">Edit/Delete</a>
+                        <a href="{{ path('vtype_edit', { 'id': entity.id }) }}">Edit / Delete</a>
                     </li>
                 </ul>
             </td>
