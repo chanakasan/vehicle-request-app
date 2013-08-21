@@ -5,7 +5,7 @@ app_root:
         path: /u/request
         permanent: true
 
-Panda86AppBundle_home:
+app_home:
     pattern:  /admin
     defaults: { _controller: Panda86AppBundle:Home:index }
 
