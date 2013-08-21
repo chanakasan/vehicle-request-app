@@ -1,0 +1,4 @@
+# get json data about approved requests
+getjson_approved:
+    pattern:  /a
+    defaults: { _controller: "Panda86AppBundle:Approve:getJson", _format: json }

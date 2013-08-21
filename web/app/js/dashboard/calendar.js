@@ -10,7 +10,7 @@ $(document).ready(function () {
         allDayDefault: false,
         draggable: false,
         editable: false,
-        events: '/approve/a',
+        events: '/app/a',
         eventClick: function(calEvent, jsEvent) {
             jsEvent.preventDefault();
             $('#ivehicle').text(calEvent.vehicle);
