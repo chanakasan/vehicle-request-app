@@ -125,7 +125,7 @@
             </label>
 
             <div class='controls'>
-                {% set attr = {'class': 'span5 show-tooltip', 'placeholder' : '...any further infomation about the journey'} %}
+                {% set attr = {'class': 'span5 expand show-tooltip', 'placeholder' : '...any further infomation about the journey'} %}
                 {% set tooltip = {'title': '(Optional field)', 'data-toggle': 'tooltip', 'data-placement': 'right'} %}
                 {% set attr = attr|merge(tooltip) %}
                 {{ form_row(form.more_info, { 'attr': attr}) }}

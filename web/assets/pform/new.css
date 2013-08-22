@@ -91,10 +91,6 @@ img
 	width:61%;
 }
 
-textarea { /* disable re-sizing textarea fields */
-    resize : none;
-}
-
 form ul
 {
 	font-size:100%;
@@ -407,4 +403,13 @@ ul.password{
 {
 	margin:0px 0px 0;
 	
+}
+
+/* custom */
+textarea { /* disable re-sizing textarea fields */
+    resize : none;
+}
+
+.expand {
+    height: 4em;
 }
