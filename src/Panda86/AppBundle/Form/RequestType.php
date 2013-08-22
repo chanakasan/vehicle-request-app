@@ -60,6 +60,7 @@ class RequestType extends AbstractType
                 'multiple'  => true,
             ))
             ->add('more_info', 'textarea', array(
+                'required' => false,
                 'label' => false,
             ))
         ;
