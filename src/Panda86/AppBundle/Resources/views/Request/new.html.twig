@@ -21,7 +21,7 @@
             </label>
 
             <div class='controls'>
-                {% set attr = { 'class': 'input-large show-tooltip chzn-select', 'data-placeholder': 'Name of requester', 'tabindex':'-1'} %}
+                {% set attr = { 'class': 'input-xlarge show-tooltip chzn-select', 'data-placeholder': 'Name of requester', 'tabindex':'-1'} %}
                 {% set tooltip = {'title': 'Person who requests the vehicle', 'data-toggle': 'tooltip', 'data-placement': 'right'} %}
                 {% set attr = attr|merge(tooltip) %}
                 {{ form_widget(form.requester, {'attr': attr }) }}
@@ -36,14 +36,26 @@
                 {{ form_row(form.journey_type, {'attr': {'class': 'radio'} }) }}
             </div>
         </div>
+        <div class='control-group'>
+            <label class='control-label'>Vehicle type
+                <span class='f-required'>*</span>
+            </label>
 
+            <div class='controls'>
+                {% set attr = {'class': 'input-xlarge show-tooltip'} %}
+                {% set tooltip = {'title': 'Vehicle you like to request', 'data-toggle': 'tooltip', 'data-placement': 'right'} %}
+                {% set attr = attr|merge(tooltip) %}
+                {{ form_row(form.vtype, {'attr': attr }) }}
+            </div>
+        </div>
         <div class='control-group'>
             <label class='control-label'>Pickup location
                 <span class='f-required'>*</span>
             </label>
 
             <div class='controls'>
-                    {{ form_row(form.pickup_loc) }}
+                    {% set attr = {'class': 'input-xlarge'} %}
+                    {{ form_row(form.pickup_loc, {'attr': attr}) }}
                 </div>
         </div>
         <div class='control-group'>
@@ -52,7 +64,8 @@
             </label>
 
             <div class='controls'>
-                    {{ form_row(form.destination) }}
+                    {% set attr = {'class': 'input-xlarge'} %}
+                    {{ form_row(form.destination, {'attr': attr}) }}
             </div>
         </div>
         <div class='control-group'>
@@ -75,21 +88,12 @@
             </div>
         </div>
         <div class='control-group'>
-            <label class='control-label'>Vehicle type
-                <span class='f-required'>*</span>
-            </label>
-
-            <div class='controls'>
-                {{ form_row(form.vtype) }}
-            </div>
-        </div>
-        <div class='control-group'>
             <label class='control-label'>Purpose of journey
                 <span class='f-required'>*</span>
             </label>
 
             <div class='controls'>
-                {% set attr = {'class': 'show-tooltip', 'required': 'required', 'title': 'Reason for this journey', 'data-toggle': 'tooltip', 'data-placement': 'right'} %}
+                {% set attr = {'class': 'input-xlarge show-tooltip', 'required': 'required', 'title': 'Reason for this journey', 'data-toggle': 'tooltip', 'data-placement': 'right'} %}
                 {{ form_row(form.purpose, {'attr': attr }) }}
             </div>
         </div>
@@ -112,7 +116,8 @@
             <label class='control-label'>Others travelling in vehicle</label>
 
             <div class='controls'>
-                {{ form_widget(form.accompanied_by, {'attr': {'class': 'chzn-select', 'data-placeholder': 'Names of staff members', 'tabindex':'-1'} } ) }}
+                {% set attr = {'class': 'input-xlarge chzn-select', 'data-placeholder': 'Names of staff members', 'tabindex':'-1'} %}
+                {{ form_widget(form.accompanied_by, {'attr': attr } ) }}
             </div>
         </div>
         <div class='control-group'>
@@ -120,7 +125,7 @@
             </label>
 
             <div class='controls'>
-                {% set attr = {'class': 'input-large show-tooltip', 'placeholder' : 'Any further infomation about the journey'} %}
+                {% set attr = {'class': 'span5 show-tooltip', 'placeholder' : '...any further infomation about the journey'} %}
                 {% set tooltip = {'title': '(Optional field)', 'data-toggle': 'tooltip', 'data-placement': 'right'} %}
                 {% set attr = attr|merge(tooltip) %}
                 {{ form_row(form.more_info, { 'attr': attr}) }}

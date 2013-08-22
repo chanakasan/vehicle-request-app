@@ -8,7 +8,7 @@ body
 	background:#fff;
 	margin:0 auto;
 	text-align:left;
-	width:640px;
+	width:740px;
 }
 
 #top
@@ -16,7 +16,7 @@ body
 	display:block;
 	height:10px;
 	margin:10px auto 0;
-	width:650px;
+	width:750px;
 }
 
 #form_footer
@@ -41,7 +41,7 @@ body
 	display:block;
 	height:10px;
 	margin:0 auto;
-	width:650px;
+	width:750px;
 }
 
 form.appnitro
@@ -91,6 +91,10 @@ img
 	width:61%;
 }
 
+textarea { /* disable re-sizing textarea fields */
+    resize : none;
+}
+
 form ul
 {
 	font-size:100%;
@@ -115,22 +119,6 @@ form li:after
 	display:block;
 	height:0;
 	visibility:hidden;
-}
-
-.buttons:after
-{
-	clear:both;
-	content:".";
-	display:block;
-	height:0;
-	visibility:hidden;
-}
-
-.buttons
-{
-	clear:both;
-	display:block;
-	margin-top:10px;
 }
 
 * html form li
