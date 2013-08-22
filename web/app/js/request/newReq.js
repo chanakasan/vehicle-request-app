@@ -72,4 +72,13 @@ $(document).ready(function(){
 
     /* show tooltips */
     $('.show-tooltip').tooltip();
+
+    /* expand textarea on focus */
+    $('textarea.expand').focus(function () {
+        $(this).animate({ height: "10em" }, 500);
+    });
+    $('textarea.expand').focusout(function () {
+        $(this).animate({ height: "4em" }, 500);
+    });
+
 });

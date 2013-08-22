@@ -31,6 +31,7 @@ class RequestType extends AbstractType
                 'label' => false,
             ))
             ->add('start_time','time', array(
+                'required' => false,
                 'label' => false,
                 'input' => 'datetime',
                 'widget' => 'single_text'
@@ -57,6 +58,10 @@ class RequestType extends AbstractType
                 'property' => 'name',
                 'label' => false,
                 'multiple'  => true,
+            ))
+            ->add('more_info', 'textarea', array(
+                'required' => false,
+                'label' => false,
             ))
         ;
     }
