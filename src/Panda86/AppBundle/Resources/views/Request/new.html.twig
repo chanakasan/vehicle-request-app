@@ -21,8 +21,10 @@
             </label>
 
             <div class='controls'>
-                {% set attr = {'title': 'Person who requests the vehicle', 'data-toggle': 'tooltip', 'data-placement': 'right', 'class': 'show-tooltip chzn-select', 'data-placeholder': 'Name of requester', 'tabindex':'-1'} %}
-                {{ form_widget(form.requester, {'attr': attr } ) }}
+                {% set attr = { 'class': 'input-large show-tooltip chzn-select', 'data-placeholder': 'Name of requester', 'tabindex':'-1'} %}
+                {% set tooltip = {'title': 'Person who requests the vehicle', 'data-toggle': 'tooltip', 'data-placement': 'right'} %}
+                {% set attr = attr|merge(tooltip) %}
+                {{ form_widget(form.requester, {'attr': attr }) }}
             </div>
         </div>
         <div class='control-group'>
@@ -96,8 +98,10 @@
 
             <div class='req-timepicker controls'>
                 <div class='input-append'>
-                    {% set attr = {'class': 'input-medium show-tooltip', 'placeholder' : '24 hours e.g. hh:mm', 'data-format':'hh:mm', 'type':'text' , 'title': 'Only if you are attending an event', 'data-toggle': 'tooltip', 'data-placement': 'right'} %}
-                    {{ form_widget(form.start_time, {'attr': attr } ) }}
+                    {% set attr = {'class': 'input-medium show-tooltip', 'placeholder' : '24 hours e.g. hh:mm', 'data-format':'hh:mm'} %}
+                    {% set tooltip = {'title': '(Optional field)', 'data-toggle': 'tooltip', 'data-placement': 'right'} %}
+                    {% set attr = attr|merge(tooltip) %}
+                    {{ form_widget(form.start_time, {'attr': attr }) }}
                     <span class='add-on'>
                             <i data-time-icon='icon-time' data-date-icon='icon-calendar'></i>
                     </span>
@@ -116,7 +120,10 @@
             </label>
 
             <div class='controls'>
-                {{ form_row(form.more_info) }}
+                {% set attr = {'class': 'input-large show-tooltip', 'placeholder' : 'Any further infomation about the journey'} %}
+                {% set tooltip = {'title': '(Optional field)', 'data-toggle': 'tooltip', 'data-placement': 'right'} %}
+                {% set attr = attr|merge(tooltip) %}
+                {{ form_row(form.more_info, { 'attr': attr}) }}
             </div>
         </div>
 
