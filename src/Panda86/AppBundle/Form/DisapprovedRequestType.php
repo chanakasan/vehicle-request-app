@@ -16,7 +16,7 @@ class DisapprovedRequestType extends AbstractType
                 'property' => 'id',
                 'label' => false,
             ))
-            ->add('remarks', 'text', arraY(
+            ->add('remarks', 'textarea', arraY(
                 'label' => false,
             ))
         ;

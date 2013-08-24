@@ -1,0 +1,8 @@
+/* common form css */
+textarea {
+    resize : vertical;
+}
+
+textarea.expand {
+    height: 4em;
+}

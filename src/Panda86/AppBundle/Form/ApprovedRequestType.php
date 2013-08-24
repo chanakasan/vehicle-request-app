@@ -26,7 +26,7 @@ class ApprovedRequestType extends AbstractType
                 'property' => 'display_name',
                 'label' => false,
                 ))
-            ->add('remarks', 'text', arraY(
+            ->add('remarks', 'textarea', arraY(
                 'label' => false,
                 ))
         ;
