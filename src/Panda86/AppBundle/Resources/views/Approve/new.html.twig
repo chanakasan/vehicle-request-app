@@ -2,7 +2,8 @@
 
 {% set closeBtn_url = path('request_list') %}
 {% block form %}
-    <form class="appnitro form-horizontal" novalidate action="{{ path('approve_create') }}" method="post" {{ form_enctype(form) }}>
+    <form class="appnitro form-horizontal" novalidate action="{{ path('approve_create') }}"
+          method="post" {{ form_enctype(form) }}>
         {{ form_errors(form) }}
         {{ form_widget(form._token) }}
         <div class="form_description">
@@ -12,6 +13,7 @@
             {% render controller('Panda86AppBundle:Request:show', { 'id': req_id, 'embed': true }) %}
         </div>
         <br/>
+
         <div id="req_id_field" style="display: none">
             <div class="control-group">
                 <label class="control-label">Req ID
@@ -23,25 +25,51 @@
                 </div>
             </div>
         </div>
+
         <div class="control-group">
             <label class="control-label">Assign vehicle
                 <span class="form-required" title="This field is required.">*</span>
             </label>
 
             <div class="controls">
-                {{ form_row(form.vehicle) }}
+                <label for="vehicle_company">Company Vehicle</label>
+                <input id="vehicle_company" name="assign_vehicle" class="radio" type="radio"/>
+                <label for="vehicle_cab">Cab</label>
+                <input id="vehicle_cab" name="assign_vehicle" class="radio" type="radio"/>
+            </div>
+        </div>
+
+        <div id="div_company_vehicle">
+            <div class="control-group">
+                <label class="control-label">Company vehicle
+                    <span class="form-required" title="This field is required.">*</span>
+                </label>
+
+                <div class="controls">
+                    {{ form_row(form.vehicle) }}
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Assign driver
+                    <span class="form-required" title="This field is required.">*</span>
+                </label>
+
+                <div class="controls">
+                    {{ form_row(form.driver) }}
+                </div>
             </div>
         </div>
 
         <div class="control-group">
-            <label class="control-label">Assign driver
+            <label class="control-label">Cab service
                 <span class="form-required" title="This field is required.">*</span>
             </label>
 
             <div class="controls">
-                {{ form_row(form.driver) }}
+                {{ form_row(form.cab_service) }}
             </div>
         </div>
+
         <div class="control-group">
             <label class="control-label">Remarks</label>
 

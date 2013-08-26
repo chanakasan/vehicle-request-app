@@ -16,6 +16,11 @@ class ApprovedRequestType extends AbstractType
                 'property' => 'id',
                 'label' => false,
             ))
+            ->add('cab_service', 'entity', array(
+                'class' => 'Panda86AppBundle:CabService',
+                'property' => 'name',
+                'label' => false,
+                ))
             ->add('vehicle', 'entity', array(
                 'class' => 'Panda86AppBundle:Vehicle',
                 'property' => 'reg_no',

@@ -34,7 +34,14 @@ Panda86\AppBundle\Entity\ApprovedRequest:
           targetEntity: Vehicle
           joinColumn:
               name: vehicle_id
-              nullable: false
+              nullable: true
+              referencedColumnName: id
+    manyToOne:
+        cab_service:
+          targetEntity: CabService
+          joinColumn:
+              name: cab_service_id
+              nullable: true
               referencedColumnName: id
         driver:
           targetEntity: Driver
