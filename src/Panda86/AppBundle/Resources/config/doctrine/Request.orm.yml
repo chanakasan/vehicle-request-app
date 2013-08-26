@@ -33,6 +33,14 @@ Panda86\AppBundle\Entity\Request:
         more_info:
             type: text
             nullable: true
+        accomodation_fee:
+            type: string
+            length: '32'
+            nullable: true
+        accomodation_info:
+            type: string
+            length: '255'
+            nullable: true
         status:
             type: integer
             length: '1'

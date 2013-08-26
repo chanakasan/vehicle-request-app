@@ -53,6 +53,12 @@ class RequestType extends AbstractType
             ->add('purpose', 'text', array(
                 'label' => false,
             ))
+            ->add('accomodation_fee', 'text', array(
+                'label' => false,
+            ))
+            ->add('accomodation_info', 'text', array(
+                'label' => false,
+            ))
             ->add('accompanied_by', 'entity',array(
                 'class' => 'Panda86AppBundle:Employee',
                 'property' => 'name',

@@ -121,6 +121,35 @@
             </div>
         </div>
         <div class='control-group'>
+            <label class='control-label'>Need accomodation
+            </label>
+            <div class='controls'>
+                <input type="checkbox" checked=""/>
+            </div>
+        </div>
+        <div id='request_accomodation' style="display: none">
+            <div class='control-group'>
+                <label class='control-label'>Accomodation fee
+                    <span class='f-required'>*</span>
+                </label>
+
+                <div class='controls'>
+                {% set attr = {'class': 'input-large show-tooltip', 'required': 'required', 'title': 'if applicable only', 'data-toggle': 'tooltip', 'data-placement': 'right'} %}
+                {{ form_row(form.accomodation_fee, {'attr': attr }) }}
+            </div>
+            </div>
+            <div class='control-group'>
+                <label class='control-label'>Accomodation info
+                    <span class='f-required'>*</span>
+                </label>
+
+                <div class='controls'>
+                {% set attr = {'class': 'input-large', 'required': 'required'} %}
+                {{ form_row(form.accomodation_info, {'attr': attr }) }}
+            </div>
+            </div>
+        </div>
+        <div class='control-group'>
             <label class='control-label'>Additional info
             </label>
 
