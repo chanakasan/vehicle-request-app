@@ -16,3 +16,7 @@ table {
 #requests_list {
     background: rgba(126, 160, 174, 0.7);
 }
+
+div.dataTables_info {
+    font-size: 1em;
+}
