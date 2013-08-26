@@ -404,12 +404,3 @@ ul.password{
 	margin:0px 0px 0;
 	
 }
-
-/* custom */
-textarea { /* disable re-sizing textarea fields */
-    resize : none;
-}
-
-.expand {
-    height: 4em;
-}

@@ -1,4 +1,4 @@
-{% set modes = ['success', 'error', 'warning', 'info'] %}
+{% set modes = ['success', 'info', 'error', 'warning' ] %}
 {% for mode in modes %}
     {% for flashMessage in app.session.flashbag.get(mode) %}
         <div class="alert alert-{{ mode }}">

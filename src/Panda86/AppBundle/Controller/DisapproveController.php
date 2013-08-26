@@ -40,7 +40,10 @@ class DisapproveController extends Controller
             }
             else
             {
-                $flashmsg .= 'Email sending failed!';
+                $this->get('session')->getFlashBag()->add(
+                    'error',
+                    'Email sending failed!'
+                );
             }
 
             $this->get('session')->getFlashBag()->add(
@@ -88,8 +91,13 @@ class DisapproveController extends Controller
                 )
             )
         ;
-        $this->get('mailer')->send($message);
-
-        return true;
+        try {
+            $this->get('mailer')->send($message);
+            return true;
+        }
+        catch(\Exception $e)
+        {
+            return false;
+        }
     }
 }
