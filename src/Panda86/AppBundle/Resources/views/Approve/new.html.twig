@@ -26,20 +26,24 @@
             </div>
         </div>
 
+        <p>Assign vehicle
+            <span class="form-required" title="This field is required.">*</span>
+        </p>
         <div class="control-group">
-            <label class="control-label">Assign vehicle
-                <span class="form-required" title="This field is required.">*</span>
-            </label>
-
+            <label class="control-label" for="vehicle_company">Company vehicle</label>
             <div class="controls">
-                <label for="vehicle_company">Company vehicle</label>
-                <input id="vehicle_company" name="assign_vehicle" class="radio" type="radio"/>
-                <label for="vehicle_cab">Cab</label>
-                <input id="vehicle_cab" name="assign_vehicle" class="radio" type="radio"/>
+                <input id="vehicle_company" name="assign_vehicle" class="assign_vehicle radio" type="radio"/>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="vehicle_cab">Cab</label>
+            <div class="controls">
+                <input id="vehicle_cab" name="assign_vehicle" class="assign_vehicle radio" type="radio"/>
             </div>
         </div>
 
-        <div id="div_company_vehicle">
+        <div id="div_company_vehicle" style="border:solid 1px black">
+            <p>Company vehicle info</p>
             <div class="control-group">
                 <label class="control-label">Vehicle
                     <span class="form-required" title="This field is required.">*</span>
@@ -59,7 +63,8 @@
                 </div>
             </div>
         </div>
-        <div id="div_cab_service">
+        <div id="div_cab_service" style="border:solid 1px black">
+            <p>Cab  service info</p>
             <div class="control-group">
                 <label class="control-label">Cab service
                     <span class="form-required" title="This field is required.">*</span>
@@ -70,6 +75,7 @@
                 </div>
             </div>
         </div>
+        <br/>
         <div class="control-group">
             <label class="control-label">Remarks</label>
 
