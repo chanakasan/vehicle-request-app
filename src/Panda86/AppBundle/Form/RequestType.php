@@ -26,6 +26,7 @@ class RequestType extends AbstractType
             ))
             ->add('days', 'hidden')
             ->add('vtype', 'entity',array(
+                'empty_value' => '--',
                 'class' => 'Panda86AppBundle:VType',
                 'property' => 'name',
                 'label' => false,
