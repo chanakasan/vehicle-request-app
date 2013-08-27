@@ -56,7 +56,7 @@ class RequestType extends AbstractType
             ->add('accomodation_fee', 'text', array(
                 'label' => false,
             ))
-            ->add('accomodation_info', 'text', array(
+            ->add('accomodation_info', 'textarea', array(
                 'label' => false,
             ))
             ->add('accompanied_by', 'entity',array(

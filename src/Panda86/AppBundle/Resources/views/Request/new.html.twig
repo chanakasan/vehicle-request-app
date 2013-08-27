@@ -124,12 +124,13 @@
             <label class='control-label'>Need accomodation
             </label>
             <div class='controls'>
-                <input type="checkbox" checked=""/>
+                <input id="need_accomodation" type='checkbox' class='show-tooltip' title='Request accomodation fees' data-toggle='tooltip' data-placement='right'/>
             </div>
         </div>
-        <div id='request_accomodation' style="display: none">
-            <div class='control-group'>
-                <label class='control-label'>Accomodation fee
+        <div id='request_accomodation' style="display: none; border: solid 1px #000000">
+            <p class="text-muted">Accomodation info</p>
+            <div class='control-group offset1'>
+                <label class='control-label'>Total fee (Rs.)
                     <span class='f-required'>*</span>
                 </label>
 
@@ -138,17 +139,18 @@
                 {{ form_row(form.accomodation_fee, {'attr': attr }) }}
             </div>
             </div>
-            <div class='control-group'>
-                <label class='control-label'>Accomodation info
+            <div class='control-group offset1'>
+                <label class='control-label'>Details
                     <span class='f-required'>*</span>
                 </label>
 
                 <div class='controls'>
-                {% set attr = {'class': 'input-large', 'required': 'required'} %}
+                {% set attr = {'placeholder': '... description about the above fee', 'class': 'input-large', 'required': 'required'} %}
                 {{ form_row(form.accomodation_info, {'attr': attr }) }}
             </div>
             </div>
         </div>
+        <br/>
         <div class='control-group'>
             <label class='control-label'>Additional info
             </label>
