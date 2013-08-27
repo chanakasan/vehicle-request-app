@@ -10,7 +10,9 @@
     <table class="record_properties table table-striped">
     <div class="form_description">
         <h2>Req #{{ entity.id }} details </h2>
+            {% set is_approved = false %}
             {% if entity.status == 1 %}
+               {% set is_approved = true %}
                <p class="text-success"><strong>Approved</strong> <img src="/app/img/request/approved.png" alt=""> </p>
             {% elseif entity.status == 2 %}
                <p class="text-error"><strong>Disapproved</strong> <img src="/app/img/request/disapproved.png" alt=""> </p>
@@ -85,6 +87,18 @@
         <th>Date created</th>
         <td>{{ entity.createdat|date('Y-m-d g:i a') }}</td>
     </tr>
+    {% if is_approved %}
+        {% block approved_info %}
+            <tr style="border: solid 1px red">
+                <th>Assigned vehicle</th>
+                <td>{{ vehicle.getregno }}</td>
+            </tr>
+            <tr style="border: solid 1px red">
+                <th>Assigned driver</th>
+                <td>Mr. {{ driver.getdisplayname }}</td>
+            </tr>
+        {%  endblock%}
+    {% endif %}
     </tbody>
     </table>
 {% endblock %}
