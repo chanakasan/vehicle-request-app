@@ -2,7 +2,7 @@
 
 {% set closeBtn_url = path('request_list') %}
 {% block form %}
-    <form class="appnitro form-horizontal" novalidate action="{{ path('approve_create') }}"
+    <form id="approve_form" class="appnitro form-horizontal" action="{{ path('approve_create') }}"
           method="post" {{ form_enctype(form) }}>
         {{ form_errors(form) }}
         {{ form_widget(form._token) }}
@@ -50,7 +50,8 @@
                 </label>
 
                 <div class="controls">
-                    {{ form_row(form.vehicle) }}
+                    {% set attr = {'class': '', 'required': 'required'} %}
+                    {{ form_row(form.vehicle, {'attr': attr}) }}
                 </div>
             </div>
             <div class="control-group">
@@ -59,7 +60,8 @@
                 </label>
 
                 <div class="controls">
-                    {{ form_row(form.driver) }}
+                    {% set attr = {'class': '', 'required': 'required'} %}
+                    {{ form_row(form.driver, {'attr': attr}) }}
                 </div>
             </div>
         </div>
@@ -71,7 +73,8 @@
                 </label>
 
                 <div class="controls">
-                    {{ form_row(form.cab_service) }}
+                    {% set attr = {'class': '', 'required': 'required'} %}
+                    {{ form_row(form.cab_service, {'attr': attr}) }}
                 </div>
             </div>
         </div>
@@ -85,7 +88,7 @@
         </div>
         <div class="control-group">
             <div class="controls">
-                <button id="approve_btn" class="btn btn-success" type="submit" formnovalidate="">Approve</button>
+                <input id="approve_btn" class="btn btn-success" type="submit" value="Approve"/>
             </div>
         </div>
     </form>

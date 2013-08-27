@@ -8,3 +8,8 @@
 {% block content %}
     {% block form %}{% endblock %}
 {% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="/assets/jquery.validate.js"></script>
+{% endblock %}

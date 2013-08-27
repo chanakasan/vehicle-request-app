@@ -31,5 +31,18 @@ $(document).ready(function () {
         }
     });
 
+    /* init jquery validation */
+    $('#approve_form').validate({
+           errorPlacement: function(label, element) {
+               label.addClass('inline text-error');
+               label.insertAfter(element);
+           },
+           wrapper: 'span'
+    });
+
+    /* jquery validate debug mode */
+        jQuery.validator.setDefaults({
+            debug: true
+        });
 
 });
