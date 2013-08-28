@@ -108,4 +108,32 @@ class ApprovedCab
     {
         return $this->other_info;
     }
+    /**
+     * @var \Panda86\AppBundle\Entity\CabService
+     */
+    private $cab_service;
+
+
+    /**
+     * Set cab_service
+     *
+     * @param \Panda86\AppBundle\Entity\CabService $cabService
+     * @return ApprovedCab
+     */
+    public function setCabService(\Panda86\AppBundle\Entity\CabService $cabService = null)
+    {
+        $this->cab_service = $cabService;
+
+        return $this;
+    }
+
+    /**
+     * Get cab_service
+     *
+     * @return \Panda86\AppBundle\Entity\CabService 
+     */
+    public function getCabService()
+    {
+        return $this->cab_service;
+    }
 }

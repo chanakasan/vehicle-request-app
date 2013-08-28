@@ -50,10 +50,4 @@ Panda86\AppBundle\Entity\ApprovedRequest:
             name: driver_id
             nullable: true
             referencedColumnName: id
-        cab_service:
-          targetEntity: CabService
-          joinColumn:
-              name: cab_service_id
-              nullable: true
-              referencedColumnName: id
     lifecycleCallbacks: {  }

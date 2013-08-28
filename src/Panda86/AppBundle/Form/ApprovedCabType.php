@@ -11,6 +11,11 @@ class ApprovedCabType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('cab_service', 'entity', array(
+                'empty_value' => '--',
+                'class' => 'Panda86AppBundle:CabService',
+                'property' => 'name',
+            ))
             ->add('voucher_no')
             ->add('mileage')
             ->add('other_info', 'textarea')

@@ -20,4 +20,11 @@ Panda86\AppBundle\Entity\ApprovedCab:
             type: string
             length: '255'
             nullable: true
+    manyToOne:
+        cab_service:
+          targetEntity: CabService
+          joinColumn:
+              name: cab_service_id
+              nullable: true
+              referencedColumnName: id
     lifecycleCallbacks: {  }

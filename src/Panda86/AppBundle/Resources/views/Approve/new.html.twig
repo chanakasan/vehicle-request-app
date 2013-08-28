@@ -66,18 +66,9 @@
             </div>
         </div>
         <div id="div_cab_service" style="border:solid 1px black">
-            <p>Cab  service info</p>
+            <p>Cab info</p>
             <div class="control-group">
-                <label class="control-label">Cab service
-                    <span class="form-required" title="This field is required.">*</span>
-                </label>
-
-                <div class="controls">
-                    {% set attr = {'class': '', 'required': 'required'} %}
-                    {{ form_row(form.cab_service, {'attr': attr}) }}
-                </div>
                 <div class="control-group">
-                    <label class="control-label">Cab info:</label>
 
                     <div class="controls">
                         {{ form_row(form.cab) }}
