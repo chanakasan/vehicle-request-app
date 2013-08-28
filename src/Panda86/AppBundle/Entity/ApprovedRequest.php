@@ -289,4 +289,32 @@ class ApprovedRequest extends Base
     {
         return $this->cab_service;
     }
+    /**
+     * @var \Panda86\AppBundle\Entity\ApprovedCab
+     */
+    private $cab;
+
+
+    /**
+     * Set cab
+     *
+     * @param \Panda86\AppBundle\Entity\ApprovedCab $cab
+     * @return ApprovedRequest
+     */
+    public function setCab(\Panda86\AppBundle\Entity\ApprovedCab $cab = null)
+    {
+        $this->cab = $cab;
+
+        return $this;
+    }
+
+    /**
+     * Get cab
+     *
+     * @return \Panda86\AppBundle\Entity\ApprovedCab 
+     */
+    public function getCab()
+    {
+        return $this->cab;
+    }
 }

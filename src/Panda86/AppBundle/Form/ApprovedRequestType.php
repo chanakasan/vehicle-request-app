@@ -38,6 +38,9 @@ class ApprovedRequestType extends AbstractType
                 'label' => false,
                 'required' => false,
                 ))
+            ->add('cab', new ApprovedCabType(), array(
+                'label' => false,
+            ))
         ;
     }
 

@@ -76,6 +76,14 @@
                     {% set attr = {'class': '', 'required': 'required'} %}
                     {{ form_row(form.cab_service, {'attr': attr}) }}
                 </div>
+                <div class="control-group">
+                    <label class="control-label">Cab info:</label>
+
+                    <div class="controls">
+                        {{ form_row(form.cab) }}
+                    </div>
+                </div>
+
             </div>
         </div>
         <br/>
