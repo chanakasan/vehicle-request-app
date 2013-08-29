@@ -87,6 +87,7 @@ class ApproveController extends Controller
             $code  = $reqLink->getCode();
             $email = $entity->getRequest()->getRequester()->getEmail();
 
+
             if($this->_sendMail($email, $entity, $code))
             {
                 $flashmsg .= 'An email message has been sent to the requester.';

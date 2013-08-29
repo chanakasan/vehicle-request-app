@@ -13,6 +13,7 @@
             {% if entity.status == 1 %}
                 <p class="text-success"><strong>Approved</strong> <img src="/app/img/request/approved.png" alt=""></p>
                 {% block approved_info %}
+                    {% if vehicle is not null %}
                     <span class="offset1">
                         <strong class="inline">Assigned vehicle - </strong>
                     </span>
@@ -23,6 +24,16 @@
                         <span>Mr. {{ driver.getdisplayname }}</span>
                     </span>
                     <p></p>
+                    {% else %}
+                    <span class="offset1">
+                        <span>Assigned a rented vehicle.</span>
+                    </span>
+                    <p></p>
+                     <span class="offset1">
+                        <strong>Cab service :</strong> {{ cab.getcabservice.getname }}
+                     </span>
+                    <p></p>
+                    {% endif %}
                 {% endblock %}
             {% elseif entity.status == 2 %}
                 <p class="text-error"><strong>Disapproved</strong> <img src="/app/img/request/disapproved.png" alt=""></p>

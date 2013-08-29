@@ -18,7 +18,9 @@ class ApprovedCabType extends AbstractType
             ))
             ->add('voucher_no')
             ->add('mileage')
-            ->add('other_info', 'textarea')
+            ->add('other_info', 'textarea', array(
+                'required' => false,
+            ))
         ;
 
     }

@@ -78,7 +78,8 @@ class RequestController extends Controller
             return $this->render('Panda86AppBundle:Request:details.html.twig', array(
                 'entity' => $approved_entity->getRequest(),
                 'vehicle' => $approved_entity->getVehicle(),
-                'driver' => $approved_entity->getDriver()
+                'driver' => $approved_entity->getDriver(),
+                'cab' => $approved_entity->getCab()
             ));
         }
 
