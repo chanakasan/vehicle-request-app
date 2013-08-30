@@ -48,7 +48,7 @@ $(document).ready(function(){
         $(this).trigger("change");
     });
     /* show return time */
-    $("#request_journey_type_1").change(function(e  ){
+    $("#request_journey_type_1").change(function(e){
         e.preventDefault();
         var is_checked = $(this).is(':checked');
         if(is_checked === true)
@@ -79,6 +79,17 @@ $(document).ready(function(){
     });
     $('textarea.expand').focusout(function () {
         $(this).animate({ height: "4em" }, 500);
+    });
+
+    // show/hide accomodation info
+    $('#need_accomodation').change(function(){
+        var val = $('#need_accomodation').prop('checked');
+        if (val)
+        {
+            $('#request_accomodation').show('slow');
+        }
+        else
+            $('#request_accomodation').hide('slow');
     });
 
 });

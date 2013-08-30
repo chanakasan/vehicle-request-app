@@ -26,6 +26,7 @@ class RequestType extends AbstractType
             ))
             ->add('days', 'hidden')
             ->add('vtype', 'entity',array(
+                'empty_value' => '--',
                 'class' => 'Panda86AppBundle:VType',
                 'property' => 'name',
                 'label' => false,
@@ -51,6 +52,12 @@ class RequestType extends AbstractType
                 'widget' => 'single_text'
             ))
             ->add('purpose', 'text', array(
+                'label' => false,
+            ))
+            ->add('accomodation_fee', 'text', array(
+                'label' => false,
+            ))
+            ->add('accomodation_info', 'textarea', array(
                 'label' => false,
             ))
             ->add('accompanied_by', 'entity',array(

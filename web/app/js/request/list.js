@@ -36,7 +36,10 @@ $(document).ready(function () {
 
             "sPaginationType": "bootstrap",
             "oLanguage": {
-                "sLengthMenu": "_MENU_ items per page"
+                "sLengthMenu": "_MENU_ items per page",
+                "sInfoFiltered": "",
+                "sInfo": "Showing _START_ to _END_ items (of total _TOTAL_ items) ",
+                "sInfoEmpty": "0 items found"
             }
         });
     }

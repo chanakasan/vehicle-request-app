@@ -2,6 +2,7 @@
 
 namespace Panda86\AppBundle\Controller;
 
+use Panda86\AppBundle\Entity\ApprovedCab;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -69,6 +70,9 @@ class ApproveController extends Controller
     public function createAction(Request $request)
     {
         $entity  = new ApprovedRequest();
+        $cab  = new ApprovedCab();
+        $entity->setCab($cab);
+
         $form = $this->createForm(new ApprovedRequestType(), $entity);
         $form->handleRequest($request);
 
@@ -82,6 +86,7 @@ class ApproveController extends Controller
             $reqLink = $em->getRepository('Panda86AppBundle:RequestLink')->findOneBy(array('request' => $entity->getRequest()->getId()));
             $code  = $reqLink->getCode();
             $email = $entity->getRequest()->getRequester()->getEmail();
+
 
             if($this->_sendMail($email, $entity, $code))
             {

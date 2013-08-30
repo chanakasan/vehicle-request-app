@@ -65,7 +65,22 @@ class RequestController extends Controller
         $entity = $em->getRepository('Panda86AppBundle:RequestLink')->findOneBy(array('code' => $code));
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find RequestLink entity.');
+            $this->get('session')->getFlashBag()->add(
+                'error',
+                'Your link is invalid or has been expired! Please try again using a valid link.'
+            );
+            return $this->render('Panda86AppBundle:Request:finish.html.twig');
+        }
+
+        $approved_entity = $em->getRepository('Panda86AppBundle:ApprovedRequest')->findOneBy(array('request' => $entity->getRequest()->getId()));
+
+        if ($approved_entity) {
+            return $this->render('Panda86AppBundle:Request:details.html.twig', array(
+                'entity' => $approved_entity->getRequest(),
+                'vehicle' => $approved_entity->getVehicle(),
+                'driver' => $approved_entity->getDriver(),
+                'cab' => $approved_entity->getCab()
+            ));
         }
 
         return $this->render('Panda86AppBundle:Request:details.html.twig', array(

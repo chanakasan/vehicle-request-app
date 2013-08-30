@@ -1,0 +1,35 @@
+Panda86\AppBundle\Entity\CabService:
+    type: entity
+    table: hr_cab_service
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: '64'
+        hotline:
+            type: string
+            length: '32'
+        webSite:
+            type: string
+            length: '64'
+            nullable: true
+            column: web_site
+        address:
+            type: string
+            length: '128'
+            nullable: true
+        rates:
+            type: string
+            length: 255
+            nullable: true
+        otherInfo:
+            type: string
+            length: 255
+            nullable: true
+            column: other_info
+    lifecycleCallbacks: {  }

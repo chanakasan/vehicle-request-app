@@ -1,0 +1,30 @@
+Panda86\AppBundle\Entity\ApprovedCab:
+    type: entity
+    table: hr_approved_cab
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        voucher_no:
+            type: string
+            length: '64'
+            nullable: true
+        mileage:
+            type: string
+            length: '16'
+            nullable: true
+        other_info:
+            type: string
+            length: '255'
+            nullable: true
+    manyToOne:
+        cab_service:
+          targetEntity: CabService
+          joinColumn:
+              name: cab_service_id
+              nullable: true
+              referencedColumnName: id
+    lifecycleCallbacks: {  }
