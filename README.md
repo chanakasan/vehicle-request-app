@@ -1,26 +1,81 @@
-How to install
-==============
+Vehicle Requests Tracker
+===================
 
-1) First install composer.phar to project root dir.
-   curl -sS https://getcomposer.org/installer | php
 
-2) Then rename app/configs/parameters.yml.dist to parameters.yml.
+## Descrption
+A webapp for managing vehicle requests
 
-3) Install dependencies. 
-   php composer.phar install
 
-4) Now run the install-fix.sh script from the project root dir. 
-   sh install-fix.sh
+## System Requirements
+This is a Symfony2 web app. In order to run you would need to have below requirements.
 
-5) Fix permissions: 
-   chmod -R 777 app/cache app/logs
+#### Symfony2 requirements:
 
-6) Now switch to hello world branch. 
-   git checkout helloworld
+Symfony2 is only supported on PHP 5.3.3 and up.
 
-7) Now goto below url, 
-   http://localhost/app_dev.php/hello/your_name
+Be warned that PHP versions before 5.3.8 are known to be buggy and might not
+work for you:
 
-   You should see => Hello your_name! 
+ * before PHP 5.3.4, if you get "Notice: Trying to get property of
+   non-object", you've hit a known PHP bug (see
+   https://bugs.php.net/bug.php?id=52083 and
+   https://bugs.php.net/bug.php?id=50027);
+
+ * before PHP 5.3.8, if you get an error involving annotations, you've hit a
+   known PHP bug (see https://bugs.php.net/bug.php?id=55156).
+
+ * PHP 5.3.16 has a major bug in the Reflection subsystem and is not suitable to
+   run Symfony2 (https://bugs.php.net/bug.php?id=62715)
+
+
+## Installation
+
+1. Clone the master branch or grab the latest from releases and unzip the file on the web server. 
+
+    	git clone https://github.com/dream89/RequestVehicleApp.git
+
+2. Change directory to app root and install composer. 
+
+    	cd RequestVehicleApp
+    	curl -sS https://getcomposer.org/installer | php
+    	php composer.phar selfupdate
+
+
+3. Rename app/configs/parameters.yml.dist to parameters.yml.
+ 
+		cp app/config/parameters.yml.dist app/config/parameters.yml
+
+4. Create directories for cache and logs.
+
+		mkdir -p app/cache
+		mkdir -p app/logs
+
+5. Run the fix-permissions shell script.
+
+		sudo sh fix-permissions.sh
+		
+5. Install dependencies using composer.
+ 
+		php composer.phar install
+
+6. Configure your database settings in app/config/parameters.yml.
+
+7. Build the database and load fixtures with below command.
+
+		sh update-schema.sh
+
+8. Point your web server's root to the web directory in the app.
    
-   So it works :)
+   Now goto http://your-domain/
+
+   And you should see the application start page.
+   
+   Go to http://your-domain/admin to access admin tasks.
+   
+		Login details:
+		   	admin user 
+		   		username: admin123
+		   		password: pass123
+		   	super-admin user
+		   		username: su123
+		   		password: pass123
