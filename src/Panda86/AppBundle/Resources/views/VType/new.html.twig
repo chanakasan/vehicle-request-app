@@ -18,7 +18,8 @@
             <label class="control-label">Type</label>
 
             <div class="controls">
-                {{ form_row(form.type) }}
+                {% set attr = {'placeholder': 'e.g. Car, Jeep, Mini Van', 'required': 'required'} %}
+                {{ form_row(form.type, {'attr': attr }) }}
             </div>
         </div>
         <div class="control-group">
@@ -38,7 +39,7 @@
 
         <div class="control-group">
             <div class="controls">
-                <button type="submit" formnovalidate="">Create</button>
+                <input class="btn" type="submit" value="Create"/>
             </div>
         </div>
     </form>
