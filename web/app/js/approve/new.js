@@ -63,5 +63,5 @@ $(document).ready(function () {
             $('#div_company_vehicle').hide('slow');
             $('#div_cab_service').show('slow');
         }
-    });
+});
 });
