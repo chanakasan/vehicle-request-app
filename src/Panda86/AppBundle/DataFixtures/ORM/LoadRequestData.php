@@ -71,25 +71,25 @@ class LoadRequestData extends AbstractFixture implements OrderedFixtureInterface
         $request1->addAccompaniedBy($employees[1]);
         $request1->addAccompaniedBy($employees[2]);
 
-        $request2 = new Request($req1);
+        $request2 = new Request($req2);
         $request2->setVType($vtypes[0]);
         $request2->setRequester($employees[0]);
         $request2->addAccompaniedBy($employees[1]);
         $request2->addAccompaniedBy($employees[2]);
 
-        $request3 = new Request($req1);
+        $request3 = new Request($req3);
         $request3->setVType($vtypes[0]);
         $request3->setRequester($employees[0]);
         $request3->addAccompaniedBy($employees[1]);
         $request3->addAccompaniedBy($employees[2]);
 
-        $request4 = new Request($req1);
+        $request4 = new Request($req4);
         $request4->setVType($vtypes[0]);
         $request4->setRequester($employees[0]);
         $request4->addAccompaniedBy($employees[1]);
         $request4->addAccompaniedBy($employees[2]);
 
-        $request5 = new Request($req1);
+        $request5 = new Request($req5);
         $request5->setVType($vtypes[0]);
         $request5->setRequester($employees[0]);
         $request5->addAccompaniedBy($employees[1]);
@@ -121,31 +121,31 @@ class LoadRequestData extends AbstractFixture implements OrderedFixtureInterface
         $req5Link->setRequest($request5);
         $manager->persist($req5Link);
 
-//        $j = 1;
-//        /* Add some more requests */
-//        for($i=0; $i<10; $i++)
-//        {
-//            if($j < 9) $j++;
-//            $req_data = array(
-//                'journey_type' => 'single',
-//                'days' => 1,
-//                'pickup_loc' => 'ICTA',
-//                'pickup_time' =>  new \DateTime("2013-08-0{$j} 14:00:00"),
-//                'destination' => 'colombo',
-//                'purpose' => 'Meeting'
-//            );
-//
-//            $request = new Request($req_data);
-//            $request->setVType($vtypes[0]);
-//
-//            $manager->persist($request);
-//
-//            $reqLink = new RequestLink();
-//            $reqLink->setRequest($request);
-//            $reqLink->setCode($this->_random_string(128));
-//            $manager->persist($reqLink);
-//
-//        }
+        $j = 1;
+        /* Add some more requests */
+        for($i=0; $i<20; $i++)
+        {
+            if($j < 9) $j++;
+            $req_data = array(
+                'journey_type' => 'single',
+                'days' => 1,
+                'pickup_loc' => 'ICTA',
+                'pickup_time' =>  new \DateTime("2013-08-0{$j} 14:00:00"),
+                'destination' => 'Colombo',
+                'purpose' => 'Meeting'
+            );
+
+            $request = new Request($req_data);
+            $request->setRequester($employees[0]);
+            $request->setVType($vtypes[0]);
+
+            $manager->persist($request);
+
+            $reqLink = new RequestLink();
+            $reqLink->setRequest($request);
+            $manager->persist($reqLink);
+
+        }
         $manager->flush();
     }
 
