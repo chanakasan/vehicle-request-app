@@ -1,11 +1,29 @@
 body {
-    background: rgba(235, 235, 235, 0.74);
+    background:#CDDCEC;
 }
 
-.dt-table {
-    min-height: 480px;
+#main-container {
+    background-color: #FFF;
 }
 
+#main-container, #top, #bottom {
+    margin-left: 0;
+}
+
+#top
+{
+    display:block;
+    height:10px;
+    margin:10px auto 0;
+}
+#bottom
+{
+    display:block;
+    height:10px;
+    margin:0 auto;
+}
+
+/* table */
 table {
     display: table;
     border-collapse: separate;
@@ -13,10 +31,19 @@ table {
     border-color: gray;
 }
 
+table th {
+    color: #ebebeb;
+}
+
 #requests_list {
-    background: rgba(126, 160, 174, 0.7);
+    /*background: rgba(126, 160, 174, 0.7);*/
+    background: rgb(0, 122, 182);
 }
 
 div.dataTables_info {
     font-size: 1em;
+}
+
+.dt-table {
+    min-height: 470px; /* keep pagination position fixed */
 }
