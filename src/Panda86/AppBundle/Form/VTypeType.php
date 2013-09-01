@@ -28,7 +28,10 @@ class VTypeType extends AbstractType
                 'choices' => $choices,
             ))
             ->add('type', null, array('label' => false))
-            ->add('descrip', null, array('label' => false))
+            ->add('descrip', 'textarea', array(
+                'label' => false,
+                'required' => false
+            ))
         ;
     }
 
