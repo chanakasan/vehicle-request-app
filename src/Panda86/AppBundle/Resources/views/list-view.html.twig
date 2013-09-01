@@ -1,12 +1,13 @@
 {% extends '::admin-app.html.twig' %}
     {% block stylesheets %}
         {{ parent() }}
-        <link rel="stylesheet" type="text/css" href="/assets/DataTables/dataTables.css">
     {% endblock %}
 {% block body %}
+    <br/>
     <div class="row">
         <div class="span10 offset1">
-            <h2>{{ heading }}</h2>
+            <h3>{{ heading }}</h3>
+            <br/>
             <table class="table table-striped">
                 {% block table %}{% endblock %}
             </table>

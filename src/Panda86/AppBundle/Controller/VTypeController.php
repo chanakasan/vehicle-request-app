@@ -142,18 +142,46 @@ class VTypeController extends Controller
         $form = $this->createDeleteForm($id);
         $form->handleRequest($request);
 
-        if ($form->isValid()) {
+        if ($this->getRequest()->getMethod() == 'DELETE') {
             $em = $this->getDoctrine()->getManager();
             $entity = $em->getRepository('Panda86AppBundle:VType')->find($id);
-
-            if (!$entity) {
-                throw $this->createNotFoundException('Unable to find VType entity.');
+            try {
+                if (!$entity) {
+                    throw $this->createNotFoundException('Unable to find VType entity.');
+                }
             }
-
+            catch(\Exception $e)
+            {
+                $this->get('session')->getFlashBag()->add(
+                    'error',
+                    'Oops! looks like something went wrong.'
+                );
+                return $this->redirect($this->generateUrl('vtype'));
+            }
+            $vehicles = $entity->getVehicles();
+            if(count($vehicles) > 0)
+            {
+                $v_list = '[ ';
+                foreach($vehicles as $vehicle)
+                {
+                    $v_list.= $vehicle->getMake().' '.$vehicle->getModel().' '.$vehicle->getRegNo().' ... ';
+                }
+                $v_list.= ']';
+                $this->get('session')->getFlashBag()->add(
+                    'error',
+                    'There are vehicles assigned to this vehicle type.
+                    Please change the type of the vehicles listed below before you can delete this entry. i.e. '.$v_list
+                );
+                return $this->redirect($this->generateUrl('vtype_edit', array('id' => $id)));
+            }
             $em->remove($entity);
             $em->flush();
-        }
 
+            $this->get('session')->getFlashBag()->add(
+                'success',
+                $entity->getName().' has been deleted!'
+            );
+        }
         return $this->redirect($this->generateUrl('vtype'));
     }
 
