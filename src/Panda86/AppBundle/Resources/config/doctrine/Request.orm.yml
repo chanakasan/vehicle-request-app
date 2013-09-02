@@ -33,14 +33,6 @@ Panda86\AppBundle\Entity\Request:
         more_info:
             type: text
             nullable: true
-        accomodation_fee:
-            type: string
-            length: '32'
-            nullable: true
-        accomodation_info:
-            type: string
-            length: '255'
-            nullable: true
         status:
             type: integer
             length: '1'
@@ -50,6 +42,14 @@ Panda86\AppBundle\Entity\Request:
             type: datetime
         updated_at:
             type: datetime
+    oneToOne:
+        accomodation:
+          targetEntity: RequestAccomodation
+          joinColumn:
+            name: accomodation_id
+            nullable: true
+            referencedColumnName: id
+          cascade: ['persist']
     manyToOne:
         requester: # Many-to-one uni-directional
             targetEntity: Employee

@@ -122,6 +122,11 @@ class Request extends Base {
     protected $purpose;
 
     /**
+     * @var string
+     */
+    protected $more_info;
+
+    /**
      * @var integer
      */
     protected $status;
@@ -140,6 +145,11 @@ class Request extends Base {
      * @var \DateTime
      */
     protected $updated_at;
+
+    /**
+     * @var \Panda86\AppBundle\Entity\RequestAccomodation
+     */
+    protected $accomodation;
 
     /**
      * @var \Panda86\AppBundle\Entity\Employee
@@ -339,6 +349,29 @@ class Request extends Base {
     }
 
     /**
+     * Set more_info
+     *
+     * @param string $moreInfo
+     * @return Request
+     */
+    public function setMoreInfo($moreInfo)
+    {
+        $this->more_info = $moreInfo;
+
+        return $this;
+    }
+
+    /**
+     * Get more_info
+     *
+     * @return string 
+     */
+    public function getMoreInfo()
+    {
+        return $this->more_info;
+    }
+
+    /**
      * Get status
      *
      * @return integer 
@@ -418,6 +451,29 @@ class Request extends Base {
     }
 
     /**
+     * Set accomodation
+     *
+     * @param \Panda86\AppBundle\Entity\RequestAccomodation $accomodation
+     * @return Request
+     */
+    public function setAccomodation(\Panda86\AppBundle\Entity\RequestAccomodation $accomodation = null)
+    {
+        $this->accomodation = $accomodation;
+
+        return $this;
+    }
+
+    /**
+     * Get accomodation
+     *
+     * @return \Panda86\AppBundle\Entity\RequestAccomodation 
+     */
+    public function getAccomodation()
+    {
+        return $this->accomodation;
+    }
+
+    /**
      * Set requester
      *
      * @param \Panda86\AppBundle\Entity\Employee $requester
@@ -494,89 +550,5 @@ class Request extends Base {
     public function getAccompaniedBy()
     {
         return $this->accompanied_by;
-    }
-    /**
-     * @var string
-     */
-    private $more_info;
-
-
-    /**
-     * Set more_info
-     *
-     * @param string $moreInfo
-     * @return Request
-     */
-    public function setMoreInfo($moreInfo)
-    {
-        $this->more_info = $moreInfo;
-
-        return $this;
-    }
-
-    /**
-     * Get more_info
-     *
-     * @return string 
-     */
-    public function getMoreInfo()
-    {
-        return $this->more_info;
-    }
-    /**
-     * @var string
-     */
-    private $accomodation_fee;
-
-    /**
-     * @var string
-     */
-    private $accomodation_info;
-
-
-    /**
-     * Set accomodation_fee
-     *
-     * @param string $accomodationFee
-     * @return Request
-     */
-    public function setAccomodationFee($accomodationFee)
-    {
-        $this->accomodation_fee = $accomodationFee;
-
-        return $this;
-    }
-
-    /**
-     * Get accomodation_fee
-     *
-     * @return string 
-     */
-    public function getAccomodationFee()
-    {
-        return $this->accomodation_fee;
-    }
-
-    /**
-     * Set accomodation_info
-     *
-     * @param string $accomodationInfo
-     * @return Request
-     */
-    public function setAccomodationInfo($accomodationInfo)
-    {
-        $this->accomodation_info = $accomodationInfo;
-
-        return $this;
-    }
-
-    /**
-     * Get accomodation_info
-     *
-     * @return string 
-     */
-    public function getAccomodationInfo()
-    {
-        return $this->accomodation_info;
     }
 }
