@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class RequestAccomodation
 {
+
     /**
      * @var integer
      */
@@ -20,12 +21,12 @@ class RequestAccomodation
     private $no_days;
 
     /**
-     * @var string
+     * @var float
      */
     private $day_rate;
 
     /**
-     * @var string
+     * @var float
      */
     private $total_fee;
 
@@ -71,7 +72,7 @@ class RequestAccomodation
     /**
      * Set day_rate
      *
-     * @param string $dayRate
+     * @param float $dayRate
      * @return RequestAccomodation
      */
     public function setDayRate($dayRate)
@@ -84,7 +85,7 @@ class RequestAccomodation
     /**
      * Get day_rate
      *
-     * @return string 
+     * @return float 
      */
     public function getDayRate()
     {
@@ -94,7 +95,7 @@ class RequestAccomodation
     /**
      * Set total_fee
      *
-     * @param string $totalFee
+     * @param float $totalFee
      * @return RequestAccomodation
      */
     public function setTotalFee($totalFee)
@@ -107,7 +108,7 @@ class RequestAccomodation
     /**
      * Get total_fee
      *
-     * @return string 
+     * @return float 
      */
     public function getTotalFee()
     {

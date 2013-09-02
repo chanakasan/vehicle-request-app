@@ -8,6 +8,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Panda86\AppBundle\Entity\ApprovedCab;
 use Panda86\AppBundle\Entity\ApprovedRequest;
 use Panda86\AppBundle\Entity\Request;
+use Panda86\AppBundle\Entity\RequestAccomodation;
 use Panda86\AppBundle\Entity\RequestLink;
 
 class LoadRequestData extends AbstractFixture implements OrderedFixtureInterface
@@ -66,6 +67,8 @@ class LoadRequestData extends AbstractFixture implements OrderedFixtureInterface
 
         $employees = $manager->getRepository('Panda86AppBundle:Employee')->findAll();
         $vtypes = $manager->getRepository('Panda86AppBundle:VType')->findAll();
+        $vehicles = $manager->getRepository('Panda86AppBundle:Vehicle')->findAll();
+        $drivers = $manager->getRepository('Panda86AppBundle:Driver')->findAll();
         $cab_services = $manager->getRepository('Panda86AppBundle:CabService')->findAll();
 
         $request1 = new Request($req1);
@@ -123,15 +126,54 @@ class LoadRequestData extends AbstractFixture implements OrderedFixtureInterface
 
             $manager->persist($request);
 
-            if($i % 3 === 0 )
+            if($i % 7 === 0 ) /* assign company vehicles */
             {
                 $approve = new ApprovedRequest();
                 $approve->setRequest($request);
+                $approve->setVehicle($vehicles[0]);
+                $approve->setDriver($drivers[0]);
+
+                $manager->persist($approve);
+            }
+            elseif($i % 5 === 0 ) /* request accomodation */
+            {
+                $accomodation = new RequestAccomodation();
+                $accomodation->setNoDays($i);
+                $accomodation->setTotalFee(999.99 + 99.99 * $i);
+                $request->setAccomodation($accomodation);
+
+                $approve = new ApprovedRequest();
+                $approve->setRequest($request);
+                $approve->setVehicle($vehicles[0]);
+                $approve->setDriver($drivers[0]);
+
+                $manager->persist($approve);
+            }
+            elseif($i % 3 === 0 ) /* assign cabs */
+            {
+                $cab = new ApprovedCab();
+                $cab->setCabService($cab_services[0]);
+                $cab->setCost(999.99 + 9.99 * $i);
+
+                $approve = new ApprovedRequest();
+                $approve->setRequest($request);
+                $approve->setCab($cab);
+
+                $manager->persist($approve);
+            }
+            elseif($i % 2 === 0 ) /* request accomodation and assign cabs */
+            {
+                $accomodation = new RequestAccomodation();
+                $accomodation->setNoDays($i);
+                $accomodation->setTotalFee(999.99 + 99.99 * $i);
+                $request->setAccomodation($accomodation);
 
                 $cab = new ApprovedCab();
                 $cab->setCabService($cab_services[0]);
                 $cab->setCost(999.99 + 9.99 * $i);
 
+                $approve = new ApprovedRequest();
+                $approve->setRequest($request);
                 $approve->setCab($cab);
                 $manager->persist($approve);
             }
