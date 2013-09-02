@@ -2,6 +2,7 @@
 
 namespace Panda86\AppBundle\Form;
 
+use Panda86\AppBundle\Entity\RequestAccomodation;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -54,10 +55,7 @@ class RequestType extends AbstractType
             ->add('purpose', 'text', array(
                 'label' => false,
             ))
-            ->add('accomodation_fee', 'text', array(
-                'label' => false,
-            ))
-            ->add('accomodation_info', 'textarea', array(
+            ->add('accomodation', new RequestAccomodationType(), array(
                 'label' => false,
             ))
             ->add('accompanied_by', 'entity',array(

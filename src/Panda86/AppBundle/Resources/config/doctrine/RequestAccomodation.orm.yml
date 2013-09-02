@@ -20,4 +20,5 @@ Panda86\AppBundle\Entity\RequestAccomodation:
         descrip:
             type: string
             length: 255
+            nullable: true
     lifecycleCallbacks: {  }
