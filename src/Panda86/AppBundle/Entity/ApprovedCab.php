@@ -136,4 +136,32 @@ class ApprovedCab
     {
         return $this->cab_service;
     }
+    /**
+     * @var string
+     */
+    private $cost;
+
+
+    /**
+     * Set cost
+     *
+     * @param string $cost
+     * @return ApprovedCab
+     */
+    public function setCost($cost)
+    {
+        $this->cost = $cost;
+
+        return $this;
+    }
+
+    /**
+     * Get cost
+     *
+     * @return string 
+     */
+    public function getCost()
+    {
+        return $this->cost;
+    }
 }

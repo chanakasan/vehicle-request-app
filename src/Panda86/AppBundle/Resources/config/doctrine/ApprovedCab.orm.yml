@@ -16,6 +16,10 @@ Panda86\AppBundle\Entity\ApprovedCab:
             type: string
             length: '16'
             nullable: true
+        cost:
+            type: string
+            length: '16'
+            nullable: true
         other_info:
             type: string
             length: '255'
