@@ -57,6 +57,7 @@ class RequestType extends AbstractType
             ))
             ->add('accomodation', new RequestAccomodationType(), array(
                 'label' => false,
+                'required' => false,
             ))
             ->add('accompanied_by', 'entity',array(
                 'class' => 'Panda86AppBundle:Employee',
