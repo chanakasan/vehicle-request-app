@@ -1,0 +1,23 @@
+Panda86\AppBundle\Entity\RequestAccomodation:
+    type: entity
+    table: hr_accomodation
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        no_days:
+            type: integer
+            length: '4'
+        day_rate:
+            type: string
+            length: '32'
+        total_fee:
+            type: string
+            length: '32'
+        descrip:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }
