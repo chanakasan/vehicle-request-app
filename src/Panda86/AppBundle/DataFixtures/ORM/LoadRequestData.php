@@ -5,6 +5,8 @@ namespace Panda86\AppBundle\DataFixtures\ORM;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
+use Panda86\AppBundle\Entity\ApprovedCab;
+use Panda86\AppBundle\Entity\ApprovedRequest;
 use Panda86\AppBundle\Entity\Request;
 use Panda86\AppBundle\Entity\RequestLink;
 
@@ -64,6 +66,7 @@ class LoadRequestData extends AbstractFixture implements OrderedFixtureInterface
 
         $employees = $manager->getRepository('Panda86AppBundle:Employee')->findAll();
         $vtypes = $manager->getRepository('Panda86AppBundle:VType')->findAll();
+        $cab_services = $manager->getRepository('Panda86AppBundle:CabService')->findAll();
 
         $request1 = new Request($req1);
         $request1->setVType($vtypes[0]);
@@ -103,7 +106,7 @@ class LoadRequestData extends AbstractFixture implements OrderedFixtureInterface
 
         $j = 1;
         /* Add some more requests */
-        for($i=0; $i<20; $i++)
+        for($i=0; $i<50; $i++)
         {
             if($j < 9) $j++;
             $req_data = array(
@@ -114,12 +117,25 @@ class LoadRequestData extends AbstractFixture implements OrderedFixtureInterface
                 'destination' => 'Colombo',
                 'purpose' => 'Meeting'
             );
-
             $request = new Request($req_data);
             $request->setRequester($employees[0]);
             $request->setVType($vtypes[0]);
 
             $manager->persist($request);
+
+            if($i % 3 === 0 )
+            {
+                $approve = new ApprovedRequest();
+                $approve->setRequest($request);
+
+                $cab = new ApprovedCab();
+                $cab->setCabService($cab_services[0]);
+                $cab->setCost(999.99 + 9.99 * $i);
+
+                $approve->setCab($cab);
+                $manager->persist($approve);
+            }
+
         }
         $manager->flush();
     }

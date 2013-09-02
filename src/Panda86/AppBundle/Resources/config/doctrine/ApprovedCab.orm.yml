@@ -17,8 +17,9 @@ Panda86\AppBundle\Entity\ApprovedCab:
             length: '16'
             nullable: true
         cost:
-            type: string
-            length: '16'
+            type: decimal
+            precision: 7
+            scale: 2
             nullable: true
         other_info:
             type: string

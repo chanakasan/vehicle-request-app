@@ -9,21 +9,12 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class ApprovedCab
 {
+
     /**
      * @var integer
      */
     private $id;
 
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
     /**
      * @var string
      */
@@ -35,10 +26,30 @@ class ApprovedCab
     private $mileage;
 
     /**
+     * @var float
+     */
+    private $cost;
+
+    /**
      * @var string
      */
     private $other_info;
 
+    /**
+     * @var \Panda86\AppBundle\Entity\CabService
+     */
+    private $cab_service;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
      * Set voucher_no
@@ -87,6 +98,29 @@ class ApprovedCab
     }
 
     /**
+     * Set cost
+     *
+     * @param float $cost
+     * @return ApprovedCab
+     */
+    public function setCost($cost)
+    {
+        $this->cost = $cost;
+
+        return $this;
+    }
+
+    /**
+     * Get cost
+     *
+     * @return float 
+     */
+    public function getCost()
+    {
+        return $this->cost;
+    }
+
+    /**
      * Set other_info
      *
      * @param string $otherInfo
@@ -108,11 +142,6 @@ class ApprovedCab
     {
         return $this->other_info;
     }
-    /**
-     * @var \Panda86\AppBundle\Entity\CabService
-     */
-    private $cab_service;
-
 
     /**
      * Set cab_service
@@ -135,33 +164,5 @@ class ApprovedCab
     public function getCabService()
     {
         return $this->cab_service;
-    }
-    /**
-     * @var string
-     */
-    private $cost;
-
-
-    /**
-     * Set cost
-     *
-     * @param string $cost
-     * @return ApprovedCab
-     */
-    public function setCost($cost)
-    {
-        $this->cost = $cost;
-
-        return $this;
-    }
-
-    /**
-     * Get cost
-     *
-     * @return string 
-     */
-    public function getCost()
-    {
-        return $this->cost;
     }
 }
