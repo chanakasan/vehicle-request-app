@@ -4,6 +4,7 @@ body {
 
 #main-container {
     background-color: #FFF;
+    padding: 0 20px;
 }
 
 #main-container, #top, #bottom {
@@ -23,27 +24,24 @@ body {
     margin:0 auto;
 }
 
-/* table */
+/* data table */
 table {
     display: table;
     border-collapse: separate;
     border-spacing: 1px;
     border-color: gray;
+    background: rgb(0, 122, 182);
 }
-
 table th {
     color: #ebebeb;
 }
 
-#requests_list {
-    /*background: rgba(126, 160, 174, 0.7);*/
-    background: rgb(0, 122, 182);
+div#request_list_info {
+    padding-bottom: 8px;
 }
-
 div.dataTables_info {
     font-size: 1em;
 }
-
 .dt-table {
     min-height: 470px; /* keep pagination position fixed */
 }

@@ -1,20 +1,7 @@
-/* Base Styles for DataTables
-
-/*div.dataTables_length label {*/
-	/*width: 460px;*/
-	/*float: left;*/
-	/*text-align: left;*/
-/*}*/
-
-/*div.dataTables_length select {*/
-	/*width: 75px;*/
-/*}*/
-
-/*div.dataTables_filter label {*/
-	/*float: right;*/
-	/*width: 460px;*/
-/*}*/
-
+/* Base Styles for DataTables */
+select {
+    width: auto;
+}
 div.dataTables_info {
 	padding-top: 8px;
 }
