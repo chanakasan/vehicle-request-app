@@ -101,26 +101,6 @@ class LoadRequestData extends AbstractFixture implements OrderedFixtureInterface
         $manager->persist($request4);
         $manager->persist($request5);
 
-        $req1Link = new RequestLink();
-        $req1Link->setRequest($request1);
-        $manager->persist($req1Link);
-
-        $req2Link = new RequestLink();
-        $req2Link->setRequest($request2);
-        $manager->persist($req2Link);
-
-        $req3Link = new RequestLink();
-        $req3Link->setRequest($request3);
-        $manager->persist($req3Link);
-
-        $req4Link = new RequestLink();
-        $req4Link->setRequest($request4);
-        $manager->persist($req4Link);
-
-        $req5Link = new RequestLink();
-        $req5Link->setRequest($request5);
-        $manager->persist($req5Link);
-
         $j = 1;
         /* Add some more requests */
         for($i=0; $i<20; $i++)
@@ -140,11 +120,6 @@ class LoadRequestData extends AbstractFixture implements OrderedFixtureInterface
             $request->setVType($vtypes[0]);
 
             $manager->persist($request);
-
-            $reqLink = new RequestLink();
-            $reqLink->setRequest($request);
-            $manager->persist($reqLink);
-
         }
         $manager->flush();
     }

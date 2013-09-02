@@ -43,6 +43,10 @@ Panda86\AppBundle\Entity\Request:
         updated_at:
             type: datetime
     oneToOne:
+        link:
+          targetEntity: RequestLink
+          mappedBy: request
+          cascade: ['persist']
         accomodation:
           targetEntity: RequestAccomodation
           joinColumn:

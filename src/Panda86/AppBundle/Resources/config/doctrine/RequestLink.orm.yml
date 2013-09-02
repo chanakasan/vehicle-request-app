@@ -14,6 +14,7 @@ Panda86\AppBundle\Entity\RequestLink:
     oneToOne:
         request:
           targetEntity: Request
+          inversedBy: link
           joinColumn:
             name: request_id
             nullable: false

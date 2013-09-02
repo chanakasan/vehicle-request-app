@@ -4,6 +4,7 @@ namespace Panda86\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Panda86\AppBundle\Entity\Base;
+use Panda86\AppBundle\Entity\RequestLink;
 
 class Request extends Base {
 
@@ -72,6 +73,10 @@ class Request extends Base {
         $this->active = true;
         $this->created_at = new \DateTime('now');
         $this->updated_at = new \DateTime('now');
+
+        $req_link = new RequestLink();
+        $req_link->setRequest($this);
+        $this->link = $req_link;
 
         parent::__construct($options);
     }
@@ -550,5 +555,33 @@ class Request extends Base {
     public function getAccompaniedBy()
     {
         return $this->accompanied_by;
+    }
+    /**
+     * @var \Panda86\AppBundle\Entity\RequestLink
+     */
+    private $link;
+
+
+    /**
+     * Set link
+     *
+     * @param \Panda86\AppBundle\Entity\RequestLink $link
+     * @return Request
+     */
+    public function setLink(\Panda86\AppBundle\Entity\RequestLink $link = null)
+    {
+        $this->link = $link;
+
+        return $this;
+    }
+
+    /**
+     * Get link
+     *
+     * @return \Panda86\AppBundle\Entity\RequestLink 
+     */
+    public function getLink()
+    {
+        return $this->link;
     }
 }
