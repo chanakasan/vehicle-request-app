@@ -53,6 +53,13 @@ class ApproveController extends Controller
      */
     public function newAction($req_id)
     {
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('Panda86AppBundle:Request')->find($req_id);
+
+        if(!$entity || $entity->getStatus() != 0)
+        {
+            throw $this->createNotFoundException('Can\'t approve the request with id '.$req_id);
+        }
         $entity = new ApprovedRequest();
         $form   = $this->createForm(new ApprovedRequestType(), $entity);
 

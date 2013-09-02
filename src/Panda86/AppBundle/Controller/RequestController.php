@@ -45,7 +45,10 @@ class RequestController extends Controller
         $entity = $em->getRepository('Panda86AppBundle:Request')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find RequestEmployee entity.');
+            $this->get('session')->getFlashBag()->add(
+                'error',
+                'Oops! looks like something went wrong.'
+            );
         }
 
         return $this->render('Panda86AppBundle:Request:show.html.twig', array(
