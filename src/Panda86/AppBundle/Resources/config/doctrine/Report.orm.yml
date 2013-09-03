@@ -1,0 +1,13 @@
+Panda86\AppBundle\Entity\Report:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        report:
+            type: text
+    lifecycleCallbacks: {  }
