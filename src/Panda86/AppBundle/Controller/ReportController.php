@@ -4,6 +4,7 @@ namespace Panda86\AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 class ReportController extends Controller
 {
@@ -21,7 +22,7 @@ class ReportController extends Controller
     {
         if($type == 'cabs')
         {
-            return $this->_downloadxls();
+            return $this->_cabReport();
         }
     }
 
@@ -39,7 +40,22 @@ class ReportController extends Controller
 
     public function _cabReport()
     {
+        $em = $this->getDoctrine()->getManager();
+        $entities = $em->getRepository('Panda86AppBundle:Report')->findCostForCabs();
 
+        $filename = 'report_'.date("YmdHis").'.xls';
+        $content = $this->render(
+            'Panda86AppBundle:Report:cost-for-cabs.xml.twig', array(
+            'entities' => $entities,
+            'report_time' => new \DateTime('now')
+        ));
+
+        $response = new Response();
+        $response->headers->set('Content-Type', 'application/xls');
+        $response->headers->set('Content-Disposition', 'attachment;filename="'.$filename);
+
+        $response->setContent($content);
+        return $response;
     }
 
     public function _downloadcsv()
