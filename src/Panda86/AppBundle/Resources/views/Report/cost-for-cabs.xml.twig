@@ -62,7 +62,7 @@
     </Style>
 </Styles>
 <Worksheet ss:Name="Sheet1">
-    <Table ss:ExpandedColumnCount="8" ss:ExpandedRowCount="14" x:FullColumns="1"
+    <Table ss:ExpandedColumnCount="8" x:FullColumns="1"
            x:FullRows="1" ss:DefaultRowHeight="15">
         <Column ss:AutoFitWidth="0" ss:Width="66"/>
         <Column ss:AutoFitWidth="0" ss:Width="115.5"/>
@@ -122,70 +122,28 @@
             <Cell ss:StyleID="s119"><Data ss:Type="String">Requester name</Data></Cell>
             <Cell ss:StyleID="s119"><Data ss:Type="String">Cab service name</Data></Cell>
             <Cell ss:StyleID="s119"><Data ss:Type="String">Cab voucher no.</Data></Cell>
-            <Cell ss:StyleID="s119"><Data ss:Type="String">Mileage</Data></Cell>
+            <Cell ss:StyleID="s119"><Data ss:Type="String">Mileage (km)</Data></Cell>
             <Cell ss:StyleID="s119"><Data ss:Type="String">Rate</Data></Cell>
             <Cell ss:StyleID="s119"><Data ss:Type="String">Cost (Rs.)</Data></Cell>
         </Row>
+        {% for entity in entities %}
         <Row>
-            <Cell ss:StyleID="s120"><Data ss:Type="Number">45</Data></Cell>
-            <Cell ss:StyleID="s120"><Data ss:Type="String">Chanaka Sandaruwan</Data></Cell>
-            <Cell ss:StyleID="s120"><Data ss:Type="String">Kangaroo</Data></Cell>
-            <Cell ss:StyleID="s120"><Data ss:Type="String">v794549456</Data></Cell>
-            <Cell ss:StyleID="s120"/>
-            <Cell ss:StyleID="s120"/>
-            <Cell ss:StyleID="s120"><Data ss:Type="Number">5000.49</Data></Cell>
+            <Cell ss:StyleID="s120"><Data ss:Type="Number">{{ entity.getrequest.getid }}</Data></Cell>
+            <Cell ss:StyleID="s120"><Data ss:Type="String">{{ entity.getrequest.getrequester.getname }}</Data></Cell>
+            <Cell ss:StyleID="s120"><Data ss:Type="String">{{ entity.getcab.getcabservice.getname }}</Data></Cell>
+            <Cell ss:StyleID="s120"><Data ss:Type="String">{{ entity.getcab.getcabservice.getvoucherno }}</Data></Cell>
+            <Cell ss:StyleID="s120"><Data ss:Type="Number">{{ entity.getcab.getcabservice.getmileage }}</Data></Cell>
+            <Cell ss:StyleID="s120"><Data ss:Type="Number">{{ entity.getcab.getcabservice.getrate }}</Data></Cell>
+            <Cell ss:StyleID="s120"><Data ss:Type="Number">{{ entity.getcab.getcost }}</Data></Cell>
         </Row>
-        <Row>
-            <Cell ss:StyleID="s120"/>
-            <Cell ss:StyleID="s120"/>
-            <Cell ss:StyleID="s120"/>
-            <Cell ss:StyleID="s120"/>
-            <Cell ss:StyleID="s120"/>
-            <Cell ss:StyleID="s120"/>
-            <Cell ss:StyleID="s120"/>
-        </Row>
-        <Row>
-            <Cell ss:StyleID="s120"/>
-            <Cell ss:StyleID="s120"/>
-            <Cell ss:StyleID="s120"/>
-            <Cell ss:StyleID="s120"/>
-            <Cell ss:StyleID="s120"/>
-            <Cell ss:StyleID="s120"/>
-            <Cell ss:StyleID="s120"/>
-        </Row>
-        <Row>
-            <Cell ss:StyleID="s120"/>
-            <Cell ss:StyleID="s120"/>
-            <Cell ss:StyleID="s120"/>
-            <Cell ss:StyleID="s120"/>
-            <Cell ss:StyleID="s120"/>
-            <Cell ss:StyleID="s120"/>
-            <Cell ss:StyleID="s120"/>
-        </Row>
-        <Row>
-            <Cell ss:StyleID="s120"/>
-            <Cell ss:StyleID="s120"/>
-            <Cell ss:StyleID="s120"/>
-            <Cell ss:StyleID="s120"/>
-            <Cell ss:StyleID="s120"/>
-            <Cell ss:StyleID="s120"/>
-            <Cell ss:StyleID="s120"/>
-        </Row>
-        <Row>
-            <Cell ss:StyleID="s120"/>
-            <Cell ss:StyleID="s120"/>
-            <Cell ss:StyleID="s120"/>
-            <Cell ss:StyleID="s120"/>
-            <Cell ss:StyleID="s120"/>
-            <Cell ss:StyleID="s120"/>
-            <Cell ss:StyleID="s120"/>
-        </Row>
+        {% endfor %}
     </Table>
     <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
         <PageSetup>
             <Header x:Margin="0.3"/>
             <Footer x:Margin="0.3"/>
             <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+            <Layout x:Orientation="Landscape"/>
         </PageSetup>
         <Print>
             <ValidPrinterInfo/>
@@ -200,34 +158,6 @@
                 <ActiveCol>1</ActiveCol>
             </Pane>
         </Panes>
-        <ProtectObjects>False</ProtectObjects>
-        <ProtectScenarios>False</ProtectScenarios>
-    </WorksheetOptions>
-</Worksheet>
-<Worksheet ss:Name="Sheet2">
-    <Table ss:ExpandedColumnCount="1" ss:ExpandedRowCount="1" x:FullColumns="1"
-           x:FullRows="1" ss:DefaultRowHeight="15">
-    </Table>
-    <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
-        <PageSetup>
-            <Header x:Margin="0.3"/>
-            <Footer x:Margin="0.3"/>
-            <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
-        </PageSetup>
-        <ProtectObjects>False</ProtectObjects>
-        <ProtectScenarios>False</ProtectScenarios>
-    </WorksheetOptions>
-</Worksheet>
-<Worksheet ss:Name="Sheet3">
-    <Table ss:ExpandedColumnCount="1" ss:ExpandedRowCount="1" x:FullColumns="1"
-           x:FullRows="1" ss:DefaultRowHeight="15">
-    </Table>
-    <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
-        <PageSetup>
-            <Header x:Margin="0.3"/>
-            <Footer x:Margin="0.3"/>
-            <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
-        </PageSetup>
         <ProtectObjects>False</ProtectObjects>
         <ProtectScenarios>False</ProtectScenarios>
     </WorksheetOptions>
