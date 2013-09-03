@@ -5,20 +5,51 @@
 {% endblock %}
 
 {% block body %}
-    <h2>Reports page</h2>
-    <br/>
-    <p>
-        Download links:
-    </p>
-    <ul>
-        <li>
-            <a href="{{ path('report_downloadcsv') }}">CSV</a>
-        </li>
-        <li>
-            <a href="{{ path('report_downloadxls') }}">Excel</a>
-        </li>
-    </ul>
-    <br/>
-    <p>Query results:</p>
-    <pre>{{ dump(results) }}</pre>
+<div class="row">
+    <div class="span12">
+        <h3>Reports page</h3>
+    </div>
+</div>
+<br/>
+<div class="row">
+    <div class="span12">
+        <form class="form-horizontal" action="{{ path('report_downloadxls') }}" method="get">
+            <fieldset>
+
+                <!-- Form Name -->
+                <legend>Set parameters</legend>
+
+                <!-- Multiple Checkboxes -->
+                <div class="control-group">
+                    <label class="control-label" for="filters">Filters :</label>
+                    <div class="controls">
+                        <label class="checkbox" for="filters-0">
+                            <input name="filters" id="filters-0" value="Cost for cabs" type="checkbox">
+                            Cost for cabs
+                        </label>
+                        <label class="checkbox" for="filters-1">
+                            <input name="filters" id="filters-1" value="Cost for accomodations" type="checkbox">
+                            Cost for accomodations
+                        </label>
+                    </div>
+                </div>
+                <!-- Button -->
+                <div class="control-group">
+                    <label class="control-label" for="singlebutton"></label>
+                    <div class="controls">
+                        <button id="singlebutton" name="singlebutton" class="btn btn-default">Generate report</button>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+    </div>
+</div>
+<br/><hr/>
+<div class="row">
+    <div class="span12">
+        <p>Query results:</p>
+        <pre>{{ dump(results) }}</pre>
+    </div>
+</div>
 {% endblock %}
