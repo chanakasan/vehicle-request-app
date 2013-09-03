@@ -9,7 +9,12 @@ class ReportController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('Panda86AppBundle:Report:index.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $results = $em->getRepository('Panda86AppBundle:Report')->findAll();
+
+        return $this->render('Panda86AppBundle:Report:index.html.twig', array(
+            'results' => $results
+        ));
     }
 
     public function downloadcsvAction()

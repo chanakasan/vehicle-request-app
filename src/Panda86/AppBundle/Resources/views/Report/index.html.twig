@@ -1,7 +1,10 @@
 {% extends '::admin-app.html.twig' %}
 
+{% block title %}
+    {{ parent() }} - Reports
+{% endblock %}
+
 {% block body %}
-    <br/>
     <h2>Reports page</h2>
     <br/>
     <p>
@@ -15,4 +18,7 @@
             <a href="{{ path('report_downloadxls') }}">Excel</a>
         </li>
     </ul>
+    <br/>
+    <p>Query results:</p>
+    <pre>{{ dump(results) }}</pre>
 {% endblock %}

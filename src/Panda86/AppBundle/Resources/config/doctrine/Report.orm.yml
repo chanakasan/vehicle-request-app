@@ -1,6 +1,7 @@
 Panda86\AppBundle\Entity\Report:
     type: entity
-    table: null
+    table: hr_report
+    repositoryClass: Panda86\AppBundle\Entity\ReportRepository
     id:
         id:
             type: integer
