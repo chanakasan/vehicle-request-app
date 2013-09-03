@@ -1,19 +1,20 @@
 {% extends '::admin-app.html.twig' %}
-    {% block stylesheets %}
-        {{ parent() }}
-        <link rel="stylesheet" type="text/css" href="/assets/DataTables/dataTables.css">
-        <link rel="stylesheet" type="text/css" href="/app/css/common/list.css" media="all">
-    {% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
 {% block body %}
+    <br/>
     <div class="row">
         <div class="span10 offset1">
-            <h2>{{ heading }}</h2>
-            <table class="table table-striped">
-                {% block table %}{% endblock %}
-            </table>
-            <p>
-                <a class="btn btn-success" href="{{ newBtn_url }}"><strong>+</strong> New</a>
-            </p>
+            <h3>{{ heading }}</h3>
+            <br/>
+            {% block table %}
+                <p>
+                    <a class="btn btn-success" href="{{ newBtn_url }}"><strong>+</strong> New</a>
+                </p>
+            {% endblock %}
         </div>
     </div>
 {% endblock %}

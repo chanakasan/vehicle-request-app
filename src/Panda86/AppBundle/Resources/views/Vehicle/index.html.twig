@@ -1,29 +1,25 @@
 {% extends 'Panda86AppBundle::list-view.html.twig' %}
 
-{% set heading = 'Vehicles\' details' %}
+{% block title %}
+    {{ parent() }} - List of vehicles
+{% endblock %}
+{% set heading = 'List of vehicles' %}
 {% set newBtn_url = path('vehicle_new') %}
+
 {% block table %}
-    <table class="records_list table table-striped">
+    <table class="table table-striped">
         <thead>
         <tr>
-            <th>Id</th>
             <th>Vehicle</th>
-            <th>Reg. No.</th>
             <th>Category</th>
-            <th>Passengers</th>
-            <th>Date added</th>
             <th>Actions</th>
         </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('vehicle_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.make }} {{ entity.model }}</td>
-                <td>{{ entity.regno }}</td>
+                <td>{{ entity.make }} {{ entity.model }} {{ entity.regno }}</td>
                 <td>{{ entity.vtype.name }}</td>
-                <td>{{ entity.passengers }}</td>
-                <td>{% if entity.wasadded %}{{ entity.wasadded|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>
                     <ul>
                         <li>
@@ -38,4 +34,5 @@
         {% endfor %}
         </tbody>
     </table>
+    {{ parent() }}
 {% endblock %}

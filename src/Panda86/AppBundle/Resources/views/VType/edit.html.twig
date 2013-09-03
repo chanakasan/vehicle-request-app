@@ -1,4 +1,4 @@
-{% extends 'Panda86AppBundle::edit-view.html.twig' %}
+{% extends 'Panda86AppBundle::create-view.html.twig' %}
 
 {% set closeBtn_url = path('vtype') %}
 {% block form %}
@@ -7,23 +7,67 @@
         <input type="hidden" name="_method" value="PUT"/>
 
         <div class="form_description">
-            <h2>Edit category</h2><br/>
+            <h2>Edit vehicle type</h2><br/>
         </div>
-        {{ form_widget(edit_form) }}
+        <!-- form validation -->
+        {{ form_errors(edit_form) }}
+        {{ form_widget(edit_form._token) }}
+
+        <div class="control-group">
+            <label class="control-label">Type</label>
+
+            <div class="controls">
+                {% set attr = {'class': 'name-part','placeholder': 'e.g. Car, Jeep, Mini Van', 'required': 'required'} %}
+                {{ form_row(edit_form.type, {'attr': attr }) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">Passenger count</label>
+
+            <div class="controls">
+                {% set attr = {'class': 'name-part', 'required': 'required'} %}
+                {{ form_row(edit_form.passengers, {'attr': attr }) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">Desciption</label>
+
+            <div class="controls">
+                {% set attr = {} %}
+                {{ form_row(edit_form.descrip, {'attr': attr }) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">Display name</label>
+
+            <div class="controls">
+                {{ form_row(edit_form.name, {'attr':{'disabled':'disabled', 'placeholder': '... auto-completed'} }) }}
+            </div>
+        </div>
         <br/>
-        <div class="row">
-            <div class="span2" style="text-align:center">
-                <button class="btn btn-success" type="submit" formnovalidate="">Save</button>
+        <div class="control-group">
+            <div class="controls">
+                <input class="btn btn-success" type="submit" value="Save changes"/>
             </div>
         </div>
     </form>
+{% endblock %}
+{% block del_form %}
     <div class="row">
-        <div class="span2" style="text-align:center">
+        <div class="span4 offset2">
             <form action="{{ path('vtype_delete', { 'id': entity.id }) }}" method="post">
                 <input type="hidden" name="_method" value="DELETE"/>
                 {{ form_widget(delete_form) }}
-                <button id="del_entry" class="btn btn-danger" type="submit">Remove</button>
+                <div class="control-group">
+                    <div class="controls">
+                        <input id="del_entry" class="btn btn-danger" type="submit" value="Remove"/>
+                    </div>
+                </div>
             </form>
         </div>
     </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="/app/js/vtype/new.js"></script>
 {% endblock %}

@@ -45,7 +45,10 @@ class RequestController extends Controller
         $entity = $em->getRepository('Panda86AppBundle:Request')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find RequestEmployee entity.');
+            $this->get('session')->getFlashBag()->add(
+                'error',
+                'Oops! looks like something went wrong.'
+            );
         }
 
         return $this->render('Panda86AppBundle:Request:show.html.twig', array(
@@ -114,16 +117,11 @@ class RequestController extends Controller
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
-            /* create a random code link to request */
-            $reqLink = new RequestLink();
-            $reqLink->setRequest($entity);
-            $em->persist($reqLink);
-
             $em->flush();
 
             $flashmsg = "Your request has been sent! ";
 
-            $code  = $reqLink->getCode();
+            $code  = $entity->getLink()->getCode();
             $email = $entity->getRequester()->getEmail();
 
             if($this->_sendMail($email, $entity, $code))

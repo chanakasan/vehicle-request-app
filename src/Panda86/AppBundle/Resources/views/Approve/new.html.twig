@@ -1,5 +1,9 @@
 {% extends 'Panda86AppBundle::create-view.html.twig' %}
 
+{% block title %}
+    {{ parent() }} - Approve request #{{ req_id }}
+{% endblock %}
+
 {% set closeBtn_url = path('request_list') %}
 {% block form %}
     <form id="approve_form" class="appnitro form-horizontal" action="{{ path('approve_create') }}"
@@ -7,9 +11,9 @@
         {{ form_errors(form) }}
         {{ form_widget(form._token) }}
         <div class="form_description">
-            <h2>Approve request</h2><br/>
+            <h2>Approve request #{{ req_id }}</h2><br/>
         </div>
-        <div id="req_info" style="padding:10px; border: solid 0.5px">
+        <div id="req_info" style="padding:10px; border: solid 0.5px #c3c3c3">
             {% render controller('Panda86AppBundle:Request:show', { 'id': req_id, 'embed': true }) %}
         </div>
         <br/>
@@ -42,7 +46,7 @@
             </div>
         </div>
 
-        <div id="div_company_vehicle" style="border:solid 1px black">
+        <div id="div_company_vehicle" style="border:solid 1px #c3c3c3">
             <p>Company vehicle info</p>
             <div class="control-group">
                 <label class="control-label">Vehicle
@@ -65,7 +69,7 @@
                 </div>
             </div>
         </div>
-        <div id="div_cab_service" style="border:solid 1px black">
+        <div id="div_cab_service" style="border:solid 1px #c3c3c3">
             <p>Cab info</p>
             <div class="control-group">
                 <div class="control-group">

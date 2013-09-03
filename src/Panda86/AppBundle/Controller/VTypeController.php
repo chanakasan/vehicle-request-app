@@ -53,7 +53,7 @@ class VTypeController extends Controller
                 'success',
                 $flashmsg
             );
-            return $this->redirect($this->generateUrl('vtype', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('vtype'));
         }
 
         return $this->render('Panda86AppBundle:VType:new.html.twig', array(
@@ -84,12 +84,8 @@ class VTypeController extends Controller
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-
         $entity = $em->getRepository('Panda86AppBundle:VType')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find VType entity.');
-        }
+        $this->_checkResult($entity, 'vtype');
 
         $editForm = $this->createForm(new VTypeType(), $entity);
         $deleteForm = $this->createDeleteForm($id);
@@ -108,22 +104,27 @@ class VTypeController extends Controller
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
-
         $entity = $em->getRepository('Panda86AppBundle:VType')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find VType entity.');
-        }
+        $this->_checkResult($entity, 'vtype');
 
         $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createForm(new VTypeType(), $entity);
         $editForm->handleRequest($request);
 
-        if ($editForm->isValid()) {
+        if ($this->getRequest()->getMethod() == 'PUT') {
+            $params = $request->get('vtype');
+            $entity->setType($params['type']);
+            $entity->setPassengers($params['passengers']);
+            $entity->setName($params['name']);
+
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('vtype', array('id' => $id)));
+            $this->get('session')->getFlashBag()->add(
+                'success',
+                'Changes has been saved!'
+            );
+            return $this->redirect($this->generateUrl('vtype'));
         }
 
         return $this->render('Panda86AppBundle:VType:edit.html.twig', array(
@@ -142,18 +143,35 @@ class VTypeController extends Controller
         $form = $this->createDeleteForm($id);
         $form->handleRequest($request);
 
-        if ($form->isValid()) {
+        if ($this->getRequest()->getMethod() == 'DELETE') {
             $em = $this->getDoctrine()->getManager();
             $entity = $em->getRepository('Panda86AppBundle:VType')->find($id);
+            $this->_checkResult($entity, 'vtype');
 
-            if (!$entity) {
-                throw $this->createNotFoundException('Unable to find VType entity.');
+            $vehicles = $entity->getVehicles();
+            if(count($vehicles) > 0)
+            {
+                $v_list = '[ ';
+                foreach($vehicles as $vehicle)
+                {
+                    $v_list.= $vehicle->getMake().' '.$vehicle->getModel().' '.$vehicle->getRegNo().' ... ';
+                }
+                $v_list.= ']';
+                $this->get('session')->getFlashBag()->add(
+                    'error',
+                    'There are vehicles assigned to this vehicle type.
+                    Please change the type of the vehicles listed below before you can delete this entry. i.e. '.$v_list
+                );
+                return $this->redirect($this->generateUrl('vtype_edit', array('id' => $id)));
             }
-
             $em->remove($entity);
             $em->flush();
-        }
 
+            $this->get('session')->getFlashBag()->add(
+                'success',
+                $entity->getName().' has been deleted!'
+            );
+        }
         return $this->redirect($this->generateUrl('vtype'));
     }
 
@@ -170,5 +188,22 @@ class VTypeController extends Controller
             ->add('id', 'hidden')
             ->getForm()
         ;
+    }
+
+    private function _checkResult($entity, $redirectRoute)
+    {
+        try {
+            if (!$entity) {
+                throw $this->createNotFoundException('Unable to find VType entity.');
+            }
+        }
+        catch(\Exception $e)
+        {
+            $this->get('session')->getFlashBag()->add(
+                'error',
+                'Oops! looks like something went wrong.'
+            );
+            return $this->redirect($this->generateUrl($redirectRoute));
+        }
     }
 }

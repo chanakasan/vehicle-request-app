@@ -65,6 +65,13 @@ class DisapproveController extends Controller
      */
     public function newAction($req_id)
     {
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('Panda86AppBundle:Request')->find($req_id);
+
+        if(!$entity || $entity->getStatus() != 0)
+        {
+            throw $this->createNotFoundException('Can\'t disapprove the request with id '.$req_id);
+        }
         $entity = new DisapprovedRequest();
         $form   = $this->createForm(new DisapprovedRequestType(), $entity);
 

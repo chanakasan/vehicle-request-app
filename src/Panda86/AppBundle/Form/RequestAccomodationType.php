@@ -6,22 +6,15 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class ApprovedCabType extends AbstractType
+class RequestAccomodationType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('cab_service', 'entity', array(
-                'empty_value' => '--',
-                'class' => 'Panda86AppBundle:CabService',
-                'property' => 'name',
-            ))
-            ->add('voucher_no')
-            ->add('mileage')
-            ->add('cost', null, array(
-                'required' => false,
-            ))
-            ->add('other_info', 'textarea', array(
+            ->add('no_days')
+            ->add('day_rate')
+            ->add('total_fee')
+            ->add('descrip', 'textarea', array(
                 'required' => false,
             ))
         ;
@@ -31,12 +24,12 @@ class ApprovedCabType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Panda86\AppBundle\Entity\ApprovedCab',
+            'data_class' => 'Panda86\AppBundle\Entity\RequestAccomodation',
         ));
     }
 
     public function getName()
     {
-        return 'cab';
+        return 'accomodation';
     }
 }

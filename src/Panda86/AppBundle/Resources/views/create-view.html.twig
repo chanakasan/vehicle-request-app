@@ -7,9 +7,11 @@
 
 {% block content %}
     {% block form %}{% endblock %}
+    {% block del_form %}{% endblock %}
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
     <script src="/assets/jquery.validate.js"></script>
+    <script src="/app/js/common/forms.js"></script>
 {% endblock %}

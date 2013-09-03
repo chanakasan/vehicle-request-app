@@ -1,12 +1,13 @@
 {% extends 'Panda86AppBundle::list-view.html.twig' %}
 
 {% block title %}
-    {{ parent() }} - Vehicle types
+    {{ parent() }} - List of vehicle types
 {% endblock %}
-{% set heading = 'Vehicle Types' %}
+{% set heading = 'List of vehicle types' %}
 {% set newBtn_url = path('vtype_new') %}
 
 {% block table %}
+<table class="table table-striped">
     <thead>
     <tr>
         <th>Name</th>
@@ -29,4 +30,6 @@
         </tr>
     {% endfor %}
     </tbody>
+    </table>
+    {{ parent() }}
 {% endblock %}
