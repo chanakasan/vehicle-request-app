@@ -10,11 +10,16 @@ class ReportController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $results = $em->getRepository('Panda86AppBundle:Report')->findAll();
+        $results = $em->getRepository('Panda86AppBundle:Report')->findCostForCabs();
 
         return $this->render('Panda86AppBundle:Report:index.html.twig', array(
             'results' => $results
         ));
+    }
+
+    public function generateAction()
+    {
+
     }
 
     public function downloadcsvAction()

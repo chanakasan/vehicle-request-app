@@ -2,6 +2,10 @@ report_index:
     pattern: /
     defaults: { _controller: "Panda86AppBundle:Report:index" }
 
+report_generate:
+    pattern: /
+    defaults: { _controller: "Panda86AppBundle:Report:generate" }
+
 report_downloadcsv:
     pattern: /download/csv
     defaults: { _controller: "Panda86AppBundle:Report:downloadcsv" }
