@@ -21,3 +21,8 @@ Panda86AppBundle_disapprove:
 Panda86AppBundle_request:
         resource: "@Panda86AppBundle/Resources/config/routing/request.yml"
         prefix:   /a/request
+
+Panda86AppBundle_report:
+        resource: "@Panda86AppBundle/Resources/config/routing/report.yml"
+        prefix:   /s/report
+

@@ -1,0 +1,11 @@
+report_index:
+    pattern: /
+    defaults: { _controller: "Panda86AppBundle:Report:index" }
+
+report_downloadcsv:
+    pattern: /download/csv
+    defaults: { _controller: "Panda86AppBundle:Report:downloadcsv" }
+
+report_downloadxls:
+    pattern: /download/xls
+    defaults: { _controller: "Panda86AppBundle:Report:downloadxls" }
