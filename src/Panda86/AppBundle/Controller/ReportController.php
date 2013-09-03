@@ -17,12 +17,32 @@ class ReportController extends Controller
         ));
     }
 
-    public function generateAction()
+    public function generateAction($type)
+    {
+        if($type == 'cabs')
+        {
+            return $this->_downloadxls();
+        }
+    }
+
+    public function downloadAction($format)
+    {
+        if($format == 'csv')
+        {
+            return $this->_downloadcsv();
+        }
+        elseif($format == 'xls')
+        {
+            return $this->_downloadxls();
+        }
+    }
+
+    public function _cabReport()
     {
 
     }
 
-    public function downloadcsvAction()
+    public function _downloadcsv()
     {
         $filename = 'products.csv';
         $path = $this->get('kernel')->getRootDir(). "/../reports/".$filename;
@@ -37,7 +57,7 @@ class ReportController extends Controller
         return $response;
     }
 
-    public function downloadxlsAction()
+    public function _downloadxls()
     {
         $products = $this->_getProducts();
         $filename = 'products.xls';

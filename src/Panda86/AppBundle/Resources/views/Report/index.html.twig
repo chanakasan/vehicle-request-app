@@ -13,13 +13,27 @@
 <br/>
 <div class="row">
     <div class="span12">
-        <form class="form-horizontal" action="{{ path('report_downloadxls') }}" method="get">
+        <form class="form-horizontal" action="{{ path('report_generate', {'type': 'cabs'}) }}" method="get">
             <fieldset>
 
                 <!-- Form Name -->
                 <legend>Set parameters</legend>
 
-                <!-- Multiple Checkboxes -->
+                <!--Options-->
+                <div class="control-group">
+                    <label class="control-label" for="options">Options</label>
+                    <div class="controls">
+                        <label class="radio" for="options-0">
+                            <input name="options" id="options-0" value="All employees" checked="checked" type="radio">
+                            All employees
+                        </label>
+                        <label class="radio" for="options-1">
+                            <input name="options" id="options-1" value="per employee" type="radio">
+                            per employee
+                        </label>
+                    </div>
+                </div>
+                <!--Filters-->
                 <div class="control-group">
                     <label class="control-label" for="filters">Filters :</label>
                     <div class="controls">
