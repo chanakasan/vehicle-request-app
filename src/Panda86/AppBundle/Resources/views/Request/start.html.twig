@@ -21,10 +21,10 @@
                         <!--/end details -->
                         <br/>
                         <label>No. of days <span style="color: red">*</span></label>
-                        <input class="input-small" id="no_days" name="no_days" type="text" placeholder="e.g. 1, 2, 3…">
+                        <input required class="input-small" id="no_days" name="no_days" type="text" placeholder="e.g. 1, 2, 3…">
                         <span class="help-block">No. of days you wish to use the vehicle.</span>
                         <br/>
-                        <button type="submit" class="btn">Show request form</button>
+                        <input type="submit" class="btn" value="Show request form"/>
                     </fieldset>
                 </form>
                 <div id="footer">
@@ -34,4 +34,10 @@
             <img id="bottom" src="/assets/pform/bottom.png" alt="">
         </div>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="/assets/jquery.validate.js"></script>
+    <script src="/app/js/common/forms.js"></script>
 {% endblock %}
