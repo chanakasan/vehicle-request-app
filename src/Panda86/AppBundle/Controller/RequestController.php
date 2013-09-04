@@ -94,14 +94,25 @@ class RequestController extends Controller
     /**
      * Displays a form to create a new Request entity.
      */
-    public function newAction()
+    public function newAction(Request $request)
     {
         $entity = new EmpRequest();
+
+        if($request->getMethod() == 'POST')
+        {
+            $days = $request->request->get('no_days');
+            if($days)
+            {
+                $entity->setDays($days);
+            }
+        }
         $form   = $this->createForm(new RequestType(), $entity);
 
         return $this->render('Panda86AppBundle:Request:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
+            'days'   => $entity->getDays()
+
         ));
     }
 
