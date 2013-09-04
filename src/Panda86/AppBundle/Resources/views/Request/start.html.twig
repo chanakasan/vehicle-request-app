@@ -11,36 +11,21 @@
             <img id="top" src="/assets/pform/top.png" alt="">
             <div id="form_container">
                 <h1>Header</h1>
-                <form id="start_form" class="appnitro" method="post" action="{{ path('request_new') }}">
-                    <div class="form_description">
-                        <h2>Request a vehicle reservation </h2>
-                    </div>
-                    <ul>
-                        <li class="section_break">
-                            <h3><b>To request a vehicle reservation:</b>
-                                <p></p>
-                                <i>
-                                    <p>1. Please select and fill out a form from below.</p>
-                                    <p>2. Company must approve the request.</p>
-                                    <p>3. Confirmation of the reservation will be notified to you by email.</p>
-                                </i>
-                            </h3>
-                        </li>
+                <form class="appnitro"  method="post" action="{{ path('request_new') }}">
+                    <fieldset>
+                        <legend>Request a vehicle reservation</legend>
+                        <!--details -->
+                        <p>1. Please select and fill out a form from below.</p>
+                        <p>2. Company must approve the request.</p>
+                        <p>3. Confirmation of the reservation will be notified to you by email.</p>
+                        <!--/end details -->
                         <br/>
-                        <li id="li_17">
-                            <label class="description" for="element_17">Vehicle needed for -- no. of days </label>
-
-                            <div>
-                                <select class="element select medium" id="no_days" name="no_days">
-                                    <option value="1" selected="selected">one day</option>
-                                    <option value="2">multiple days</option>
-                                </select>
-                            </div>
-                        </li>
-                        <li class="buttons">
-                            <button id="showForm" name="showForm" type="submit">Show request form</button>
-                        </li>
-                    </ul>
+                        <label>No. of days <span style="color: red">*</span></label>
+                        <input class="input-small" id="no_days" name="no_days" type="text" placeholder="e.g. 1, 2, 3…">
+                        <span class="help-block">No. of days you wish to use the vehicle.</span>
+                        <br/>
+                        <button type="submit" class="btn">Show request form</button>
+                    </fieldset>
                 </form>
                 <div id="footer">
                     <a href="http://www.icta.lk">ICTA | &copy 2013</a>
