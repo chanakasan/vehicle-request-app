@@ -45,7 +45,7 @@ class ReportController extends Controller
 
         $filename = 'report_'.date("YmdHis").'.xls';
         $content = $this->render(
-            'Panda86AppBundle:Report:cost-for-cabs.xml.twig', array(
+            'Panda86AppBundle:Report:cabs.xml.twig', array(
             'entities' => $entities,
             'report_time' => new \DateTime('now')
         ));
