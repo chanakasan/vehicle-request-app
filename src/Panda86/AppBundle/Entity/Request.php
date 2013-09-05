@@ -8,7 +8,7 @@ use Panda86\AppBundle\Entity\RequestLink;
 
 class Request extends Base {
 
-    const DEFAULT_JOURNEY_TYPE = 'single';
+    const DEFAULT_JOURNEY_TYPE = 'SINGLE';
     const DEFAULT_PICKUP_LOC = 'ICTA';
     const DEFAULT_NO_DAYS = 1;
     const DEFAULT_START_TIME = null;
@@ -18,7 +18,7 @@ class Request extends Base {
     const DISAPPROVED_STATUS = 2;
 
     protected $journey_opts = array('SINGLE', 'RETURN');
-    protected $status_opts = array(self::DEFAULT_STATUS, self::APPROVED_STATUS, self::  DISAPPROVED_STATUS);
+    protected $status_opts = array(self::DEFAULT_STATUS, self::APPROVED_STATUS, self::DISAPPROVED_STATUS);
 
     /**
      * Set status

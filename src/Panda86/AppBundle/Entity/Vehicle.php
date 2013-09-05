@@ -10,7 +10,6 @@ class Vehicle extends Base
     public function __construct(array $options = null)
     {
         $this->ac = true;
-        $this->remarks ='';
         $this->was_added = new \DateTime('now');
         $this->setIsCompanyOwned(true);
 

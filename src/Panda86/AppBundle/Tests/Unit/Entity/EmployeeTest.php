@@ -6,19 +6,30 @@ use Panda86\AppBundle\Entity\Employee;
 
 class EmployeeTest extends \PHPUnit_Framework_TestCase
 {
-    private $args = array();
+    private $args = array(
+        'name' => 'John Doe',
+        'email' => 'my-email@example.com'
+    );
 
     public function setUp()
     {
-            $this->args = array(
-                'name' => 'John Doe'
-            );
     }
 
     public function testCanCreateEmployee()
     {
         $employee = new Employee($this->args);
         $this->assertInstanceOf('Panda86\AppBundle\Entity\Employee', $employee);
+
+        return $employee;
+    }
+
+    /**
+     * @depends testCanCreateEmployee
+     */
+    public function testCanReadAttribs(Employee $employee)
+    {
+        $this->assertEquals($this->args['name'], $employee->getName());
+        $this->assertEquals($this->args['email'], $employee->getEmail());
     }
 
 }
