@@ -72,34 +72,34 @@ class LoadRequestData extends AbstractFixture implements OrderedFixtureInterface
         $cab_services = $manager->getRepository('Panda86AppBundle:CabService')->findAll();
 
         $request1 = new Request($req1);
-        $request1->setVType($vtypes[0]);
+        $request1->setVType($vtypes[2]);
         $request1->setRequester($employees[0]);
         $request1->addAccompaniedBy($employees[1]);
         $request1->addAccompaniedBy($employees[2]);
 
         $request2 = new Request($req2);
-        $request2->setVType($vtypes[0]);
+        $request2->setVType($vtypes[1]);
         $request2->setRequester($employees[0]);
-        $request2->addAccompaniedBy($employees[1]);
-        $request2->addAccompaniedBy($employees[2]);
+        $request2->addAccompaniedBy($employees[11]);
+        $request2->addAccompaniedBy($employees[22]);
 
         $request3 = new Request($req3);
-        $request3->setVType($vtypes[0]);
+        $request3->setVType($vtypes[2]);
         $request3->setRequester($employees[0]);
-        $request3->addAccompaniedBy($employees[1]);
-        $request3->addAccompaniedBy($employees[2]);
+        $request3->addAccompaniedBy($employees[51]);
+        $request3->addAccompaniedBy($employees[62]);
 
         $request4 = new Request($req4);
-        $request4->setVType($vtypes[0]);
+        $request4->setVType($vtypes[1]);
         $request4->setRequester($employees[0]);
-        $request4->addAccompaniedBy($employees[1]);
-        $request4->addAccompaniedBy($employees[2]);
+        $request4->addAccompaniedBy($employees[71]);
+        $request4->addAccompaniedBy($employees[82]);
 
         $request5 = new Request($req5);
-        $request5->setVType($vtypes[0]);
+        $request5->setVType($vtypes[2]);
         $request5->setRequester($employees[0]);
-        $request5->addAccompaniedBy($employees[1]);
-        $request5->addAccompaniedBy($employees[2]);
+        $request5->addAccompaniedBy($employees[91]);
+        $request5->addAccompaniedBy($employees[22]);
 
         $manager->persist($request1);
         $manager->persist($request2);
@@ -121,8 +121,8 @@ class LoadRequestData extends AbstractFixture implements OrderedFixtureInterface
                 'purpose' => 'Meeting'
             );
             $request = new Request($req_data);
-            $request->setRequester($employees[0]);
-            $request->setVType($vtypes[0]);
+            $request->setRequester($employees[rand(0,50)]);
+            $request->setVType($vtypes[1]);
 
             $manager->persist($request);
 
@@ -130,7 +130,7 @@ class LoadRequestData extends AbstractFixture implements OrderedFixtureInterface
             {
                 $approve = new ApprovedRequest();
                 $approve->setRequest($request);
-                $approve->setVehicle($vehicles[0]);
+                $approve->setVehicle($vehicles[1]);
                 $approve->setDriver($drivers[0]);
 
                 $manager->persist($approve);
@@ -144,7 +144,7 @@ class LoadRequestData extends AbstractFixture implements OrderedFixtureInterface
 
                 $approve = new ApprovedRequest();
                 $approve->setRequest($request);
-                $approve->setVehicle($vehicles[0]);
+                $approve->setVehicle($vehicles[1]);
                 $approve->setDriver($drivers[0]);
 
                 $manager->persist($approve);
