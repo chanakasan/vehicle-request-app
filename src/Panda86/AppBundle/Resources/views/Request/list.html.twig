@@ -70,12 +70,12 @@
                     <td>{% if entity.pickuptime %}{{ entity.pickuptime|date('Y-m-d \\- g:i a') }}{% endif %}</td>
                     <td style="display:none">{{ entity.status }}</td>
                     <td>
-                        <a href="{{ path('request_show', { 'id': entity.id }) }}"><i class="icon-info-sign"></i></a>
+                        <a href="{{ path('request_show', { 'id': entity.id }) }}"><i class="icon-info-sign info-blue"></i></a>
                         {% if entity.status == 0 %} |
                             <a href="{{ path('approve_new', { 'req_id': entity.id }) }}"><i
-                                        class="icon-ok-sign"></i></a> |
+                                        class="icon-ok-sign ok-green"></i></a> |
                             <a href="{{ path('disapprove_new', { 'req_id': entity.id }) }}"><i
-                                        class="icon-ban-circle"></i></a>
+                                        class="icon-ban-circle ban-red"></i></a>
                         {% endif %}
                     </td>
                 </tr>
