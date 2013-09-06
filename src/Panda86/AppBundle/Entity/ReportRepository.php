@@ -10,17 +10,28 @@ class ReportRepository extends EntityRepository
         return 'This is the result set';
     }
 
-    public function findCostForCabs()
+    public function findCostForCabs(\DateTime $from = null, \DateTime $to = null)
     {
-        return $this->getEntityManager()
-            ->createQuery(
-                'SELECT r FROM Panda86AppBundle:ApprovedRequest r WHERE r.cab IS NOT NULL'
-            )
-            ->getResult();
+        if(!$from && !$to)
+        {
+            return $this->getEntityManager()
+                ->createQuery(
+                    'SELECT r FROM Panda86AppBundle:ApprovedRequest r WHERE r.cab IS NOT NULL'
+                )
+                ->getResult();
+        }
     }
 
-    public function findCostForAccomodations()
+    public function findCostForAccomodations(\DateTime $from = null, \DateTime $to = null)
     {
+        if(!$from && !$to)
+        {
+            return $this->getEntityManager()
+                ->createQuery(
+                    'SELECT r FROM Panda86AppBundle:Request r WHERE r.status = 1 AND r.accomodation IS NOT NULL'
+                )
+                ->getResult();
+        }
     }
 
 }
