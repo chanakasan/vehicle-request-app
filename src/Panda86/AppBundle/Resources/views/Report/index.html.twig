@@ -104,11 +104,20 @@
             {% if results is not null %}
                 <table>
                     {% for row in results %}
+                        {% if row.accomodation is defined %}
                         <tr>
                             <td>
                                 {{ row.accomodation.totalfee }}
                             </td>
                         </tr>
+                        {% endif %}
+                        {% if row.cab is defined %}
+                        <tr>
+                            <td>
+                                {{ row.cab.cost }}
+                            </td>
+                        </tr>
+                        {% endif %}
                     {% endfor %}
                 </table>
             {% endif %}

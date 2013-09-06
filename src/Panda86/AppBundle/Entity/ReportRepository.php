@@ -12,7 +12,34 @@ class ReportRepository extends EntityRepository
 
     public function findCostForCabs(\DateTime $from = null, \DateTime $to = null)
     {
-        if(!$from && !$to)
+        if($from && $to)
+        {
+            $from->setTime(0,0,0); $to->setTime(23,59,59);
+            return $this->getEntityManager()
+                ->createQuery(
+                    "SELECT a FROM Panda86AppBundle:ApprovedRequest a JOIN a.request r WHERE a.cab IS NOT NULL AND r.pickup_time BETWEEN :from AND :to"
+                )
+                ->setParameter('from', $from->format('Y-m-d H:i:s'))
+                ->setParameter('to', $to->format('Y-m-d H:i:s'))
+                ->getResult();
+        }
+        elseif(!$from && $to)
+        {
+            return $this->getEntityManager()
+                ->createQuery(
+                    'SELECT r FROM Panda86AppBundle:ApprovedRequest r WHERE r.cab IS NOT NULL'
+                )
+                ->getResult();
+        }
+        elseif($from && !$to)
+        {
+            return $this->getEntityManager()
+                ->createQuery(
+                    'SELECT r FROM Panda86AppBundle:ApprovedRequest r WHERE r.cab IS NOT NULL'
+                )
+                ->getResult();
+        }
+        elseif(!$from && !$to)
         {
             return $this->getEntityManager()
                 ->createQuery(

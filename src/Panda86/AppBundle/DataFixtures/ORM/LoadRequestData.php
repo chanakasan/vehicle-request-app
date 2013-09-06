@@ -59,9 +59,9 @@ class LoadRequestData extends AbstractFixture implements OrderedFixtureInterface
             'journey_type' => 'return',
             'days' => 1,
             'pickup_loc' => 'Colombo 1',
-            'pickup_time' =>  new \DateTime('2013-08-22 11:00:00'),
+            'pickup_time' =>  new \DateTime('2013-10-01 23:59:00'),
             'destination' => 'Colombo 5',
-            'return_time' => new \DateTime('2013-08-22 14:00:00'),
+            'return_time' => new \DateTime('2013-10-22 11:00:00'),
             'purpose' => 'Conference',
         );
 
@@ -76,24 +76,28 @@ class LoadRequestData extends AbstractFixture implements OrderedFixtureInterface
         $request1->setRequester($employees[0]);
         $request1->addAccompaniedBy($employees[1]);
         $request1->addAccompaniedBy($employees[2]);
+        $manager->persist($request1);
 
         $request2 = new Request($req2);
         $request2->setVType($vtypes[1]);
         $request2->setRequester($employees[0]);
         $request2->addAccompaniedBy($employees[11]);
         $request2->addAccompaniedBy($employees[22]);
+        $manager->persist($request2);
 
         $request3 = new Request($req3);
         $request3->setVType($vtypes[2]);
         $request3->setRequester($employees[0]);
         $request3->addAccompaniedBy($employees[51]);
         $request3->addAccompaniedBy($employees[62]);
+        $manager->persist($request3);
 
         $request4 = new Request($req4);
         $request4->setVType($vtypes[1]);
         $request4->setRequester($employees[0]);
         $request4->addAccompaniedBy($employees[71]);
         $request4->addAccompaniedBy($employees[82]);
+        $manager->persist($request4);
 
         $request5 = new Request($req5);
         $request5->setVType($vtypes[2]);
@@ -101,11 +105,17 @@ class LoadRequestData extends AbstractFixture implements OrderedFixtureInterface
         $request5->addAccompaniedBy($employees[91]);
         $request5->addAccompaniedBy($employees[22]);
 
-        $manager->persist($request1);
-        $manager->persist($request2);
-        $manager->persist($request3);
-        $manager->persist($request4);
-        $manager->persist($request5);
+        /**  test filter */
+        $cab = new ApprovedCab();
+        $cab->setCabService($cab_services[0]);
+        $cab->setCost(888.88);
+
+        $approve5 = new ApprovedRequest();
+        $approve5->setRequest($request5);
+        $approve5->setCab($cab);
+
+        $manager->persist($approve5);
+        /**  end test filter */
 
         $j = 1;
         /* Add some more requests */
