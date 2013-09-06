@@ -19,7 +19,7 @@
 <br/>
 <div class="row">
     <div class="span12">
-        <form class="form-horizontal" action="{{ path('report_generate', {'type': 'cabs'}) }}" method="get">
+        <form class="form-horizontal" action="{{ path('report_generate') }}" method="get">
             <fieldset>
 
                 <!-- Form Name -->
@@ -30,11 +30,11 @@
                     <label class="control-label" for="options">Options :</label>
                     <div class="controls">
                         <label class="radio" for="options-0">
-                            <input name="options" id="options-0" value="All employees" checked="checked" type="radio">
+                            <input name="options" id="options-0" value="all" checked="checked" type="radio">
                             All employees
                         </label>
                         <label class="radio" for="options-1">
-                            <input disabled name="options" id="options-1" value="per employee" type="radio">
+                            <input disabled name="options" id="options-1" value="one" type="radio">
                             per employee
                         </label>
                     </div>
@@ -45,11 +45,11 @@
                     <label class="control-label" for="filters">Filters :</label>
                     <div class="controls">
                         <label class="checkbox" for="filters-0">
-                            <input checked name="filters" id="filters-0" value="Cost for cabs" type="checkbox">
+                            <input checked name="filters" id="filters-0" value="cab" type="checkbox">
                             Cost for cabs
                         </label>
                         <label class="checkbox" for="filters-1">
-                            <input name="filters" id="filters-1" value="Cost for accomodations" type="checkbox">
+                            <input name="filters" id="filters-1" value="accomodation" type="checkbox">
                             Cost for accomodations
                         </label>
                     </div>
@@ -59,6 +59,7 @@
                     <!-- Date from-->
                     <div class="control-group">
                         <label class="control-label" for="date_from">From</label>
+
                         <div class="report-datepicker controls">
                             <div class="input-append">
                                 <input id="date_from" name="date_from" class="input-small" data-format="yyyy-MM-dd" placeholder="--" type="text">
@@ -66,12 +67,12 @@
                                     <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
                                 </span>
                             </div>
-
                         </div>
                     </div>
                     <!-- Date to-->
                     <div class="control-group">
                         <label class="control-label" for="date_to">Until</label>
+
                         <div class="report-datepicker controls">
                             <div class="input-append">
                                 <input id="date_to" name="date_to" class="input-small" data-format="yyyy-MM-dd" placeholder="--" type="text">
@@ -79,7 +80,6 @@
                                     <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
                                 </span>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -88,7 +88,7 @@
                 <div class="control-group">
                     <label class="control-label" for="singlebutton"></label>
                     <div class="controls">
-                        <button id="singlebutton" name="singlebutton" class="btn btn-default">Generate report</button>
+                        <button id="submitBtn" name="submitBtn" class="btn btn-default" value="submit">Generate report</button>
                     </div>
                 </div>
 

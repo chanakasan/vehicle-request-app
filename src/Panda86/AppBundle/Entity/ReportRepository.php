@@ -10,11 +10,15 @@ class ReportRepository extends EntityRepository
         return 'This is the result set';
     }
 
-    public function findCostForCabs(\DateTime $from = null, \DateTime $to = null)
+    public function findCostForCabs($f = null, $t = null)
     {
-        if($from && $to)
+        if($f && $t)
         {
-            $from->setTime(0,0,0); $to->setTime(23,59,59);
+            $from = new \DateTime($f);
+            $from->setTime(0,0,0);
+            $to = new \DateTime($t);
+            $to->setTime(23,59,59);
+
             return $this->getEntityManager()
                 ->createQuery(
                     "SELECT a FROM Panda86AppBundle:ApprovedRequest a JOIN a.request r WHERE a.cab IS NOT NULL AND r.pickup_time BETWEEN :from AND :to"
@@ -23,23 +27,31 @@ class ReportRepository extends EntityRepository
                 ->setParameter('to', $to->format('Y-m-d H:i:s'))
                 ->getResult();
         }
-        elseif(!$from && $to)
+        elseif($f && !$t)
         {
+            $from = new \DateTime($f);
+            $from->setTime(0,0,0);
+
             return $this->getEntityManager()
                 ->createQuery(
-                    'SELECT r FROM Panda86AppBundle:ApprovedRequest r WHERE r.cab IS NOT NULL'
+                    "SELECT a FROM Panda86AppBundle:ApprovedRequest a JOIN a.request r WHERE a.cab IS NOT NULL AND r.pickup_time > :from"
                 )
+                ->setParameter('from', $from->format('Y-m-d H:i:s'))
                 ->getResult();
         }
-        elseif($from && !$to)
+        elseif(!$f && $t)
         {
+            $to = new \DateTime($t);
+            $to->setTime(23,59,59);
+
             return $this->getEntityManager()
                 ->createQuery(
-                    'SELECT r FROM Panda86AppBundle:ApprovedRequest r WHERE r.cab IS NOT NULL'
+                    "SELECT a FROM Panda86AppBundle:ApprovedRequest a JOIN a.request r WHERE a.cab IS NOT NULL AND r.pickup_time < :to"
                 )
+                ->setParameter('to', $to->format('Y-m-d H:i:s'))
                 ->getResult();
         }
-        elseif(!$from && !$to)
+        elseif(!$f && !$t)
         {
             return $this->getEntityManager()
                 ->createQuery(

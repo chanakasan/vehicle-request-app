@@ -3,9 +3,5 @@ report_index:
     defaults: { _controller: "Panda86AppBundle:Report:index" }
 
 report_generate:
-    pattern: /{type}/generate
+    pattern: /generate
     defaults: { _controller: "Panda86AppBundle:Report:generate" }
-
-report_download:
-    pattern: /{format}/download
-    defaults: { _controller: "Panda86AppBundle:Report:download" }

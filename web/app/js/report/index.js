@@ -5,5 +5,6 @@ $(document).ready(function(){
             pickTime: false
         });
     });
-
+    // Disable checkboxes - only for testing
+    $("input:checkbox").click(function() { return false; });
 });
