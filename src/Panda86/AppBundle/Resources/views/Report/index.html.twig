@@ -4,6 +4,12 @@
     {{ parent() }} - Reports
 {% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="/assets/datetimepicker/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="/app/css/report/custom.css">
+{% endblock %}
+
 {% block body %}
 <div class="row">
     <div class="span12">
@@ -21,7 +27,7 @@
 
                 <!--Options-->
                 <div class="control-group">
-                    <label class="control-label" for="options">Options</label>
+                    <label class="control-label" for="options">Options :</label>
                     <div class="controls">
                         <label class="radio" for="options-0">
                             <input name="options" id="options-0" value="All employees" checked="checked" type="radio">
@@ -33,7 +39,8 @@
                         </label>
                     </div>
                 </div>
-                <!--Filters-->
+
+                <!--Filter by content-->
                 <div class="control-group">
                     <label class="control-label" for="filters">Filters :</label>
                     <div class="controls">
@@ -47,6 +54,36 @@
                         </label>
                     </div>
                 </div>
+                <!--Filter by dates -->
+                <div id="filter_dates">
+                    <!-- Date from-->
+                    <div class="control-group">
+                        <label class="control-label" for="date_from">From</label>
+                        <div class="report-datepicker controls">
+                            <div class="input-append">
+                                <input id="date_from" name="date_from" class="input-small" data-format="yyyy-MM-dd" placeholder="--" type="text">
+                                <span class="add-on">
+                                    <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+                                </span>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Date to-->
+                    <div class="control-group">
+                        <label class="control-label" for="date_to">Until</label>
+                        <div class="report-datepicker controls">
+                            <div class="input-append">
+                                <input id="date_to" name="date_to" class="input-small" data-format="yyyy-MM-dd" placeholder="--" type="text">
+                                <span class="add-on">
+                                    <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+                                </span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <br/>
                 <!-- Button -->
                 <div class="control-group">
                     <label class="control-label" for="singlebutton"></label>
@@ -78,22 +115,10 @@
         </div>
     </div>
 </div>
-<style>
-    #results {
-        padding: 9.5px;
-        margin: 0px 0px 10px;
-        font-size: 13px;
-        /*line-height: 20px;*/
-        /*word-break: break-all;*/
-        /*word-wrap: break-word;*/
-        /*white-space: pre-wrap;*/
-
-        border: 1px solid rgba(0, 0, 0, 0.15);
-        border-radius: 4px 4px 4px 4px;
-        background-color: rgb(245, 245, 245);
-
-        font-family: Monaco,Menlo,Consolas,"Courier New",monospace;
-        color: rgb(51, 51, 51);
-    }
-</style>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="/assets/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="/assets/jquery.validate.js"></script>
+    <script src="/app/js/report/index.js"></script>
 {% endblock %}
