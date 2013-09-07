@@ -37,6 +37,10 @@ $(document).ready(function () {
         var is_checked = $(this).is(':checked');
         if(is_checked === true)
         {
+            /* set input field values as empty */
+            $.each($('#div_cab_service select, #div_cab_service input, #div_cab_service textarea'), function( key, value ) {
+                $(value).val('');
+            });
             $('#div_cab_service').hide('slow');
             $('#div_company_vehicle').show('slow');
         }
@@ -47,6 +51,10 @@ $(document).ready(function () {
         var is_checked = $(this).is(':checked');
         if(is_checked === true)
         {
+            /* set input field values as empty */
+            $.each($('#div_company_vehicle select'), function( key, value ) {
+                $(value).val('');
+            });
             $('#div_company_vehicle').hide('slow');
             $('#div_cab_service').show('slow');
         }
