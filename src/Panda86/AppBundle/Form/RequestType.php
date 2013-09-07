@@ -32,12 +32,6 @@ class RequestType extends AbstractType
                 'property' => 'name',
                 'label' => false,
             ))
-            ->add('start_time','time', array(
-                'required' => false,
-                'label' => false,
-                'input' => 'datetime',
-                'widget' => 'single_text'
-            ))
             ->add('pickup_time','dateTimePicker', array(
                 'label' => false,
             ))

@@ -11,7 +11,6 @@ class Request extends Base {
     const DEFAULT_JOURNEY_TYPE = 'SINGLE';
     const DEFAULT_PICKUP_LOC = 'ICTA';
     const DEFAULT_NO_DAYS = 1;
-    const DEFAULT_START_TIME = null;
     const DEFAULT_RETURN_TIME = null;
     const DEFAULT_STATUS = 0;
     const APPROVED_STATUS = 1;
@@ -67,7 +66,6 @@ class Request extends Base {
         $this->journey_type = self::DEFAULT_JOURNEY_TYPE;
         $this->days = self::DEFAULT_NO_DAYS;
         $this->pickup_loc = self::DEFAULT_PICKUP_LOC;
-        $this->start_time = self::DEFAULT_START_TIME;
         $this->return_time = self::DEFAULT_RETURN_TIME;
 
         $this->active = true;
@@ -100,11 +98,6 @@ class Request extends Base {
      * @var string
      */
     protected $pickup_loc;
-
-    /**
-     * @var \DateTime
-     */
-    protected $start_time;
 
     /**
      * @var \DateTime
@@ -236,29 +229,6 @@ class Request extends Base {
     public function getPickupLoc()
     {
         return $this->pickup_loc;
-    }
-
-    /**
-     * Set start_time
-     *
-     * @param \DateTime $startTime
-     * @return Request
-     */
-    public function setStartTime($startTime)
-    {
-        $this->start_time = $startTime;
-
-        return $this;
-    }
-
-    /**
-     * Get start_time
-     *
-     * @return \DateTime 
-     */
-    public function getStartTime()
-    {
-        return $this->start_time;
     }
 
     /**
