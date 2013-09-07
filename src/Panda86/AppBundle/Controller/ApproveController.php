@@ -79,9 +79,6 @@ class ApproveController extends Controller
     public function createAction(Request $request)
     {
         $entity  = new ApprovedRequest();
-        $cab  = new ApprovedCab();
-        $entity->setCab($cab);
-
         $form = $this->createForm(new ApprovedRequestType(), $entity, array(
             'em' => $this->getDoctrine()->getManager()
         ));

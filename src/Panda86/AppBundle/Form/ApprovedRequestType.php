@@ -26,12 +26,14 @@ class ApprovedRequestType extends AbstractType
                 'class' => 'Panda86AppBundle:Vehicle',
                 'property' => 'reg_no',
                 'label' => false,
+                'required' => false,
                 ))
             ->add('driver', 'entity',array(
                 'empty_value' => '--',
                 'class' => 'Panda86AppBundle:Driver',
                 'property' => 'display_name',
                 'label' => false,
+                'required' => false,
                 ))
             ->add('remarks', 'textarea', arraY(
                 'label' => false,
@@ -39,6 +41,7 @@ class ApprovedRequestType extends AbstractType
                 ))
             ->add('cab', new ApprovedCabType(), array(
                 'label' => false,
+                'required' => false,
             ))
         ;
     }

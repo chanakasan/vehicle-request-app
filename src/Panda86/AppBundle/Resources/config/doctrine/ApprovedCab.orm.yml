@@ -36,6 +36,6 @@ Panda86\AppBundle\Entity\ApprovedCab:
           targetEntity: CabService
           joinColumn:
               name: cab_service_id
-              nullable: true
+              nullable: false
               referencedColumnName: id
     lifecycleCallbacks: {  }
