@@ -76,18 +76,10 @@
         </div>
         <div id='return_journey'>
             <div class='control-group'>
-                <label class='control-label'>Return time
+                <label class='control-label'>Return date/time
                     <span class='f-required'>*</span>
                 </label>
-
-                <div class='req-timepicker controls'>
-                    <div class='input-append'>
-                        {{ form_widget(form.return_time, {'attr': {'class': 'input-medium', 'placeholder' : '24 hours e.g. hh:mm', 'data-format':'hh:mm', 'type':'text' } } ) }}
-                        <span class='add-on'>
-                            <i data-time-icon='icon-time' data-date-icon='icon-calendar'></i>
-                        </span>
-                    </div>
-                </div>
+                    {{ form_widget(form.return_time) }}
             </div>
         </div>
         <div class='control-group'>

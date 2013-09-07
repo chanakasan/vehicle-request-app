@@ -41,10 +41,8 @@ class RequestType extends AbstractType
             ->add('destination', 'text', array(
                 'label' => false,
             ))
-            ->add('return_time','time', array(
+            ->add('return_time','dateTimePicker', array(
                 'label' => false,
-                'input' => 'datetime',
-                'widget' => 'single_text'
             ))
             ->add('purpose', 'text', array(
                 'label' => false,
