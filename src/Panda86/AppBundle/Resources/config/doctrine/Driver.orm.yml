@@ -1,6 +1,6 @@
 Panda86\AppBundle\Entity\Driver:
     type: entity
-    table: hr_driver
+    table: vrm_driver
     id:
         id:
             type: integer

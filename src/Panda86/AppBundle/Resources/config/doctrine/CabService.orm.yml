@@ -1,6 +1,6 @@
 Panda86\AppBundle\Entity\CabService:
     type: entity
-    table: hr_cab_service
+    table: vrm_cab_service
     id:
         id:
             type: integer

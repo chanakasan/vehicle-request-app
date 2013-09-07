@@ -1,6 +1,6 @@
 Panda86\AppBundle\Entity\ApprovedCab:
     type: entity
-    table: hr_approved_cab
+    table: vrm_approved_cab
     id:
         id:
             type: integer

@@ -1,6 +1,6 @@
 Panda86\AppBundle\Entity\DisapprovedRequest:
     type: entity
-    table: hr_disapproved
+    table: vrm_disapproved
     id:
         id:
             type: integer

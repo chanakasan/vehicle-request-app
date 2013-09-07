@@ -1,6 +1,6 @@
 Panda86\AppBundle\Entity\Employee:
     type: entity
-    table: hr_employee
+    table: vrm_employee
     id:
         id:
             type: integer

@@ -1,6 +1,6 @@
 Panda86\AppBundle\Entity\ApprovedRequest:
     type: entity
-    table: hr_approved
+    table: vrm_approved
     id:
         id:
             type: integer

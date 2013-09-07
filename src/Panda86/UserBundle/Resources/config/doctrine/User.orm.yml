@@ -1,6 +1,6 @@
 Panda86\UserBundle\Entity\User:
     type: entity
-    table: hr_user
+    table: vrm_user
     id:
         id:
             type: integer
