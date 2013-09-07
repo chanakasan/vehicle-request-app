@@ -2,6 +2,7 @@
 
 namespace Panda86\AppBundle\Form;
 
+use Panda86\AppBundle\Form\DataTransformer\RequestToNumberTransformer;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -10,12 +11,16 @@ class ApprovedRequestType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $entityManager = $options['em'];
+        $transformer = new RequestToNumberTransformer($entityManager);
+
         $builder
-            ->add('request', 'entity',array(
-                'class' => 'Panda86AppBundle:Request',
-                'property' => 'id',
-                'label' => false,
-            ))
+            ->add(
+                $builder->create('request', 'hidden', array(
+                    'label' => false,
+                ))
+                ->addModelTransformer($transformer)
+            )
             ->add('vehicle', 'entity', array(
                 'empty_value' => '--',
                 'class' => 'Panda86AppBundle:Vehicle',
@@ -42,6 +47,12 @@ class ApprovedRequestType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'Panda86\AppBundle\Entity\ApprovedRequest'
+        ));
+        $resolver->setRequired(array(
+            'em',
+        ));
+        $resolver->setAllowedTypes(array(
+            'em' => 'Doctrine\Common\Persistence\ObjectManager',
         ));
     }
 
