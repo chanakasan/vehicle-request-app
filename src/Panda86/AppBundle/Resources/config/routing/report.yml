@@ -1,0 +1,7 @@
+report_index:
+    pattern: /
+    defaults: { _controller: "Panda86AppBundle:Report:index" }
+
+report_generate:
+    pattern: /generate
+    defaults: { _controller: "Panda86AppBundle:Report:generate" }

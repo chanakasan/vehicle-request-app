@@ -54,14 +54,16 @@ class ApproveController extends Controller
     public function newAction($req_id)
     {
         $em = $this->getDoctrine()->getManager();
-        $entity = $em->getRepository('Panda86AppBundle:Request')->find($req_id);
+        $req = $em->getRepository('Panda86AppBundle:Request')->find($req_id);
 
-        if(!$entity || $entity->getStatus() != 0)
+        if(!$req || $req->getStatus() != 0)
         {
             throw $this->createNotFoundException('Can\'t approve the request with id '.$req_id);
         }
         $entity = new ApprovedRequest();
-        $form   = $this->createForm(new ApprovedRequestType(), $entity);
+        $form   = $this->createForm(new ApprovedRequestType(), $entity, array(
+            'em' => $em,
+        ));
 
         return $this->render('Panda86AppBundle:Approve:new.html.twig', array(
             'req_id' => $req_id,
@@ -77,13 +79,15 @@ class ApproveController extends Controller
     public function createAction(Request $request)
     {
         $entity  = new ApprovedRequest();
-        $cab  = new ApprovedCab();
-        $entity->setCab($cab);
-
-        $form = $this->createForm(new ApprovedRequestType(), $entity);
+        $form = $this->createForm(new ApprovedRequestType(), $entity, array(
+            'em' => $this->getDoctrine()->getManager()
+        ));
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+            $current_user = $this->get('security.context')->getToken()->getUser();
+            $entity->setApprovedBy($current_user);
+
             $entity->getRequest()->setStatus(1);
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
@@ -93,7 +97,6 @@ class ApproveController extends Controller
             $reqLink = $em->getRepository('Panda86AppBundle:RequestLink')->findOneBy(array('request' => $entity->getRequest()->getId()));
             $code  = $reqLink->getCode();
             $email = $entity->getRequest()->getRequester()->getEmail();
-
 
             if($this->_sendMail($email, $entity, $code))
             {

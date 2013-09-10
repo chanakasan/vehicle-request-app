@@ -69,22 +69,17 @@
             </div>
         </div>
         <div class='control-group'>
-                {{ form_row(form.pickup_time) }}
+            <label class='control-label'>Pickup date/time
+                <span class='f-required'>*</span>
+            </label>
+            {{ form_row(form.pickup_time) }}
         </div>
         <div id='return_journey'>
             <div class='control-group'>
-                <label class='control-label'>Return time
+                <label class='control-label'>Return date/time
                     <span class='f-required'>*</span>
                 </label>
-
-                <div class='req-timepicker controls'>
-                    <div class='input-append'>
-                        {{ form_widget(form.return_time, {'attr': {'class': 'input-medium', 'placeholder' : '24 hours e.g. hh:mm', 'data-format':'hh:mm', 'type':'text' } } ) }}
-                        <span class='add-on'>
-                            <i data-time-icon='icon-time' data-date-icon='icon-calendar'></i>
-                        </span>
-                    </div>
-                </div>
+                    {{ form_widget(form.return_time) }}
             </div>
         </div>
         <div class='control-group'>
@@ -95,21 +90,6 @@
             <div class='controls'>
                 {% set attr = {'class': 'input-xlarge show-tooltip', 'required': 'required', 'title': 'Reason for this journey', 'data-toggle': 'tooltip', 'data-placement': 'right'} %}
                 {{ form_row(form.purpose, {'attr': attr }) }}
-            </div>
-        </div>
-        <div class='control-group'>
-            <label class='control-label'>Event start time</label>
-
-            <div class='req-timepicker controls'>
-                <div class='input-append'>
-                    {% set attr = {'class': 'input-medium show-tooltip', 'placeholder' : '24 hours e.g. hh:mm', 'data-format':'hh:mm'} %}
-                    {% set tooltip = {'title': '(Optional field)', 'data-toggle': 'tooltip', 'data-placement': 'right'} %}
-                    {% set attr = attr|merge(tooltip) %}
-                    {{ form_widget(form.start_time, {'attr': attr }) }}
-                    <span class='add-on'>
-                            <i data-time-icon='icon-time' data-date-icon='icon-calendar'></i>
-                    </span>
-                </div>
             </div>
         </div>
         <div class='control-group'>

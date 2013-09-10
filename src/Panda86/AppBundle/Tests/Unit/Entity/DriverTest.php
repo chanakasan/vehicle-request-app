@@ -14,12 +14,11 @@ class DriverTest extends \PHPUnit_Framework_TestCase {
             'first_name' => 'John',
             'last_name' => 'Doe',
             'display_name' => 'John Doe',            
-            'birth_date' => date('Y-m-d', strtotime('January 18, 1989')),
-            'license_date' => date('Y-m-d', strtotime('January 20, 2005')),
+            'birth_date' => new \DateTime('1970-01-01'),
+            'license_date' => new \DateTime('2000-01-01'),
             'license_ref' => 'WP14124519V',
-            'address' => '456/B, New Strret, New Town',
+            'address' => '456/B, New Street, New Town',
             'mobile' => 94777123456,
-            'created' => strtotime("+1 day 4 hours 2 seconds")
         );
     }
 
@@ -33,7 +32,7 @@ class DriverTest extends \PHPUnit_Framework_TestCase {
     /**
      * @depends testCanCreateDriver
      */
-    public function testCanSetAttribs(Driver $driver)
+    public function testCanReadAttribs(Driver $driver)
     {
         $this->assertEquals($this->args['first_name'], $driver->getFirstName());
         $this->assertEquals($this->args['last_name'], $driver->getLastName());
@@ -43,9 +42,6 @@ class DriverTest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals($this->args['license_ref'], $driver->getLicenseRef());
         $this->assertEquals($this->args['address'], $driver->getAddress());
         $this->assertEquals($this->args['mobile'], $driver->getMobile());
-        $this->assertEquals($this->args['created'], $driver->getCreated());
-        //$this->assertEquals($this->args['created'], strtotime("+1 day 4 hours 3 seconds"));
-
     }
     
 

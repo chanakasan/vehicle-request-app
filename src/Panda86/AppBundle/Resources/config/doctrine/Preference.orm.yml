@@ -1,6 +1,6 @@
 Panda86\AppBundle\Entity\Preference:
     type: entity
-    table: null
+    table: vrm_preference
     id:
         id:
             type: integer

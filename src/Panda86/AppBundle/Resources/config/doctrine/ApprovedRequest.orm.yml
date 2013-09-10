@@ -1,6 +1,6 @@
 Panda86\AppBundle\Entity\ApprovedRequest:
     type: entity
-    table: hr_approved
+    table: vrm_approved
     id:
         id:
             type: integer
@@ -49,4 +49,11 @@ Panda86\AppBundle\Entity\ApprovedRequest:
             name: driver_id
             nullable: true
             referencedColumnName: id
-    lifecycleCallbacks: {  }
+        approved_by:
+          targetEntity: Panda86\UserBundle\Entity\User
+          joinColumn:
+            name: approved_by
+            nullable: false
+            referencedColumnName: id
+    lifecycleCallbacks:
+        prePersist: [ runOnPrePersist ]

@@ -20,16 +20,14 @@ class ApprovedRequestTest extends \PHPUnit_Framework_TestCase
             'journey_type' => 'single',
             'days' => 1,
             'pickup_loc' => 'ICTA',
-            'pickup_time' =>  strtotime("+1 week 2 days 4 hours 2 seconds"),
-            'destination' => 'colombo',
-            'return_time' => strtotime("+1 week 2 days 6 hours 2 seconds"),
+            'destination' => 'Colombo 1',
+            'pickup_time' =>  new \DateTime('2013-07-02 13:00:00'),
+            'return_time' => new \DateTime('2013-07-02 16:00:00'),
             'vtype' => new VType(array(
                 'name' => '4-passenger-sedan',
                 'descrip' => 'Standard car with four passenger seats'
             )),
-            'purpose' => 'Official',
-            'created_at' => new \DateTime('now'),
-            'updated_at' => strtotime("+10 minutes"),
+            'purpose' => 'Meeting'
         );
 
         $vehicle1 = array(
@@ -42,7 +40,7 @@ class ApprovedRequestTest extends \PHPUnit_Framework_TestCase
             'reg_no' => 'WP NZB-5465',
             'passengers' => 4,
             'is_company_owned' => true,
-            'was_added' => strtotime("+1 week 2 days 4 hours 2 seconds")
+            'was_added' => new \DateTime('2012-01-01 13:00:00'),
         );
 
         $driver1 = array(
@@ -54,7 +52,7 @@ class ApprovedRequestTest extends \PHPUnit_Framework_TestCase
             'license_ref' => 'WP14124519V',
             'address' => '456/B, New Strret, New Town',
             'mobile' => 94777123456,
-            'created' => strtotime("+1 day 4 hours 2 seconds")
+            'created' => new \DateTime('2010-01-01 13:00:00'),
         );
 
         $this->request = new Request($req1);
@@ -77,12 +75,20 @@ class ApprovedRequestTest extends \PHPUnit_Framework_TestCase
     /**
      * @depends testCanCreateApprovedRequest
      */
-    public function testCanSetAttributes($approved)
+    public function testCanReadAttributes($approved)
     {
-        $this->assertEquals($this->request, $approved->getRequest());
+        $this->assertInstanceOf('Panda86\AppBundle\Entity\Request', $approved->getRequest());
         $this->assertEquals($this->vehicle, $approved->getVehicle());
         $this->assertEquals($this->driver, $approved->getDriver());
 
+    }
+
+    /**
+     * @depends testCanCreateApprovedRequest
+     */
+    public function testCanAutoUpdateStatus($approved)
+    {
+        $this->assertEquals(1, $approved->getRequest()->getStatus());
     }
 
 }

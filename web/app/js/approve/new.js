@@ -1,30 +1,7 @@
 $(document).ready(function () {
 
-    function getReqIdFromUrl()
-    {
-        var pathArray = window.location.pathname.split( '/' );
-        pathArray.reverse();
-        return pathArray[0];
-    }
-
-    function setRequestId(id)
-    {
-        $('#req_id_field select').val(id);
-
-    }
-
     $('#approve_btn').click(function(){
         var r = confirm('Do you really want to approve this request, an email confirmation message will be sent to the requester?');
-        if (r === true)
-        {
-            setRequestId(getReqIdFromUrl());
-            return true;
-        }
-        else
-            return false;
-    });
-    $('#disapprove_btn').click(function(){
-        var r = confirm('Do you really want to disapprove this request, an email confirmation message will be sent to the requester?');
         if (r === true)
         {
             setRequestId(getReqIdFromUrl());
@@ -50,6 +27,10 @@ $(document).ready(function () {
         var is_checked = $(this).is(':checked');
         if(is_checked === true)
         {
+            /* set input field values as empty */
+            $.each($('#div_cab_service select, #div_cab_service input, #div_cab_service textarea'), function( key, value ) {
+                $(value).val('');
+            });
             $('#div_cab_service').hide('slow');
             $('#div_company_vehicle').show('slow');
         }
@@ -60,8 +41,13 @@ $(document).ready(function () {
         var is_checked = $(this).is(':checked');
         if(is_checked === true)
         {
+            /* set input field values as empty */
+            $.each($('#div_company_vehicle select'), function( key, value ) {
+                $(value).val('');
+            });
             $('#div_company_vehicle').hide('slow');
             $('#div_cab_service').show('slow');
         }
-});
+    });
+
 });

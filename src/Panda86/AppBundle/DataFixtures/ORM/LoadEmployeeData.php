@@ -27,6 +27,7 @@ class LoadEmployeeData extends AbstractFixture  implements OrderedFixtureInterfa
         {
             $employee = new Employee();
             $employee->setName($name);
+            $employee->setEmail('my-email@example.com');
 
             $manager->persist($employee);
         }

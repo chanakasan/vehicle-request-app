@@ -16,7 +16,6 @@ class Employee extends Base
     public function __construct(array $options = null)
     {
         parent::__construct($options);
-        $this->email = 'example@icta.lk'; /* temporary default value for email */
     }
 
     /**

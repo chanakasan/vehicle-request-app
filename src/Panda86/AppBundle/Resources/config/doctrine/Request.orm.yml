@@ -1,6 +1,6 @@
 Panda86\AppBundle\Entity\Request:
     type: entity
-    table: hr_request
+    table: vrm_request
     id:
         id:
             type: integer
@@ -16,9 +16,6 @@ Panda86\AppBundle\Entity\Request:
         pickup_loc:
             type: string
             length: '64'
-        start_time:
-            type: datetime
-            nullable: true
         pickup_time:
             type: datetime
         destination:
@@ -71,7 +68,7 @@ Panda86\AppBundle\Entity\Request:
         accompanied_by:
             targetEntity: Employee
             joinTable:
-                name: hr_request_passenger
+                name: vrm_request_passenger
                 joinColumns:
                   req_id:
                     referencedColumnName: id
