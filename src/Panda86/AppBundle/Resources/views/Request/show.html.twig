@@ -9,16 +9,12 @@
     {% endif %}
 {% endblock %}
 
-{% block stylesheets %}
-    {{ parent() }}
-    <link rel="stylesheet" href="/app/css/request/show.css"
-{% endblock %}
 {% set closeBtn_url = path('request_list') %}
 {% block table %}
     <table class="record_properties table table-striped">
         <div class="form_description">
-            <h2>Req #{{ entity.id }} details </h2>
-            <div id="q_info" class="pull-right">
+            <h2>Request #{{ entity.id }}</h2>
+            <div id="q_info">
                 <p class="created">
                     <strong>Created:</strong>  {{ entity.createdat|date('M d (D) Y \\a\\t g:i a') }}
                 </p>
@@ -54,6 +50,9 @@
                         <strong class="inline">Approved by :</strong>
                     </span>
                     <span>{{ approved_by.firstname }} {{ approved_by.lastname }} ({{ approved_by.email }})</span>
+                    <p class="offset2 created">
+                        <strong></strong>On  {{ approved_at|date('M d (D) Y \\a\\t g:i a') }}
+                    </p>
                     <p></p>
                 {% endblock %}
 

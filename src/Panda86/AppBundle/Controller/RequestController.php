@@ -60,7 +60,8 @@ class RequestController extends Controller
                 'vehicle' => $approved_entity->getVehicle(),
                 'driver' => $approved_entity->getDriver(),
                 'cab' => $approved_entity->getCab(),
-                'approved_by' => $approved_entity->getApprovedBy()
+                'approved_by' => $approved_entity->getApprovedBy(),
+                'approved_at' => $approved_entity->getCreated()
             ));
         }
 

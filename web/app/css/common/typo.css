@@ -1,6 +1,6 @@
 p.created {
-    font-family: arial,sans-serif;
-    font-size: 11px;
+    font-family: arial, sans-serif;
+    font-size: 11px !important;
     font-weight: normal;
     color: rgb(101, 101, 101);
 }

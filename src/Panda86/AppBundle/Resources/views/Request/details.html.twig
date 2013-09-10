@@ -1,18 +1,17 @@
 {% extends 'Panda86AppBundle::guest-details-view.html.twig' %}
 
 {% block title %}
-    {{ parent() }}
-    - Req #{{ entity.id }} details
+    Vehicle request details - {{ parent() }}
 {% endblock %}
 
 {% set closeBtn_url = path('request_finish', {'mode': 'close'}) %}
 {% block table %}
     <table class="record_properties table table-striped">
         <div class="form_description">
-            <h2>Req #{{ entity.id }} details </h2>
-            <div id="q_info" class="pull-right">
+            <h2>Vehicle request details (ref no. #{{ entity.id }}) </h2>
+            <div id="q_info">
                 <p class="created">
-                    <strong>Created:</strong>  {{ entity.createdat|date('M d (D) Y \\a\\t g:i a') }}
+                    <strong>Created by: </strong> {{ entity.requester.name }} On {{ entity.createdat|date('M d (D) Y \\a\\t g:i a') }}
                 </p>
             </div>
         </div>
@@ -57,7 +56,7 @@
         </div>
         <tbody>
         <tr>
-            <th>Request ID</th>
+            <th>Ref No.</th>
             <td>#{{ entity.id }}</td>
         </tr>
         <tr>
