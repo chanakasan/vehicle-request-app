@@ -12,9 +12,13 @@ class ApprovedRequest extends Base
 {
     public function runOnPrePersist()
     {
+        if($this->getCreated() == null)
+        {
+            $this->setCreated(new \DateTime('now'));
+        }
         if($this->getApprovedBy() == null)
         {
-            throw new Exception('Approved by field not set!');
+            throw new Exception('Approved by field is not set!');
         }
     }
     /**
@@ -23,7 +27,6 @@ class ApprovedRequest extends Base
     public function __construct(array $options = null)
     {
         $this->active = true;
-        $this->created = new \DateTime('now');
         $this->updated = new \DateTime('now');
 
         parent::__construct($options);

@@ -85,6 +85,9 @@ class ApproveController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+            $current_user = $this->get('security.context')->getToken()->getUser();
+            $entity->setApprovedBy($current_user);
+
             $entity->getRequest()->setStatus(1);
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);

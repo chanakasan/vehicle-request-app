@@ -24,37 +24,37 @@
             {% if entity.status == 1 %}
                 <p class="text-success"><strong>Approved</strong> <img class="hidden-print"
                                                                        src="/app/img/request/approved.png" alt=""></p>
-                {% block approved_info %}
+                    <div id="approved_by">
+                        <p class="created">
+                            <span>
+                                <strong class="inline">Approved by :</strong>
+                                {{ approved_by.firstname }} {{ approved_by.lastname }} ({{ approved_by.email }})
+                            </span>
+                        </p>
+                        <p class="created">
+                            On  {{ approved_at|date('M d (D) Y \\a\\t g:i a') }}
+                        </p>
+                    </div>
                     {% if vehicle is not null %}
-                        <span class="offset1">
+                        <br/>
                         <strong class="inline">Assigned vehicle - </strong>
-                    </span>
                         <span> {{ vehicle.getregno }}</span>
                         <p></p>
-                        <span class="offset1">
+                        <span class="">
                         <strong>Assigned driver - </strong>
                         <span>Mr. {{ driver.getdisplayname }}</span>
                     </span>
                         <p></p>
                     {% else %}
-                        <span class="offset1">
+                        <br/>
                         <span>Assigned a rented vehicle.</span>
-                    </span>
                         <p></p>
-                        <span class="offset1">
+                        <span class="">
                         <strong>Cab service :</strong> {{ cab.getcabservice.getname }}
                      </span>
                         <p></p>
                     {% endif %}
-                    <span class="offset1">
-                        <strong class="inline">Approved by :</strong>
-                    </span>
-                    <span>{{ approved_by.firstname }} {{ approved_by.lastname }} ({{ approved_by.email }})</span>
-                    <p class="offset2 created">
-                        <strong></strong>On  {{ approved_at|date('M d (D) Y \\a\\t g:i a') }}
-                    </p>
-                    <p></p>
-                {% endblock %}
+
 
             {% elseif entity.status == 2 %}
                 <p class="text-error"><strong>Disapproved</strong> <img src="/app/img/request/disapproved.png" alt="">
