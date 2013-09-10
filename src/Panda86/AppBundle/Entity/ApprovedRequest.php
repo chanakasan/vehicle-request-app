@@ -3,12 +3,20 @@
 namespace Panda86\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Config\Definition\Exception\Exception;
 
 /**
  * ApprovedRequest
  */
 class ApprovedRequest extends Base
 {
+    public function runOnPrePersist()
+    {
+        if($this->getApprovedBy() == null)
+        {
+            throw new Exception('Approved by field not set!');
+        }
+    }
     /**
      * Constructor
      */

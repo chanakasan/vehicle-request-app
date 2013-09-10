@@ -55,4 +55,5 @@ Panda86\AppBundle\Entity\ApprovedRequest:
             name: approved_by
             nullable: false
             referencedColumnName: id
-    lifecycleCallbacks: {  }
+    lifecycleCallbacks:
+        prePersist: [ runOnPrePersist ]
