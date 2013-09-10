@@ -21,10 +21,13 @@ class DisapproveController extends Controller
     public function createAction(Request $request)
     {
         $entity  = new DisapprovedRequest();
-        $form = $this->createForm(new DisapprovedRequestType(), $entity);
+        $form = $this->createForm(new DisapprovedRequestType(), $entity, array(
+            'em' => $this->getDoctrine()->getManager()
+        ));
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+            $entity->getRequest()->setStatus(2);
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
@@ -73,7 +76,9 @@ class DisapproveController extends Controller
             throw $this->createNotFoundException('Can\'t disapprove the request with id '.$req_id);
         }
         $entity = new DisapprovedRequest();
-        $form   = $this->createForm(new DisapprovedRequestType(), $entity);
+        $form   = $this->createForm(new DisapprovedRequestType(), $entity, array(
+            'em' => $this->getDoctrine()->getManager()
+        ));
 
         return $this->render('Panda86AppBundle:Disapprove:new.html.twig', array(
             'req_id' => $req_id,

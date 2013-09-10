@@ -13,16 +13,9 @@
             {% render controller('Panda86AppBundle:Request:show', { 'id': req_id, 'embed': true }) %}
         </div>
         <br/>
-        <div id="req_id_field" style="display: none">
-            <div class="control-group">
-                <label class="control-label">Req ID
-                    <span class="form-required" title="This field is required.">*</span>
-                </label>
-
-                <div class="controls">
-                    {{ form_row(form.request) }}
-                </div>
-            </div>
+        {# hidden field for the request id #}
+        <div id="req_field">
+            {{ form_row(form.request, {'attr': {'value': req_id} }) }}
         </div>
         <div class="control-group">
             <label class="control-label">Remarks</label>
@@ -37,4 +30,8 @@
             </div>
         </div>
     </form>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="/app/js/disapprove/new.js"></script>
 {% endblock %}
