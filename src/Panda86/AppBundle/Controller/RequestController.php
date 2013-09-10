@@ -51,17 +51,37 @@ class RequestController extends Controller
             );
         }
 
-        $approved_entity = $em->getRepository('Panda86AppBundle:ApprovedRequest')->findOneBy(array('request' => $entity->getId()));
+        if($entity->getStatus() === 1)
+        {
+            $approved_entity = $em->getRepository('Panda86AppBundle:ApprovedRequest')->findOneBy(array('request' => $entity->getId()));
+            if(!$approved_entity)
+            {
+                throw new \Exception('Approved request not found for req id = '.$entity->getId());
+            }
 
-        if ($approved_entity) {
             return $this->render('Panda86AppBundle:Request:show.html.twig', array(
                 'embedded' => $embed,
                 'entity' => $approved_entity->getRequest(),
                 'vehicle' => $approved_entity->getVehicle(),
                 'driver' => $approved_entity->getDriver(),
                 'cab' => $approved_entity->getCab(),
-                'approved_by' => $approved_entity->getApprovedBy(),
-                'approved_at' => $approved_entity->getCreated()
+                'authored_by' => $approved_entity->getApprovedBy(),
+                'authored_at' => $approved_entity->getCreated()
+            ));
+        }
+        elseif($entity->getStatus() === 2)
+        {
+            $disapproved_entity = $em->getRepository('Panda86AppBundle:DisapprovedRequest')->findOneBy(array('request' => $entity->getId()));
+            if(!$disapproved_entity)
+            {
+                throw new \Exception('Disapproved request not found for req id = '.$entity->getId());
+            }
+
+            return $this->render('Panda86AppBundle:Request:show.html.twig', array(
+                'embedded' => $embed,
+                'entity' => $disapproved_entity->getRequest(),
+                'authored_by' => $disapproved_entity->getDisapprovedBy(),
+                'authored_at' => $disapproved_entity->getCreated()
             ));
         }
 

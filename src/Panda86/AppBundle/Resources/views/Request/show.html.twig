@@ -28,11 +28,11 @@
                         <p class="created">
                             <span>
                                 <strong class="inline">Approved by :</strong>
-                                {{ approved_by.firstname }} {{ approved_by.lastname }} ({{ approved_by.email }})
+                                {{ authored_by.firstname }} {{ authored_by.lastname }} ({{ authored_by.email }})
                             </span>
                         </p>
                         <p class="created">
-                            On  {{ approved_at|date('M d (D) Y \\a\\t g:i a') }}
+                            On  {{ authored_at|date('M d (D) Y \\a\\t g:i a') }}
                         </p>
                     </div>
                     {% if vehicle is not null %}
@@ -59,13 +59,22 @@
             {% elseif entity.status == 2 %}
                 <p class="text-error"><strong>Disapproved</strong> <img src="/app/img/request/disapproved.png" alt="">
                 </p>
-                {% block disapproved_info %}
-                    <span class="text-muted">
-                           This request has been disapproved due to unavailability of a vehicle.
-                    </span>
-                    <span>If you would like our further assistance regarding your request please call us on our extension no.</span>
-                    <p></p>
-                {% endblock %}
+                <div id="approved_by">
+                    <p class="created">
+                            <span>
+                                <strong class="inline">Disapproved by :</strong>
+                                {{ authored_by.firstname }} {{ authored_by.lastname }} ({{ authored_by.email }})
+                            </span>
+                    </p>
+                    <p class="created">
+                        On  {{ authored_at|date('M d (D) Y \\a\\t g:i a') }}
+                    </p>
+                </div>
+            <div>
+                <span class="text-muted">This request has been disapproved due to unavailability of a vehicle.</span>
+                <span>If you would like our further assistance regarding your request please call us on our extension no.</span>
+            </div>
+            <p></p>
             {% else %}
                 <p class="text-warning"><strong>Pending</strong> <img src="/app/img/request/pending.png" alt=""></p>
             {% endif %}
