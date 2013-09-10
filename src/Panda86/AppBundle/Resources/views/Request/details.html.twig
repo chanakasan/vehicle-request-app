@@ -10,6 +10,13 @@
     <table class="record_properties table table-striped">
         <div class="form_description">
             <h2>Req #{{ entity.id }} details </h2>
+            <div id="q_info" class="pull-right">
+                <p class="created">
+                    <strong>Created:</strong>  {{ entity.createdat|date('M d (D) Y \\a\\t g:i a') }}
+                </p>
+            </div>
+        </div>
+        <div id="req_status">
             {% if entity.status == 1 %}
                 <p class="text-success"><strong>Approved</strong> <img src="/app/img/request/approved.png" alt=""></p>
                 {% block approved_info %}
@@ -104,10 +111,6 @@
                     {% endfor %}
                 {% endif %}
             </td>
-        </tr>
-        <tr>
-            <th>Date created</th>
-            <td>{{ entity.createdat|date('Y-m-d g:i a') }}</td>
         </tr>
         </tbody>
     </table>
