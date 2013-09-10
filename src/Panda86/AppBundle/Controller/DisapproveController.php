@@ -27,6 +27,9 @@ class DisapproveController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+            $current_user = $this->get('security.context')->getToken()->getUser();
+            $entity->setDisapprovedBy($current_user);
+
             $entity->getRequest()->setStatus(2);
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);

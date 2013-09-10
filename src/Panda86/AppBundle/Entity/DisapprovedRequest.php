@@ -9,13 +9,24 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class DisapprovedRequest extends Base
 {
+    public function runOnPrePersist()
+    {
+        if($this->getCreated() == null)
+        {
+            $this->setCreated(new \DateTime('now'));
+        }
+        if($this->getDisapprovedBy() == null)
+        {
+            throw new Exception('Disapproved by field is not set!');
+        }
+    }
+
     /**
      * Constructor
      */
     public function __construct(array $options = null)
     {
         $this->active = true;
-        $this->created = new \DateTime('now');
         $this->updated = new \DateTime('now');
 
         parent::__construct($options);
@@ -206,4 +217,33 @@ class DisapprovedRequest extends Base
     {
         return $this->request;
     }
+    /**
+     * @var \Panda86\UserBundle\Entity\User
+     */
+    private $disapproved_by;
+
+
+    /**
+     * Set disapproved_by
+     *
+     * @param \Panda86\UserBundle\Entity\User $disapprovedBy
+     * @return DisapprovedRequest
+     */
+    public function setDisapprovedBy(\Panda86\UserBundle\Entity\User $disapprovedBy)
+    {
+        $this->disapproved_by = $disapprovedBy;
+
+        return $this;
+    }
+
+    /**
+     * Get disapproved_by
+     *
+     * @return \Panda86\UserBundle\Entity\User 
+     */
+    public function getDisapprovedBy()
+    {
+        return $this->disapproved_by;
+    }
+
 }

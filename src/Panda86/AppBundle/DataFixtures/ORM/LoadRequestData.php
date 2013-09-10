@@ -7,6 +7,7 @@ use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Panda86\AppBundle\Entity\ApprovedCab;
 use Panda86\AppBundle\Entity\ApprovedRequest;
+use Panda86\AppBundle\Entity\DisapprovedRequest;
 use Panda86\AppBundle\Entity\Request;
 use Panda86\AppBundle\Entity\RequestAccomodation;
 use Panda86\AppBundle\Entity\RequestLink;
@@ -132,7 +133,15 @@ class LoadRequestData extends AbstractFixture implements OrderedFixtureInterface
 
             $manager->persist($request);
 
-            if($i % 7 === 0 ) /* assign company vehicles */
+            if($i % 13 === 0 ) /* Disaaproved requests */
+            {
+                $approve = new DisapprovedRequest();
+                $approve->setRequest($request);
+                $approve->setDisapprovedBy($users[rand(1,19)]);
+
+                $manager->persist($approve);
+            }
+            elseif($i % 7 === 0 ) /* assign company vehicles */
             {
                 $approve = new ApprovedRequest();
                 $approve->setRequest($request);
