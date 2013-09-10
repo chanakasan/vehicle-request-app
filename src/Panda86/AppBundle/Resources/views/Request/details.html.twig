@@ -85,12 +85,6 @@
             <th>Pickup time</th>
             <td>{{ entity.pickuptime|date('Y-m-d g:i a') }}</td>
         </tr>
-        {% if entity.starttime %}
-            <tr>
-                <th>Start time</th>
-                <td>{{ entity.starttime|date('g:i a') }}</td>
-            </tr>
-        {% endif %}
         {% if entity.returntime %}
             <tr>
                 <th>Return time</th>

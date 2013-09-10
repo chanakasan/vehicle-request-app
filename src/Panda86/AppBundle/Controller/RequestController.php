@@ -51,6 +51,19 @@ class RequestController extends Controller
             );
         }
 
+        $approved_entity = $em->getRepository('Panda86AppBundle:ApprovedRequest')->findOneBy(array('request' => $entity->getId()));
+
+        if ($approved_entity) {
+            return $this->render('Panda86AppBundle:Request:show.html.twig', array(
+                'embedded' => $embed,
+                'entity' => $approved_entity->getRequest(),
+                'vehicle' => $approved_entity->getVehicle(),
+                'driver' => $approved_entity->getDriver(),
+                'cab' => $approved_entity->getCab(),
+                'approved_by' => $approved_entity->getApprovedBy()
+            ));
+        }
+
         return $this->render('Panda86AppBundle:Request:show.html.twig', array(
             'embedded' => $embed,
             'entity' => $entity,
@@ -58,7 +71,7 @@ class RequestController extends Controller
     }
 
     /**
-     * Find and display a request's details using the given code
+     * Find and display a request's details using the given random code in url
      *
      */
     public function detailsAction($code)
