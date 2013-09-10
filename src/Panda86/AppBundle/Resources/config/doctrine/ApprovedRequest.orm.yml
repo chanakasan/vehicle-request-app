@@ -49,4 +49,10 @@ Panda86\AppBundle\Entity\ApprovedRequest:
             name: driver_id
             nullable: true
             referencedColumnName: id
+        approved_by:
+          targetEntity: Panda86\UserBundle\Entity\User
+          joinColumn:
+            name: approved_by
+            nullable: false
+            referencedColumnName: id
     lifecycleCallbacks: {  }

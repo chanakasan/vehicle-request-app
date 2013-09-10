@@ -290,4 +290,33 @@ class ApprovedRequest extends Base
     {
         return $this->cab;
     }
+
+    /**
+     * @var \Panda86\UserBundle\Entity\User
+     */
+    private $approved_by;
+
+
+    /**
+     * Set approved_by
+     *
+     * @param \Panda86\UserBundle\Entity\User $approvedBy
+     * @return ApprovedRequest
+     */
+    public function setApprovedBy(\Panda86\UserBundle\Entity\User $approvedBy)
+    {
+        $this->approved_by = $approvedBy;
+
+        return $this;
+    }
+
+    /**
+     * Get approved_by
+     *
+     * @return \Panda86\UserBundle\Entity\User 
+     */
+    public function getApprovedBy()
+    {
+        return $this->approved_by;
+    }
 }

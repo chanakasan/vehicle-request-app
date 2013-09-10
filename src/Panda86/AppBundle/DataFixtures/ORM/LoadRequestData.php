@@ -10,6 +10,7 @@ use Panda86\AppBundle\Entity\ApprovedRequest;
 use Panda86\AppBundle\Entity\Request;
 use Panda86\AppBundle\Entity\RequestAccomodation;
 use Panda86\AppBundle\Entity\RequestLink;
+use Panda86\UserBundle\Entity\User;
 
 class LoadRequestData extends AbstractFixture implements OrderedFixtureInterface
 {
@@ -23,6 +24,7 @@ class LoadRequestData extends AbstractFixture implements OrderedFixtureInterface
         $vehicles = $manager->getRepository('Panda86AppBundle:Vehicle')->findAll();
         $drivers = $manager->getRepository('Panda86AppBundle:Driver')->findAll();
         $cab_services = $manager->getRepository('Panda86AppBundle:CabService')->findAll();
+        $users = $manager->getRepository('Panda86UserBundle:User')->findAll();
 
         /* From 2013-01-01 */
         for($i=1; $i<=3 ;$i++)
@@ -48,6 +50,7 @@ class LoadRequestData extends AbstractFixture implements OrderedFixtureInterface
             $approve1 = new ApprovedRequest();
             $approve1->setRequest($request1);
             $approve1->setCab($cab);
+            $approve1->setApprovedBy($users[rand(1,19)]);
 
             $manager->persist($approve1);
         }
@@ -76,6 +79,7 @@ class LoadRequestData extends AbstractFixture implements OrderedFixtureInterface
             $approve1 = new ApprovedRequest();
             $approve1->setRequest($request1);
             $approve1->setCab($cab);
+            $approve1->setApprovedBy($users[rand(1,19)]);
 
             $manager->persist($approve1);
         }
@@ -104,6 +108,7 @@ class LoadRequestData extends AbstractFixture implements OrderedFixtureInterface
             $approve1 = new ApprovedRequest();
             $approve1->setRequest($request1);
             $approve1->setCab($cab);
+            $approve1->setApprovedBy($users[rand(1,19)]);
 
             $manager->persist($approve1);
         }
@@ -133,6 +138,7 @@ class LoadRequestData extends AbstractFixture implements OrderedFixtureInterface
                 $approve->setRequest($request);
                 $approve->setVehicle($vehicles[1]);
                 $approve->setDriver($drivers[0]);
+                $approve->setApprovedBy($users[rand(1,19)]);
 
                 $manager->persist($approve);
             }
@@ -147,6 +153,7 @@ class LoadRequestData extends AbstractFixture implements OrderedFixtureInterface
                 $approve->setRequest($request);
                 $approve->setVehicle($vehicles[1]);
                 $approve->setDriver($drivers[0]);
+                $approve->setApprovedBy($users[rand(1,19)]);
 
                 $manager->persist($approve);
             }
@@ -159,6 +166,7 @@ class LoadRequestData extends AbstractFixture implements OrderedFixtureInterface
                 $approve = new ApprovedRequest();
                 $approve->setRequest($request);
                 $approve->setCab($cab);
+                $approve->setApprovedBy($users[rand(1,19)]);
 
                 $manager->persist($approve);
             }
@@ -176,6 +184,7 @@ class LoadRequestData extends AbstractFixture implements OrderedFixtureInterface
                 $approve = new ApprovedRequest();
                 $approve->setRequest($request);
                 $approve->setCab($cab);
+                $approve->setApprovedBy($users[rand(1,19)]);
                 $manager->persist($approve);
             }
 
