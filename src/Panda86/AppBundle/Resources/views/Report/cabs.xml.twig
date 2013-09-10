@@ -36,6 +36,15 @@
             <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
             ss:Bold="1"/>
         </Style>
+        <Style ss:ID="s96">
+            <Interior ss:Color="#C5D9F1" ss:Pattern="Solid"/>
+        </Style>
+        <Style ss:ID="s105">
+            <Alignment ss:Horizontal="Center" ss:Vertical="Bottom"/>
+            <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
+            ss:Bold="1"/>
+            <Interior ss:Color="#C5D9F1" ss:Pattern="Solid"/>
+        </Style>
         <Style ss:ID="s119">
             <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
@@ -128,22 +137,45 @@
                 <Cell ss:StyleID="s119"><Data ss:Type="String">Rate</Data></Cell>
                 <Cell ss:StyleID="s119"><Data ss:Type="String">Cost (Rs.)</Data></Cell>
             </Row>
-            <!-- {% for entity in entities %} -->
+
+            {% for entity in entities %}
             <Row>
-                <Cell ss:StyleID="s120"><Data ss:Type="Number">{{ entity.getrequest.getid }}</Data></Cell>
-                <Cell ss:StyleID="s120"><Data ss:Type="String">{{ entity.getrequest.getrequester.getname }}</Data></Cell>
-                <Cell ss:StyleID="s120"><Data ss:Type="String">{{ entity.getcab.getcabservice.getname }}</Data></Cell>
-                <Cell ss:StyleID="s120"><Data ss:Type="String">{{ entity.getcab.getvoucherno }}</Data></Cell>
-                <Cell ss:StyleID="s120"><Data ss:Type="Number">{{ entity.getcab.getmileage }}</Data></Cell>
-                <Cell ss:StyleID="s120"><Data ss:Type="Number">{{ entity.getcab.getrate }}</Data></Cell>
-                <Cell ss:StyleID="s120"><Data ss:Type="Number">{{ entity.getcab.getcost }}</Data></Cell>
+                <Cell ss:StyleID="s120">
+                    <Data ss:Type="Number">{{ entity.getrequest.getid }}</Data>
+                </Cell>
+                <Cell ss:StyleID="s120">
+                    <Data ss:Type="String">{{ entity.getrequest.getrequester.getname }}</Data>
+                </Cell>
+                <Cell ss:StyleID="s120">
+                    <Data ss:Type="String">{{ entity.getcab.getcabservice.getname }}</Data>
+                </Cell>
+                <Cell ss:StyleID="s120">
+                    <Data ss:Type="String">{{ entity.getcab.getvoucherno }}</Data>
+                </Cell>
+                <Cell ss:StyleID="s120">
+                    <Data ss:Type="Number">{{ entity.getcab.getmileage }}</Data>
+                </Cell>
+                <Cell ss:StyleID="s120">
+                    <Data ss:Type="Number">{{ entity.getcab.getrate }}</Data>
+                </Cell>
+                <Cell ss:StyleID="s120">
+                    <Data ss:Type="Number">{{ entity.getcab.getcost }}</Data>
+                </Cell>
             </Row>
-            <!-- {% endfor %} -->
+            {% endfor %}
+            <Row ss:AutoFitHeight="0">
+                <Cell ss:MergeAcross="2" ss:StyleID="s105"><Data ss:Type="String">Totals   =</Data></Cell>
+                <Cell ss:StyleID="s96"/>
+                <Cell ss:StyleID="s96"/>
+                <Cell ss:StyleID="s96"/>
+                <Cell ss:StyleID="s96"/>
+            </Row>
         </Table>
         <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
             <PageSetup>
-                <Header x:Margin="0.3"/>
-                <Footer x:Margin="0.3"/>
+                <Header x:Margin="0.3"
+                        x:Data="&amp;L&amp;&quot;Calibri,Bold&quot;Date created: 2013-10-12&amp;C&amp;&quot;Calibri,Bold&quot;&amp;14Vehicle Reservation Requests - ICTA&amp;&quot;Calibri,Regular&quot;&amp;11&#10;&amp;Rpage 1 of 1"/>
+                <Footer x:Margin="0.3" x:Data="&amp;Cpage 1 of 1"/>
                 <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
                 <Layout x:Orientation="Landscape"/>
             </PageSetup>
