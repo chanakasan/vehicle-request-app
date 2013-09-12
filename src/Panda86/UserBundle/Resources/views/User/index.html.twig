@@ -1,13 +1,43 @@
- {% extends '::admin.html.twig' %}
+{% extends 'Panda86AppBundle::list-view.html.twig' %}
 
- {% block body %}
-     {% if app.session.started %}
-         {% for flashMessage in app.session.flashbag.get('notice') %}
-             <div class="flash-notice">
-                 {{ flashMessage }}
-             </div>
-         {% endfor %}
-     {% endif %}
-    Users' Index
- {% endblock %}
+{% block title %}
+    {{ parent() }} - List of Users
+{% endblock %}
+{% set heading = 'List of users' %}
+{% set newBtn_url = path('user_new') %}
 
+{% block javascripts %}
+    {{ parent() }}
+    <script src="/app/js/user/list.js"></script>
+{% endblock %}
+{% block table %}
+<div class="span6">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td>{{ entity.first_name }} {{ entity.last_name }}</td>
+                <td>{{ entity.username }}</td>
+                <td>{{ entity.email }}</td>
+                <td>
+                    <a href="{{ path('user_show', { 'id': entity.id }) }}">Profile</a> |
+                    <a href="#">Edit / Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="pull-right" id="loadmoreajaxloader" style="display:none;"><img src="/app/img/ajax-loader.gif"/></div>
+    {{ parent() }}
+</div>
+
+{% endblock %}
