@@ -10,22 +10,19 @@ class UserController extends Controller
 {
     public function indexAction()
     {
-        $repository = $this->getDoctrine()
-            ->getRepository('Panda86UserBundle:User');
+        $em    = $this->get('doctrine.orm.entity_manager');
+        $dql   = "SELECT u FROM Panda86UserBundle:User u";
+        $query = $em->createQuery($dql);
 
-        $query = $repository->createQueryBuilder('u')
-            ->select('u.id, u.username, u.first_name, u.last_name, u.email')
-            ->orderBy('u.username', 'ASC')
-            ->getQuery();
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query,
+            $this->get('request')->query->get('page', 1)/*page number*/,
+            10/*limit per page*/
+        );
 
-        $users = $query->getResult();
-        if (!$users) {            
-            throw $this->createNotFoundException(
-                'No users found :o'
-            );
-        }
         return $this->render('Panda86UserBundle:User:index.html.twig', array(
-            'entities' => $users
+            'pagination' => $pagination
         ));
     }
 

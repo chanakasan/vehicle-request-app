@@ -12,6 +12,9 @@
 {% endblock %}
 {% block table %}
 <div class="span6">
+    <div class="count">
+        {{ pagination.getTotalItemCount }}
+    </div>
     <table class="table table-striped">
         <thead>
         <tr>
@@ -23,11 +26,11 @@
         </thead>
 
         <tbody>
-        {% for entity in entities %}
+        {% for entity in pagination %}
             <tr>
-                <td>{{ entity.first_name }} {{ entity.last_name }}</td>
-                <td>{{ entity.username }}</td>
-                <td>{{ entity.email }}</td>
+                <td>{{ entity.getfirstname }} {{ entity.getlastname }}</td>
+                <td>{{ entity.getusername }}</td>
+                <td>{{ entity.getemail }}</td>
                 <td>
                     <a href="{{ path('user_show', { 'id': entity.id }) }}">Profile</a> |
                     <a href="#">Edit / Delete</a>
@@ -36,7 +39,11 @@
         {% endfor %}
         </tbody>
     </table>
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div>
     <div class="pull-right" id="loadmoreajaxloader" style="display:none;"><img src="/app/img/ajax-loader.gif"/></div>
+    <br/>
     {{ parent() }}
 </div>
 
