@@ -27,9 +27,10 @@ class ReportController extends Controller
         $em = $this->getDoctrine()->getManager();
         $entities = $em->getRepository('Panda86AppBundle:Report')->findCostForCabs($f, $t);
 
-        return $this->render('Panda86AppBundle:Report:index.html.twig', array(
-            'results' => $entities
-        ));
+        // Only for testing
+//        return $this->render('Panda86AppBundle:Report:index.html.twig', array(
+//            'results' => $entities
+//        ));
 
         $filename = 'report_'.date("YmdHis").'.xls';
         $content = $this->render(
