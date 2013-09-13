@@ -23,24 +23,47 @@ class ApproveController extends Controller
         $em = $this->getDoctrine()->getManager();
         $entities = $em->getRepository('Panda86AppBundle:ApprovedRequest')->findAll();
 
+        if(!$entities)
+        {
+            $this->get('session')->getFlashBag()->add(
+                'error',
+                'No approved requests found!'
+            );
+        }
         $allApproved = array();
         foreach($entities as $entity)
         {
-            $vehicle =  $entity->getVehicle()->getMake();
-            $vehicle .= ' '.$entity->getVehicle()->getModel();
-            $vehicle .= ' - '.$entity->getVehicle()->getRegno();
+            if($entity->getVehicle())
+            {
+                $vehicle =  $entity->getVehicle()->getMake();
+                $vehicle .= ' '.$entity->getVehicle()->getModel();
+                $vehicle .= ' - '.$entity->getVehicle()->getRegno();
 
-            $pickuptime = $entity->getRequest()->getPickupTime();
-            $start = $pickuptime->format('Y-m-d H:i:s');
+                $pickuptime = $entity->getRequest()->getPickupTime();
+                $start = $pickuptime->format('Y-m-d H:i:s');
 
-            $temp = array(
-                'title' => $vehicle,
-                'start' => $start,
-                'requester' => $entity->getRequest()->getRequester()->getName(),
-                'vehicle' => $vehicle,
-                'driver' => $entity->getDriver()->getDisplayname(),
-            );
-            $allApproved[] = $temp;
+                $temp = array(
+                    'title' => $vehicle,
+                    'start' => $start,
+                    'requester' => $entity->getRequest()->getRequester()->getName(),
+                    'vehicle' => $vehicle,
+                    'driver' => $entity->getDriver()->getDisplayname(),
+                );
+                $allApproved[] = $temp;
+            }
+            if($entity->getCab())
+            {
+                $cab =  $entity->getCab()->getCabService()->getName();
+                $pickuptime = $entity->getRequest()->getPickupTime();
+                $start = $pickuptime->format('Y-m-d H:i:s');
+
+                $temp = array(
+                    'title' => 'Rented vehicle '.$cab,
+                    'start' => $start,
+                    'requester' => $entity->getRequest()->getRequester()->getName(),
+                );
+                $allApproved[] = $temp;
+            }
         }
         $response = new \Symfony\Component\HttpFoundation\Response(json_encode($allApproved));
         $response->headers->set('Content-Type', 'application/json');
