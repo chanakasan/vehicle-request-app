@@ -57,19 +57,6 @@ $(document).ready(function(){
         }
     });
 
-    /* init jquery validation */
-    $('#newReq_form').validate({
-        errorPlacement: function(label, element) {
-            label.addClass('inline text-error');
-            label.insertAfter(element);
-        },
-        wrapper: 'span'
-    });
-    /* jquery validate debug mode */
-    //    jQuery.validator.setDefaults({
-    //        debug: true
-    //    });
-
     /* show tooltips */
     $('.show-tooltip').tooltip();
 
@@ -90,6 +77,34 @@ $(document).ready(function(){
         }
         else
             $('#request_accomodation').hide('slow');
+    });
+
+    /* jquery validate debug mode */
+//        jQuery.validator.setDefaults({
+//            debug: true
+//        });
+    /* init jquery validation */
+    $('#newReq_form').validate({
+        errorPlacement: function(label, element) {
+            label.addClass('inline text-error');
+            label.insertAfter(element);
+        },
+        wrapper: 'span'
+    });
+    $( "#request_accomodation_no_days" ).rules( "add", {
+        required: true,
+        digits: true,
+        min: 1,
+        max: 60
+    });
+    $( "#request_accomodation_day_rate" ).rules( "add", {
+        number: true,
+        min: 1
+    });
+    $( "#request_accomodation_total_fee" ).rules( "add", {
+        required: true,
+        number: true,
+        min: 1
     });
 
 });
