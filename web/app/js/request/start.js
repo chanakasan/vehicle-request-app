@@ -1,17 +1,19 @@
-$(document).ready(function(){
-    /* init jquery validation */
-    $('form').validate({
-        errorPlacement: function(label, element) {
-            label.addClass('inline text-error');
-            label.insertAfter(element);
-        },
-        wrapper: 'span'
-    });
-
-    $( "#no_days" ).rules( "add", {
-        required: true,
-        digits: true,
-        min: 1,
-        max: 60
-    });
+angular.element(document).ready(function() {
+    angular.module('vrmApp', []);
+    angular.bootstrap(document, ['vrmApp']);
 });
+'use strict';
+
+// Declare app level module which depends on filters, and services
+angular.module('vrmApp', []);
+
+/* Controllers */
+function formController($scope) {
+
+    $scope.no_days = 1;
+
+    $scope.submitForm = function () {
+        $scope.startForm.submit();
+    }
+
+}
