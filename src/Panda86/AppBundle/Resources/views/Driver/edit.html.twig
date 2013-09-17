@@ -21,7 +21,8 @@
             </label>
 
             <div class="controls">
-                {{ form_row(edit_form.first_name) }}
+                {% set attr = {'ng-model':'first_name', 'ng-change' : 'addNames()'} %}
+                {{ form_row(edit_form.first_name, {'attr': attr}) }}
             </div>
         </div>
         <div class="control-group">
@@ -30,7 +31,8 @@
             </label>
 
             <div class="controls">
-                {{ form_row(edit_form.last_name) }}
+                {% set attr = {'ng-model':'last_name', 'ng-change' : 'addNames()'} %}
+                {{ form_row(edit_form.last_name, {'attr': attr}) }}
             </div>
         </div>
         <div class="control-group">
@@ -39,7 +41,8 @@
             </label>
 
             <div class="controls">
-                {{ form_row(edit_form.display_name) }}
+                {% set attr = {'ng-model':'display_name'} %}
+                {{ form_row(edit_form.display_name, {'attr': attr}) }}
             </div>
         </div>
         <div class="control-group">
@@ -96,4 +99,8 @@
             </form>
         </div>
     </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="/app/js/driver/formController.js"></script>
 {% endblock %}
