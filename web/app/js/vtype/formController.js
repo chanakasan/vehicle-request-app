@@ -10,11 +10,11 @@ angular.module('vrmApp', []);
 /* Controllers */
 function formController($scope) {
     $scope.addNames = function() {
-        var fn = $scope.first_name;
-        var ln = $scope.last_name;
-        if(fn !== undefined && ln !== undefined)
+        var count = $scope.passengers;
+        var vtype = $scope.vtype;
+        if(count !== undefined && vtype !== undefined)
         {
-            $scope.display_name = ucfirst(fn)+' '+ucfirst(ln);
+            $scope.display_name = count+'-passenger'+' '+ucfirst(vtype);
         }
     }
 }

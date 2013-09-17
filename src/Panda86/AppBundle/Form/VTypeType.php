@@ -11,7 +11,7 @@ class VTypeType extends AbstractType
     private function _choicesList()
     {
         $data = array();
-        for($i=2; $i<21; $i++)
+        for($i=2; $i<31; $i++)
         {
             $tmp = array( $i => $i );
             $data = $data + $tmp;
@@ -24,6 +24,7 @@ class VTypeType extends AbstractType
         $builder
             ->add('name', null, array('label' => false))
             ->add('passengers', 'choice', array(
+                'empty_value' => '-- Select --',
                 'label' => false,
                 'choices' => $choices,
             ))
