@@ -8,9 +8,6 @@
             margin-right: auto;
             float: none;
         }
-        .form-required {
-            color: red;
-        }
     </style>
     <link rel="stylesheet" href="/assets/pform/view.css">
 {% endblock %}
@@ -27,7 +24,7 @@
                 {%  block content %}{% endblock %}
                 <br/>
                 <div id="form_footer">
-                    <a href="http://www.icta.lk">ICTA | &copy 2013</a>
+                    <a href="http://www.icta.lk">&copy; ICTA {{ '' | date('Y') }}</a>
                 </div>
             </div>
             <img class="hidden-print" id="bottom" src="/assets/pform/bottom.png" alt="">

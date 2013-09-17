@@ -31,6 +31,10 @@ Panda86\AppBundle\Entity\Driver:
         mobile:
             type: integer
             length: 20
+        image:
+            type: string
+            length: '255'
+            nullable: true
         created:
             type: datetime
         updated:
