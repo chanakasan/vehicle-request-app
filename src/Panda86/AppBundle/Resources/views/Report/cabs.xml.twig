@@ -8,7 +8,7 @@
     <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
         <Author>panda</Author>
         <LastAuthor>panda</LastAuthor>
-        <LastPrinted>2013-09-03T08:50:13Z</LastPrinted>
+        <LastPrinted>2013-09-13T05:13:31Z</LastPrinted>
         <Created>2013-09-03T08:33:15Z</Created>
         <Version>14.00</Version>
     </DocumentProperties>
@@ -20,6 +20,7 @@
         <WindowWidth>18195</WindowWidth>
         <WindowTopX>120</WindowTopX>
         <WindowTopY>120</WindowTopY>
+        <TabRatio>387</TabRatio>
         <ProtectStructure>False</ProtectStructure>
         <ProtectWindows>False</ProtectWindows>
     </ExcelWorkbook>
@@ -33,45 +34,45 @@
             <Protection/>
         </Style>
         <Style ss:ID="s62">
-            <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
-            ss:Bold="1"/>
-        </Style>
-        <Style ss:ID="s96">
-            <Interior ss:Color="#C5D9F1" ss:Pattern="Solid"/>
-        </Style>
-        <Style ss:ID="s105">
-            <Alignment ss:Horizontal="Center" ss:Vertical="Bottom"/>
-            <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
-            ss:Bold="1"/>
-            <Interior ss:Color="#C5D9F1" ss:Pattern="Solid"/>
-        </Style>
-        <Style ss:ID="s119">
             <Borders>
-    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
-            <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
-            <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+                <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+                <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+                <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
             </Borders>
-   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#FFFFFF"
-            ss:Bold="1"/>
+            <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#FFFFFF"
+                  ss:Bold="1"/>
             <Interior ss:Color="#538DD5" ss:Pattern="Solid"/>
         </Style>
-        <Style ss:ID="s120">
+        <Style ss:ID="s63">
             <Borders>
-    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
-            <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
-            <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
-            <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+                <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+                <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+                <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+                <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
             </Borders>
-   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
+            <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
             <Interior/>
         </Style>
-        <Style ss:ID="s121">
-            <Borders/>
-            <Interior/>
+        <Style ss:ID="s65">
+            <Alignment ss:Horizontal="Center" ss:Vertical="Bottom"/>
+            <Borders>
+                <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+            </Borders>
+            <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
+                  ss:Bold="1"/>
+            <Interior ss:Color="#C5D9F1" ss:Pattern="Solid"/>
+        </Style>
+        <Style ss:ID="s66">
+            <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
+                  ss:Bold="1"/>
+            <Interior ss:Color="#C5D9F1" ss:Pattern="Solid"/>
         </Style>
     </Styles>
-    <Worksheet ss:Name="Sheet1">
-        <Table ss:ExpandedColumnCount="8" x:FullColumns="1"
+    <Worksheet ss:Name="Cabs">
+        <Names>
+            <NamedRange ss:Name="Print_Titles" ss:RefersTo="=Cabs!R1"/>
+        </Names>
+        <Table ss:ExpandedColumnCount="7" x:FullColumns="1"
                x:FullRows="1" ss:DefaultRowHeight="15">
             <Column ss:AutoFitWidth="0" ss:Width="66"/>
             <Column ss:AutoFitWidth="0" ss:Width="115.5"/>
@@ -80,116 +81,64 @@
             <Column ss:AutoFitWidth="0" ss:Width="69.75"/>
             <Column ss:AutoFitWidth="0" ss:Width="76.5"/>
             <Column ss:AutoFitWidth="0" ss:Width="69"/>
-            <Row>
-                <Cell ss:StyleID="s121"/>
-                <Cell ss:StyleID="s121"/>
-                <Cell ss:StyleID="s121"/>
-                <Cell ss:StyleID="s121"/>
-                <Cell ss:StyleID="s121"/>
-                <Cell ss:StyleID="s121"/>
-                <Cell ss:StyleID="s121"/>
-                <Cell ss:StyleID="s62"/>
+            <Row ss:AutoFitHeight="0">
+                <Cell ss:StyleID="s62"><Data ss:Type="String">Request ID #</Data><NamedCell
+                        ss:Name="Print_Titles"/></Cell>
+                <Cell ss:StyleID="s62"><Data ss:Type="String">Requester name</Data><NamedCell
+                        ss:Name="Print_Titles"/></Cell>
+                <Cell ss:StyleID="s62"><Data ss:Type="String">Cab service name</Data><NamedCell
+                        ss:Name="Print_Titles"/></Cell>
+                <Cell ss:StyleID="s62"><Data ss:Type="String">Cab voucher no.</Data><NamedCell
+                        ss:Name="Print_Titles"/></Cell>
+                <Cell ss:StyleID="s62"><Data ss:Type="String">Mileage (km)</Data><NamedCell
+                        ss:Name="Print_Titles"/></Cell>
+                <Cell ss:StyleID="s62"><Data ss:Type="String">Rate</Data><NamedCell
+                        ss:Name="Print_Titles"/></Cell>
+                <Cell ss:StyleID="s62"><Data ss:Type="String">Cost (Rs.)</Data><NamedCell
+                        ss:Name="Print_Titles"/></Cell>
             </Row>
-            <Row>
-                <Cell ss:StyleID="s121"><Data ss:Type="String">Vehicle reservation requests</Data></Cell>
-                <Cell ss:StyleID="s121"/>
-                <Cell ss:StyleID="s121"/>
-                <Cell ss:StyleID="s121"/>
-                <Cell ss:StyleID="s121"/>
-                <Cell ss:StyleID="s121"/>
-                <Cell ss:StyleID="s121"/>
-            </Row>
-            <Row>
-                <Cell ss:StyleID="s121"><Data ss:Type="String">ICTA 2013</Data></Cell>
-                <Cell ss:StyleID="s121"/>
-                <Cell ss:StyleID="s121"/>
-                <Cell ss:StyleID="s121"/>
-                <Cell ss:StyleID="s121"/>
-                <Cell ss:StyleID="s121"/>
-                <Cell ss:StyleID="s121"/>
-            </Row>
-            <Row>
-                <Cell ss:StyleID="s121"><Data ss:Type="String">Generated report</Data></Cell>
-                <Cell ss:StyleID="s121"/>
-                <Cell ss:StyleID="s121"/>
-                <Cell ss:StyleID="s121"/>
-                <Cell ss:StyleID="s121"/>
-                <Cell ss:StyleID="s121"/>
-                <Cell ss:StyleID="s121"/>
-            </Row>
-            <Row>
-                <Cell ss:StyleID="s121"><Data ss:Type="String">
-                	<!-- Report Date/Time : {{ report_time|date('Y-m-d \\- g:i a') }} -->
-                </Data></Cell>
-                <Cell ss:StyleID="s121"/>
-                <Cell ss:StyleID="s121"/>
-                <Cell ss:StyleID="s121"/>
-                <Cell ss:StyleID="s121"/>
-                <Cell ss:StyleID="s121"/>
-                <Cell ss:StyleID="s121"/>
-            </Row>
-            <Row ss:Index="8">
-                <Cell ss:StyleID="s119"><Data ss:Type="String">Request ID #</Data></Cell>
-                <Cell ss:StyleID="s119"><Data ss:Type="String">Requester name</Data></Cell>
-                <Cell ss:StyleID="s119"><Data ss:Type="String">Cab service name</Data></Cell>
-                <Cell ss:StyleID="s119"><Data ss:Type="String">Cab voucher no.</Data></Cell>
-                <Cell ss:StyleID="s119"><Data ss:Type="String">Mileage (km)</Data></Cell>
-                <Cell ss:StyleID="s119"><Data ss:Type="String">Rate</Data></Cell>
-                <Cell ss:StyleID="s119"><Data ss:Type="String">Cost (Rs.)</Data></Cell>
-            </Row>
-
             {% for entity in entities %}
-            <Row>
-                <Cell ss:StyleID="s120">
-                    <Data ss:Type="Number">{{ entity.getrequest.getid }}</Data>
-                </Cell>
-                <Cell ss:StyleID="s120">
-                    <Data ss:Type="String">{{ entity.getrequest.getrequester.getname }}</Data>
-                </Cell>
-                <Cell ss:StyleID="s120">
-                    <Data ss:Type="String">{{ entity.getcab.getcabservice.getname }}</Data>
-                </Cell>
-                <Cell ss:StyleID="s120">
-                    <Data ss:Type="String">{{ entity.getcab.getvoucherno }}</Data>
-                </Cell>
-                <Cell ss:StyleID="s120">
-                    <Data ss:Type="Number">{{ entity.getcab.getmileage }}</Data>
-                </Cell>
-                <Cell ss:StyleID="s120">
-                    <Data ss:Type="Number">{{ entity.getcab.getrate }}</Data>
-                </Cell>
-                <Cell ss:StyleID="s120">
-                    <Data ss:Type="Number">{{ entity.getcab.getcost }}</Data>
-                </Cell>
+            <Row ss:AutoFitHeight="0">
+                <Cell ss:StyleID="s63"><Data ss:Type="Number">{{ entity.request.id }}</Data></Cell>
+                <Cell ss:StyleID="s63"><Data ss:Type="String">{{ entity.request.requester.name }}</Data></Cell>
+                <Cell ss:StyleID="s63"><Data ss:Type="String">{{ entity.cab.cabservice.name }}</Data></Cell>
+                <Cell ss:StyleID="s63"><Data ss:Type="String">{{ entity.cab.voucherno }}</Data></Cell>
+                <Cell ss:StyleID="s63"><Data ss:Type="Number">{{ entity.cab.mileage }}</Data></Cell>
+                <Cell ss:StyleID="s63"><Data ss:Type="Number">{{ entity.cab.rate }}</Data></Cell>
+                <Cell ss:StyleID="s63"><Data ss:Type="Number">{{ entity.cab.cost }}</Data></Cell>
             </Row>
             {% endfor %}
             <Row ss:AutoFitHeight="0">
-                <Cell ss:MergeAcross="2" ss:StyleID="s105"><Data ss:Type="String">Totals   =</Data></Cell>
-                <Cell ss:StyleID="s96"/>
-                <Cell ss:StyleID="s96"/>
-                <Cell ss:StyleID="s96"/>
-                <Cell ss:StyleID="s96"/>
+                <Cell ss:MergeAcross="2" ss:StyleID="s65"><Data ss:Type="String">Totals   =</Data></Cell>
+                <Cell ss:StyleID="s66"/>
+                <Cell ss:StyleID="s66"/>
+                <Cell ss:StyleID="s66"/>
+                <Cell ss:StyleID="s66" ss:Formula="=SUM(R[-44]C:R[-1]C)"><Data ss:Type="Number"></Data></Cell>
             </Row>
         </Table>
         <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
             <PageSetup>
-                <Header x:Margin="0.3"
-                        x:Data="&amp;L&amp;&quot;Calibri,Bold&quot;Date created: 2013-10-12&amp;C&amp;&quot;Calibri,Bold&quot;&amp;14Vehicle Reservation Requests - ICTA&amp;&quot;Calibri,Regular&quot;&amp;11&#10;&amp;Rpage 1 of 1"/>
-                <Footer x:Margin="0.3" x:Data="&amp;Cpage 1 of 1"/>
-                <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
                 <Layout x:Orientation="Landscape"/>
+                <Header x:Margin="0.3"
+                        x:Data="&amp;L&amp;&quot;Calibri,Bold&quot;report created: 2013-10-12&amp;C&amp;&quot;Calibri,Bold&quot;&amp;14Generated Report - Vehicle Reservation Requests&amp;Rpage &amp;P of &amp;N"/>
+                <Footer x:Margin="0.3" x:Data="&amp;C© ICTA 2013"/>
+                <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="1.15625"/>
             </PageSetup>
+            <Unsynced/>
             <Print>
                 <ValidPrinterInfo/>
+                <PaperSizeIndex>9</PaperSizeIndex>
                 <HorizontalResolution>600</HorizontalResolution>
                 <VerticalResolution>600</VerticalResolution>
             </Print>
+            <PageBreakZoom>60</PageBreakZoom>
             <Selected/>
+            <TopRowVisible>18</TopRowVisible>
             <Panes>
                 <Pane>
                     <Number>3</Number>
                     <ActiveRow>3</ActiveRow>
-                    <ActiveCol>1</ActiveCol>
+                    <ActiveCol>2</ActiveCol>
                 </Pane>
             </Panes>
             <ProtectObjects>False</ProtectObjects>

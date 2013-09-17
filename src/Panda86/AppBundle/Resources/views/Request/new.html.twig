@@ -140,3 +140,11 @@
         <!--/form fields-->
     </form>
 {% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="/assets/chosen/chosen.jquery.min.js"></script>
+    <script src="/assets/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="/assets/jquery.validate.js"></script>
+    <script src="/app/js/request/newInit.js"></script>
+    <script src="/app/js/request/new.js"></script>
+{% endblock %}

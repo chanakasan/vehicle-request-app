@@ -37,7 +37,7 @@ class VehicleController extends Controller
     {
         $entity  = new Vehicle();
         $form = $this->createForm(new VehicleType(), $entity);
-        $form->bind($request);
+        $form->handleRequest($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -55,7 +55,7 @@ class VehicleController extends Controller
                 $dir = $entity->getImageUploadRootDir();
                 $filename = $entity->getRegNo().'.'.$extension;
 
-                $entity->setImage($filename);
+                $entity->setImage('/'.$entity->getImageUploadDir().'/'.$filename);
                 $file->move($dir, $filename);
             }
             $em->persist($entity);

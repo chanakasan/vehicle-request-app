@@ -3,15 +3,16 @@
 {% block stylesheets %}
     {{ parent() }}
     <link href="/assets/pform/start.css" rel="stylesheet"/>
+    <link href="/app/css/request/start.css" rel="stylesheet"/>
 {% endblock %}
 
 {% block body %}
-    <div class="row">
+    <div class="row" ng-controller="formController">
         <div class="span12">
             <img id="top" src="/assets/pform/top.png" alt="">
             <div id="form_container">
                 <h1>Header</h1>
-                <form class="appnitro"  method="post" action="{{ path('request_new') }}">
+                <form name="startForm" class="appnitro" ng-submit="submitForm();" action="{{ path('request_new') }}" method="post" novalidate>
                     <fieldset>
                         <legend>Request a vehicle reservation</legend>
                         <!--details -->
@@ -21,14 +22,20 @@
                         <!--/end details -->
                         <br/>
                         <label>No. of days <span style="color: red">*</span></label>
-                        <input required class="input-small" id="no_days" name="no_days" type="text" placeholder="e.g. 1, 2, 3…">
+                        <input id="no_days" name="no_days" class="input-small"  type="number" min="1" max="60" placeholder="e.g. 1, 2, 3…" required ng-model="no_days">
+                        <span class="ok inline">☑</span>
+                        <span class="ko inline">☒</span>
+                        <div class="custom-error" ng-show="startForm.no_days.$dirty && startForm.no_days.$invalid">
+                            <span class="f-required" ng-show="startForm.no_days.$error.required">This field is required.</span>
+                            <span class="f-required" ng-show="startForm.no_days.$error.min || startForm.no_days.$error.max">No. of days must be between 1 and 60.</span>
+                        </div>
                         <span class="help-block">No. of days you wish to use the vehicle.</span>
                         <br/>
-                        <input type="submit" class="btn" value="Show request form"/>
+                        <input type="submit" ng-disabled="!startForm.no_days.$valid" class="btn" value="Show request form"/>
                     </fieldset>
                 </form>
                 <div id="footer">
-                    <a href="http://www.icta.lk">ICTA | &copy 2013</a>
+                    <a href="http://www.icta.lk">&copy; ICTA {{ '' | date('Y') }}</a>
                 </div>
             </div>
             <img id="bottom" src="/assets/pform/bottom.png" alt="">
@@ -39,5 +46,5 @@
 {% block javascripts %}
     {{ parent() }}
     <script src="/assets/jquery.validate.js"></script>
-    <script src="/app/js/common/forms.js"></script>
+    <script src="/app/js/request/start.js"></script>
 {% endblock %}

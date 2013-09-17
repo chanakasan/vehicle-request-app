@@ -74,8 +74,8 @@ work for you:
    
 		Login details:
 		   	admin user 
-		   		username: admin123
+		   		username: admin001
 		   		password: pass123
 		   	super-admin user
-		   		username: su123
+		   		username: su001
 		   		password: pass123

@@ -1,0 +1,24 @@
+.f-required {
+    color: #ff0000;
+}
+span.ok, span.ko {
+    display: none;
+    font-size: 2em;
+}
+/*input.ng-pristine {*/
+    /*border:1px solid Gold;*/
+/*}*/
+input.ng-dirty.ng-valid {
+    border:1px solid Green;
+}
+input.ng-dirty.ng-invalid {
+    border:1px solid Red;
+}
+.ng-dirty.ng-valid ~ span.ok {
+    color:green;
+    display:inline;
+}
+.ng-dirty.ng-invalid ~ span.ko {
+    color:red;
+    display:inline;
+}

@@ -10,21 +10,20 @@ class UserController extends Controller
 {
     public function indexAction()
     {
-        $repository = $this->getDoctrine()
-            ->getRepository('Panda86UserBundle:User');
+        $em    = $this->get('doctrine.orm.entity_manager');
+        $dql   = "SELECT u FROM Panda86UserBundle:User u";
+        $query = $em->createQuery($dql);
 
-        $query = $repository->createQueryBuilder('u')
-            ->select('u.id, u.username, u.first_name, u.last_name, u.email')
-            ->orderBy('u.username', 'ASC')
-            ->getQuery();
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query,
+            $this->get('request')->query->get('page', 1)/*page number*/,
+            10/*limit per page*/
+        );
 
-        $users = $query->getResult();
-        if (!$users) {            
-            throw $this->createNotFoundException(
-                'No users found :o'
-            );
-        }
-        return new Response(json_encode($users));
+        return $this->render('Panda86UserBundle:User:index.html.twig', array(
+            'pagination' => $pagination
+        ));
     }
 
     public function showAction($id)
@@ -48,27 +47,6 @@ class UserController extends Controller
         }
         //$user_arr = $user->toArray();
         return new Response(json_encode($user));
-    }
-
-    public function createAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-        for($i=0; $i < 10; $i++)
-        {
-            $user = new User();
-            $user->setEnabled(true);
-            $user->setFirstName("John0".$i);
-            $user->setLastName("Doe0".$i);
-            $user->setUsername("panda0".$i);
-            $user->setPlainPassword("pass123");
-            $user->setRoles(array('ADMIN_USER'));
-            $user->setEmail("john".$i."@gmail.com");
-            $user->setSuperAdmin(true);
-            $em->persist($user);
-            $em->flush();
-        }
-        //$this->get('session')->getFlashBag()->add('notice', 'Created user id '.$user->getId());
-        return $this->redirect($this->generateUrl('user_index'));
     }
 
     public function removeAction($id)
