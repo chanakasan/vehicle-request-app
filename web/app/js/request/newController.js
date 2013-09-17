@@ -9,5 +9,7 @@ angular.module('vrmApp', []);
 
 /* Controllers */
 function newController($scope) {
-
+    $scope.calculate = function() {
+        $scope.total_fee = Math.round(($scope.no_days * $scope.day_rate) * 100) / 100;
+    }
 }

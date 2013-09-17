@@ -24,7 +24,7 @@
                 {% set attr = { 'class': 'input-xlarge show-tooltip chzn-select', 'data-placeholder': 'Name of requester', 'tabindex':'-1'} %}
                 {% set tooltip = {'title': 'Person who requests the vehicle', 'data-toggle': 'tooltip', 'data-placement': 'right'} %}
                 {% set attr = attr|merge(tooltip) %}
-                {{ form_widget(form.requester, {'attr': attr }) }}
+                {{ form_row(form.requester, {'attr': attr }) }}
             </div>
         </div>
         <div class='control-group'>
@@ -116,7 +116,7 @@
                 </label>
 
                 <div class="controls">
-                    {% set attr = {'ng-model': 'no_days', 'min' : '1', max : '60' } %}
+                    {% set attr = {'ng-model': 'no_days', 'min' : '1', max : '60', 'ng-change' : 'calculate()' } %}
                     {{ form_row(form.accomodation.no_days, {'attr' : attr}) }}
                 </div>
             </div>
@@ -126,7 +126,7 @@
                 </label>
 
                 <div class="controls">
-                    {% set attr = {'ng-model': 'day_rate', 'required': 'required' } %}
+                    {% set attr = {'ng-model': 'day_rate', 'required': 'required', 'ng-change' : 'calculate\(\)' } %}
                     {{ form_row(form.accomodation.day_rate, {'attr' : attr}) }}
                 </div>
             </div>
@@ -136,7 +136,7 @@
                 </label>
 
                 <div class="controls">
-                    {% set attr = {'ng-model': 'total_fee' } %}
+                    {% set attr = {'ng-model': 'total_fee'} %}
                     {{ form_row(form.accomodation.total_fee, {'attr' : attr}) }}
                 </div>
             </div>

@@ -11,15 +11,15 @@ class RequestAccomodationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('no_days', null, array(
+            ->add('no_days', 'number', array(
                     'label' => false,
                     'required' => true,
                 ))
-            ->add('day_rate', null, array(
+            ->add('day_rate', 'number', array(
                 'label' => false,
                 'required' => true,
             ))
-            ->add('total_fee', null, array(
+            ->add('total_fee', 'number', array(
                 'label' => false,
                 'required' => true,
             ))
