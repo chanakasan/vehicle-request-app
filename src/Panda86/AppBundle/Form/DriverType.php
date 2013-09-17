@@ -11,13 +11,34 @@ class DriverType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('first_name', null, array('label' => false))
-            ->add('last_name', null, array('label' => false))
-            ->add('display_name', null, array('label' => false))
-            ->add('address', null, array('label' => false))
-            ->add('birth_date', null, array('label' => false))
-            ->add('license_date', null, array('label' => false))
-            ->add('license_ref', null, array('label' => false))
+            ->add('first_name', null, array(
+                'label' => false,
+                'required' => true,
+            ))
+            ->add('last_name', null, array(
+                'label' => false,
+                'required' => true,
+            ))
+            ->add('display_name', null, array(
+                'label' => false,
+                'required' => true,
+            ))
+            ->add('address', 'textarea', array(
+                'label' => false,
+                'required' => true,
+            ))
+            ->add('birth_date', null, array(
+                'label' => false,
+                'required' => true,
+            ))
+            ->add('license_date', null, array(
+                'label' => false,
+                'required' => true,
+            ))
+            ->add('license_ref', null, array(
+                'label' => false,
+                'required' => true,
+            ))
         ;
     }
 

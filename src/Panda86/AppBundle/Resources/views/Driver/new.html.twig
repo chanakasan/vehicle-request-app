@@ -1,9 +1,13 @@
-{% extends 'Panda86AppBundle::pform-centred-view.html.twig' %}
+{% extends 'Panda86AppBundle::create-view.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Add driver
+{% endblock %}
 
 {% set closeBtn_url = path('driver') %}
 {% block content %}
     <form action="{{ path('driver_create') }}" class="appnitro form-horizontal"
-          method="post" {{ form_enctype(form) }}>
+          method="post" {{ form_enctype(form) }} novalidate>
         <div class="form_description">
             <h2>Add new driver</h2><br/>
         </div>
@@ -13,49 +17,63 @@
 
         <!-- form fields -->
         <div class="control-group">
-            <label class="control-label">First name</label>
+            <label class="control-label">First name
+                <span class="f-required">*</span>
+            </label>
 
             <div class="controls">
                 {{ form_row(form.first_name) }}
             </div>
         </div>
         <div class="control-group">
-            <label class="control-label">Last name</label>
+            <label class="control-label">Last name
+                <span class="f-required">*</span>
+            </label>
 
             <div class="controls">
                 {{ form_row(form.last_name) }}
             </div>
         </div>
         <div class="control-group">
-            <label class="control-label">Display name</label>
+            <label class="control-label">Display name
+                <span class="f-required">*</span>
+            </label>
 
             <div class="controls">
                 {{ form_row(form.display_name) }}
             </div>
         </div>
         <div class="control-group">
-            <label class="control-label">Address</label>
+            <label class="control-label">Address
+                <span class="f-required">*</span>
+            </label>
 
             <div class="controls">
                 {{ form_row(form.address) }}
             </div>
         </div>
         <div class="control-group">
-            <label class="control-label">Birth date</label>
+            <label class="control-label">Birth date
+                <span class="f-required">*</span>
+            </label>
 
             <div class="controls">
                 {{ form_row(form.birth_date) }}
             </div>
         </div>
         <div class="control-group">
-            <label class="control-label">License date</label>
+            <label class="control-label">License date
+                <span class="f-required">*</span>
+            </label>
 
             <div class="controls">
                 {{ form_row(form.license_date) }}
             </div>
         </div>
         <div class="control-group">
-            <label class="control-label">License Ref. no.</label>
+            <label class="control-label">License Ref. no.
+                <span class="f-required">*</span>
+            </label>
 
             <div class="controls">
                 {{ form_row(form.license_ref) }}
@@ -64,7 +82,7 @@
 
         <div class="control-group">
             <div class="controls">
-                <button type="submit" formnovalidate="">Add</button>
+                <input name="submit" class="btn btn-success" type="submit" value="Add"/>
             </div>
         </div>
     </form>
