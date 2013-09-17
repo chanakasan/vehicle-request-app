@@ -19,7 +19,7 @@
 {% endblock %}
 
 {% block body -%}
-    <div class="row">
+    <div class="row" ng-controller="newController">
         <div class="span9 centred">
             {% form_theme form 'Panda86AppBundle:Form:form_datetimepicker_type.html.twig' %}
             <img id="top" src="/assets/pform/top.png" alt="">
@@ -36,4 +36,13 @@
             <img id="bottom" src="/assets/pform/bottom.png" alt="">
         </div>
     </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="/assets/chosen/chosen.jquery.min.js"></script>
+    <script src="/assets/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="/assets/jquery.validate.js"></script>
+    <script src="/app/js/request/newInit.js"></script>
+    <script src="/app/js/request/new.js"></script>
+    <script src="/app/js/request/newController.js"></script>
 {% endblock %}

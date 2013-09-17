@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block body %}
-    <div class="row" ng-controller="formController">
+    <div class="row" ng-controller="startController">
         <div class="span12">
             <img id="top" src="/assets/pform/top.png" alt="">
             <div id="form_container">
@@ -46,5 +46,5 @@
 {% block javascripts %}
     {{ parent() }}
     <script src="/assets/jquery.validate.js"></script>
-    <script src="/app/js/request/start.js"></script>
+    <script src="/app/js/request/startController.js"></script>
 {% endblock %}
