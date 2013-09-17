@@ -25,9 +25,9 @@ class VehicleType extends AbstractType
             ))
             ->add('vtype','entity', array(
                 'class'=>'Panda86\AppBundle\Entity\VType',
+                'empty_value' => '-- Select --',
                 'property'=>'name',
                 'label' => false,
-                'required'=> true,
                 ))
             ->add('passengers', null, array(
                 'label'=> false,

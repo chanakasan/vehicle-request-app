@@ -1,4 +1,8 @@
 /* common form css */
+.f-required {
+    color: #ff0000;
+}
+
 textarea {
     resize : vertical;
 }
