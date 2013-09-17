@@ -4,7 +4,7 @@
 {% block form %}
     {% form_theme form 'Panda86AppBundle:Form:form_datetimepicker_type.html.twig' %}
     <form id='newReq_form' class='appnitro form-horizontal' action='{{ path('request_create') }}'
-          method='post' {{ form_enctype(form) }}>
+          method='post' {{ form_enctype(form) }} novalidate>
         <div class='form_description'>
             <h2>New vehicle reservation request</h2><br/>
         </div>
@@ -109,14 +109,43 @@
         </div>
         <div id='request_accomodation' style="display: none; border: solid 1px #c3c3c3">
             <p>Accomodation info</p>
+
             <div class="control-group">
-                <div class="control-group">
+                <label class='control-label'>No. of days
+                    <span class='f-required'>*</span>
+                </label>
 
-                    <div class="controls">
-                        {{ form_row(form.accomodation) }}
-                    </div>
+                <div class="controls">
+                    {% set attr = {'ng-model': 'no_days' } %}
+                    {{ form_row(form.accomodation.no_days, {'attr' : attr}) }}
                 </div>
+            </div>
+            <div class="control-group">
+                <label class='control-label'>Day rate (Rs.)
+                    <span class='f-required'>*</span>
+                </label>
 
+                <div class="controls">
+                    {% set attr = {'ng-model': 'day_rate' } %}
+                    {{ form_row(form.accomodation.day_rate, {'attr' : attr}) }}
+                </div>
+            </div>
+            <div class="control-group">
+                <label class='control-label'>Total fee (Rs.)
+                    <span class='f-required'>*</span>
+                </label>
+
+                <div class="controls">
+                    {% set attr = {'ng-model': 'total_fee' } %}
+                    {{ form_row(form.accomodation.total_fee, {'attr' : attr}) }}
+                </div>
+            </div>
+            <div class="control-group">
+                <label class='control-label'>Other info</label>
+
+                <div class="controls">
+                    {{ form_row(form.accomodation.descrip) }}
+                </div>
             </div>
         </div>
         <br/>
