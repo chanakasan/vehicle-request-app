@@ -11,19 +11,45 @@ class VehicleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('make', null, array('label'=> false))
-            ->add('model', null, array('label'=> false))
-            ->add('reg_no', null, array('label'=> false))
+            ->add('make', null, array(
+                'label'=> false,
+                'required'=> true,
+            ))
+            ->add('model', null, array(
+                'label'=> false,
+                'required'=> true,
+            ))
+            ->add('reg_no', null, array(
+                'label'=> false,
+                'required'=> true,
+            ))
             ->add('vtype','entity', array(
                 'class'=>'Panda86\AppBundle\Entity\VType',
+                'empty_value' => '-- Select --',
                 'property'=>'name',
-                'label' => false
+                'label' => false,
                 ))
-            ->add('passengers', null, array('label'=> false))
-            ->add('ac', null, array('label'=> false))
-            ->add('is_company_owned', null, array('label'=> false))
-            ->add('image', 'file', array('label'=> false))
-            ->add('remarks', null, array('label'=> false))
+            ->add('passengers', null, array(
+                'label'=> false,
+                'required'=> true,
+            ))
+            ->add('ac', null, array(
+                'label'=> false,
+                'required'=> false,
+            ))
+            ->add('is_company_owned', null, array(
+                'label'=> false,
+                'required'=> false,
+            ))
+            ->add('image', 'file', array(
+                'data_class' => null,
+                'label'=> false,
+                'required'=> false,
+            ))
+            ->add('remarks', null, array(
+                'label'=> false,
+                'required'=> false,
+            ))
         ;
     }
 

@@ -22,14 +22,14 @@ class ApprovedRequestType extends AbstractType
                 ->addModelTransformer($transformer)
             )
             ->add('vehicle', 'entity', array(
-                'empty_value' => '--',
+                'empty_value' => '-- Select --',
                 'class' => 'Panda86AppBundle:Vehicle',
                 'property' => 'reg_no',
                 'label' => false,
                 'required' => false,
                 ))
             ->add('driver', 'entity',array(
-                'empty_value' => '--',
+                'empty_value' => '-- Select --',
                 'class' => 'Panda86AppBundle:Driver',
                 'property' => 'display_name',
                 'label' => false,

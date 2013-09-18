@@ -46,7 +46,7 @@
         <table id="requests_list" class="table table-striped table-bordered">
             <thead>
             <tr>
-                <th>Req ID</th>
+                <th>Req ID #</th>
                 <th>Requester</th>
                 <th>Requested vehicle</th>
                 <th>Requested Date/Time</th>
@@ -64,7 +64,7 @@
                     {% set class = 'pending warning' %}
                 {% endif %}
                 <tr class="{{ class }}">
-                    <td>#{{ entity.id }}</td>
+                    <td>{{ entity.id }}</td>
                     <td>{{ entity.requester.name }}</td>
                     <td>{{ entity.vtype.name }}</td>
                     <td>{% if entity.pickuptime %}{{ entity.pickuptime|date('Y-m-d \\- g:i a') }}{% endif %}</td>

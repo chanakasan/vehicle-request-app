@@ -8,15 +8,12 @@
             margin-right: auto;
             float: none;
         }
-        .form-required {
-            color: red;
-        }
     </style>
     <link rel="stylesheet" href="/assets/pform/view.css">
 {% endblock %}
 
 {% block body -%}
-    <div class="row">
+    <div class="row" ng-controller="formController">
         <div class="span9 centred">
             <img class="hidden-print" id="top" src="/assets/pform/top.png" alt="">
             <div id="form_container">
@@ -27,13 +24,10 @@
                 {%  block content %}{% endblock %}
                 <br/>
                 <div id="form_footer">
-                    <a href="http://www.icta.lk">ICTA | &copy 2013</a>
+                    <a href="http://www.icta.lk">&copy; ICTA {{ '' | date('Y') }}</a>
                 </div>
             </div>
             <img class="hidden-print" id="bottom" src="/assets/pform/bottom.png" alt="">
         </div>
     </div>
-{% endblock %}
-{% block javascripts %}
-    {{ parent() }}
 {% endblock %}

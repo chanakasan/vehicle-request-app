@@ -1,10 +1,13 @@
-{% extends 'Panda86AppBundle::edit-view.html.twig' %}
+{% extends 'Panda86AppBundle::create-view.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Edit vehicle details
+{% endblock %}
 
 {% set closeBtn_url = path('vehicle') %}
-
 {% block form %}
-    <form class="appnitro form-horizontal" novalidate action="{{ path('vehicle_update', { 'id': entity.id }) }}"
-          method="post" {{ form_enctype(edit_form) }}>
+    <form class="appnitro form-horizontal" action="{{ path('vehicle_update', { 'id': entity.id }) }}"
+          method="post" {{ form_enctype(edit_form) }} novalidate>
         <div class="form_description">
             <h2>Edit vehicle details</h2><br/>
         </div>
@@ -62,11 +65,14 @@
                 {{ form_row(edit_form.ac) }}
             </div>
         </div>
-        <div class="control-group">
-            <label class="control-label">Upload a photo</label>
 
-            <div class="controls">
-                {{ form_row(edit_form.image) }}
+        <div id="upload_photo_div">
+            <div class="control-group">
+                <label for="upload_photo" class="control-label">Upload/Change photo</label>
+
+                <div class="controls">
+                    {{ form_row(edit_form.image) }}
+                </div>
             </div>
         </div>
         <div class="control-group">
@@ -78,7 +84,7 @@
         </div>
         <div class="control-group">
             <div class="controls">
-                <button class="btn btn-success" type="submit" formnovalidate="">Save</button>
+                <input class="btn btn-success" type="submit" value="Save & Return"/>
             </div>
         </div>
     </form>

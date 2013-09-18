@@ -8,12 +8,8 @@ angular.element(document).ready(function() {
 angular.module('vrmApp', []);
 
 /* Controllers */
-function formController($scope) {
-
-    $scope.no_days = 1;
-
-    $scope.submitForm = function () {
-        $scope.startForm.submit();
+function newController($scope) {
+    $scope.calculate = function() {
+        $scope.total_fee = Math.round(($scope.no_days * $scope.day_rate) * 100) / 100;
     }
-
 }

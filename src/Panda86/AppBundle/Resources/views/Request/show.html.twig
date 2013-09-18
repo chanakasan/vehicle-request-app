@@ -140,4 +140,15 @@
         </tr>
         </tbody>
     </table>
+    <div id="request_more_info" style="display: none">
+        <p><b>Additional information</b></p>
+        <div id="content" class="span6 offset1">
+            {% if entity.moreinfo is not null %}
+                {# {{ entity.moreinfo | raw }} #}
+            {% else %}
+                <p>--</p>
+            {% endif %}
+        </div>
+    </div>
+    <br/>
 {% endblock %}
