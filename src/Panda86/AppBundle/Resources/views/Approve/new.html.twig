@@ -7,7 +7,7 @@
 {% set closeBtn_url = path('request_list') %}
 {% block form %}
     <form id="approve_form" class="appnitro form-horizontal" action="{{ path('approve_create') }}"
-          method="post" {{ form_enctype(form) }}>
+          method="post" {{ form_enctype(form) }} novalidate>
         {{ form_errors(form) }}
         {{ form_widget(form._token) }}
         <div class="form_description">
@@ -23,7 +23,7 @@
         </div>
 
         <p>Assign vehicle
-            <span class="form-required" title="This field is required.">*</span>
+            <span class="f-required">*</span>
         </p>
         <div class="control-group">
             <label class="control-label" for="vehicle_company">Company vehicle</label>
@@ -42,7 +42,7 @@
             <p>Company vehicle info</p>
             <div class="control-group">
                 <label class="control-label">Vehicle
-                    <span class="form-required" title="This field is required.">*</span>
+                    <span class="f-required">*</span>
                 </label>
 
                 <div class="controls">
@@ -52,7 +52,7 @@
             </div>
             <div class="control-group">
                 <label class="control-label">Assign driver
-                    <span class="form-required" title="This field is required.">*</span>
+                    <span class="f-required">*</span>
                 </label>
 
                 <div class="controls">
@@ -63,14 +63,57 @@
         </div>
         <div id="div_cab_service" style="border:solid 1px #c3c3c3">
             <p>Cab info</p>
+            
             <div class="control-group">
-                <div class="control-group">
+                <label class='control-label'>Cab Service
+                    <span class='f-required'>*</span>
+                </label>
 
-                    <div class="controls">
-                        {{ form_row(form.cab) }}
-                    </div>
+                <div class="controls">
+                    {% set attr = {} %}
+                    {{ form_row(form.cab.cab_service, {'attr' : attr}) }}
                 </div>
+            </div>
+            <div class="control-group">
+                <label class='control-label'>Voucher no.</label>
 
+                <div class="controls">
+                    {% set attr = {} %}
+                    {{ form_row(form.cab.voucher_no, {'attr' : attr}) }}
+                </div>
+            </div>
+            <div class="control-group">
+                <label class='control-label'>Mileage (km.)</label>
+
+                <div class="controls">
+                    {% set attr = {'ng-model': 'mileage', 'ng-change': 'calculate()'} %}
+                    {{ form_row(form.cab.mileage, {'attr' : attr}) }}
+                </div>
+            </div>
+            <div class="control-group">
+                <label class='control-label'>Rate (Rs. per 1 km.)</label>
+
+                <div class="controls">
+                    {% set attr = {'ng-model': 'rate', 'ng-change': 'calculate()'} %}
+                    {{ form_row(form.cab.rate, {'attr' : attr}) }}
+                </div>
+            </div>
+            <div class="control-group">
+                <label class='control-label'>Total cost (Rs.)
+                    <span class='f-required'>*</span>
+                </label>
+
+                <div class="controls">
+                    {% set attr = {'ng-model': 'total_cost'} %}
+                    {{ form_row(form.cab.cost, {'attr' : attr}) }}
+                </div>
+            </div>
+            <div class="control-group">
+                <label class='control-label'>Other info</label>
+
+                <div class="controls">
+                    {{ form_row(form.cab.other_info) }}
+                </div>
             </div>
         </div>
         <br/>
@@ -91,4 +134,5 @@
 {% block javascripts %}
     {{ parent() }}
     <script src="/app/js/approve/new.js"></script>
+    <script src="/app/js/approve/formController.js"></script>
 {% endblock %}

@@ -28,7 +28,7 @@ class CabService
     /**
      * @var string
      */
-    private $webSite;
+    private $website;
 
     /**
      * @var string
@@ -103,26 +103,26 @@ class CabService
     }
 
     /**
-     * Set webSite
+     * Set website
      *
      * @param string $webSite
      * @return CabService
      */
-    public function setWebSite($webSite)
+    public function setWebsite($webSite)
     {
-        $this->webSite = $webSite;
+        $this->website = $webSite;
 
         return $this;
     }
 
     /**
-     * Get webSite
+     * Get website
      *
      * @return string 
      */
-    public function getWebSite()
+    public function getWebsite()
     {
-        return $this->webSite;
+        return $this->website;
     }
 
     /**
