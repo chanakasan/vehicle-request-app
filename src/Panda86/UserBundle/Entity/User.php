@@ -98,4 +98,32 @@ class User extends BaseUser
         return $this->last_name;
     }
 
+    /**
+     * @var \Panda86\AppBundle\Entity\Employee
+     */
+    private $employee;
+
+
+    /**
+     * Set employee
+     *
+     * @param \Panda86\AppBundle\Entity\Employee $employee
+     * @return User
+     */
+    public function setEmployee(\Panda86\AppBundle\Entity\Employee $employee = null)
+    {
+        $this->employee = $employee;
+
+        return $this;
+    }
+
+    /**
+     * Get employee
+     *
+     * @return \Panda86\AppBundle\Entity\Employee 
+     */
+    public function getEmployee()
+    {
+        return $this->employee;
+    }
 }
