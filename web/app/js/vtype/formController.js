@@ -9,6 +9,7 @@ angular.module('vrmApp', []);
 
 /* Controllers */
 function formController($scope) {
+    $scope.vtype_name = $scope.display_name;
     $scope.addNames = function() {
         var count = $scope.passengers;
         var vtype = $scope.vtype;
@@ -16,5 +17,9 @@ function formController($scope) {
         {
             $scope.display_name = count+'-passenger'+' '+ucfirst(vtype);
         }
+        else {
+            $scope.display_name = '';
+        }
+        $scope.vtype_name = $scope.display_name;
     }
 }

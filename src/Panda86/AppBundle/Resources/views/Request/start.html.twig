@@ -26,6 +26,7 @@
                         <span class="ok inline">☑</span>
                         <span class="ko inline">☒</span>
                         <div class="custom-error" ng-show="startForm.no_days.$dirty && startForm.no_days.$invalid">
+                            <span class="f-required" ng-show="startForm.no_days.$error.number">Please enter a correct number.</span>
                             <span class="f-required" ng-show="startForm.no_days.$error.required">This field is required.</span>
                             <span class="f-required" ng-show="startForm.no_days.$error.min || startForm.no_days.$error.max">No. of days must be between 1 and 60.</span>
                         </div>

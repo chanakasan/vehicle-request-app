@@ -1,7 +1,7 @@
 {% extends 'Panda86AppBundle::create-view.html.twig' %}
 
 {% block title %}
-    {{ parent() }} - Create type
+    {{ parent() }} - Create vehicle type
 {% endblock %}
 {% set closeBtn_url = path('vtype') %}
 {% block form %}
@@ -15,7 +15,9 @@
         {{ form_widget(form._token) }}
 
         <div class="control-group">
-            <label class="control-label">Type</label>
+            <label class="control-label">Type
+                <span class='f-required'>*</span>
+            </label>
 
             <div class="controls">
                 {% set attr = {'class': 'name-part','placeholder': 'e.g. Car, Jeep, Mini Van', 'required': 'required'} %}
@@ -24,10 +26,12 @@
             </div>
         </div>
         <div class="control-group">
-            <label class="control-label">Passenger count</label>
+            <label class="control-label">Max. passengers
+                <span class='f-required'>*</span>
+            </label>
 
             <div class="controls">
-                {% set attr = {'class': 'name-part', 'required': 'required'} %}
+                {% set attr = {'class': 'input-small name-part', 'required': 'required'} %}
                 {% set attr = attr|merge({'ng-model':'passengers', 'ng-change' : 'addNames()'}) %}
                 {{ form_row(form.passengers, {'attr': attr }) }}
             </div>
@@ -44,9 +48,8 @@
             <label class="control-label">Display name</label>
 
             <div class="controls">
-                {% set attr = {'disabled':'disabled', 'placeholder': '... auto-completed'} %}
-                {% set attr = attr|merge({'ng-model':'display_name'}) %}
-                {{ form_row(form.name, {'attr': attr}) }}
+                <input id="display_name" type="text" ng-model="display_name" disabled="true" placeholder="...auto-completed"/>
+                {{ form_row(form.name, {'attr': {'ng-model': 'vtype_name'} }) }}
             </div>
         </div>
 
@@ -59,6 +62,6 @@
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}
-    {#<script src="/app/js/vtype/new.js"></script>#}
+    <script src="/app/js/vtype/new.js"></script>
     <script src="/app/js/vtype/formController.js"></script>
 {% endblock %}
