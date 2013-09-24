@@ -16,6 +16,10 @@ Panda86\UserBundle\Entity\User:
             type: string
             length: '64'
             nullable: true
+        created:
+            type: datetime
+        updated:
+            type: datetime
     oneToOne:
         employee:
           targetEntity: Panda86\AppBundle\Entity\Employee

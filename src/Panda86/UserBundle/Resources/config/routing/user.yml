@@ -11,6 +11,10 @@ user_show:
 user_new:
     pattern:  /new
     defaults: { _controller: Panda86UserBundle:User:new }
+
+user_create:
+    pattern:  /new
+    defaults: { _controller: Panda86UserBundle:User:create }
     requirements: { _method: post }
 
 user_remove:

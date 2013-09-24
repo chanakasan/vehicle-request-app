@@ -3,8 +3,9 @@
 namespace Panda86\UserBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Panda86\UserBundle\Entity\User;
 use Symfony\Component\HttpFoundation\Response;
+use Panda86\UserBundle\Form\UserType;
+use Panda86\UserBundle\Entity\User;
 
 class UserController extends Controller
 {
@@ -23,6 +24,40 @@ class UserController extends Controller
 
         return $this->render('Panda86UserBundle:User:index.html.twig', array(
             'pagination' => $pagination
+        ));
+    }
+
+    public function newAction()
+    {
+        $entity = new User();
+        $form   = $this->createForm(new UserType(), $entity);
+
+        return $this->render('Panda86UserBundle:User:new.html.twig', array(
+            'entity' => $entity,
+            'form'   => $form->createView(),
+        ));
+    }
+
+    public function createAction(Request $request)
+    {
+        $entity = new User();
+        $form   = $this->createForm(new UserType(), $entity);
+
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $entity->setSuperAdmin(true); # create super admin
+
+            $em->persist($entity);
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('user_show', array('id' => $entity->getId())));
+        }
+
+        return $this->render('Panda86UserBundle:User:new.html.twig', array(
+            'entity' => $entity,
+            'form'   => $form->createView(),
         ));
     }
 
