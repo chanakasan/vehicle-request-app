@@ -113,7 +113,11 @@
                 <Cell ss:StyleID="s66"/>
                 <Cell ss:StyleID="s66"/>
                 <Cell ss:StyleID="s66"/>
-                <Cell ss:StyleID="s66" ss:Formula="=SUM(R[-44]C:R[-1]C)"><Data ss:Type="Number"></Data></Cell>
+                {% if entities|length > 0 %}
+                    <Cell ss:StyleID="s66" ss:Formula="=SUM(R[-{{ entities|length }}]C:R[-1]C)"><Data ss:Type="Number"></Data></Cell>
+                {% else %}
+                    <Cell ss:StyleID="s66"><Data ss:Type="String">No records found!</Data></Cell>
+                {% endif %}
             </Row>
         </Table>
         <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
