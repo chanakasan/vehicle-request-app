@@ -51,7 +51,7 @@ class LoadRequestData extends AbstractFixture implements OrderedFixtureInterface
             $approve1 = new ApprovedRequest();
             $approve1->setRequest($request1);
             $approve1->setCab($cab);
-            $approve1->setApprovedBy($users[rand(1,19)]);
+            $approve1->setApprovedBy($users[rand(0,4)]);
 
             $manager->persist($approve1);
         }
@@ -80,7 +80,7 @@ class LoadRequestData extends AbstractFixture implements OrderedFixtureInterface
             $approve1 = new ApprovedRequest();
             $approve1->setRequest($request1);
             $approve1->setCab($cab);
-            $approve1->setApprovedBy($users[rand(1,19)]);
+            $approve1->setApprovedBy($users[rand(0,4)]);
 
             $manager->persist($approve1);
         }
@@ -109,7 +109,7 @@ class LoadRequestData extends AbstractFixture implements OrderedFixtureInterface
             $approve1 = new ApprovedRequest();
             $approve1->setRequest($request1);
             $approve1->setCab($cab);
-            $approve1->setApprovedBy($users[rand(1,19)]);
+            $approve1->setApprovedBy($users[rand(0,4)]);
 
             $manager->persist($approve1);
         }
@@ -137,7 +137,7 @@ class LoadRequestData extends AbstractFixture implements OrderedFixtureInterface
             {
                 $approve = new DisapprovedRequest();
                 $approve->setRequest($request);
-                $approve->setDisapprovedBy($users[rand(1,19)]);
+                $approve->setDisapprovedBy($users[rand(0,4)]);
 
                 $manager->persist($approve);
             }
@@ -147,7 +147,7 @@ class LoadRequestData extends AbstractFixture implements OrderedFixtureInterface
                 $approve->setRequest($request);
                 $approve->setVehicle($vehicles[1]);
                 $approve->setDriver($drivers[0]);
-                $approve->setApprovedBy($users[rand(1,19)]);
+                $approve->setApprovedBy($users[rand(0,4)]);
 
                 $manager->persist($approve);
             }
@@ -162,7 +162,7 @@ class LoadRequestData extends AbstractFixture implements OrderedFixtureInterface
                 $approve->setRequest($request);
                 $approve->setVehicle($vehicles[1]);
                 $approve->setDriver($drivers[0]);
-                $approve->setApprovedBy($users[rand(1,19)]);
+                $approve->setApprovedBy($users[rand(0,4)]);
 
                 $manager->persist($approve);
             }
@@ -175,7 +175,7 @@ class LoadRequestData extends AbstractFixture implements OrderedFixtureInterface
                 $approve = new ApprovedRequest();
                 $approve->setRequest($request);
                 $approve->setCab($cab);
-                $approve->setApprovedBy($users[rand(1,19)]);
+                $approve->setApprovedBy($users[rand(0,4)]);
 
                 $manager->persist($approve);
             }
@@ -193,7 +193,7 @@ class LoadRequestData extends AbstractFixture implements OrderedFixtureInterface
                 $approve = new ApprovedRequest();
                 $approve->setRequest($request);
                 $approve->setCab($cab);
-                $approve->setApprovedBy($users[rand(1,19)]);
+                $approve->setApprovedBy($users[rand(0,4)]);
                 $manager->persist($approve);
             }
 

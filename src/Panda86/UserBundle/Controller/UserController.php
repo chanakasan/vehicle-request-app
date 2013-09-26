@@ -4,6 +4,7 @@ namespace Panda86\UserBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Panda86\UserBundle\Form\UserType;
 use Panda86\UserBundle\Entity\User;
 
@@ -47,7 +48,7 @@ class UserController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity->setSuperAdmin(true); # create super admin
+            if('on' === $request->request->get('is_su')) $entity->setSuperAdmin(true); # create super admin
 
             $em->persist($entity);
             $em->flush();

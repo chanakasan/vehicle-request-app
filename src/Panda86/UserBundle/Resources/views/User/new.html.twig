@@ -6,7 +6,7 @@
 
 {% set closeBtn_url = path('user_index') %}
 {% block content %}
-    <form action="{{ path('user_create') }}" class="appnitro form-horizontal"
+    <form id="newUser_form" action="{{ path('user_create') }}" class="appnitro form-horizontal"
           method="post" {{ form_enctype(form) }} novalidate>
         <div class="form_description">
             <h2>New User</h2><br/>
@@ -16,25 +16,27 @@
         {{ form_widget(form._token) }}
 
         <!-- form fields -->
-        <div class="control-group">
-            <label class="control-label">First name
-                <span class="f-required">*</span>
-            </label>
+        <div id="details" style="display: none">
+            <div class="control-group">
+                <label class="control-label">First name
+                    <span class="f-required">*</span>
+                </label>
 
-            <div class="controls">
-                {{ form_row(form.first_name) }}
+                <div class="controls">
+                    {{ form_row(form.first_name) }}
+                </div>
             </div>
-        </div>
-        <div class="control-group">
-            <label class="control-label">Last name
-                <span class="f-required">*</span>
-            </label>
+            <div class="control-group">
+                <label class="control-label">Last name
+                    <span class="f-required">*</span>
+                </label>
 
-            <div class="controls">
-                {{ form_row(form.last_name) }}
+                <div class="controls">
+                    {{ form_row(form.last_name) }}
+                </div>
             </div>
+            <br/>
         </div>
-        <br/>
         <div class="control-group">
             <label class="control-label">Username
                 <span class="f-required">*</span>
@@ -54,6 +56,14 @@
             </div>
         </div>
         <div class="control-group">
+            <label class="control-label">Super Admin
+            </label>
+
+            <div class="controls">
+                <input name="is_su" type="checkbox"/>
+            </div>
+        </div>
+        <div class="control-group">
             <label class="control-label">Password
                 <span class="f-required">*</span>
             </label>
@@ -68,14 +78,19 @@
             </label>
 
             <div class="controls">
-                <input type="text" required="required"/>
+                <input id="confirm_password" type="text" required="required"/>
             </div>
         </div>
 
         <div class="control-group">
             <div class="controls">
-                <input name="submit" class="btn btn-success" type="submit" value="Create"/>
+                <input class="btn btn-success" type="submit" value="Create"/>
             </div>
         </div>
     </form>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="/app/js/user/new.js"></script>
 {% endblock %}

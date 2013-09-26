@@ -13,7 +13,7 @@ user_new:
     defaults: { _controller: Panda86UserBundle:User:new }
 
 user_create:
-    pattern:  /new
+    pattern:  /create
     defaults: { _controller: Panda86UserBundle:User:create }
     requirements: { _method: post }
 

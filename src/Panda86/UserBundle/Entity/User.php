@@ -31,6 +31,7 @@ class User extends BaseUser
     public function __construct()
     {
         parent::__construct();
+        $this->addRole('ROLE_ADMIN'); # assign admin role
         $this->enabled = true;
         $this->created = new \DateTime('now');
         $this->updated = new \DateTime('now');

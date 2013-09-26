@@ -13,7 +13,7 @@ class LoadUserData implements FixtureInterface
      */
     public function load(ObjectManager $manager)
     {
-        for($i=1; $i<=10 ;$i++)
+        for($i=1; $i<=3 ;$i++)
         {
             $admin = new User();
             $admin->setEnabled(true);
