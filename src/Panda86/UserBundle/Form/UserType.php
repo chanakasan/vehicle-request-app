@@ -22,7 +22,7 @@ class UserType extends AbstractType
             ->add('username', null, array(
                 'label' => false,
             ))
-            ->add('password', 'password', array(
+            ->add('plainPassword', 'password', array(
                 'label' => false,
             ))
             ->add('email', null, array(

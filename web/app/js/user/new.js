@@ -8,13 +8,13 @@ $(document).ready(function(){
         wrapper: 'span'
     });
 
-    $( "#user_password" ).rules( "add", {
+    $( "#user_plainPassword" ).rules( "add", {
         required: true,
         minlength: 5
     });
     $( "#confirm_password" ).rules( "add", {
         required: true,
-        equalTo: "#user_password"
+        equalTo: "#user_plainPassword"
     });
 
 });

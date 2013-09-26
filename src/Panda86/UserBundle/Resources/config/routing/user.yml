@@ -17,7 +17,11 @@ user_create:
     defaults: { _controller: Panda86UserBundle:User:create }
     requirements: { _method: post }
 
-user_remove:
-    pattern:  /{id}/remove
-    defaults: { _controller: Panda86UserBundle:User:remove }
-    requirements: { _method: delete }
+user_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: Panda86UserBundle:User:edit }
+
+user_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: Panda86UserBundle:User:delete }
+    requirements: { _method: post|delete }

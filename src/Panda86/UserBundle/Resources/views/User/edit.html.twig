@@ -1,0 +1,29 @@
+{% extends 'Panda86AppBundle::create-view.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Remove User
+{% endblock %}
+
+{% set closeBtn_url = path('user_index') %}
+{% block form %}
+    <form class="appnitro form-horizontal" action="{{ path('user_delete', { 'id': entity.id }) }}" method="post">
+        <div class="form_description">
+            <h2>Are you sure you want to remove this user?</h2>
+        </div>
+        <div id="user_details">
+            <p><b>User details:</b></p>
+            <p>Username: {{ entity.username }}</p>
+            <p>Email: {{ entity.email }}</p>
+        </div>
+        <br/>
+        <input type="hidden" name="_method" value="DELETE"/>
+        {{ form_widget(delete_form) }}
+        <button id="del_entry" class="btn btn-danger" type="submit">Remove</button>
+        <a href="{{ path('user_index') }}" id="cancel" class="btn">Cancel</a>
+    </form>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="/app/js/user/new.js"></script>
+{% endblock %}
