@@ -51,6 +51,40 @@ class RequestController extends Controller
             );
         }
 
+        if($entity->getStatus() === 1)
+        {
+            $approved_entity = $em->getRepository('Panda86AppBundle:ApprovedRequest')->findOneBy(array('request' => $entity->getId()));
+            if(!$approved_entity)
+            {
+                throw new \Exception('Approved request not found for req id = '.$entity->getId());
+            }
+
+            return $this->render('Panda86AppBundle:Request:show.html.twig', array(
+                'embedded' => $embed,
+                'entity' => $approved_entity->getRequest(),
+                'vehicle' => $approved_entity->getVehicle(),
+                'driver' => $approved_entity->getDriver(),
+                'cab' => $approved_entity->getCab(),
+                'authored_by' => $approved_entity->getApprovedBy(),
+                'authored_at' => $approved_entity->getCreated()
+            ));
+        }
+        elseif($entity->getStatus() === 2)
+        {
+            $disapproved_entity = $em->getRepository('Panda86AppBundle:DisapprovedRequest')->findOneBy(array('request' => $entity->getId()));
+            if(!$disapproved_entity)
+            {
+                throw new \Exception('Disapproved request not found for req id = '.$entity->getId());
+            }
+
+            return $this->render('Panda86AppBundle:Request:show.html.twig', array(
+                'embedded' => $embed,
+                'entity' => $disapproved_entity->getRequest(),
+                'authored_by' => $disapproved_entity->getDisapprovedBy(),
+                'authored_at' => $disapproved_entity->getCreated()
+            ));
+        }
+
         return $this->render('Panda86AppBundle:Request:show.html.twig', array(
             'embedded' => $embed,
             'entity' => $entity,
@@ -58,7 +92,7 @@ class RequestController extends Controller
     }
 
     /**
-     * Find and display a request's details using the given code
+     * Find and display a request's details using the given random code in url
      *
      */
     public function detailsAction($code)
@@ -94,14 +128,25 @@ class RequestController extends Controller
     /**
      * Displays a form to create a new Request entity.
      */
-    public function newAction()
+    public function newAction(Request $request)
     {
         $entity = new EmpRequest();
+
+        if($request->getMethod() == 'POST')
+        {
+            $days = $request->request->get('no_days');
+            if($days)
+            {
+                $entity->setDays($days);
+            }
+        }
         $form   = $this->createForm(new RequestType(), $entity);
 
         return $this->render('Panda86AppBundle:Request:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
+            'days'   => $entity->getDays()
+
         ));
     }
 

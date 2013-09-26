@@ -21,9 +21,14 @@ class ApprovedCab
     private $voucher_no;
 
     /**
-     * @var string
+     * @var float
      */
     private $mileage;
+
+    /**
+     * @var float
+     */
+    private $rate;
 
     /**
      * @var float
@@ -77,7 +82,7 @@ class ApprovedCab
     /**
      * Set mileage
      *
-     * @param string $mileage
+     * @param float $mileage
      * @return ApprovedCab
      */
     public function setMileage($mileage)
@@ -90,11 +95,34 @@ class ApprovedCab
     /**
      * Get mileage
      *
-     * @return string 
+     * @return float 
      */
     public function getMileage()
     {
         return $this->mileage;
+    }
+
+    /**
+     * Set rate
+     *
+     * @param float $rate
+     * @return ApprovedCab
+     */
+    public function setRate($rate)
+    {
+        $this->rate = $rate;
+
+        return $this;
+    }
+
+    /**
+     * Get rate
+     *
+     * @return float 
+     */
+    public function getRate()
+    {
+        return $this->rate;
     }
 
     /**

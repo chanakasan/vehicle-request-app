@@ -1,0 +1,134 @@
+{% extends '::admin-app.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Reports
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="/assets/datetimepicker/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="/app/css/report/custom.css">
+{% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="span12">
+        <h3>Reports page</h3>
+    </div>
+</div>
+<br/>
+<div class="row">
+    <div class="span12">
+        <form class="form-horizontal" action="{{ path('report_generate') }}" method="get">
+            <fieldset>
+
+                <!-- Form Name -->
+                <legend>Set parameters</legend>
+
+                <!--Options-->
+                <div class="control-group">
+                    <label class="control-label" for="options">Options :</label>
+                    <div class="controls">
+                        <label class="radio" for="options-0">
+                            <input name="options" id="options-0" value="all" checked="checked" type="radio">
+                            All employees
+                        </label>
+                        <label class="radio" for="options-1">
+                            <input disabled name="options" id="options-1" value="one" type="radio">
+                            per employee
+                        </label>
+                    </div>
+                </div>
+
+                <!--Filter by content-->
+                <div class="control-group">
+                    <label class="control-label" for="filters">Filters :</label>
+                    <div class="controls">
+                        <label class="checkbox" for="filters-0">
+                            <input checked name="filters" id="filters-0" value="cab" type="checkbox">
+                            Cost for cabs
+                        </label>
+                        <label class="checkbox" for="filters-1">
+                            <input name="filters" id="filters-1" value="accomodation" type="checkbox">
+                            Cost for accomodations
+                        </label>
+                    </div>
+                </div>
+                <!--Filter by dates -->
+                <div id="filter_dates">
+                    <!-- Date from-->
+                    <div class="control-group">
+                        <label class="control-label" for="date_from">From</label>
+
+                        <div class="report-datepicker controls">
+                            <div class="input-append">
+                                <input id="date_from" name="date_from" class="input-small" data-format="yyyy-MM-dd" placeholder="--" type="text">
+                                <span class="add-on">
+                                    <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Date to-->
+                    <div class="control-group">
+                        <label class="control-label" for="date_to">Until</label>
+
+                        <div class="report-datepicker controls">
+                            <div class="input-append">
+                                <input id="date_to" name="date_to" class="input-small" data-format="yyyy-MM-dd" placeholder="--" type="text">
+                                <span class="add-on">
+                                    <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <!-- Button -->
+                <div class="control-group">
+                    <label class="control-label" for="singlebutton"></label>
+                    <div class="controls">
+                        <button id="submitBtn" name="submitBtn" class="btn btn-default" value="submit">Generate report</button>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+    </div>
+</div>
+<br/><hr/>
+<!-- Display results - for testing only -->
+<div class="row" style="display:none">
+    <div class="span12">
+        <p>Query results:</p>
+        <div id="results">
+            {% if results is not null %}
+                <table>
+                    {% for row in results %}
+                        {% if row.accomodation is defined %}
+                        <tr>
+                            <td>
+                                {{ row.accomodation.totalfee }}
+                            </td>
+                        </tr>
+                        {% endif %}
+                        {% if row.cab is defined %}
+                        <tr>
+                            <td>
+                                {{ row.cab.cost }}
+                            </td>
+                        </tr>
+                        {% endif %}
+                    {% endfor %}
+                </table>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="/assets/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="/assets/jquery.validate.js"></script>
+    <script src="/app/js/report/index.js"></script>
+{% endblock %}

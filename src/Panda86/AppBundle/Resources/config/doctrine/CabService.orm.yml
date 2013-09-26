@@ -1,6 +1,6 @@
 Panda86\AppBundle\Entity\CabService:
     type: entity
-    table: hr_cab_service
+    table: vrm_cab_service
     id:
         id:
             type: integer
@@ -14,7 +14,7 @@ Panda86\AppBundle\Entity\CabService:
         hotline:
             type: string
             length: '32'
-        webSite:
+        website:
             type: string
             length: '64'
             nullable: true

@@ -1,6 +1,6 @@
 Panda86\AppBundle\Entity\RequestAccomodation:
     type: entity
-    table: hr_accomodation
+    table: vrm_accomodation
     id:
         id:
             type: integer

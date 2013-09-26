@@ -8,24 +8,12 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class VTypeType extends AbstractType
 {
-    private function _choicesList()
-    {
-        $data = array();
-        for($i=2; $i<21; $i++)
-        {
-            $tmp = array( $i => $i );
-            $data = $data + $tmp;
-        }
-        return $data;
-    }
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $choices = $this->_choicesList();
         $builder
-            ->add('name', null, array('label' => false))
-            ->add('passengers', 'choice', array(
+            ->add('name', 'hidden', array('label' => false))
+            ->add('passengers', 'number', array(
                 'label' => false,
-                'choices' => $choices,
             ))
             ->add('type', null, array('label' => false))
             ->add('descrip', 'textarea', array(

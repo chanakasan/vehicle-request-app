@@ -1,13 +1,57 @@
- {% extends '::admin.html.twig' %}
+{% extends 'Panda86AppBundle::list-view.html.twig' %}
 
- {% block body %}
-     {% if app.session.started %}
-         {% for flashMessage in app.session.flashbag.get('notice') %}
-             <div class="flash-notice">
-                 {{ flashMessage }}
-             </div>
-         {% endfor %}
-     {% endif %}
-    Users' Index
- {% endblock %}
+{% block title %}
+    {{ parent() }} - List of Users
+{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="/app/css/user/list.css">
+{% endblock %}
+
+{% set heading = 'List of users' %}
+{% set newBtn_url = path('user_new') %}
+
+{% block table %}
+<div class="span6">
+    {#<div class="count">#}
+        {#{{ pagination.getTotalItemCount }}#}
+    {#</div>#}
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {% for entity in pagination %}
+            <tr>
+                <td>{{ entity.getfirstname }} {{ entity.getlastname }}</td>
+                <td>{{ entity.getusername }}</td>
+                <td>{{ entity.getemail }}</td>
+                <td>
+                    <a href="{{ path('user_edit', { 'id': entity.id }) }}"><i class="icon-remove-sign"></i></a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div>
+    <div class="pull-right" id="ajaxloader" style="display: none">
+        <img src="/app/img/ajax-loader.gif"/>
+    </div>
+    <br/>
+    {{ parent() }}
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="/app/js/user/list.js"></script>
+{% endblock %}

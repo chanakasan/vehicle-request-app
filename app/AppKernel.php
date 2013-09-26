@@ -18,7 +18,7 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new Panda86\UserBundle\Panda86UserBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
-//            new Acme\SandboxBundle\AcmeSandboxBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Panda86\AppBundle\Panda86AppBundle(),
         );
 

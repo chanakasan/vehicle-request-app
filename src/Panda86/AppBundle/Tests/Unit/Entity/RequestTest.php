@@ -40,7 +40,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase {
     /**
      * @depends testCanCreateRequest
      */
-    public function testCanSetAttribs(Request $request)
+    public function testCanReadAttribs(Request $request)
     {
         $this->assertEquals($this->req1['journey_type'], $request->getJourneyType());
         $this->assertEquals($this->req1['days'], $request->getDays());
@@ -58,7 +58,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase {
     /**
      * @depends testCanCreateRequest
      */
-    public function testCanGetStatus(Request $request)
+    public function testHasPendingStatus(Request $request)
     {
         $this->assertEquals(0, $request->getStatus());
     }
@@ -79,10 +79,18 @@ class RequestTest extends \PHPUnit_Framework_TestCase {
      * @depends testCanCreateRequest
      * @expectedException InvalidArgumentException
      */
-    public function testInvalidSetStatus(Request $request)
+    public function testInvalidStatus(Request $request)
     {
         $request->setStatus('AnInvalidStatus');
-        $this->assertEquals('AnInvalidStatus', $request->getStatus());
+    }
+
+    /**
+     * @depends testCanCreateRequest
+     * @expectedException InvalidArgumentException
+     */
+    public function testInvalidJourneyType(Request $request)
+    {
+        $request->setJourneyType('AnInvalidJourneyType');
     }
 
     /**
@@ -101,7 +109,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase {
     /**
      * @depends testCanCreateRequest
      */
-    public function testCanSetOtherPassengets(Request $request)
+    public function testCanAddOtherPassengers(Request $request)
     {
         $john_doe = new Employee(array(
             'name' => 'John Doe',
@@ -113,9 +121,9 @@ class RequestTest extends \PHPUnit_Framework_TestCase {
         ));
         $request->addAccompaniedBy($john_doe);
         $request->addAccompaniedBy($martin_doe);
-
         $otherPassengers = $request->getAccompaniedBy();
-        $this->assertInstanceOf('Panda86\AppBundle\Entity\Employee', $otherPassengers[0]);
-        $this->assertInstanceOf('Panda86\AppBundle\Entity\Employee', $otherPassengers[1]);
+
+        $this->assertEquals('John Doe', $otherPassengers[0]->getName());
+        $this->assertEquals('Martin Doe', $otherPassengers[1]->getName());
     }
 }

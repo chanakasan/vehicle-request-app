@@ -2,32 +2,59 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>{% block title %} Request Vehicle Reservation - ICTA {% endblock %}</title>
+    <title>{% block title %}Request Vehicle Reservation{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Le styles -->
     {% block stylesheets %}
-        <link href="/assets/bootstrap/css/bootstrap.css" rel="stylesheet">
-        <link href="/assets/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+        <link href="/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/assets/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
         <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
         <script src="/assets/bootstrap/js/html5shiv.js"></script>
         <![endif]-->
+        <link href="/app/css/common/typo.css" rel="stylesheet"/> <!-- Custom Typography -->
     {% endblock %}
     <!-- Fav and touch icons -->
     <link rel="shortcut icon" href="/app/img/favicon-app.ico">
 </head>
 
 <body>
+<style>
+    #loadingDiv {
+        z-index: 100;
+        position: absolute;
+        top: 60%;
+        left: 45%;
+        background-color: #333;
+        background-color: rgba(0, 0, 0, 0.7);
+        border-radius: 15px;
+        -webkit-border-radius: 15px;
+        -moz-border-radius: 15px;
+        padding: 50px;
+    }
+    [class*="span"].centred {
+        margin-left: auto;
+        margin-right: auto;
+        float: none;
+    }
+</style>
 <div class="container">
         <!-- if javascript is turned off -->
         {% block noscript %}
             {{ include('no-script.html') }}
         {% endblock %}
     <div class="row"><!-- Flash notification messages -->
-        <div class="span10 offset1">
+        <div class="span10">
             {{ include('show-flash-msgs.html.twig') }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="span9 centred">
+            <div id="loadingDiv" style="display: none; text-align: center">
+                <img alt="loading" src="/app/img/progress.gif"/>
+            </div>
         </div>
     </div>
 
@@ -39,6 +66,7 @@
 {% block javascripts %}
     <script src="/assets/jquery/jquery-1.9.1.min.js"></script>
     <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/assets/angular.min.js"></script>
 {% endblock %}
 </body>
 </html>

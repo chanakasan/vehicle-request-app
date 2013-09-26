@@ -31,6 +31,10 @@ class User extends BaseUser
     public function __construct()
     {
         parent::__construct();
+        $this->addRole('ROLE_ADMIN'); # assign admin role
+        $this->enabled = true;
+        $this->created = new \DateTime('now');
+        $this->updated = new \DateTime('now');
     }
 
     /**
@@ -98,4 +102,88 @@ class User extends BaseUser
         return $this->last_name;
     }
 
+    /**
+     * @var \Panda86\AppBundle\Entity\Employee
+     */
+    private $employee;
+
+
+    /**
+     * Set employee
+     *
+     * @param \Panda86\AppBundle\Entity\Employee $employee
+     * @return User
+     */
+    public function setEmployee(\Panda86\AppBundle\Entity\Employee $employee = null)
+    {
+        $this->employee = $employee;
+
+        return $this;
+    }
+
+    /**
+     * Get employee
+     *
+     * @return \Panda86\AppBundle\Entity\Employee 
+     */
+    public function getEmployee()
+    {
+        return $this->employee;
+    }
+    /**
+     * @var \DateTime
+     */
+    private $created;
+
+    /**
+     * @var \DateTime
+     */
+    private $updated;
+
+
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     * @return User
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return \DateTime 
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * Set updated
+     *
+     * @param \DateTime $updated
+     * @return User
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+
+        return $this;
+    }
+
+    /**
+     * Get updated
+     *
+     * @return \DateTime 
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
+    }
 }

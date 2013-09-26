@@ -1,10 +1,13 @@
 {% extends 'Panda86AppBundle::create-view.html.twig' %}
 
-{% set closeBtn_url = path('vehicle') %}
+{% block title %}
+    {{ parent() }} - New vehicle
+{% endblock %}
 
+{% set closeBtn_url = path('vehicle') %}
 {% block form %}
-    <form class="appnitro form-horizontal" novalidate action="{{ path('vehicle_create') }}"
-          method="post" {{ form_enctype(form) }}>
+    <form id="newVehicle_form" class="appnitro form-horizontal" action="{{ path('vehicle_create') }}"
+          method="post" {{ form_enctype(form) }} novalidate>
         <div class="form_description">
             <h2>Add new vehicle</h2><br/>
         </div>
@@ -14,38 +17,49 @@
 
         <!-- form fields -->
         <div class="control-group">
-            <label class="control-label">Make</label>
+            <label class="control-label">Make
+                <span class="f-required">*</span>
+            </label>
 
             <div class="controls">
                 {{ form_row(form.make) }}
             </div>
         </div>
         <div class="control-group">
-            <label class="control-label">Model</label>
+            <label class="control-label">Model
+                <span class="f-required">*</span>
+            </label>
 
             <div class="controls">
                 {{ form_row(form.model) }}
             </div>
         </div>
         <div class="control-group">
-            <label class="control-label">Reg. no</label>
+            <label class="control-label">Reg. no
+                <span class="f-required">*</span>
+            </label>
 
             <div class="controls">
                 {{ form_row(form.reg_no) }}
             </div>
         </div>
         <div class="control-group">
-            <label class="control-label">Vehicle type</label>
+            <label class="control-label">Vehicle type
+                <span class="f-required">*</span>
+            </label>
 
             <div class="controls">
                 {{ form_row(form.vtype) }}
             </div>
         </div>
         <div class="control-group">
-            <label class="control-label">No. of passengers</label>
+            <label class="control-label">No. of passengers
+                <span class="f-required">*</span>
+            </label>
 
             <div class="controls">
-                {{ form_row(form.passengers) }}
+                {% set attr = {'min': '1', 'max': '50'} %}
+                {{ form_row(form.passengers, {'attr': attr}) }}
             </div>
         </div>
         <div class="control-group">
@@ -78,7 +92,7 @@
         </div>
         <div class="control-group">
             <div class="controls">
-                <button type="submit" formnovalidate="">Add</button>
+                <input name="submit" class="btn btn-success" type="submit" value="Add"/>
             </div>
         </div>
         <!--/ form fields -->

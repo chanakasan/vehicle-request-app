@@ -4,10 +4,6 @@
         {{ form_errors(form.date) }}
         {{ form_errors(form.time) }}
 
-        <label class='control-label'>Pickup date/time
-            <span class='f-required'>*</span>
-        </label>
-
         <div class='req-datepicker controls'>
             <div class='input-append'>
                 {{ form_widget(form.date, {'id' : id ~ '_datepicker', 'attr': {'class': 'input-medium', 'placeholder' : 'yyyy-mm-dd', 'data-format':'yyyy-MM-dd'} }) }}

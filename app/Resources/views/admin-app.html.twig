@@ -8,9 +8,12 @@
     <meta name="author" content="">
     <!-- Le styles -->
     {% block stylesheets %}
-        <link href="/assets/bootstrap/css/bootstrap.css" rel="stylesheet" media="all"> <!-- Bootstrap -->
-        <link href="/assets/bootstrap/css/bootstrap-responsive.css" rel="stylesheet"> <!-- Responsive Bootstrap -->
-        <link href="/app/css/admin/custom.css" rel="stylesheet"> <!-- Base Custom CSS -->
+        <link href="/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="all"> <!-- Bootstrap -->
+        <link href="/assets/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet"> <!-- Responsive Bootstrap -->
+        <link href="/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet"> <!-- Font Awesome -->
+        <link href="/app/css/common/custom-icons.css" rel="stylesheet"> <!-- Custom CSS for icons -->
+        <link href="/app/css/admin/custom.css" rel="stylesheet"> <!-- Custom Base styles -->
+        <link href="/app/css/common/typo.css" rel="stylesheet"/> <!-- Custom Typography -->
         <style>
             @media print {
                 a[href]:after { /* Remove link urls*/
@@ -38,21 +41,25 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="brand" href="{{ path('app_home') }}">Dashboard</a>
+                <a class="brand" href="{{ path('app_home') }}">
+                    <i class="icon-home icon-white"></i> Dashboard
+                </a>
 
                 <div class="nav-collapse collapse">
                     <ul class="nav">
                         <li class="dropdown">
-                            <a href="{{ path('request_list') }}" class="dropdown-toggle" data-toggle="dropdown">Requests<b
-                                        class="caret"></b></a>
+                            <a href="{{ path('request_list') }}" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="icon-stackexchange icon-white"></i> Requests<b class="caret"></b>
+                            </a>
                             <ul class="dropdown-menu">
                                 <li><a href="{{ path('request_list') }}">View All</a></li>
                                 <li><a href="{{ path('request_start') }}">Create New</a></li>
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <a href="{{ path('vehicle') }}" class="dropdown-toggle" data-toggle="dropdown">Vehicles <b
-                                        class="caret"></b></a>
+                            <a href="{{ path('vehicle') }}" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="icon-dashboard icon-white"></i> Vehicles <b class="caret"></b>
+                            </a>
                             <ul class="dropdown-menu">
                                 <li><a href="{{ path('vehicle') }}">Show All</a></li>
                                 <li><a href="{{ path('vehicle_new') }}">Add New</a></li>
@@ -63,13 +70,16 @@
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <a href="{{ path('driver') }}" class="dropdown-toggle" data-toggle="dropdown">Drivers <b
-                                        class="caret"></b></a>
+                            <a href="{{ path('driver') }}" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="icon-user icon-white"></i> Drivers <b class="caret"></b>
+                            </a>
                             <ul class="dropdown-menu">
                                 <li><a href="{{ path('driver') }}">Show drivers</a></li>
                                 <li><a href="{{ path('driver_new') }}">Add driver</a></li>
                             </ul>
                         </li>
+                        <li><a href="{{ path('user_index') }}"><i class="icon-group icon-white"></i>  Users</a></li>
+                        <li><a href="{{ path('report_index') }}"><i class="icon-book icon-white"></i>  Reports</a></li>
                     </ul>
                     <p class="pull-right navbar-text">
                         {% block admin_login %}
@@ -98,7 +108,7 @@
         {% endblock %}
 
         <div class="row"><!-- Flash notification messages -->
-            <div class="span10 offset1">
+            <div class="span10">
                 {{ include('show-flash-msgs.html.twig') }}
             </div>
         </div>
@@ -120,6 +130,7 @@
 {% block javascripts %}
     <script src="/assets/jquery/jquery-1.9.1.min.js"></script> <!-- jQuery -->
     <script src="/assets/bootstrap/js/bootstrap.min.js"></script> <!-- Bootstrap -->
+    <script src="/assets/angular.min.js"></script>
 {% endblock %}
 </body>
 </html>

@@ -4,7 +4,7 @@
 {% block form %}
     {% form_theme form 'Panda86AppBundle:Form:form_datetimepicker_type.html.twig' %}
     <form id='newReq_form' class='appnitro form-horizontal' action='{{ path('request_create') }}'
-          method='post' {{ form_enctype(form) }}>
+          method='post' {{ form_enctype(form) }} novalidate>
         <div class='form_description'>
             <h2>New vehicle reservation request</h2><br/>
         </div>
@@ -24,7 +24,7 @@
                 {% set attr = { 'class': 'input-xlarge show-tooltip chzn-select', 'data-placeholder': 'Name of requester', 'tabindex':'-1'} %}
                 {% set tooltip = {'title': 'Person who requests the vehicle', 'data-toggle': 'tooltip', 'data-placement': 'right'} %}
                 {% set attr = attr|merge(tooltip) %}
-                {{ form_widget(form.requester, {'attr': attr }) }}
+                {{ form_row(form.requester, {'attr': attr }) }}
             </div>
         </div>
         <div class='control-group'>
@@ -69,22 +69,17 @@
             </div>
         </div>
         <div class='control-group'>
-                {{ form_row(form.pickup_time) }}
+            <label class='control-label'>Pickup date/time
+                <span class='f-required'>*</span>
+            </label>
+            {{ form_row(form.pickup_time) }}
         </div>
         <div id='return_journey'>
             <div class='control-group'>
-                <label class='control-label'>Return time
+                <label class='control-label'>Return date/time
                     <span class='f-required'>*</span>
                 </label>
-
-                <div class='req-timepicker controls'>
-                    <div class='input-append'>
-                        {{ form_widget(form.return_time, {'attr': {'class': 'input-medium', 'placeholder' : '24 hours e.g. hh:mm', 'data-format':'hh:mm', 'type':'text' } } ) }}
-                        <span class='add-on'>
-                            <i data-time-icon='icon-time' data-date-icon='icon-calendar'></i>
-                        </span>
-                    </div>
-                </div>
+                    {{ form_widget(form.return_time) }}
             </div>
         </div>
         <div class='control-group'>
@@ -95,21 +90,6 @@
             <div class='controls'>
                 {% set attr = {'class': 'input-xlarge show-tooltip', 'required': 'required', 'title': 'Reason for this journey', 'data-toggle': 'tooltip', 'data-placement': 'right'} %}
                 {{ form_row(form.purpose, {'attr': attr }) }}
-            </div>
-        </div>
-        <div class='control-group'>
-            <label class='control-label'>Event start time</label>
-
-            <div class='req-timepicker controls'>
-                <div class='input-append'>
-                    {% set attr = {'class': 'input-medium show-tooltip', 'placeholder' : '24 hours e.g. hh:mm', 'data-format':'hh:mm'} %}
-                    {% set tooltip = {'title': '(Optional field)', 'data-toggle': 'tooltip', 'data-placement': 'right'} %}
-                    {% set attr = attr|merge(tooltip) %}
-                    {{ form_widget(form.start_time, {'attr': attr }) }}
-                    <span class='add-on'>
-                            <i data-time-icon='icon-time' data-date-icon='icon-calendar'></i>
-                    </span>
-                </div>
             </div>
         </div>
         <div class='control-group'>
@@ -129,14 +109,43 @@
         </div>
         <div id='request_accomodation' style="display: none; border: solid 1px #c3c3c3">
             <p>Accomodation info</p>
+
             <div class="control-group">
-                <div class="control-group">
+                <label class='control-label'>No. of days
+                    <span class='f-required'>*</span>
+                </label>
 
-                    <div class="controls">
-                        {{ form_row(form.accomodation) }}
-                    </div>
+                <div class="controls">
+                    {% set attr = {'ng-model': 'no_days', 'min' : '1', max : '60', 'ng-change' : 'calculate()' } %}
+                    {{ form_row(form.accomodation.no_days, {'attr' : attr}) }}
                 </div>
+            </div>
+            <div class="control-group">
+                <label class='control-label'>Day rate (Rs.)
+                    <span class='f-required'>*</span>
+                </label>
 
+                <div class="controls">
+                    {% set attr = {'ng-model': 'day_rate', 'required': 'required', 'ng-change' : 'calculate()' } %}
+                    {{ form_row(form.accomodation.day_rate, {'attr' : attr}) }}
+                </div>
+            </div>
+            <div class="control-group">
+                <label class='control-label'>Total fee (Rs.)
+                    <span class='f-required'>*</span>
+                </label>
+
+                <div class="controls">
+                    {% set attr = {'ng-model': 'total_fee'} %}
+                    {{ form_row(form.accomodation.total_fee, {'attr' : attr}) }}
+                </div>
+            </div>
+            <div class="control-group">
+                <label class='control-label'>Other info</label>
+
+                <div class="controls">
+                    {{ form_row(form.accomodation.descrip) }}
+                </div>
             </div>
         </div>
         <br/>

@@ -3,19 +3,30 @@
 namespace Panda86\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Config\Definition\Exception\Exception;
 
 /**
  * ApprovedRequest
  */
 class ApprovedRequest extends Base
 {
+    public function runOnPrePersist()
+    {
+        if($this->getCreated() == null)
+        {
+            $this->setCreated(new \DateTime('now'));
+        }
+        if($this->getApprovedBy() == null)
+        {
+            throw new Exception('Approved by field is not set!');
+        }
+    }
     /**
      * Constructor
      */
     public function __construct(array $options = null)
     {
         $this->active = true;
-        $this->created = new \DateTime('now');
         $this->updated = new \DateTime('now');
 
         parent::__construct($options);
@@ -289,5 +300,34 @@ class ApprovedRequest extends Base
     public function getCab()
     {
         return $this->cab;
+    }
+
+    /**
+     * @var \Panda86\UserBundle\Entity\User
+     */
+    private $approved_by;
+
+
+    /**
+     * Set approved_by
+     *
+     * @param \Panda86\UserBundle\Entity\User $approvedBy
+     * @return ApprovedRequest
+     */
+    public function setApprovedBy(\Panda86\UserBundle\Entity\User $approvedBy)
+    {
+        $this->approved_by = $approvedBy;
+
+        return $this;
+    }
+
+    /**
+     * Get approved_by
+     *
+     * @return \Panda86\UserBundle\Entity\User 
+     */
+    public function getApprovedBy()
+    {
+        return $this->approved_by;
     }
 }

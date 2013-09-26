@@ -13,8 +13,8 @@ $(document).ready(function () {
         events: '/app/a',
         eventClick: function(calEvent, jsEvent) {
             jsEvent.preventDefault();
-            $('#ivehicle').text(calEvent.vehicle);
-            $('#idriver').text(calEvent.driver);
+            calEvent.vehicle ? $('#ivehicle').text(calEvent.vehicle) : $('#pvehicle').hide();
+            calEvent.vehicle ? $('#idriver').text(calEvent.driver) : $('#pdriver').hide();
             $('#requester').text(calEvent.requester);
             $('#time_from').text(calEvent.start.toTimeString());
 

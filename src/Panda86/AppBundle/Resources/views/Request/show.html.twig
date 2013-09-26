@@ -13,15 +13,68 @@
 {% block table %}
     <table class="record_properties table table-striped">
         <div class="form_description">
-            <h2>Req #{{ entity.id }} details </h2>
+            <h2>Request #{{ entity.id }}</h2>
+            <div id="q_info">
+                <p class="created">
+                    <strong>Created:</strong>  {{ entity.createdat|date('M d (D) Y \\a\\t g:i a') }}
+                </p>
+            </div>
         </div>
         <div id="req_status">
             {% if entity.status == 1 %}
                 <p class="text-success"><strong>Approved</strong> <img class="hidden-print"
                                                                        src="/app/img/request/approved.png" alt=""></p>
+                    <div id="approved_by">
+                        <p class="created">
+                            <span>
+                                <strong class="inline">Approved by :</strong>
+                                {{ authored_by.firstname }} {{ authored_by.lastname }} ({{ authored_by.email }})
+                            </span>
+                        </p>
+                        <p class="created">
+                            On  {{ authored_at|date('M d (D) Y \\a\\t g:i a') }}
+                        </p>
+                    </div>
+                    {% if vehicle is not null %}
+                        <br/>
+                        <strong class="inline">Assigned vehicle - </strong>
+                        <span> {{ vehicle.getregno }}</span>
+                        <p></p>
+                        <span class="">
+                        <strong>Assigned driver - </strong>
+                        <span>Mr. {{ driver.getdisplayname }}</span>
+                    </span>
+                        <p></p>
+                    {% else %}
+                        <br/>
+                        <span>Assigned a rented vehicle.</span>
+                        <p></p>
+                        <span class="">
+                        <strong>Cab service :</strong> {{ cab.getcabservice.getname }}
+                     </span>
+                        <p></p>
+                    {% endif %}
+
+
             {% elseif entity.status == 2 %}
                 <p class="text-error"><strong>Disapproved</strong> <img src="/app/img/request/disapproved.png" alt="">
                 </p>
+                <div id="approved_by">
+                    <p class="created">
+                            <span>
+                                <strong class="inline">Disapproved by :</strong>
+                                {{ authored_by.firstname }} {{ authored_by.lastname }} ({{ authored_by.email }})
+                            </span>
+                    </p>
+                    <p class="created">
+                        On  {{ authored_at|date('M d (D) Y \\a\\t g:i a') }}
+                    </p>
+                </div>
+            <div>
+                <span class="text-muted">This request has been disapproved due to unavailability of a vehicle.</span>
+                <span>If you would like our further assistance regarding your request please call us on our extension no.</span>
+            </div>
+            <p></p>
             {% else %}
                 <p class="text-warning"><strong>Pending</strong> <img src="/app/img/request/pending.png" alt=""></p>
             {% endif %}
@@ -42,7 +95,6 @@
                 <p>
                     Type : {{ entity.journeytype }}
                 </p>
-
                 <p>
                     Days : {{ entity.days }}
                 </p>
@@ -64,12 +116,6 @@
             <th>Pickup time</th>
             <td>{{ entity.pickuptime|date('Y-m-d \\- g:i a') }}</td>
         </tr>
-        {% if entity.starttime %}
-            <tr>
-                <th>Start time</th>
-                <td>{{ entity.starttime|date('g:i a') }}</td>
-            </tr>
-        {% endif %}
         {% if entity.returntime %}
             <tr>
                 <th>Return time</th>
@@ -87,13 +133,22 @@
                     {% for passenger in entity.accompaniedby %}
                         <li>{{ passenger.name|e }}</li>
                     {% endfor %}
+                {% else %}
+                    --
                 {% endif %}
             </td>
         </tr>
-        <tr>
-            <th>Date created</th>
-            <td>{{ entity.createdat|date('Y-m-d \\- g:i a') }}</td>
-        </tr>
         </tbody>
     </table>
+    <div id="request_more_info" style="display: none">
+        <p><b>Additional information</b></p>
+        <div id="content" class="span6 offset1">
+            {% if entity.moreinfo is not null %}
+                {# {{ entity.moreinfo | raw }} #}
+            {% else %}
+                <p>--</p>
+            {% endif %}
+        </div>
+    </div>
+    <br/>
 {% endblock %}

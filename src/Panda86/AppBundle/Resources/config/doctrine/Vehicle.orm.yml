@@ -1,6 +1,6 @@
 Panda86\AppBundle\Entity\Vehicle:
     type: entity
-    table: hr_vehicle
+    table: vrm_vehicle
     id:
         id:
             type: integer
@@ -19,7 +19,7 @@ Panda86\AppBundle\Entity\Vehicle:
             length: '128'
         passengers:
             type: integer
-            length: 11
+            length: 2
         ac:
             type: boolean
         remarks:

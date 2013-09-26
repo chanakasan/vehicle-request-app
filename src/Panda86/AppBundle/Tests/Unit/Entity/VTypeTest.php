@@ -12,17 +12,17 @@ class VTypeTest extends \PHPUnit_Framework_TestCase {
 
     public function setUp()
     {
+        $vehicle_args = array(
+            'make' => 'Toyota',
+            'model' => 'Corolla',
+            'reg_no' => 'WP NZB-5465',
+            'passengers' => 4,
+            'was_added' => new \DateTime('-10 months'),
+        );
         $this->args = array(
             'name' => '4-passenger-sedan',
             'descrip' => 'Standard car with four passenger seats',
-            'vehicle1' => new Vehicle(array(
-              'make' => 'Toyota',
-              'model' => 'Corolla',
-              'reg_no' => 'WP NZB-5465',
-              'passengers' => 4,
-              'is_company_owned' => true,
-              'was_added' => strtotime("+1 week 2 days 4 hours 2 seconds"))
-            )
+            'vehicle_car' => new Vehicle($vehicle_args)
         );
     }
     
@@ -37,7 +37,7 @@ class VTypeTest extends \PHPUnit_Framework_TestCase {
      * 
      * @depends testCanCreateVType
      */
-    public function testCanGetAttribs(VType $vtype)
+    public function testCanReadAttribs(VType $vtype)
     {
         $vtype->setName($this->args['name']);
         $vtype->setDescrip($this->args['descrip']);
@@ -49,12 +49,12 @@ class VTypeTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @depends testCanGetAttribs
+     * @depends testCanReadAttribs
      */
     public function testCanAddVehicle(VType $vtype)
     {
 
-        $vtype->getVehicles()->add($this->args['vehicle1']);
+        $vtype->getVehicles()->add($this->args['vehicle_car']);
         $this->assertCount(1, $vtype->getVehicles());
 
         return $vtype;
@@ -65,9 +65,9 @@ class VTypeTest extends \PHPUnit_Framework_TestCase {
      */
     public function testCanRemoveVehicle(VType $vtype)
     {
-        // var_dump($vtype->getVehicles());exit;        
         $result = $vtype->getVehicles();
         $vtype->removeVehicle($result[0]);
         $this->assertCount(0, $vtype->getVehicles());
     }
+
 }

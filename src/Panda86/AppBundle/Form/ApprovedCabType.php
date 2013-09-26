@@ -12,16 +12,28 @@ class ApprovedCabType extends AbstractType
     {
         $builder
             ->add('cab_service', 'entity', array(
-                'empty_value' => '--',
+                'label' => false,
+                'empty_value' => '-- Select --',
                 'class' => 'Panda86AppBundle:CabService',
                 'property' => 'name',
             ))
-            ->add('voucher_no')
-            ->add('mileage')
-            ->add('cost', null, array(
+            ->add('voucher_no', null, array(
+                'label' => false,
                 'required' => false,
             ))
+            ->add('mileage', null, array(
+                'label' => false,
+                'required' => false,
+            ))
+            ->add('rate', null, array(
+                'label' => false,
+                'required' => false,
+            ))
+            ->add('cost', null, array(
+                'label' => false,
+            ))
             ->add('other_info', 'textarea', array(
+                'label' => false,
                 'required' => false,
             ))
         ;

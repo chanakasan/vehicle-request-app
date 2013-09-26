@@ -13,28 +13,28 @@ class LoadUserData implements FixtureInterface
      */
     public function load(ObjectManager $manager)
     {
-        $admin = new User();
-        $admin->setEnabled(true);
-        $admin->addRole('ROLE_ADMIN'); # assign admin role
-        $admin->setFirstName('John');
-        $admin->setLastName('Doe');
-        $admin->setUsername('admin123');
-        $admin->setEmail('admin@webm.com');
-        $admin->setPlainPassword('pass123');
-
-        $manager->persist($admin);
+        for($i=1; $i<=3 ;$i++)
+        {
+            $admin = new User();
+            $admin->setEnabled(true);
+            $admin->addRole('ROLE_ADMIN'); # assign admin role
+            $admin->setFirstName('John');
+            $admin->setLastName('Doe');
+            $admin->setUsername("admin00".$i);
+            $admin->setEmail("admin00$i@webm.com");
+            $admin->setPlainPassword('pass123');
+            $manager->persist($admin);
  
-        $super_admin = new User();
-        $super_admin->setEnabled(true);
-        $super_admin->setSuperAdmin(true); # create super admin
-        $super_admin->setFirstName('Martin');
-        $super_admin->setLastName('Doe');
-        $super_admin->setUsername('su123');
-        $super_admin->setEmail('su@webm.com');
-        $super_admin->setPlainPassword('pass123');
-
-        $manager->persist($super_admin);
- 
+            $super_admin = new User();
+            $super_admin->setEnabled(true);
+            $super_admin->setSuperAdmin(true); # create super admin
+            $super_admin->setFirstName('Martin');
+            $super_admin->setLastName('Doe');
+            $super_admin->setUsername("su00$i");
+            $super_admin->setEmail("su00$i@webm.com");
+            $super_admin->setPlainPassword('pass123');
+            $manager->persist($super_admin);
+        }
         $manager->flush();
     }
 }

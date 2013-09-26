@@ -3,28 +3,63 @@
 namespace Panda86\UserBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Panda86\UserBundle\Entity\User;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
+use Panda86\UserBundle\Form\UserType;
+use Panda86\UserBundle\Entity\User;
 
 class UserController extends Controller
 {
     public function indexAction()
     {
-        $repository = $this->getDoctrine()
-            ->getRepository('Panda86UserBundle:User');
+        $em    = $this->get('doctrine.orm.entity_manager');
+        $dql   = "SELECT u FROM Panda86UserBundle:User u";
+        $query = $em->createQuery($dql);
 
-        $query = $repository->createQueryBuilder('u')
-            ->select('u.id, u.username, u.first_name, u.last_name, u.email')
-            ->orderBy('u.username', 'ASC')
-            ->getQuery();
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query,
+            $this->get('request')->query->get('page', 1)/*page number*/,
+            10/*limit per page*/
+        );
 
-        $users = $query->getResult();
-        if (!$users) {            
-            throw $this->createNotFoundException(
-                'No users found :o'
-            );
+        return $this->render('Panda86UserBundle:User:index.html.twig', array(
+            'pagination' => $pagination
+        ));
+    }
+
+    public function newAction()
+    {
+        $entity = new User();
+        $form   = $this->createForm(new UserType(), $entity);
+
+        return $this->render('Panda86UserBundle:User:new.html.twig', array(
+            'entity' => $entity,
+            'form'   => $form->createView(),
+        ));
+    }
+
+    public function createAction(Request $request)
+    {
+        $entity = new User();
+        $form   = $this->createForm(new UserType(), $entity);
+
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            if('on' === $request->request->get('is_su')) $entity->setSuperAdmin(true); # create super admin
+
+            $em->persist($entity);
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('user_index', array('id' => $entity->getId())));
         }
-        return new Response(json_encode($users));
+
+        return $this->render('Panda86UserBundle:User:new.html.twig', array(
+            'entity' => $entity,
+            'form'   => $form->createView(),
+        ));
     }
 
     public function showAction($id)
@@ -50,27 +85,6 @@ class UserController extends Controller
         return new Response(json_encode($user));
     }
 
-    public function createAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-        for($i=0; $i < 10; $i++)
-        {
-            $user = new User();
-            $user->setEnabled(true);
-            $user->setFirstName("John0".$i);
-            $user->setLastName("Doe0".$i);
-            $user->setUsername("panda0".$i);
-            $user->setPlainPassword("pass123");
-            $user->setRoles(array('ADMIN_USER'));
-            $user->setEmail("john".$i."@gmail.com");
-            $user->setSuperAdmin(true);
-            $em->persist($user);
-            $em->flush();
-        }
-        //$this->get('session')->getFlashBag()->add('notice', 'Created user id '.$user->getId());
-        return $this->redirect($this->generateUrl('user_index'));
-    }
-
     public function removeAction($id)
     {
         $user = $this->getDoctrine()
@@ -89,4 +103,54 @@ class UserController extends Controller
         return $this->redirect($this->generateUrl('user_index'));
     }
 
+    public function editAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('Panda86UserBundle:User')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find User entity.');
+        }
+        $deleteForm = $this->createDeleteForm($id);
+
+        return $this->render('Panda86UserBundle:User:edit.html.twig', array(
+            'entity'      => $entity,
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
+
+    public function deleteAction(Request $request, $id)
+    {
+        $form = $this->createDeleteForm($id);
+        $form->handleRequest($request);
+        var_dump($form->isValid());exit;
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $entity = $em->getRepository('Panda86UserBundle:User')->find($id);
+
+            if (!$entity) {
+                throw $this->createNotFoundException('Unable to find User entity.');
+            }
+
+            $em->remove($entity);
+            $em->flush();
+        }
+
+        return $this->redirect($this->generateUrl('user_index'));
+    }
+
+    /**
+     * Creates a form to delete a Driver entity by id.
+     *
+     * @param mixed $id The entity id
+     *
+    //     * @return Symfony\Component\Form\Form The form
+     */
+    private function createDeleteForm($id)
+    {
+        return $this->createFormBuilder(array('id' => $id))
+            ->add('id', 'hidden')
+            ->getForm()
+            ;
+    }
 }

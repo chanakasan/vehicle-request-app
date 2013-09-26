@@ -23,24 +23,47 @@ class ApproveController extends Controller
         $em = $this->getDoctrine()->getManager();
         $entities = $em->getRepository('Panda86AppBundle:ApprovedRequest')->findAll();
 
+        if(!$entities)
+        {
+            $this->get('session')->getFlashBag()->add(
+                'error',
+                'No approved requests found!'
+            );
+        }
         $allApproved = array();
         foreach($entities as $entity)
         {
-            $vehicle =  $entity->getVehicle()->getMake();
-            $vehicle .= ' '.$entity->getVehicle()->getModel();
-            $vehicle .= ' - '.$entity->getVehicle()->getRegno();
+            if($entity->getVehicle())
+            {
+                $vehicle =  $entity->getVehicle()->getMake();
+                $vehicle .= ' '.$entity->getVehicle()->getModel();
+                $vehicle .= ' - '.$entity->getVehicle()->getRegno();
 
-            $pickuptime = $entity->getRequest()->getPickupTime();
-            $start = $pickuptime->format('Y-m-d H:i:s');
+                $pickuptime = $entity->getRequest()->getPickupTime();
+                $start = $pickuptime->format('Y-m-d H:i:s');
 
-            $temp = array(
-                'title' => $vehicle,
-                'start' => $start,
-                'requester' => $entity->getRequest()->getRequester()->getName(),
-                'vehicle' => $vehicle,
-                'driver' => $entity->getDriver()->getDisplayname(),
-            );
-            $allApproved[] = $temp;
+                $temp = array(
+                    'title' => $vehicle,
+                    'start' => $start,
+                    'requester' => $entity->getRequest()->getRequester()->getName(),
+                    'vehicle' => $vehicle,
+                    'driver' => $entity->getDriver()->getDisplayname(),
+                );
+                $allApproved[] = $temp;
+            }
+            if($entity->getCab())
+            {
+                $cab =  $entity->getCab()->getCabService()->getName();
+                $pickuptime = $entity->getRequest()->getPickupTime();
+                $start = $pickuptime->format('Y-m-d H:i:s');
+
+                $temp = array(
+                    'title' => 'Rented vehicle '.$cab,
+                    'start' => $start,
+                    'requester' => $entity->getRequest()->getRequester()->getName(),
+                );
+                $allApproved[] = $temp;
+            }
         }
         $response = new \Symfony\Component\HttpFoundation\Response(json_encode($allApproved));
         $response->headers->set('Content-Type', 'application/json');
@@ -54,14 +77,16 @@ class ApproveController extends Controller
     public function newAction($req_id)
     {
         $em = $this->getDoctrine()->getManager();
-        $entity = $em->getRepository('Panda86AppBundle:Request')->find($req_id);
+        $req = $em->getRepository('Panda86AppBundle:Request')->find($req_id);
 
-        if(!$entity || $entity->getStatus() != 0)
+        if(!$req || $req->getStatus() != 0)
         {
             throw $this->createNotFoundException('Can\'t approve the request with id '.$req_id);
         }
         $entity = new ApprovedRequest();
-        $form   = $this->createForm(new ApprovedRequestType(), $entity);
+        $form   = $this->createForm(new ApprovedRequestType(), $entity, array(
+            'em' => $em,
+        ));
 
         return $this->render('Panda86AppBundle:Approve:new.html.twig', array(
             'req_id' => $req_id,
@@ -77,13 +102,15 @@ class ApproveController extends Controller
     public function createAction(Request $request)
     {
         $entity  = new ApprovedRequest();
-        $cab  = new ApprovedCab();
-        $entity->setCab($cab);
-
-        $form = $this->createForm(new ApprovedRequestType(), $entity);
+        $form = $this->createForm(new ApprovedRequestType(), $entity, array(
+            'em' => $this->getDoctrine()->getManager()
+        ));
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+            $current_user = $this->get('security.context')->getToken()->getUser();
+            $entity->setApprovedBy($current_user);
+
             $entity->getRequest()->setStatus(1);
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
@@ -93,7 +120,6 @@ class ApproveController extends Controller
             $reqLink = $em->getRepository('Panda86AppBundle:RequestLink')->findOneBy(array('request' => $entity->getRequest()->getId()));
             $code  = $reqLink->getCode();
             $email = $entity->getRequest()->getRequester()->getEmail();
-
 
             if($this->_sendMail($email, $entity, $code))
             {

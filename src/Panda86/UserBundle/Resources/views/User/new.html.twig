@@ -1,0 +1,96 @@
+{% extends 'Panda86AppBundle::create-view.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Create User
+{% endblock %}
+
+{% set closeBtn_url = path('user_index') %}
+{% block content %}
+    <form id="newUser_form" action="{{ path('user_create') }}" class="appnitro form-horizontal"
+          method="post" {{ form_enctype(form) }} novalidate>
+        <div class="form_description">
+            <h2>New User</h2><br/>
+        </div>
+        <!-- form validation -->
+        {{ form_errors(form) }}
+        {{ form_widget(form._token) }}
+
+        <!-- form fields -->
+        <div id="details" style="display: none">
+            <div class="control-group">
+                <label class="control-label">First name
+                    <span class="f-required">*</span>
+                </label>
+
+                <div class="controls">
+                    {{ form_row(form.first_name) }}
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Last name
+                    <span class="f-required">*</span>
+                </label>
+
+                <div class="controls">
+                    {{ form_row(form.last_name) }}
+                </div>
+            </div>
+            <br/>
+        </div>
+        <div class="control-group">
+            <label class="control-label">Username
+                <span class="f-required">*</span>
+            </label>
+
+            <div class="controls">
+                {{ form_row(form.username) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">Email
+                <span class="f-required">*</span>
+            </label>
+
+            <div class="controls">
+                {{ form_row(form.email) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">Super Admin
+            </label>
+
+            <div class="controls">
+                <input name="is_su" type="checkbox"/>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">Password
+                <span class="f-required">*</span>
+            </label>
+
+            <div class="controls">
+                {{ form_row(form.plainPassword) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">Confirm Password
+                <span class="f-required">*</span>
+            </label>
+
+            <div class="controls">
+                <input id="confirm_password" type="password" required="required"/>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <div class="controls">
+                <input class="btn btn-success" type="submit" value="Create"/>
+            </div>
+        </div>
+    </form>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="/app/js/user/new.js"></script>
+{% endblock %}

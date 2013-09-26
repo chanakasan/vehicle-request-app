@@ -1,6 +1,6 @@
 Panda86\UserBundle\Entity\User:
     type: entity
-    table: hr_user
+    table: vrm_user
     id:
         id:
             type: integer
@@ -16,4 +16,15 @@ Panda86\UserBundle\Entity\User:
             type: string
             length: '64'
             nullable: true
+        created:
+            type: datetime
+        updated:
+            type: datetime
+    oneToOne:
+        employee:
+          targetEntity: Panda86\AppBundle\Entity\Employee
+          joinColumn:
+            name: employee_id
+            nullable: true
+            referencedColumnName: id
     lifecycleCallbacks: {  }
