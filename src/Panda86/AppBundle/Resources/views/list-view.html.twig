@@ -2,22 +2,26 @@
 
 {% block stylesheets %}
     {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="/app/css/common/list-view.css" media="all">
 {% endblock %}
 
 {% block body %}
-    <br/>
-    <div class="row">
-        <div class="span10 offset1">
-            <h3>{{ heading }}</h3>
-            <br/>
-            {% block table %}
-                <p>
-                    <a class="btn btn-success" href="{{ newBtn_url }}"><strong>+</strong> New</a>
-                </p>
-            {% endblock %}
-        </div>
+<img class="span10 hidden-print" id="top" src="/assets/pform/top.png" alt="">
+<div class="row">
+    <div id="main-container" class="span10">
+        <h3>{{ heading }}</h3>
+        <br/>
+        {% block table %}
+            <p>
+                <a class="btn btn-success" href="{{ newBtn_url }}"><strong>+</strong> New</a>
+            </p>
+        {% endblock %}
+        <br/>
     </div>
+</div>
+<img class="span10 hidden-print" id="bottom" src="/assets/pform/bottom.png" alt="">
 {% endblock %}
+
 {% block javascripts %}
     {{ parent() }}
 {% endblock %}

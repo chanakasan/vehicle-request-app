@@ -28,11 +28,11 @@ $(document).ready(function () {
     function dataTableInit() {
         listTable = $('#requests_list').dataTable({
         /* for bootstrap 2 grid */
-            "sDom": "<'row dt-info'<'span10 offset1'i>>" +
-                "<'row dt-search'<'span4 offset7'f>>" +
-                "<'row dt-size'<'span10 offset1'l>>" +
-                "<'row dt-table'<'span10 offset1't>>" +
-                "<'row dt-pagination'<'span10 offset1'p>>",
+            "sDom": "<'row dt-info'<'span10'i>>" +
+                "<'row dt-search'<'pull-right'f>>" +
+                "<'row dt-size'<'span10'l>>" +
+                "<'row dt-table'<'span10't>>" +
+                "<'row dt-pagination'<'span10'p>>",
 
             "sPaginationType": "bootstrap",
             "oLanguage": {
